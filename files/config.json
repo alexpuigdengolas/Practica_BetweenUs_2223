@@ -1,0 +1,8 @@
+{
+  "port": 3306,
+  "user": "root",
+  "password": "BetweenUs23",
+  "db": "BetweenUs",
+  "serverIP": "127.0.0.1",
+  "listeningPort": 12345
+}
