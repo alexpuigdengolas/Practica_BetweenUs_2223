@@ -1,8 +1,5 @@
-import Conn.*;
-import entities.User;
-import entities.User;
-
-import javax.swing.*;
+import persistance.Conn.*;
+import business.entities.User;
 
 public class Main {
     private static Data data;

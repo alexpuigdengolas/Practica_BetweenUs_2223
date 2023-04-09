@@ -1,6 +1,5 @@
-package Conn;
+package persistance.Conn;
 
-import Conn.Data;
 import com.google.gson.Gson;
 
 

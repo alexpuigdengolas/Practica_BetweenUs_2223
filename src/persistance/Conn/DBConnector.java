@@ -1,4 +1,4 @@
-package Conn;
+package persistance.Conn;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;

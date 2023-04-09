@@ -1,4 +1,4 @@
-package entities;
+package business.entities;
 
 public class User {
     // Attributes
