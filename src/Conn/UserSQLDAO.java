@@ -38,17 +38,38 @@ public class UserSQLDAO implements UserDAO {
     }
 
     @Override
-    public void deleteUser(String username) {
-
+    public void deleteUser(String nameLogin) {
+        conn.connect();
+        String query = "DELETE FROM User WHERE username LIKE '" + nameLogin + "'";
+        conn.deleteQuery(query);
+        conn.disconnect();
     }
 
     @Override
     public boolean userNameExists(String userName) {
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT u.username FROM User AS u WHERE u.username LIKE '" + userName + "'");
+        try {
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean userMailExists(String userMail) {
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT u.email FROM User AS u WHERE u.email LIKE '" + userMail + "'");
+        try {
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
