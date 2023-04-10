@@ -1,5 +1,6 @@
 import persistance.Conn.*;
 import business.entities.User;
+import presentation.views.MainView;
 
 public class Main {
     private static Data data;
@@ -9,6 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        MainView mainView = new MainView();
+
+        /*
 
         //aixo s ha de adaptar al codi on toqui. JA registra
         userDAO = new UserSQLDAO();
@@ -23,12 +27,13 @@ public class Main {
             System.out.println("el usuari: "+ user.getName()+ " ha fet log in correctament");
         }
 
+
         //Borra un usuari de la base de dades
         if (userDAO.userNameExists(user.getName())) {
             userDAO.deleteUser(user.getName());
             System.out.println("S ha borrat el usuari: "+ user.getName());
 
-        }
+        }*/
     }
 
 }
