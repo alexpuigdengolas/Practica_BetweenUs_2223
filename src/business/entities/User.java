@@ -15,6 +15,14 @@ public class User {
         this.confirmedPassword = confirmedPassword;
     }
 
+    public User(String name, String mail, String password) {
+        this.name = name;
+        this.mail = mail;
+        this.password = password;
+        this.confirmedPassword = password;
+
+    }
+
     public String getName() {
         return name;
     }

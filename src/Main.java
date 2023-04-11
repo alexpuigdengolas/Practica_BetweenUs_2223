@@ -1,6 +1,12 @@
 import persistance.Conn.*;
 import business.entities.User;
+import presentation.controllers.LoginController;
+import presentation.controllers.RegisterController;
+import presentation.views.LoginView;
 import presentation.views.MainView;
+import presentation.views.RegisterView;
+
+import java.awt.*;
 
 public class Main {
     private static Data data;
@@ -10,8 +16,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MainView mainView = new MainView();
+        LoginView loginView = new LoginView();
+        RegisterView registerView = new RegisterView();
 
+        CardLayout cardLayout = new CardLayout();
+        MainView mainView = new MainView(cardLayout, registerView, loginView);
+
+        RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
+        LoginController loginController = new LoginController(loginView, mainView, cardLayout);
+
+        registerView.registerController(registerController);
+        loginView.loginController(loginController);
+
+
+        mainView.start();
         /*
 
         //aixo s ha de adaptar al codi on toqui. JA registra
