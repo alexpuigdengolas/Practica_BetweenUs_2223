@@ -75,6 +75,19 @@ public class UserSQLDAO implements UserDAO {
 
     @Override
     public String getUsername(String loginName) {
-        return null;
+        if (userMailExists(loginName)) {
+            conn.connect();
+            ResultSet rs = conn.selectQuery("SELECT u.username FROM User AS u WHERE u.email LIKE '" + loginName + "'");
+            try {
+                if(rs.next()) {
+                    return rs.getString("username");
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return null;
+        } else {
+            return loginName;
+        }
     }
 }

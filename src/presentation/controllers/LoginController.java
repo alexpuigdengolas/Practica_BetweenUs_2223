@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import business.UserManager;
 import business.entities.User;
 import presentation.views.LoginView;
 import presentation.views.MainView;
@@ -25,13 +26,19 @@ public class LoginController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case LoginView.BTN_LOG:
-                String userNameEmail;
-                String password;
-                userNameEmail = loginView.getInputUsernameEmail();
-                password = String.valueOf(loginView.getInputPassword());
-                User user = new User(userNameEmail, userNameEmail, password);
+                UserManager userManager = new UserManager();
+                if (userManager.loginUser(loginView.getInputUsernameEmail(),String.valueOf(loginView.getInputPassword()))){
+                    //S ha fet ve el log in
 
-                //TODO: Acciones con la base de datos
+
+                    //Guardem el nom del usuari
+                    String userName = userManager.getUsername(loginView.getInputUsernameEmail());
+                    System.out.println("l'usuari "+userName+ " ha fet log in correcre");
+                    //Anem a la vista que tocaria
+                } else {
+                    //mostrem el error de no fer ho be
+                    System.out.println(("no has posgut fer login"));
+                }
 
                 break;
             case LoginView.BTN_REG:

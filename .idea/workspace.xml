@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment=" mes log in register">
+    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Commit before pull">
+      <change afterPath="$PROJECT_DIR$/src/business/UserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Conn/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conn/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Conn/UserSQLDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conn/UserSQLDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

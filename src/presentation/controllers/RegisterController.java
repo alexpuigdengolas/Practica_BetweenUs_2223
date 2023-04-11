@@ -1,8 +1,10 @@
 package presentation.controllers;
 
+import business.UserManager;
 import business.entities.User;
 import presentation.views.MainView;
 import presentation.views.RegisterView;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,13 +31,8 @@ public class RegisterController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case RegisterView.BTN_REGISTER:
-                String username = registerView.getInputUsername();
-                String email = registerView.getInputEmail();
-                String password = String.valueOf(registerView.getInputPassword());
-                String confPassword = String.valueOf(registerView.getInputConfPassword());
-                //TODO: Gestión con la base de datos
-
-
+                User user = new User(registerView.getInputUsername(),registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
+                caseRegister(user, registerView);
                 break;
 
             case RegisterView.BTN_BACK:
@@ -46,44 +43,31 @@ public class RegisterController implements ActionListener {
                 break;
         }
     }
+    public void caseRegister(User user, RegisterView regview) {
+        UserManager userManager = new UserManager();
+        int checked = userManager.checkRegister(user);
+        System.out.println("el error al controller: "+checked);
+        if (checked == 0) {
+            userManager.registerUser(user);
+            //Ir al caso de que se ha registrado bien
 
-    /**
-     * Este metodo sirve para validar que la contraseña tenga el formato correcto
-     * @param password la string que contiene la contraseña que deseamos analizar
-     * @return el estado de nuestra contraseña
-     */
-    public boolean isValidPassword(String password) {
-        int upper = 0, lower = 0, number = 0;
-
-        for(int i = 0; i < password.length(); i++)
-        {
-            char ch = password.charAt(i);
-            if (ch >= 'A' && ch <= 'Z') {
-                upper++;
-            } else if (ch >= 'a' && ch <= 'z'){
-                lower++;
-            } else if (ch >= '0' && ch <= '9') {
-                number++;
-            }
-        }
-        if (upper == 0  || lower == 0 || number == 0) {
-            return false;
         } else {
-            return true;
+            //No se ha podido hacer cada uno marca el error
+            switch (checked) {
+                case 1 -> // nombre repetido
+                        System.out.println("El nom del usuari ja existeix.");
+                case 2 -> // Las contras no son iguales
+                        System.out.println("Les contrasenyes no son iguals");
+                case 3 -> { // error en el formato de la contra
+                    String finalError = userManager.checkPasswordFormat(user);
+                    System.out.println("El final error es:" + finalError);
+                }
+                case 4 -> // error mail format
+                        System.out.println("El mail no te el format correcte");
+                case 5 -> //Correo ya existe
+                        System.out.println("El mail ya exiteix");
+            }
+
         }
-    }
-
-    /**
-     * Este metodo sirve para validar que la correo electronico tenga el formato correcto
-     * @param email la string que contiene el correo que deseamos analizar
-     * @return el estado de nuestro correo
-     */
-    public static boolean isValidMail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&-]+(?:\\."+"[a-zA-Z0-9_+&-]+)*@"+"(?:[a-zA-Z0-9-]+\\.)+[a-z"+"A-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
     }
 }
