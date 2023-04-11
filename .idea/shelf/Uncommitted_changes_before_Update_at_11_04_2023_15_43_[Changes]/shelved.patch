@@ -1,0 +1,58 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a\" name=\"Changes\" comment=\" mes log in register\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Conn/DBConnector.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Conn/DBConnector.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Conn/UserSQLDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Conn/UserSQLDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Nh99SUQKxVtDh9sloJuPpVvlG1\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Natàlia/Desktop/B06/libs/mysql-connector-java-5.1.47.jar&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Practica\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a\" name=\"Changes\" comment=\"\" />\r\n      <created>1680105296646</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1680105296646</updated>\r\n      <workItem from=\"1680626352746\" duration=\"932000\" />\r\n      <workItem from=\"1680627420306\" duration=\"2025000\" />\r\n      <workItem from=\"1680708708994\" duration=\"6430000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Lectura del configjson\">\r\n      <created>1680629420025</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1680629420025</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\" mes log in register\">\r\n      <created>1680798576565</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1680798576565</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Lectura del configjson\" />\r\n    <MESSAGE value=\" mes log in register\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\" mes log in register\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 336b3b8f93e3bd6b59904d25c937d5ad1de2693e)
++++ b/.idea/workspace.xml	(date 1681220554798)
+@@ -4,11 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment=" mes log in register">
++    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Delete acount">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Conn/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conn/DBConnector.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Conn/UserSQLDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Conn/UserSQLDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,7 +65,7 @@
+       <updated>1680105296646</updated>
+       <workItem from="1680626352746" duration="932000" />
+       <workItem from="1680627420306" duration="2025000" />
+-      <workItem from="1680708708994" duration="6430000" />
++      <workItem from="1680708708994" duration="7042000" />
+     </task>
+     <task id="LOCAL-00001" summary="Lectura del configjson">
+       <created>1680629420025</created>
+@@ -84,7 +81,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1680798576565</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Delete acount">
++      <created>1681037215343</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1681037215343</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -104,6 +108,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Lectura del configjson" />
+     <MESSAGE value=" mes log in register" />
+-    <option name="LAST_COMMIT_MESSAGE" value=" mes log in register" />
++    <MESSAGE value="Delete acount" />
++    <option name="LAST_COMMIT_MESSAGE" value="Delete acount" />
+   </component>
+ </project>
+\ No newline at end of file
