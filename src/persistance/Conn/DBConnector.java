@@ -1,4 +1,4 @@
-package Conn;
+package persistance.Conn;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,6 @@ public class DBConnector {
     private static Connection conn = null;
     private static Statement s;
 
-
     public DBConnector(String usr, String pass, String db, int port) {
         DBConnector.userName = usr;
         DBConnector.password = pass;
@@ -26,8 +25,6 @@ public class DBConnector {
         DBConnector.url += db;
         DBConnector.url += "?verifyServerCertificate=false&useSSL=false";
     }
-
-
     public void connect() {
         try {
             Class.forName("com.mysql.jdbc.Connection");
@@ -41,8 +38,6 @@ public class DBConnector {
             System.out.println("Classe no trobada");
         }
     }
-
-
     public void disconnect() {
         try {
             conn.close();

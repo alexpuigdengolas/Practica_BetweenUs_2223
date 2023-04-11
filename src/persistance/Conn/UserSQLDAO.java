@@ -1,11 +1,11 @@
-package Conn;
+package persistance.Conn;
 
-import entities.User;
+import business.entities.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static Conn.JsonReader.llegeixJSON;
+import static persistance.Conn.JsonReader.llegeixJSON;
 
 public class UserSQLDAO implements UserDAO {
     private Data data;

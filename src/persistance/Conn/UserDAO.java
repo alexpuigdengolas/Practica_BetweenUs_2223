@@ -1,6 +1,6 @@
-package Conn;
+package persistance.Conn;
 
-import entities.User;
+import business.entities.User;
 
 public interface UserDAO {
     void registerUser(User user);

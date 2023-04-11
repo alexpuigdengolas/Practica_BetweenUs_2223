@@ -1,4 +1,4 @@
-package entities;
+package business.entities;
 
 public class User {
     // Attributes
@@ -13,6 +13,14 @@ public class User {
         this.mail = mail;
         this.password = password;
         this.confirmedPassword = confirmedPassword;
+    }
+
+    public User(String name, String mail, String password) {
+        this.name = name;
+        this.mail = mail;
+        this.password = password;
+        this.confirmedPassword = password;
+
     }
 
     public String getName() {

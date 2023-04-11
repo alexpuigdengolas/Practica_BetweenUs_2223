@@ -1,8 +1,12 @@
-import Conn.*;
-import entities.User;
-import entities.User;
+import persistance.Conn.*;
+import business.entities.User;
+import presentation.controllers.LoginController;
+import presentation.controllers.RegisterController;
+import presentation.views.LoginView;
+import presentation.views.MainView;
+import presentation.views.RegisterView;
 
-import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     private static Data data;
@@ -12,6 +16,21 @@ public class Main {
 
     public static void main(String[] args) {
 
+        LoginView loginView = new LoginView();
+        RegisterView registerView = new RegisterView();
+
+        CardLayout cardLayout = new CardLayout();
+        MainView mainView = new MainView(cardLayout, registerView, loginView);
+
+        RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
+        LoginController loginController = new LoginController(loginView, mainView, cardLayout);
+
+        registerView.registerController(registerController);
+        loginView.loginController(loginController);
+
+
+        mainView.start();
+        /*
 
         //aixo s ha de adaptar al codi on toqui. JA registra
         userDAO = new UserSQLDAO();
@@ -26,12 +45,13 @@ public class Main {
             System.out.println("el usuari: "+ user.getName()+ " ha fet log in correctament");
         }
 
+
         //Borra un usuari de la base de dades
         if (userDAO.userNameExists(user.getName())) {
             userDAO.deleteUser(user.getName());
             System.out.println("S ha borrat el usuari: "+ user.getName());
 
-        }
+        }*/
     }
 
 }
