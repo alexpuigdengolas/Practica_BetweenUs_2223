@@ -25,49 +25,65 @@ public class RegisterView extends JPanel {
     }
 
     private void configureView(){
+        this.setLayout(new BorderLayout());
+
+        JPanel titlePanel = new JPanel();
+        JLabel jlTitle = new JLabel("Register");
+        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        titlePanel.add(jlTitle);
+        this.add(titlePanel, BorderLayout.NORTH);
+
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
         //JLabel para el nombre de usuario
         JLabel jlLogin = new JLabel("Username");
         jlLogin.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlLogin.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlLogin.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlLogin);
 
         //JTextField para el nombre de usuario
+        userNameSpace.setMaximumSize(new Dimension(500, userNameSpace.getPreferredSize().height));
         infoPanel.add(userNameSpace);
 
         //JLabel para el mail
         JLabel jlMail = new JLabel("Mali");
         jlMail.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlMail.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlMail.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlMail);
 
         //JTextField para el mail
+        emailSpace.setMaximumSize(new Dimension(500, emailSpace.getPreferredSize().height));
         infoPanel.add(emailSpace);
 
         //JLabel para el mail
         JLabel jlPassword = new JLabel("Password");
         jlPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlPassword.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlPassword.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlPassword);
 
         //JTextField para el mail
+        passwordField.setMaximumSize(new Dimension(500, passwordField.getPreferredSize().height));
+        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
         infoPanel.add(passwordField);
+        infoPanel.add(Box.createVerticalStrut(10));
+        this.add(infoPanel);
 
         //JLabel para el mail
         JLabel jlConPassword = new JLabel("Confirmation Password");
         jlConPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlConPassword.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlConPassword.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlConPassword);
 
         //JTextField para el mail
+        confirmationPasswordField.setMaximumSize(new Dimension(500, confirmationPasswordField.getPreferredSize().height));
         infoPanel.add(confirmationPasswordField);
-        add(infoPanel);
+        add(infoPanel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         loginButton.setActionCommand(BTN_BACK);
@@ -75,7 +91,7 @@ public class RegisterView extends JPanel {
         registerButton.setActionCommand(BTN_REGISTER);
         buttonPanel.add(registerButton);
 
-        infoPanel.add(buttonPanel);
+        infoPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     /**

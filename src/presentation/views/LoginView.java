@@ -23,27 +23,49 @@ public class LoginView extends JPanel {
     }
 
     private void configureLoginView() {
+        this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        this.setLayout(new BorderLayout());
+
+        JPanel titlePanel = new JPanel();
+        JLabel jlTitle = new JLabel("Login");
+        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        titlePanel.add(jlTitle);
+        this.add(titlePanel, BorderLayout.NORTH);
+
+        JPanel voidPanel = new JPanel();
+        voidPanel.setPreferredSize(new Dimension(50, 50));
+        this.add(voidPanel, BorderLayout.EAST);
+        this.add(voidPanel, BorderLayout.WEST);
+
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         //Label de Login
         JLabel jlLogin = new JLabel("Username or Email");
         jlLogin.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlLogin.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlLogin.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlLogin);
 
         //TextField de Login
+        nameSpace.setMaximumSize(new Dimension(500, nameSpace.getPreferredSize().height));
+        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
         infoPanel.add(nameSpace);
+        //infoPanel.add(Box.createVerticalStrut(10)); // Add vertical space
 
         //Label de Contraseña
         JLabel jlPassword = new JLabel("Password");
         jlPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlPassword.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlPassword.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.add(jlPassword);
 
         //TextField de Contraseña
+        passwordField.setMaximumSize(new Dimension(500, passwordField.getPreferredSize().height));
+        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
         infoPanel.add(passwordField);
-        add(infoPanel);
+        infoPanel.add(Box.createVerticalStrut(10));
+        this.add(infoPanel);
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();
@@ -51,7 +73,7 @@ public class LoginView extends JPanel {
         registerButton.setActionCommand(BTN_REG);
         buttonPanel.add(loginButton);
         buttonPanel.add(registerButton);
-        infoPanel.add(buttonPanel);
+        infoPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     public void loginController(ActionListener listener) {

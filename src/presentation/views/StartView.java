@@ -40,6 +40,11 @@ public class StartView extends JPanel {
     private void configureView() {
         this.setLayout(new BorderLayout());
 
+        JPanel voidPanel = new JPanel();
+        voidPanel.setPreferredSize(new Dimension(50, 50));
+        this.add(voidPanel, BorderLayout.EAST);
+        this.add(voidPanel, BorderLayout.WEST);
+
         JPanel actionPanel= new JPanel();
 
         jbSettings.setActionCommand(BTN_STI);
