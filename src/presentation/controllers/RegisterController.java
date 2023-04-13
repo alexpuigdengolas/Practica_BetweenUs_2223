@@ -49,6 +49,7 @@ public class RegisterController implements ActionListener {
         System.out.println("el error al controller: "+checked);
         if (checked == 0) {
             userManager.registerUser(user);
+            mainView.showStart();
             //Ir al caso de que se ha registrado bien
 
         } else {

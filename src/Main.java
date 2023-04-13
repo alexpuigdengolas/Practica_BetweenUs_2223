@@ -2,9 +2,11 @@ import persistance.Conn.*;
 import business.entities.User;
 import presentation.controllers.LoginController;
 import presentation.controllers.RegisterController;
+import presentation.controllers.StartController;
 import presentation.views.LoginView;
 import presentation.views.MainView;
 import presentation.views.RegisterView;
+import presentation.views.StartView;
 
 import java.awt.*;
 
@@ -18,16 +20,19 @@ public class Main {
 
         LoginView loginView = new LoginView();
         RegisterView registerView = new RegisterView();
+        StartView startView = new StartView();
 
         CardLayout cardLayout = new CardLayout();
-        MainView mainView = new MainView(cardLayout, registerView, loginView);
+        MainView mainView = new MainView(cardLayout, registerView, loginView, startView);
+
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout);
+        StartController startController = new StartController(startView, mainView, cardLayout);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
-
+        startView.startController(startController);
 
         mainView.start();
         /*

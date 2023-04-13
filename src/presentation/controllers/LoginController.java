@@ -35,6 +35,7 @@ public class LoginController implements ActionListener {
                     String userName = userManager.getUsername(loginView.getInputUsernameEmail());
                     System.out.println("l'usuari "+userName+ " ha fet log in correcre");
                     //Anem a la vista que tocaria
+                    mainView.showStart();
                 } else {
                     //mostrem el error de no fer ho be
                     System.out.println(("no has posgut fer login"));

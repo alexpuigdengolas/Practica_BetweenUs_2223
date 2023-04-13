@@ -16,16 +16,22 @@ public class MainView extends JFrame {
     private RegisterView registerView;
     private LoginView loginView;
 
+    private StartView startView;
 
-    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView) {
+
+
+
+    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView) {
         this.viewComponents = viewComponents;
         this.setLayout(viewComponents);
         this.configureWindow();
         this.configureMainView();
 
+        this.startView = startView;
         this.loginView = loginView;
         this.registerView = registerView;
 
+        this.add(startView, "startView");
         this.add(loginView, "loginView");
         this.add(registerView, "registerView");
     }
@@ -80,6 +86,10 @@ public class MainView extends JFrame {
      */
     public void showLogin() {
         this.getViewComponent().show(this.getContentPane(), "loginView");
+    }
+
+    public void showStart() {
+        this.getViewComponent().show(this.getContentPane(), "startView");
     }
 }
 
