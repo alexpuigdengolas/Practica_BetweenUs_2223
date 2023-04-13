@@ -31,9 +31,9 @@ public class MainView extends JFrame {
         this.loginView = loginView;
         this.registerView = registerView;
 
-        this.add(startView, "startView");
         this.add(loginView, "loginView");
         this.add(registerView, "registerView");
+        this.add(startView, "startView");
     }
 
     /**

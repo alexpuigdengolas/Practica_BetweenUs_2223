@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class StartView extends JFrame {
+public class StartView extends JPanel {
 
 
     public static final String BTN_STI= "BTN_STI";
@@ -38,6 +38,7 @@ public class StartView extends JFrame {
      * En esta funcion construimos la vista
      */
     private void configureView() {
+        this.setLayout(new BorderLayout());
 
         JPanel actionPanel= new JPanel();
 
@@ -60,6 +61,9 @@ public class StartView extends JFrame {
         butonPanel.add(jbConfGame);
         butonPanel.add(jbCharGame);
         butonPanel.add(jbDellGame);
+
+        this.add(actionPanel, BorderLayout.NORTH);
+        this.add(butonPanel, BorderLayout.CENTER);
 
     }
 
