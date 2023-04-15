@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Commit before pull">
-      <change afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/presentation/views/NewGameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" afterDir="false" />
+    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="New Game view i anar desde start a new game.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/MainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/LoginView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +75,7 @@
       <workItem from="1680627420306" duration="2025000" />
       <workItem from="1680708708994" duration="6430000" />
       <workItem from="1681228316306" duration="1665000" />
-      <workItem from="1681567392525" duration="7261000" />
+      <workItem from="1681567392525" duration="8316000" />
     </task>
     <task id="LOCAL-00001" summary="Lectura del configjson">
       <created>1680629420025</created>
@@ -95,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680798576565</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="New Game view i anar desde start a new game.">
+      <created>1681575716761</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681575716761</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +118,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lectura del configjson" />
     <MESSAGE value=" mes log in register" />
-    <option name="LAST_COMMIT_MESSAGE" value=" mes log in register" />
+    <MESSAGE value="New Game view i anar desde start a new game." />
+    <option name="LAST_COMMIT_MESSAGE" value="New Game view i anar desde start a new game." />
   </component>
 </project>

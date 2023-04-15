@@ -3,6 +3,8 @@ package presentation.views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginView extends JPanel {
 
@@ -79,6 +81,14 @@ public class LoginView extends JPanel {
     public void loginController(ActionListener listener) {
         loginButton.addActionListener(listener);
         registerButton.addActionListener(listener);
+        passwordField.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+                    loginButton.doClick();
+                }
+            }
+        });
+
     }
 
     /**
