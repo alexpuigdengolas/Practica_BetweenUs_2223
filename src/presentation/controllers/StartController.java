@@ -33,15 +33,30 @@ public class StartController implements ActionListener {
 
         switch (e.getActionCommand()){
 
-            case StartView.BTN_STI : break;
+            case StartView.BTN_STI :
 
-            case StartView.BTN_CRE : break;
 
-            case StartView.BTN_CON : break;
+                break;
 
-            case StartView.BTN_CHAR : break;
+            case StartView.BTN_CRE :
 
-            case StartView.BTN_DEL : break;
+                mainView.showNG();
+                break;
+
+            case StartView.BTN_CON :
+
+
+                break;
+
+            case StartView.BTN_CHAR :
+
+
+                break;
+
+            case StartView.BTN_DEL :
+
+
+                break;
 
         }
 

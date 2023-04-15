@@ -1,12 +1,9 @@
 import persistance.Conn.*;
-import business.entities.User;
 import presentation.controllers.LoginController;
+import presentation.controllers.NGController;
 import presentation.controllers.RegisterController;
 import presentation.controllers.StartController;
-import presentation.views.LoginView;
-import presentation.views.MainView;
-import presentation.views.RegisterView;
-import presentation.views.StartView;
+import presentation.views.*;
 
 import java.awt.*;
 
@@ -21,18 +18,21 @@ public class Main {
         LoginView loginView = new LoginView();
         RegisterView registerView = new RegisterView();
         StartView startView = new StartView();
+        NewGameView NGView = new NewGameView();
 
         CardLayout cardLayout = new CardLayout();
-        MainView mainView = new MainView(cardLayout, registerView, loginView, startView);
+        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, NGView);
 
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout);
         StartController startController = new StartController(startView, mainView, cardLayout);
+        NGController NGcontroller = new NGController(NGView, mainView, cardLayout);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
         startView.startController(startController);
+        NGView.NGController(NGcontroller);
 
         mainView.start();
         /*
