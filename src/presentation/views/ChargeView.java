@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class ChargeView extends JPanel{
     public static final String BTN_CHA = "BTN_CHA";
-
+    //prova
 
     private JTextField nameField = new JTextField();
 
