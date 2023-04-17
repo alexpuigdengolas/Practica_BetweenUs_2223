@@ -44,7 +44,7 @@ public class MainView extends JFrame {
         this.add(registerView, "registerView");
         this.add(startView, "startView");
         this.add(nGView, "nGView");
-        this.add(startView, "statisticsView");
+        this.add(statisticsView, "statisticsView");
         this.add(deleteView, "deleteView");
         this.add(configuredView, "configuredView");
         this.add(chargeView, "chargeView");

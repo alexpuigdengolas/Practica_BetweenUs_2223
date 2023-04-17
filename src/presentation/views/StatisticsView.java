@@ -1,4 +1,6 @@
 package presentation.views;
 
-public class StatisticsView {
+import javax.swing.*;
+
+public class StatisticsView extends JPanel {
 }
