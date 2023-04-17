@@ -15,14 +15,17 @@ public class MainView extends JFrame {
 
     private RegisterView registerView;
     private LoginView loginView;
-
     private StartView startView;
-    private NewGameView NGView;
+    private NewGameView nGView;
+    private StatisticsView statisticsView;
+    private DeleteView deleteView;
+    private ConfiguredView configuredView;
+    private ChargeView chargeView;
 
 
 
 
-    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView NGView) {
+    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView) {
         this.viewComponents = viewComponents;
         this.setLayout(viewComponents);
         this.configureWindow();
@@ -31,12 +34,20 @@ public class MainView extends JFrame {
         this.startView = startView;
         this.loginView = loginView;
         this.registerView = registerView;
-        this.NGView = NGView;
+        this.nGView = nGView;
+        this.statisticsView = statisticsView;
+        this.deleteView = deleteView;
+        this.configuredView = configuredView;
+        this.chargeView = chargeView;
 
         this.add(loginView, "loginView");
         this.add(registerView, "registerView");
         this.add(startView, "startView");
-        this.add(NGView, "NGView");
+        this.add(nGView, "nGView");
+        this.add(startView, "statisticsView");
+        this.add(deleteView, "deleteView");
+        this.add(configuredView, "configuredView");
+        this.add(chargeView, "chargeView");
     }
 
     /**
@@ -95,7 +106,14 @@ public class MainView extends JFrame {
         this.getViewComponent().show(this.getContentPane(), "startView");
     }
 
-    public void showNG() {this.getViewComponent().show(this.getContentPane(), "NGView");
-    }
+    public void showNG() {this.getViewComponent().show(this.getContentPane(), "nGView");}
+
+    public void showStatistics(){this.getViewComponent().show(this.getContentPane(), "statisticsView");}
+
+    public void showDelete(){this.getViewComponent().show(this.getContentPane(), "deleteView");}
+
+    public void showConfigured(){this.getViewComponent().show(this.getContentPane(), "configuredView");}
+
+    public void showCharge(){this.getViewComponent().show(this.getContentPane(), "chargeView");}
 }
 

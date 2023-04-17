@@ -18,21 +18,26 @@ public class Main {
         LoginView loginView = new LoginView();
         RegisterView registerView = new RegisterView();
         StartView startView = new StartView();
-        NewGameView NGView = new NewGameView();
+        NewGameView nGView = new NewGameView();
+        StatisticsView statisticsView = new StatisticsView();
+        DeleteView deleteView = new DeleteView();
+        ConfiguredView configuredView = new ConfiguredView();
+        ChargeView chargeView = new ChargeView();
+
 
         CardLayout cardLayout = new CardLayout();
-        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, NGView);
+        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView);
 
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout);
         StartController startController = new StartController(startView, mainView, cardLayout);
-        NGController NGcontroller = new NGController(NGView, mainView, cardLayout);
+        NGController NGcontroller = new NGController(nGView, mainView, cardLayout);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
         startView.startController(startController);
-        NGView.NGController(NGcontroller);
+        nGView.NGController(NGcontroller);
 
         mainView.start();
         /*
