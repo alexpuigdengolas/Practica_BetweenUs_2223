@@ -30,7 +30,7 @@ public class RegisterView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Register");
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         this.add(titlePanel, BorderLayout.NORTH);
 
@@ -40,7 +40,7 @@ public class RegisterView extends JPanel {
         //JLabel para el nombre de usuario
         JLabel jlLogin = new JLabel("Username");
         jlLogin.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlLogin.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlLogin);
 
@@ -51,7 +51,7 @@ public class RegisterView extends JPanel {
         //JLabel para el mail
         JLabel jlMail = new JLabel("Mali");
         jlMail.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlMail.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlMail.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlMail);
 
@@ -62,7 +62,7 @@ public class RegisterView extends JPanel {
         //JLabel para el mail
         JLabel jlPassword = new JLabel("Password");
         jlPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlPassword.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlPassword);
 
@@ -76,7 +76,7 @@ public class RegisterView extends JPanel {
         //JLabel para el mail
         JLabel jlConPassword = new JLabel("Confirmation Password");
         jlConPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlConPassword.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlConPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlConPassword);
 

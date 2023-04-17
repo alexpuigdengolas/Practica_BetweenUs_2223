@@ -70,6 +70,8 @@ public class StartView extends JPanel {
         this.add(actionPanel, BorderLayout.NORTH);
         this.add(butonPanel, BorderLayout.CENTER);
 
+        int margin = 50;
+        this.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
 
     /**
