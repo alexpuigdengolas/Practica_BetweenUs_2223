@@ -34,7 +34,7 @@ public class NewGameView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("NEW GAME");
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         this.add(titlePanel, BorderLayout.NORTH);
 
@@ -48,7 +48,7 @@ public class NewGameView extends JPanel {
         //Label de Login
         JLabel jlGame = new JLabel("GAME NAME");
         jlGame.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlGame.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlGame.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlGame);
 

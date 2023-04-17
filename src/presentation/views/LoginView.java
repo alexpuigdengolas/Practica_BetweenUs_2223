@@ -32,7 +32,7 @@ public class LoginView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Login");
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         this.add(titlePanel, BorderLayout.NORTH);
 
@@ -46,7 +46,7 @@ public class LoginView extends JPanel {
         //Label de Login
         JLabel jlLogin = new JLabel("Username or Email");
         jlLogin.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlLogin.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoPanel.add(jlLogin);
 
@@ -59,7 +59,7 @@ public class LoginView extends JPanel {
         //Label de Contraseña
         JLabel jlPassword = new JLabel("Password");
         jlPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-        jlPassword.setFont(new Font("Serif", Font.PLAIN, 20));
+        jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(jlPassword);
 
         //TextField de Contraseña
