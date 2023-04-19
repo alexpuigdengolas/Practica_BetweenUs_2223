@@ -7,9 +7,13 @@ import java.awt.event.ActionListener;
 public class NewGameView extends JPanel {
 
 
-    public static final String BTN_Prova = "BTN_Prova";
+    public static final String BTN_P = "BTN_P";
+    public static final String BTN_BACK = "BTN_BACK";
+    public static final String BTN_STI = "BTN_STI";
 
     private JButton jbProva = new JButton("Prova");
+    private JButton jbBack = new JButton();
+    private JButton jbSettings = new JButton();
 
     private JTextField nameSpace = new JTextField();
 
@@ -31,12 +35,19 @@ public class NewGameView extends JPanel {
 
         this.setLayout(new BorderLayout());
 
+        JPanel jpActions = new JPanel();
+        jbBack.setActionCommand(BTN_BACK);
+        jbSettings.setActionCommand(BTN_STI);
+        jpActions.add(jbBack);
+        jpActions.add(jbSettings);
+        this.add(jpActions, BorderLayout.NORTH);
+
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("NEW GAME");
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        this.add(titlePanel, BorderLayout.NORTH);
+        //this.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
@@ -61,13 +72,14 @@ public class NewGameView extends JPanel {
 
         JPanel actionPanel= new JPanel();
 
-        jbProva.setActionCommand(BTN_Prova);
+        jbProva.setActionCommand(BTN_P);
         actionPanel.add(jbProva);
 
         this.add(actionPanel, BorderLayout.SOUTH);
     }
 
     public void NGController(ActionListener actionListener){
+        jbBack.addActionListener(actionListener);
         jbProva.addActionListener(actionListener);
     }
 

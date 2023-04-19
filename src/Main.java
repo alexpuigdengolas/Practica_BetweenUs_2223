@@ -33,12 +33,14 @@ public class Main {
         StartController startController = new StartController(startView, mainView, cardLayout);
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout);
+        ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
         startView.startController(startController);
         nGView.NGController(NGcontroller);
         settingsView.settingsController(settingsController);
+        configuredView.configuredController(configuredController);
 
         mainView.start();
         /*

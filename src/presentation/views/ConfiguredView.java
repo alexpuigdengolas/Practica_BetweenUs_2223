@@ -6,12 +6,16 @@ import java.awt.event.ActionListener;
 
 public class ConfiguredView extends JPanel {
     public static final String BTN_CHA = "BTN_CON";
+    public static final String BTN_BACK = "BTN_BACK";
+    public static final String BTN_STI = "BTN_STI";
 
 
     private JTextField nameField = new JTextField();
 
 
     private JButton configuredButton = new JButton("Create Game");
+    private JButton jbBack = new JButton();
+    private JButton jbSettings = new JButton();
 
     private CardLayout components;
     private MainView mainView;
@@ -25,12 +29,19 @@ public class ConfiguredView extends JPanel {
 
         this.setLayout(new BorderLayout());
 
+        JPanel jpActions = new JPanel();
+        jbBack.setActionCommand(BTN_BACK);
+        jbSettings.setActionCommand(BTN_STI);
+        jpActions.add(jbBack);
+        jpActions.add(jbSettings);
+        this.add(jpActions, BorderLayout.NORTH);
+
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Configured game");
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        this.add(titlePanel, BorderLayout.NORTH);
+        //this.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
@@ -60,4 +71,12 @@ public class ConfiguredView extends JPanel {
 
         infoPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
+
+    public void configuredController(ActionListener actionListener){
+        jbBack.addActionListener(actionListener);
+        jbSettings.addActionListener(actionListener);
+        configuredButton.addActionListener(actionListener);
+    }
+
+
 }

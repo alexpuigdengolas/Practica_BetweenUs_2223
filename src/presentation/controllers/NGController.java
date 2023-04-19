@@ -32,6 +32,10 @@ public class NGController  implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.printf("EI");
+        switch (e.getActionCommand()){
+            case NewGameView.BTN_P -> System.out.print("EI");
+            case NewGameView.BTN_BACK -> mainView.showStart();
+
+        }
     }
 }
