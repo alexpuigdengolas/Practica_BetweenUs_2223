@@ -35,7 +35,7 @@ public class StartController implements ActionListener {
 
             case StartView.BTN_STI :
 
-                //TODO: Show Settings
+                mainView.showSettings();
                 break;
 
             case StartView.BTN_CRE :

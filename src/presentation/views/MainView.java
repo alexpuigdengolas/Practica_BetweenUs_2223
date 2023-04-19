@@ -21,11 +21,11 @@ public class MainView extends JFrame {
     private DeleteView deleteView;
     private ConfiguredView configuredView;
     private ChargeView chargeView;
+    private SettingsView settingsView;
 
 
 
-
-    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView) {
+    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView, SettingsView settingsView) {
         this.viewComponents = viewComponents;
         this.setLayout(viewComponents);
         this.configureWindow();
@@ -39,6 +39,7 @@ public class MainView extends JFrame {
         this.deleteView = deleteView;
         this.configuredView = configuredView;
         this.chargeView = chargeView;
+        this.settingsView = settingsView;
 
         this.add(loginView, "loginView");
         this.add(registerView, "registerView");
@@ -48,6 +49,7 @@ public class MainView extends JFrame {
         this.add(deleteView, "deleteView");
         this.add(configuredView, "configuredView");
         this.add(chargeView, "chargeView");
+        this.add(settingsView, "settingsView");
     }
 
     /**
@@ -115,5 +117,7 @@ public class MainView extends JFrame {
     public void showConfigured(){this.getViewComponent().show(this.getContentPane(), "configuredView");}
 
     public void showCharge(){this.getViewComponent().show(this.getContentPane(), "chargeView");}
+
+    public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
 }
 
