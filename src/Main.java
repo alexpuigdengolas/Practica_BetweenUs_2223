@@ -1,3 +1,4 @@
+import business.UserManager;
 import persistance.Conn.*;
 import presentation.controllers.*;
 import presentation.views.*;
@@ -21,6 +22,7 @@ public class Main {
         ConfiguredView configuredView = new ConfiguredView();
         ChargeView chargeView = new ChargeView();
         SettingsView settingsView = new SettingsView();
+        UserManager userManager = new UserManager();
 
 
 
@@ -28,11 +30,11 @@ public class Main {
         MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView);
 
 
-        RegisterController registerController = new RegisterController(registerView, mainView, cardLayout);
-        LoginController loginController = new LoginController(loginView, mainView, cardLayout);
+        RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
+        LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
         StartController startController = new StartController(startView, mainView, cardLayout);
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout);
-        SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout);
+        SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
         ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
 
         registerView.registerController(registerController);

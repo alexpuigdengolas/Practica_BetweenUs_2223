@@ -15,11 +15,13 @@ public class LoginController implements ActionListener {
     private MainView mainView;
     private CardLayout cardLayout;
 
-    //TODO: Añadir user manager para gestión con la Base de datos
-    public LoginController(LoginView loginView, MainView mainView, CardLayout cardLayout) {
+    private UserManager userManager;
+
+    public LoginController(LoginView loginView, MainView mainView, CardLayout cardLayout, UserManager userManager) {
         this.loginView = loginView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
+        this.userManager = userManager;
     }
 
     @Override
@@ -27,11 +29,7 @@ public class LoginController implements ActionListener {
         switch (e.getActionCommand()) {
 
             case LoginView.BTN_LOG:
-                UserManager userManager = new UserManager();
                 if (userManager.loginUser(loginView.getInputUsernameEmail(),String.valueOf(loginView.getInputPassword()))){
-                    //S ha fet ve el log in
-
-
                     //Guardem el nom del usuari
                     String userName = userManager.getUsername(loginView.getInputUsernameEmail());
                     System.out.println("l'usuari "+userName+ " ha fet log in correcre");

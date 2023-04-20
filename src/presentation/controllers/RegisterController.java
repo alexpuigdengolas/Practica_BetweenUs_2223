@@ -17,10 +17,13 @@ public class RegisterController implements ActionListener {
     private final MainView mainView;
     private final CardLayout viewComponents;
 
-    public RegisterController(RegisterView registerView, MainView mainView, CardLayout viewComponents) {
+    private  UserManager userManager;
+
+    public RegisterController(RegisterView registerView, MainView mainView, CardLayout viewComponents,UserManager userManager) {
         this.registerView = registerView;
         this.mainView = mainView;
         this.viewComponents = viewComponents;
+        this.userManager = userManager;
     }
 
     /**
@@ -44,7 +47,6 @@ public class RegisterController implements ActionListener {
         }
     }
     public void caseRegister(User user, RegisterView regview) {
-        UserManager userManager = new UserManager();
         int checked = userManager.checkRegister(user);
         System.out.println("el error al controller: "+checked);
         if (checked == 0) {

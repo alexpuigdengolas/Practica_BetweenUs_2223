@@ -8,6 +8,8 @@ public class UserManager {
 
     private final UserDAO userDAO;
 
+    private String user;
+
     public UserManager(){
         userDAO = new UserSQLDAO();
     }
@@ -97,11 +99,28 @@ public class UserManager {
     }
 
     public boolean loginUser(String userNameMail, String password) {
+
         return userDAO.checkLoginUser(userNameMail,password);
     }
 
+
     public String getUsername(String loginName) {
+        user = userDAO.getUsername(loginName);
         return userDAO.getUsername(loginName);
+    }
+
+    public void resetName(){
+        user = null;
+
+    }
+
+
+    public boolean deleteUser() {
+        if (userDAO.userNameExists(user)) {
+            userDAO.deleteUser(user);
+            return true;
+        }
+        return false;
     }
 
 }
