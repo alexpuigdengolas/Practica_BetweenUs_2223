@@ -20,11 +20,8 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
 
-
-
         CardLayout cardLayout = new CardLayout();
         MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView);
-
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
@@ -32,6 +29,8 @@ public class Main {
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
         ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
+        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout);
+        DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
@@ -39,6 +38,8 @@ public class Main {
         nGView.NGController(NGcontroller);
         settingsView.settingsController(settingsController);
         configuredView.configuredController(configuredController);
+        chargeView.chargeController(chargeController);
+        deleteView.deleteController(deleteController);
 
         mainView.start();
 

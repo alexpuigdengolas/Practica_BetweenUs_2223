@@ -22,9 +22,6 @@ public class NewGameView extends JPanel {
 
     private CardLayout components;
 
-
-
-
     public NewGameView(){
         configureNGView();
     }
