@@ -6,10 +6,6 @@ import presentation.views.*;
 import java.awt.*;
 
 public class Main {
-    private static Data data;
-    private static DBConnector conn;
-    private static UserDAO userDAO;
-
 
     public static void main(String[] args) {
 
@@ -45,15 +41,7 @@ public class Main {
         configuredView.configuredController(configuredController);
 
         mainView.start();
-        /*
 
-
-        //Borra un usuari de la base de dades (Cuando se implemente la vista de borrar lo quito asi tengo las lineas hechas ya)
-        if (userDAO.userNameExists(user.getName())) {
-            userDAO.deleteUser(user.getName());
-            System.out.println("S ha borrat el usuari: "+ user.getName());
-
-        }*/
     }
 
 }
