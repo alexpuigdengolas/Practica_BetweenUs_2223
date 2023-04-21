@@ -10,7 +10,7 @@ public class ConfiguredView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
 
 
-    private JTextField nameField = new JTextField();
+    private JComboBox<String> comboBox = new JComboBox<String>();
 
 
     private JButton configuredButton = new JButton("Create Game");
@@ -22,6 +22,7 @@ public class ConfiguredView extends JPanel {
 
     public ConfiguredView() {
         configureConfiguredView();
+        chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
     private void configureConfiguredView() {
@@ -58,9 +59,9 @@ public class ConfiguredView extends JPanel {
 
 
         //TextField de cargar partida
-        nameField.setMaximumSize(new Dimension(500, nameField.getPreferredSize().height));
+        comboBox.setMaximumSize(new Dimension(500, comboBox.getPreferredSize().height));
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
-        infoPanel.add(nameField);
+        infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
         this.add(infoPanel);
 
@@ -78,5 +79,19 @@ public class ConfiguredView extends JPanel {
         configuredButton.addActionListener(actionListener);
     }
 
+    public void chargeExistingGames(String[] options){
+        for(String option: options){
+            comboBox.addItem(option);
+        }
+
+        //TODO: Acceso real a la base de datos
+        comboBox.addItem("Option 1");
+        comboBox.addItem("Option 2");
+        comboBox.addItem("Option 3");
+    }
+
+    public String optionSelected(){
+        return (String) comboBox.getSelectedItem();
+    }
 
 }

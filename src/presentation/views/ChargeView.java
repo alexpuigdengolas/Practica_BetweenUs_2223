@@ -10,7 +10,7 @@ public class ChargeView extends JPanel{
     public static final String BTN_STI = "BTN_STI";
     //prova
 
-    private JTextField nameField = new JTextField();
+    private JComboBox<String> comboBox = new JComboBox<String>();
 
 
     private JButton chargeButton = new JButton("Charge");
@@ -23,6 +23,7 @@ public class ChargeView extends JPanel{
 
     public ChargeView() {
         configureChargeView();
+        chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
     private void configureChargeView() {
@@ -61,9 +62,9 @@ public class ChargeView extends JPanel{
 
 
         //TextField de cargar partida
-        nameField.setMaximumSize(new Dimension(500, nameField.getPreferredSize().height));
+        comboBox.setMaximumSize(new Dimension(500, comboBox.getPreferredSize().height));
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
-        infoPanel.add(nameField);
+        infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
         this.add(infoPanel);
 
@@ -81,12 +82,19 @@ public class ChargeView extends JPanel{
         jbSettings.addActionListener(listener);
     }
 
-    /**
-     * Este metodod nos devolvera el juego introducido en nuestra vista.
-     * @return un string que contiene lo que el usuario haya introducido en ese campo de texto
-     */
-    public String getInputGame() {
-        return nameField.getText();
+    public void chargeExistingGames(String[] options){
+        for(String option: options){
+            comboBox.addItem(option);
+        }
+
+        //TODO: Acceso real a la base de datos
+        comboBox.addItem("Option 1");
+        comboBox.addItem("Option 2");
+        comboBox.addItem("Option 3");
+    }
+
+    public String optionSelected(){
+        return (String) comboBox.getSelectedItem();
     }
 
     /**

@@ -25,7 +25,7 @@ public class DeleteController implements ActionListener {
             case DeleteView.BTN_BACK -> mainView.showStart();
             case DeleteView.BTN_STI -> mainView.showSettings();
             case DeleteView.BTN_CHA -> {
-
+                System.out.println(deleteView.optionSelected());
             }
         }
     }
