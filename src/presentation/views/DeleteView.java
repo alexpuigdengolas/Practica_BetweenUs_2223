@@ -9,7 +9,7 @@ public class DeleteView extends JPanel {
     public static final String BTN_BACK = "BTN_BACK";
     public static final String BTN_STI = "BTN_STI";
 
-    private JTextField nameField = new JTextField();
+    private JComboBox<String> comboBox = new JComboBox<String>();
 
     private JButton deleteButton = new JButton("Delete Game");
     private JButton jbBack = new JButton();
@@ -20,6 +20,7 @@ public class DeleteView extends JPanel {
 
     public DeleteView() {
         configureDeleteView();
+        chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
     private void configureDeleteView() {
@@ -56,9 +57,9 @@ public class DeleteView extends JPanel {
 
 
         //TextField de cargar partida
-        nameField.setMaximumSize(new Dimension(500, nameField.getPreferredSize().height));
+        comboBox.setMaximumSize(new Dimension(500, comboBox.getPreferredSize().height));
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
-        infoPanel.add(nameField);
+        infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
         this.add(infoPanel);
 
@@ -74,5 +75,20 @@ public class DeleteView extends JPanel {
         jbBack.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
         deleteButton.addActionListener(actionListener);
+    }
+
+    public void chargeExistingGames(String[] options){
+        for(String option: options){
+            comboBox.addItem(option);
+        }
+
+        //TODO: Acceso real a la base de datos
+        comboBox.addItem("Option 1");
+        comboBox.addItem("Option 2");
+        comboBox.addItem("Option 3");
+    }
+
+    public String optionSelected(){
+        return (String) comboBox.getSelectedItem();
     }
 }

@@ -1,9 +1,6 @@
 package presentation.controllers;
 
-import business.UserManager;
-import business.entities.User;
 import presentation.views.ChargeView;
-import presentation.views.ConfiguredView;
 import presentation.views.MainView;
 
 import java.awt.*;
@@ -26,10 +23,10 @@ public class ChargeController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()){
-            case ConfiguredView.BTN_BACK -> mainView.showStart();
-            case ConfiguredView.BTN_STI -> mainView.showSettings();
-            case ConfiguredView.BTN_CHA -> {
-
+            case ChargeView.BTN_BACK -> mainView.showStart();
+            case ChargeView.BTN_STI -> mainView.showSettings();
+            case ChargeView.BTN_CHA -> {
+                System.out.println(chargeView.optionSelected());
             }
         }
     }
