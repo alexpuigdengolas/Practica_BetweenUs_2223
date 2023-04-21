@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+
+
+
 public class NewGameView extends JPanel {
 
 
@@ -73,30 +76,47 @@ public class NewGameView extends JPanel {
         //jlabel 1
         JPanel labelPanel = new JPanel();
         JLabel label = new JLabel("Color");
-        JTextField textField = new JTextField();
-        textField.setColumns(20); // Establecer 20 caracteres de ancho
+        JTextField textField = new JTextField(20);
         labelPanel.add(label);
         labelPanel.add(textField);
         infoPanel.add(labelPanel);
+        infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
 
 
-
-        //jlabel 2
+//jlabel 2
+        JPanel labelPanel2 = new JPanel();
         JLabel label2 = new JLabel("Impostors");
-        JTextField textField2 = new JTextField();
-        textField.setColumns(20); // Establecer 20 caracteres de ancho
-        labelPanel.add(label2);
-        labelPanel.add(textField2);
-        infoPanel.add(labelPanel);
-        //jlabel 3
+        JSpinner spinner2 = new JSpinner();
+        JSpinner.DefaultEditor editor2 = (JSpinner.DefaultEditor) spinner2.getEditor();
+        editor2.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+        labelPanel2.add(label2);
+        labelPanel2.add(spinner2);
+        infoPanel.add(labelPanel2);
+        infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+
+//jlabel 3
+        JPanel labelPanel3 = new JPanel();
         JLabel label3 = new JLabel("Players");
-        labelPanel.add(label3);
-        infoPanel.add(label3);
-        //jlabel 3
+        JSpinner spinner3 = new JSpinner();
+        JSpinner.DefaultEditor editor3 = (JSpinner.DefaultEditor) spinner3.getEditor();
+        editor3.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+        labelPanel3.add(label3);
+        labelPanel3.add(spinner3);
+        infoPanel.add(labelPanel3);
+        infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+
+//jlabel 4
+        JPanel labelPanel4 = new JPanel();
         JLabel label4 = new JLabel("Map");
-        labelPanel.add(label4);
-        infoPanel.add(label4);
+        JSpinner spinner4 = new JSpinner();
+        JSpinner.DefaultEditor editor4 = (JSpinner.DefaultEditor) spinner4.getEditor();
+        editor4.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+        labelPanel4.add(label4);
+        labelPanel4.add(spinner4);
+        infoPanel.add(labelPanel4);
+        infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();
