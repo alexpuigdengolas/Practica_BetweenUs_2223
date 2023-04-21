@@ -36,6 +36,7 @@ public class LoginController implements ActionListener {
                     //Anem a la vista que tocaria
                     mainView.showStart();
                 } else {
+
                     //mostrem el error de no fer ho be
                     System.out.println(("no has posgut fer login"));
                 }

@@ -1,5 +1,6 @@
 import business.UserManager;
 import persistance.Conn.*;
+import business.entities.User;
 import presentation.controllers.*;
 import presentation.views.*;
 
@@ -42,7 +43,15 @@ public class Main {
         deleteView.deleteController(deleteController);
 
         mainView.start();
+        /*
 
+
+        //Borra un usuari de la base de dades (Cuando se implemente la vista de borrar lo quito asi tengo las lineas hechas ya)
+        if (userDAO.userNameExists(user.getName())) {
+            userDAO.deleteUser(user.getName());
+            System.out.println("S ha borrat el usuari: "+ user.getName());
+
+        }*/
     }
 
 }

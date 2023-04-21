@@ -18,19 +18,18 @@ public class UserManager {
         userDAO.registerUser(user);
     }
 
-    public int checkRegister(User user){
+    public void checkRegister(User user) throws ErrorMessage{
         if (userDAO.userNameExists(user.getName())) {
-            return 1;
+             throw new ErrorMessage("El nom del usuari ja existeix.");
         } else if (unequalPasswords(user)) {
-            return 2;
+            throw new ErrorMessage("Les contrasenyes no son iguals");
         } else if(!checkPasswordFormat(user).equals("")) {
-            return 3;
+            String finalError = checkPasswordFormat(user);
+            throw new ErrorMessage("El final error es: "+finalError);
         } else if (!checkMailFormat(user.getMail())) {
-            return 4;
+            throw new ErrorMessage("El mail no te el format correcte");
         } else if (userDAO.userMailExists(user.getMail())){
-            return 5;
-        } else {
-            return 0;
+            throw new ErrorMessage("El mail ya exiteix");
         }
     }
 
@@ -122,5 +121,8 @@ public class UserManager {
         }
         return false;
     }
+
+    //Funcio comproba user
+
 
 }

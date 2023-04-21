@@ -37,6 +37,7 @@ public class UserSQLDAO implements UserDAO {
         return false;
     }
 
+
     @Override
     public void deleteUser(String nameLogin) {
         conn.connect();

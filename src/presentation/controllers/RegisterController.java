@@ -1,5 +1,6 @@
 package presentation.controllers;
 
+import business.ErrorMessage;
 import business.UserManager;
 import business.entities.User;
 import presentation.views.MainView;
@@ -35,7 +36,12 @@ public class RegisterController implements ActionListener {
         switch (e.getActionCommand()) {
             case RegisterView.BTN_REGISTER:
                 User user = new User(registerView.getInputUsername(),registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
-                caseRegister(user, registerView);
+                try {
+                    caseRegister(user);
+                    mainView.showLogin();
+                } catch (ErrorMessage ex) {
+                    System.out.println(ex.getMessage());;
+                }
                 break;
 
             case RegisterView.BTN_BACK:
@@ -46,9 +52,17 @@ public class RegisterController implements ActionListener {
                 break;
         }
     }
-    public void caseRegister(User user, RegisterView regview) {
-        int checked = userManager.checkRegister(user);
-        System.out.println("el error al controller: "+checked);
+    public void caseRegister(User user) throws ErrorMessage {
+        userManager.checkRegister(user);
+
+        try {
+            userManager.checkRegister(user);
+            userManager.registerUser(user);
+        }catch (ErrorMessage e){
+            System.out.println(e.getMessage());
+        }
+
+/*
         if (checked == 0) {
             userManager.registerUser(user);
             mainView.showStart();
@@ -70,7 +84,6 @@ public class RegisterController implements ActionListener {
                 case 5 -> //Correo ya existe
                         System.out.println("El mail ya exiteix");
             }
-
-        }
+        }*/
     }
 }
