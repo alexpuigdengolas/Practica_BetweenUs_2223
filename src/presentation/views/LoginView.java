@@ -43,31 +43,34 @@ public class LoginView extends JPanel {
 
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+
         //Label de Login
         JLabel jlLogin = new JLabel("Username or Email");
-        jlLogin.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
+        infoPanel.add(Box.createVerticalGlue());
         infoPanel.add(jlLogin);
+        infoPanel.add(Box.createVerticalGlue());
 
         //TextField de Login
         nameSpace.setMaximumSize(new Dimension(500, nameSpace.getPreferredSize().height));
-        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
+        nameSpace.setAlignmentX(Component.CENTER_ALIGNMENT);
         infoPanel.add(nameSpace);
-        //infoPanel.add(Box.createVerticalStrut(10)); // Add vertical space
+        infoPanel.add(Box.createVerticalGlue());
 
         //Label de Contraseña
         JLabel jlPassword = new JLabel("Password");
-        jlPassword.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
+        infoPanel.add(Box.createVerticalGlue());
         infoPanel.add(jlPassword);
+        infoPanel.add(Box.createVerticalGlue());
 
         //TextField de Contraseña
         passwordField.setMaximumSize(new Dimension(500, passwordField.getPreferredSize().height));
-        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
+        passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         infoPanel.add(passwordField);
-        infoPanel.add(Box.createVerticalStrut(10));
-        this.add(infoPanel);
+        infoPanel.add(Box.createVerticalGlue());
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();
@@ -75,8 +78,14 @@ public class LoginView extends JPanel {
         registerButton.setActionCommand(BTN_REG);
         buttonPanel.add(loginButton);
         buttonPanel.add(registerButton);
-        infoPanel.add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        infoPanel.add(buttonPanel);
+        infoPanel.add(Box.createVerticalGlue());
+
+        this.add(infoPanel);
     }
+
+
 
     public void loginController(ActionListener listener) {
         loginButton.addActionListener(listener);

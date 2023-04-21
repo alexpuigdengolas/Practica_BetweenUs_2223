@@ -46,33 +46,30 @@ public class StartView extends JPanel {
         this.add(voidPanel, BorderLayout.WEST);
 
         JPanel actionPanel= new JPanel();
-
+        actionPanel.setLayout(new FlowLayout(FlowLayout.LEFT));  // set left alignment
         jbSettings.setActionCommand(BTN_STI);
         actionPanel.add(jbSettings);
 
-        JPanel butonPanel = new JPanel();
-
-        butonPanel.setLayout(new BoxLayout(butonPanel, BoxLayout.Y_AXIS));
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
         jbNewGame.setActionCommand(BTN_CRE);
-
         jbConfGame.setActionCommand(BTN_CON);
-
         jbCharGame.setActionCommand(BTN_CHAR);
-
         jbDellGame.setActionCommand(BTN_DEL);
 
-        butonPanel.add(jbNewGame);
-        butonPanel.add(jbConfGame);
-        butonPanel.add(jbCharGame);
-        butonPanel.add(jbDellGame);
+        buttonPanel.add(jbNewGame);
+        buttonPanel.add(jbConfGame);
+        buttonPanel.add(jbCharGame);
+        buttonPanel.add(jbDellGame);
 
         this.add(actionPanel, BorderLayout.NORTH);
-        this.add(butonPanel, BorderLayout.CENTER);
+        this.add(buttonPanel, BorderLayout.CENTER);
 
         int margin = 50;
         this.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
+
 
     /**
      * Esta funcion se encarga de vincular el listener con los botones de la vista
