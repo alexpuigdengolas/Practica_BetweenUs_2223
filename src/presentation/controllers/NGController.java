@@ -36,6 +36,7 @@ public class NGController  implements ActionListener {
             case NewGameView.BTN_CHA -> System.out.print("EI");
             case NewGameView.BTN_BACK -> mainView.showStart();
 
+
         }
     }
 }

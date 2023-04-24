@@ -12,6 +12,7 @@ public class NewGameView extends JPanel {
 
     public static final String BTN_CHA = "BTN_CHA";
     public static final String BTN_BACK = "BTN_BACK";
+    public static final String SPN_PLY = "SPN_PLY";
     public static final String BTN_STI = "BTN_STI";
 
     private JTextField nameField = new JTextField();
@@ -20,6 +21,19 @@ public class NewGameView extends JPanel {
     private JButton chargeButton = new JButton("Charge");
     private JButton jbBack = new JButton();
     private JButton jbSettings = new JButton();
+    private JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(3,3,9,1));
+
+    JSpinner spinnerImp = new JSpinner(new SpinnerNumberModel(1,1,3,1));
+
+    private String colors []= {"Red","Blue","Yellow","Green","Black", "Cyan","Orange","Purple","Brown","Black"};
+    private JSpinner spinnerColor = new JSpinner(new SpinnerListModel(colors));
+
+
+    //TODO: quan tingem la clase Map haurem de portar els maps aqui amb el controller.
+    private String maps[] = {"Map1","Map2","Map3"};
+
+    JSpinner spinnerMap = new JSpinner(new SpinnerListModel(maps));
+
 
 
     private CardLayout components;
@@ -76,9 +90,10 @@ public class NewGameView extends JPanel {
         //jlabel 1
         JPanel labelPanel = new JPanel();
         JLabel label = new JLabel("Color");
-        JTextField textField = new JTextField(20);
+        JSpinner.DefaultEditor editorColor = (JSpinner.DefaultEditor) spinnerColor.getEditor();
+        editorColor.getTextField().setColumns(20);
         labelPanel.add(label);
-        labelPanel.add(textField);
+        labelPanel.add(spinnerColor);
         infoPanel.add(labelPanel);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
@@ -87,33 +102,31 @@ public class NewGameView extends JPanel {
 //jlabel 2
         JPanel labelPanel2 = new JPanel();
         JLabel label2 = new JLabel("Impostors");
-        JSpinner spinner2 = new JSpinner();
-        JSpinner.DefaultEditor editor2 = (JSpinner.DefaultEditor) spinner2.getEditor();
-        editor2.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+
+        JSpinner.DefaultEditor editorImp = (JSpinner.DefaultEditor) spinnerImp.getEditor();
+        editorImp.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel2.add(label2);
-        labelPanel2.add(spinner2);
+        labelPanel2.add(spinnerImp);
         infoPanel.add(labelPanel2);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
 //jlabel 3
         JPanel labelPanel3 = new JPanel();
         JLabel label3 = new JLabel("Players");
-        JSpinner spinner3 = new JSpinner();
-        JSpinner.DefaultEditor editor3 = (JSpinner.DefaultEditor) spinner3.getEditor();
-        editor3.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+        JSpinner.DefaultEditor editorPly = (JSpinner.DefaultEditor) spinnerPly.getEditor();
+        editorPly.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel3.add(label3);
-        labelPanel3.add(spinner3);
+        labelPanel3.add(spinnerPly);
         infoPanel.add(labelPanel3);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
 //jlabel 4
         JPanel labelPanel4 = new JPanel();
         JLabel label4 = new JLabel("Map");
-        JSpinner spinner4 = new JSpinner();
-        JSpinner.DefaultEditor editor4 = (JSpinner.DefaultEditor) spinner4.getEditor();
-        editor4.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+        JSpinner.DefaultEditor editorMap = (JSpinner.DefaultEditor) spinnerMap.getEditor();
+        editorMap.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel4.add(label4);
-        labelPanel4.add(spinner4);
+        labelPanel4.add(spinnerMap);
         infoPanel.add(labelPanel4);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
@@ -132,6 +145,14 @@ public class NewGameView extends JPanel {
         chargeButton.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
     }
+
+    public String getColor(){
+        return (String) spinnerColor.getValue();
+    }
+    public int getPlayers(){
+        return (int) spinnerPly.getValue();
+    }
+
 
 
 }
