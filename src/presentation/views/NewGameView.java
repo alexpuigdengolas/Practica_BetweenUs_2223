@@ -102,7 +102,6 @@ public class NewGameView extends JPanel {
 //jlabel 2
         JPanel labelPanel2 = new JPanel();
         JLabel label2 = new JLabel("Impostors");
-
         JSpinner.DefaultEditor editorImp = (JSpinner.DefaultEditor) spinnerImp.getEditor();
         editorImp.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel2.add(label2);
@@ -151,6 +150,18 @@ public class NewGameView extends JPanel {
     }
     public int getPlayers(){
         return (int) spinnerPly.getValue();
+    }
+
+    public  int getImp(){
+        return (int) spinnerImp.getValue();
+    }
+
+    public String getMap(){
+        return (String) spinnerMap.getValue();
+    }
+
+    public String getNameMap(){
+        return nameField.getName();
     }
 
 

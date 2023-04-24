@@ -1,5 +1,6 @@
 package persistance.Conn;
 
+import business.entities.Game;
 import business.entities.User;
 
 import java.sql.ResultSet;
@@ -90,5 +91,25 @@ public class UserSQLDAO implements UserDAO {
         } else {
             return loginName;
         }
+    }
+
+    @Override
+    public boolean gameNameExists(String gameName){
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM Game AS g WHERE g.gameName LIKE '" + gameName + "'");
+        try {
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void saveGame(Game game){
+        conn.connect();
+        conn.insertQuery("INSERT INTO Game(gameName, players, impostors, playerColor, map, creator) VALUES ('" + game.getGameName() + "','" + game.getPlayers() + "','" + game.getImpostors() + "','" + game.getColor() + "','"+ game.getMap() + "' ,'"+ game.getCreator() + "')");
+        conn.disconnect();
     }
 }

@@ -108,6 +108,10 @@ public class UserManager {
         return userDAO.getUsername(loginName);
     }
 
+    public String getUser(){
+        return user;
+    }
+
     public void resetName(){
         user = null;
 

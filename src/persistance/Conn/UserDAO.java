@@ -1,5 +1,6 @@
 package persistance.Conn;
 
+import business.entities.Game;
 import business.entities.User;
 
 public interface UserDAO {
@@ -9,4 +10,6 @@ public interface UserDAO {
     boolean userNameExists(String userName);
     boolean userMailExists(String userMail);
     String getUsername(String loginName);
+    boolean gameNameExists(String gameName);
+    void saveGame(Game game);
 }
