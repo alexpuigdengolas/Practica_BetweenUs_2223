@@ -41,8 +41,11 @@ public class SettingsView extends JPanel {
 
         jbDelete.setActionCommand(BTN_DEL);
         jbLogOut.setActionCommand(BTN_LOG);
-
+        jbDelete.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbLogOut.setAlignmentX(Component.CENTER_ALIGNMENT);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbDelete);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbLogOut);
 
         this.add(actionPanel, BorderLayout.NORTH);

@@ -50,11 +50,19 @@ public class NewGameView extends JPanel {
         this.setLayout(new BorderLayout());
 
         JPanel jpActions = new JPanel();
+        jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
+
         jbBack.setActionCommand(BTN_BACK);
-        jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbBack);
+
+        // Espai buit per emputjar el segon botó a la dreta
+        jpActions.add(Box.createHorizontalGlue());
+
+        jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbSettings);
+
         this.add(jpActions, BorderLayout.NORTH);
+
 
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Charge game");
