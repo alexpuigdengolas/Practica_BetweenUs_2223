@@ -1,5 +1,6 @@
 import business.NGManager;
 import business.UserManager;
+import business.entities.map.Map;
 import persistance.Conn.*;
 import business.entities.User;
 import presentation.controllers.*;
@@ -45,15 +46,12 @@ public class Main {
         deleteView.deleteController(deleteController);
 
         mainView.start();
-        /*
 
-
-        //Borra un usuari de la base de dades (Cuando se implemente la vista de borrar lo quito asi tengo las lineas hechas ya)
-        if (userDAO.userNameExists(user.getName())) {
-            userDAO.deleteUser(user.getName());
-            System.out.println("S ha borrat el usuari: "+ user.getName());
-
-        }*/
+        /* Test correcte de lectura
+        ReaderMap readerMap = new ReaderMap("Station.json");
+        Map map = readerMap.getMap();
+        System.out.println(map.getMapName());
+        */
     }
 
 }
