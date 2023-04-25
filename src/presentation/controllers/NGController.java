@@ -7,9 +7,12 @@ import presentation.views.StartView;
 import business.ErrorMessage;
 import business.UserManager;
 import business.NGManager;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.SQLOutput;
 
 public class NGController  implements ActionListener {
@@ -41,8 +44,26 @@ public class NGController  implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
+
+            case NewGameView.BTN_MAP:
+                String path = getMPath();
+                JFileChooser jfc = new JFileChooser(path);
+                System.out.println("holi");
+                int returnValue = jfc.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = jfc.getSelectedFile();
+                    String name = selectedFile.getName();
+                    NGView.setMapName(name);
+                }
+                break;
             case NewGameView.BTN_CHA:
-                Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), NGView.getMap(),userManager.getUser());
+                String mapName;
+                if(NGView.getMap().equals("Select File")){
+                    mapName = "Station.json";
+                }else{
+                    mapName = NGView.getMap();
+                }
+                Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
                 try {
                     caseNGame(game);
 
@@ -58,6 +79,8 @@ public class NGController  implements ActionListener {
                 mainView.showStart();
                 break;
 
+
+
         }
     }
 
@@ -69,6 +92,12 @@ public class NGController  implements ActionListener {
         }catch (ErrorMessage e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public String getMPath(){
+        File f = new File("");
+        String path = f.getAbsolutePath();
+        return path + "/src/mapFiles";
     }
 
 }

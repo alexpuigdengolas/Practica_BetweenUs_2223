@@ -15,6 +15,9 @@ public class NewGameView extends JPanel {
     public static final String SPN_PLY = "SPN_PLY";
     public static final String BTN_STI = "BTN_STI";
 
+    public static final String BTN_MAP= "BTN_MAP";
+    private String fileName = "Select File";
+
     private JTextField nameField = new JTextField();
 
 
@@ -30,9 +33,9 @@ public class NewGameView extends JPanel {
 
 
     //TODO: quan tingem la clase Map haurem de portar els maps aqui amb el controller.
-    private String maps[] = {"Map1","Map2","Map3"};
 
-    JSpinner spinnerMap = new JSpinner(new SpinnerListModel(maps));
+   private JButton  jbmaps = new JButton(fileName);
+
 
 
 
@@ -130,10 +133,13 @@ public class NewGameView extends JPanel {
 //jlabel 4
         JPanel labelPanel4 = new JPanel();
         JLabel label4 = new JLabel("Map");
-        JSpinner.DefaultEditor editorMap = (JSpinner.DefaultEditor) spinnerMap.getEditor();
-        editorMap.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
+
+        jbmaps.setActionCommand(BTN_MAP);
+        jbmaps.setBackground(Color.BLACK);
+        jbmaps.setForeground(Color.WHITE);
+        jbmaps.setBounds(570,320,300,50);
         labelPanel4.add(label4);
-        labelPanel4.add(spinnerMap);
+        labelPanel4.add(jbmaps);
         infoPanel.add(labelPanel4);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
@@ -151,6 +157,7 @@ public class NewGameView extends JPanel {
         jbBack.addActionListener(actionListener);
         chargeButton.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
+        jbmaps.addActionListener(actionListener);
     }
 
     public String getColor(){
@@ -164,14 +171,20 @@ public class NewGameView extends JPanel {
         return (int) spinnerImp.getValue();
     }
 
-    public String getMap(){
-        return (String) spinnerMap.getValue();
-    }
 
     public String getNameMap(){
         return nameField.getName();
     }
 
+    public String getMap(){
+        return jbmaps.getName();
+    }
+
+    public void setMapName(String mapName){
+        this.fileName = mapName;
+
+        jbmaps.setText(fileName);
+    }
 
 
 }
