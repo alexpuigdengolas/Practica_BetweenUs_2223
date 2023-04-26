@@ -12,11 +12,11 @@ public class NGManager {
     }
 
     public void checkGame(Game game) throws ErrorMessage{
-        //TODO: que el tema de los impostores cuadre.
+
         if(userDAO.gameNameExists(game.getGameName())){
             throw new ErrorMessage("El nom del game ya existeix.");
-        } else if (!chechImp(game)) {
-            throw  new ErrorMessage("Els impostors no son correctes.");
+        } else if (!chechImp(game).equals("Correcte")) {
+            throw  new ErrorMessage(chechImp(game));
         }
 
     }
@@ -25,8 +25,14 @@ public class NGManager {
         userDAO.saveGame(game);
     }
 
-    private boolean chechImp(Game game) {
-        //TODO: mirar requisitos de los impostores.
-        return true;
+    private String chechImp(Game game) {
+        //si <6 impos = 1 si entre 6 i 8 impos 2 si 9 o 10
+        if(game.getPlayers() < 6 && game.getImpostors() > 1){
+            return "No pot haber-hi mes de 1 impostor amb "+ game.getPlayers()+" jugadors";
+        }else if (game.getPlayers() < 9 && game.getImpostors() > 2) {
+            return "No pot haber-hi mes de 2 impostors amb "+ game.getPlayers()+" jugadors";
+        }else{
+        return "Correcte";
+        }
     }
 }

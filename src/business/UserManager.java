@@ -25,11 +25,11 @@ public class UserManager {
             throw new ErrorMessage("Les contrasenyes no son iguals");
         } else if(!checkPasswordFormat(user).equals("")) {
             String finalError = checkPasswordFormat(user);
-            throw new ErrorMessage("El final error es: "+finalError);
+            throw new ErrorMessage(finalError);
         } else if (!checkMailFormat(user.getMail())) {
             throw new ErrorMessage("El mail no te el format correcte");
         } else if (userDAO.userMailExists(user.getMail())){
-            throw new ErrorMessage("El mail ya exiteix");
+            throw new ErrorMessage("El mail ya existeix");
         }
     }
 

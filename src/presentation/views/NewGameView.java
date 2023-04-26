@@ -24,15 +24,14 @@ public class NewGameView extends JPanel {
     private JButton chargeButton = new JButton("Charge");
     private JButton jbBack = new JButton();
     private JButton jbSettings = new JButton();
-    private JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(3,3,9,1));
+    private JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(4,4,10,1));
 
     JSpinner spinnerImp = new JSpinner(new SpinnerNumberModel(1,1,3,1));
 
-    private String colors []= {"Red","Blue","Yellow","Green","Black", "Cyan","Orange","Purple","Brown","Black"};
-    private JSpinner spinnerColor = new JSpinner(new SpinnerListModel(colors));
+    private String colors []= {"Vermell","Blau","Verd","Rosa","Tronja", "Groc","Negre","Blanc","Lila","Marró","Cian","Lima"};
+    private JComboBox<String> jBCColors = new JComboBox<>(colors);
 
 
-    //TODO: quan tingem la clase Map haurem de portar els maps aqui amb el controller.
 
    private JButton  jbmaps = new JButton(fileName);
 
@@ -101,10 +100,8 @@ public class NewGameView extends JPanel {
         //jlabel 1
         JPanel labelPanel = new JPanel();
         JLabel label = new JLabel("Color");
-        JSpinner.DefaultEditor editorColor = (JSpinner.DefaultEditor) spinnerColor.getEditor();
-        editorColor.getTextField().setColumns(20);
         labelPanel.add(label);
-        labelPanel.add(spinnerColor);
+        labelPanel.add(jBCColors);
         infoPanel.add(labelPanel);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
 
@@ -133,7 +130,6 @@ public class NewGameView extends JPanel {
 //jlabel 4
         JPanel labelPanel4 = new JPanel();
         JLabel label4 = new JLabel("Map");
-
         jbmaps.setActionCommand(BTN_MAP);
         jbmaps.setBackground(Color.BLACK);
         jbmaps.setForeground(Color.WHITE);
@@ -161,7 +157,7 @@ public class NewGameView extends JPanel {
     }
 
     public String getColor(){
-        return (String) spinnerColor.getValue();
+        return jBCColors.getSelectedItem().toString();
     }
     public int getPlayers(){
         return (int) spinnerPly.getValue();
@@ -173,17 +169,23 @@ public class NewGameView extends JPanel {
 
 
     public String getNameMap(){
-        return nameField.getName();
+        return nameField.getText();
     }
 
     public String getMap(){
-        return jbmaps.getName();
+        System.out.println(jbmaps.getText());
+        return jbmaps.getText();
     }
 
     public void setMapName(String mapName){
         this.fileName = mapName;
 
         jbmaps.setText(fileName);
+    }
+
+    public void printNewGameErrors(String Error) {
+        JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);
+
     }
 
 

@@ -48,7 +48,7 @@ public class NGController  implements ActionListener {
             case NewGameView.BTN_MAP:
                 String path = getMPath();
                 JFileChooser jfc = new JFileChooser(path);
-                System.out.println("holi");
+                System.out.println(NGView.getMap());
                 int returnValue = jfc.showOpenDialog(null);
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = jfc.getSelectedFile();
@@ -64,16 +64,14 @@ public class NGController  implements ActionListener {
                     mapName = NGView.getMap();
                 }
                 Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
-                try {
-                    caseNGame(game);
-
+                try{
+                    ngManager.checkGame(game);
+                    ngManager.saveGame(game);
+                    mainView.showStart();
                 }catch (ErrorMessage ex){
-
-                    //TODO:Aqui mostramos el mensaje de error que corresponda en un pop up
-                    System.out.println(ex.getMessage());
+                    NGView.printNewGameErrors(ex.getMessage());
                 }
 
-                //TODO:Aqui hacemos las cosas para mirar si los datos son correctos en caso contrario petaria.
                 break;
             case NewGameView.BTN_BACK:
                 mainView.showStart();
@@ -84,15 +82,6 @@ public class NGController  implements ActionListener {
         }
     }
 
-    private void caseNGame(Game game) throws ErrorMessage{
-        try{
-                ngManager.checkGame(game);
-                ngManager.saveGame(game);
-                mainView.showStart();
-        }catch (ErrorMessage e){
-            System.out.println(e.getMessage());
-        }
-    }
 
     public String getMPath(){
         File f = new File("");
