@@ -3,6 +3,8 @@ package persistance.Conn;
 import business.entities.Game;
 import business.entities.User;
 
+import java.util.ArrayList;
+
 public interface UserDAO {
     void registerUser(User user);
     boolean checkLoginUser(String userNameMail, String password);
@@ -12,4 +14,6 @@ public interface UserDAO {
     String getUsername(String loginName);
     boolean gameNameExists(String gameName);
     void saveGame(Game game);
+    ArrayList<String> getGames();
+    Game searchGame(String game);
 }

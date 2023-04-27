@@ -1,3 +1,4 @@
+import business.ChargeManager;
 import business.NGManager;
 import business.UserManager;
 import business.entities.map.Map;
@@ -23,6 +24,7 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
         NGManager ngManager = new NGManager();
+        ChargeManager chargeManager = new ChargeManager();
         MapView mapView  = new MapView();
 
 
@@ -35,7 +37,7 @@ public class Main {
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, ngManager);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
         ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
-        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout);
+        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout,  chargeManager);
         DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout);
 
         registerView.registerController(registerController);
