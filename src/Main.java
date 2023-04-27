@@ -23,9 +23,11 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
         NGManager ngManager = new NGManager();
+        MapView mapView  = new MapView();
+
 
         CardLayout cardLayout = new CardLayout();
-        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView);
+        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView,mapView);
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);

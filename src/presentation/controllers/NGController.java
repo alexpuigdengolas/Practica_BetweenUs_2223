@@ -1,7 +1,10 @@
 package presentation.controllers;
 
+import business.MapManager;
 import business.entities.Game;
+import business.entities.map.Map;
 import presentation.views.MainView;
+import presentation.views.MapView;
 import presentation.views.NewGameView;
 import presentation.views.StartView;
 import business.ErrorMessage;
@@ -46,6 +49,7 @@ public class NGController  implements ActionListener {
         switch (e.getActionCommand()){
 
             case NewGameView.BTN_MAP:
+                //El cargador de archivos, para seleccionar el mapa
                 String path = getMPath();
                 JFileChooser jfc = new JFileChooser(path);
                 System.out.println(NGView.getMap());
@@ -58,6 +62,7 @@ public class NGController  implements ActionListener {
                 break;
             case NewGameView.BTN_CHA:
                 String mapName;
+                //Si no ha cogido mapa elije el de station
                 if(NGView.getMap().equals("Select File")){
                     mapName = "Station.json";
                 }else{
@@ -65,9 +70,13 @@ public class NGController  implements ActionListener {
                 }
                 Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
                 try{
+                    //Comprueba que cumpla condiciones y lo guarda si asi lo hace
                     ngManager.checkGame(game);
                     ngManager.saveGame(game);
-                    mainView.showStart();
+
+                    //Printar la vista del mapa
+                    Map map = MapManager.llegeixMapa(mapName);
+                    mainView.showMap(map);
                 }catch (ErrorMessage ex){
                     NGView.printNewGameErrors(ex.getMessage());
                 }

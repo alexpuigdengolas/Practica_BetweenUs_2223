@@ -11,6 +11,8 @@ public class NGManager {
         this.userDAO = new UserSQLDAO();
     }
 
+
+    //Comprueba que el juego tenga las cosas correctas y envia una excepcion si falla alguna cosa
     public void checkGame(Game game) throws ErrorMessage{
 
         if(userDAO.gameNameExists(game.getGameName())){
@@ -23,10 +25,13 @@ public class NGManager {
 
     }
 
+    //Llama la base de datos para guardar los datos del juego
     public void saveGame(Game game){
         userDAO.saveGame(game);
     }
 
+
+    //Comprueba las diferentes condiciones de los impostores y nos devuelve el mensaje de error o correcte segun esta bien o mal
     private String chechImp(Game game) {
         //si <6 impos = 1 si entre 6 i 8 impos 2 si 9 o 10
         if(game.getPlayers() < 6 && game.getImpostors() > 1){

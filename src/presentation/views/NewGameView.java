@@ -35,9 +35,6 @@ public class NewGameView extends JPanel {
 
    private JButton  jbmaps = new JButton(fileName);
 
-
-
-
     private CardLayout components;
     private MainView mainView;
 

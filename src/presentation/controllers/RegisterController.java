@@ -37,6 +37,7 @@ public class RegisterController implements ActionListener {
             case RegisterView.BTN_REGISTER:
                 User user = new User(registerView.getInputUsername(),registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
                 try {
+                    //Comprueba que el registro cumpla condiciones y registra si asi es
                     userManager.checkRegister(user);
                     userManager.registerUser(user);
                     mainView.showLogin();

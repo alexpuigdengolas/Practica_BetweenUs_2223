@@ -25,6 +25,7 @@ public class ConfiguredController implements ActionListener {
             case ConfiguredView.BTN_BACK -> mainView.showStart();
             case ConfiguredView.BTN_STI -> mainView.showSettings();
             case ConfiguredView.BTN_CHA -> {
+
                 System.out.println(configuredView.optionSelected());
             }
         }
