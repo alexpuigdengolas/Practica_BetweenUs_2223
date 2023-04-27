@@ -16,4 +16,5 @@ public interface UserDAO {
     void saveGame(Game game);
     ArrayList<String> getGames();
     Game searchGame(String game);
+    void deleteGame(String game);
 }

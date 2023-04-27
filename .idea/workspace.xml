@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="New Game view i anar desde start a new game.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_java.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_47.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/ChargeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" afterDir="false" />
+    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Funcionalitat charge Game funciona.">
+      <change afterPath="$PROJECT_DIR$/src/business/DeleteManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Practica.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Practica.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistance/Conn/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistance/Conn/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/ChargeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/ChargeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/DeleteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/DeleteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/DeleteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/DeleteView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681575716761</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Funcionalitat charge Game funciona.">
+      <created>1682631750452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682631750452</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +132,7 @@
     <MESSAGE value="Lectura del configjson" />
     <MESSAGE value=" mes log in register" />
     <MESSAGE value="New Game view i anar desde start a new game." />
-    <option name="LAST_COMMIT_MESSAGE" value="New Game view i anar desde start a new game." />
+    <MESSAGE value="Funcionalitat charge Game funciona." />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcionalitat charge Game funciona." />
   </component>
 </project>

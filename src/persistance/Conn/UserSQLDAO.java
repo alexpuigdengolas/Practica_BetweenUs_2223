@@ -150,6 +150,13 @@ public class UserSQLDAO implements UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        conn.disconnect();
         return games;
+    }
+
+    public void deleteGame(String game){
+        conn.connect();
+        conn.deleteQuery("DELETE FROM game AS g WHERE g.gameName LIKE '" + game + "'");
+        conn.disconnect();
     }
 }
