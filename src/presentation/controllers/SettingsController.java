@@ -4,6 +4,7 @@ import business.UserManager;
 import presentation.views.MainView;
 import presentation.views.SettingsView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,24 +31,25 @@ public class SettingsController implements ActionListener {
                 break;
 
             case SettingsView.BTN_DEL:
-                //TODO: Se tendra que borrar los games de esta persona
-                //TODO:YO haria un pop up de estos que hhas de poner la palabra BORRAR para confiramr
-
-                if (!userManager.deleteUser()) {
-                    System.out.println("no se esta borrando");
-                    //Se muestra que no hay usuario que borrar
-                }else{
-                    userManager.resetName();
-                    mainView.showLogin();
+                if(JOptionPane.OK_OPTION == settingsView.confirmPopUp("Estas segur que vols BORRAR el compte?")){
+                    if (!userManager.deleteUser()) {
+                        System.out.println("no se esta borrando");
+                        //Se muestra que no hay usuario que borrar
+                    }else{
+                        userManager.resetName();
+                        mainView.showLogin();
+                        //TODO: Se tendra que borrar los games de esta persona
+                    }
                 }
 
                 break;
 
             case SettingsView.BTN_LOG:
-                //TODO: Guardar información del usuario logeado al hacer login
-                //Borrem el nom de la ram
-                userManager.resetName();
-                mainView.showLogin();
+                if(JOptionPane.OK_OPTION == settingsView.confirmPopUp("Estas segur que vols fer LOG OUT del compte?")){
+                    userManager.resetName();
+                    mainView.showLogin();
+                }
+
                 break;
         }
     }

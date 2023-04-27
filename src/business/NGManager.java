@@ -17,6 +17,8 @@ public class NGManager {
             throw new ErrorMessage("El nom del game ya existeix.");
         } else if (!chechImp(game).equals("Correcte")) {
             throw  new ErrorMessage(chechImp(game));
+        } else if(game.getGameName().isEmpty() || game.getGameName().equals(" ")){
+            throw new ErrorMessage("El nom del joc no pot estar buit");
         }
 
     }

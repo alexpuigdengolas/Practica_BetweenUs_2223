@@ -77,4 +77,8 @@ public class SettingsView extends JPanel {
     public void setComponents(CardLayout components) {
         this.components = components;
     }
+
+    public int confirmPopUp(String action) {
+        return JOptionPane.showConfirmDialog(null,action);
+    }
 }
