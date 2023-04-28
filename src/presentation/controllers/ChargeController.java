@@ -6,6 +6,7 @@ import business.NGManager;
 import business.entities.Game;
 import business.entities.map.Map;
 import presentation.views.ChargeView;
+import presentation.views.GameView;
 import presentation.views.MainView;
 
 import java.awt.*;
@@ -19,16 +20,18 @@ public class ChargeController implements ActionListener{
     private CardLayout cardLayout;
 
     private ChargeManager chargeManager;
+    private GameView gameView;
 
     ArrayList<String> games = new ArrayList<>();
 
-    public ChargeController(ChargeView chargeView, MainView mainView, CardLayout cardLayout, ChargeManager chargeManager) {
+    public ChargeController(ChargeView chargeView, MainView mainView, CardLayout cardLayout, ChargeManager chargeManager, GameView gameView) {
         this.chargeView = chargeView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.chargeManager = chargeManager;
         games = chargeManager.getGames();
         chargeView.updateComboBoxList(games);
+        this.gameView = gameView;
     }
 
 
@@ -42,7 +45,8 @@ public class ChargeController implements ActionListener{
                 String nom = chargeView.optionSelected();
                 Game Seleccionat = chargeManager.searchGame(nom);
                 Map map = MapManager.llegeixMapa(Seleccionat.getMap());
-                mainView.showMap(map);
+                gameView.setMap(map);
+                mainView.showGame();
             }
         }
     }

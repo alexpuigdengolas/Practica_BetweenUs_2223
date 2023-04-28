@@ -3,10 +3,7 @@ package presentation.controllers;
 import business.MapManager;
 import business.entities.Game;
 import business.entities.map.Map;
-import presentation.views.MainView;
-import presentation.views.MapView;
-import presentation.views.NewGameView;
-import presentation.views.StartView;
+import presentation.views.*;
 import business.ErrorMessage;
 import business.UserManager;
 import business.NGManager;
@@ -27,6 +24,7 @@ public class NGController  implements ActionListener {
     private CardLayout cardLayout;
     private UserManager userManager;
     private NGManager ngManager;
+    private GameView gameView;
 
 
     /**
@@ -36,12 +34,13 @@ public class NGController  implements ActionListener {
      * @param cardLayout
      */
 
-    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout,UserManager userManager,NGManager ngManager) {
+    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout,UserManager userManager,NGManager ngManager, GameView gameView) {
         this.NGView = NGView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.userManager = userManager;
         this.ngManager = ngManager;
+        this.gameView = gameView;
     }
 
     @Override
@@ -76,7 +75,8 @@ public class NGController  implements ActionListener {
 
                     //Printar la vista del mapa
                     Map map = MapManager.llegeixMapa(mapName);
-                    mainView.showMap(map);
+                    gameView.setMap(map);
+                    mainView.showGame();
                 }catch (ErrorMessage ex){
                     NGView.printNewGameErrors(ex.getMessage());
                 }
