@@ -37,8 +37,7 @@ public class LoginController implements ActionListener {
                     mainView.showStart();
                 } else {
 
-                    //mostrem el error de no fer ho be
-                    System.out.println(("no has posgut fer login"));
+                    loginView.printLoginErrors("El mail o la contrasenya no estan be");
                 }
 
                 break;

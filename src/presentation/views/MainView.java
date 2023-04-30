@@ -1,5 +1,7 @@
 package presentation.views;
 
+import business.entities.map.Map;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -22,10 +24,12 @@ public class MainView extends JFrame {
     private ConfiguredView configuredView;
     private ChargeView chargeView;
     private SettingsView settingsView;
+    private MapView mapView;
+    private GameView gameView;
 
 
 
-    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView, SettingsView settingsView) {
+    public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView, SettingsView settingsView, MapView mapView, GameView gameView) {
         this.viewComponents = viewComponents;
         this.setLayout(viewComponents);
         this.configureWindow();
@@ -40,6 +44,8 @@ public class MainView extends JFrame {
         this.configuredView = configuredView;
         this.chargeView = chargeView;
         this.settingsView = settingsView;
+        this.mapView = mapView;
+        this.gameView = gameView;
 
         this.add(loginView, "loginView");
         this.add(registerView, "registerView");
@@ -50,6 +56,8 @@ public class MainView extends JFrame {
         this.add(configuredView, "configuredView");
         this.add(chargeView, "chargeView");
         this.add(settingsView, "settingsView");
+        this.add(mapView,"mapView");
+        this.add(gameView, "gameView");
     }
 
     /**
@@ -119,5 +127,11 @@ public class MainView extends JFrame {
     public void showCharge(){this.getViewComponent().show(this.getContentPane(), "chargeView");}
 
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
+    public void showMap(Map map){
+        this.getViewComponent().show(this.getContentPane(), "mapView");
+        mapView.configureMapView(map);
+    }
+    public void showGame(){this.getViewComponent().show(this.getContentPane(), "gameView");}
+
 }
 

@@ -1,3 +1,5 @@
+import business.ChargeManager;
+import business.DeleteManager;
 import business.NGManager;
 import business.UserManager;
 import business.entities.map.Map;
@@ -23,18 +25,24 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
         NGManager ngManager = new NGManager();
+        ChargeManager chargeManager = new ChargeManager();
+        DeleteManager deleteManager = new DeleteManager();
+        MapView mapView  = new MapView();
+        GameView gameView = new GameView();
+
 
         CardLayout cardLayout = new CardLayout();
-        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView);
+        MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView,mapView, gameView);
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
         StartController startController = new StartController(startView, mainView, cardLayout);
-        NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, ngManager);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
         ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
-        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout);
-        DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout);
+        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout,  chargeManager, gameView);
+        DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout, deleteManager);
+        GameController gameController = new GameController(gameView, mainView, cardLayout);
+        NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, ngManager, gameView);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
@@ -44,6 +52,7 @@ public class Main {
         configuredView.configuredController(configuredController);
         chargeView.chargeController(chargeController);
         deleteView.deleteController(deleteController);
+        gameView.gameController(gameController);
 
         mainView.start();
 

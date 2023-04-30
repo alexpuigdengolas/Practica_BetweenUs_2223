@@ -10,7 +10,7 @@ import presentation.views.RegisterView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
+
 
 public class RegisterController implements ActionListener {
 
@@ -37,12 +37,14 @@ public class RegisterController implements ActionListener {
             case RegisterView.BTN_REGISTER:
                 User user = new User(registerView.getInputUsername(),registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
                 try {
-                    caseRegister(user);
+                    //Comprueba que el registro cumpla condiciones y registra si asi es
+                    userManager.checkRegister(user);
+                    userManager.registerUser(user);
                     mainView.showLogin();
-                } catch (ErrorMessage ex) {
+                }catch (ErrorMessage ex){
+                    registerView.printRegisterErrors(ex.getMessage());
+                    mainView.showRegister();
 
-                    //TODO:Aqui hauriem de mostrar en un poco el missatge de error que toques
-                    System.out.println(ex.getMessage());;
                 }
                 break;
 
@@ -53,14 +55,5 @@ public class RegisterController implements ActionListener {
                 mainView.showLogin();
                 break;
         }
-    }
-    public void caseRegister(User user) throws ErrorMessage {
-        try {
-            userManager.checkRegister(user);
-            userManager.registerUser(user);
-        }catch (ErrorMessage e){
-            System.out.println(e.getMessage());
-        }
-
     }
 }

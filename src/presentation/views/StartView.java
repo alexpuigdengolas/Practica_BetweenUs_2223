@@ -52,15 +52,23 @@ public class StartView extends JPanel {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        //centrar els botons
+        jbNewGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbConfGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbCharGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbDellGame.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         jbNewGame.setActionCommand(BTN_CRE);
         jbConfGame.setActionCommand(BTN_CON);
         jbCharGame.setActionCommand(BTN_CHAR);
         jbDellGame.setActionCommand(BTN_DEL);
-
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbNewGame);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbConfGame);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbCharGame);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbDellGame);
 
         this.add(actionPanel, BorderLayout.NORTH);

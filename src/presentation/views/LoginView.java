@@ -141,4 +141,9 @@ public class LoginView extends JPanel {
         this.passwordField.setText("");
         this.nameSpace.setText("");
     }
+
+    public void printLoginErrors(String Error) {
+        JOptionPane.showMessageDialog(null, Error, "Error Login", JOptionPane.ERROR_MESSAGE);
+
+    }
 }

@@ -3,6 +3,7 @@ package presentation.views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class DeleteView extends JPanel {
     public static final String BTN_CHA = "BTN_DEL";
@@ -20,7 +21,14 @@ public class DeleteView extends JPanel {
 
     public DeleteView() {
         configureDeleteView();
-        chargeExistingGames(new String[]{"A", "B", "C"});
+        //chargeExistingGames(new String[]{"A", "B", "C"});
+    }
+
+    public void updateComboBoxList(ArrayList<String> games){
+        comboBox.removeAllItems();
+        for(String game: games){
+            comboBox.addItem(game);
+        }
     }
 
     private void configureDeleteView() {
@@ -29,9 +37,15 @@ public class DeleteView extends JPanel {
         this.setLayout(new BorderLayout());
 
         JPanel jpActions = new JPanel();
+        jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
+
         jbBack.setActionCommand(BTN_BACK);
-        jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbBack);
+
+        // Espai buit per emputjar el segon botó a la dreta
+        jpActions.add(Box.createHorizontalGlue());
+
+        jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbSettings);
         this.add(jpActions, BorderLayout.NORTH);
 
@@ -83,12 +97,13 @@ public class DeleteView extends JPanel {
         }
 
         //TODO: Acceso real a la base de datos
-        comboBox.addItem("Option 1");
+        /*comboBox.addItem("Option 1");
         comboBox.addItem("Option 2");
-        comboBox.addItem("Option 3");
+        comboBox.addItem("Option 3");*/
     }
 
     public String optionSelected(){
-        return (String) comboBox.getSelectedItem();
+        String selectedOption = comboBox.getSelectedItem().toString();
+        return selectedOption;
     }
 }

@@ -14,10 +14,13 @@ public class UserManager {
         userDAO = new UserSQLDAO();
     }
 
+    //Registra el usuario en la BBDD
     public void registerUser(User user) {
         userDAO.registerUser(user);
     }
 
+
+    //Comprueba las diferentes condiciones de registro y envia una excepcion en caso de no complir las que toquen
     public void checkRegister(User user) throws ErrorMessage{
         if (userDAO.userNameExists(user.getName())) {
              throw new ErrorMessage("El nom del usuari ja existeix.");
@@ -25,20 +28,25 @@ public class UserManager {
             throw new ErrorMessage("Les contrasenyes no son iguals");
         } else if(!checkPasswordFormat(user).equals("")) {
             String finalError = checkPasswordFormat(user);
-            throw new ErrorMessage("El final error es: "+finalError);
+            throw new ErrorMessage(finalError);
         } else if (!checkMailFormat(user.getMail())) {
             throw new ErrorMessage("El mail no te el format correcte");
         } else if (userDAO.userMailExists(user.getMail())){
-            throw new ErrorMessage("El mail ya exiteix");
+            throw new ErrorMessage("El mail ya existeix");
         }
     }
 
+
+    //Comprueba el formato del mail
     public boolean checkMailFormat(String mail) {
         String emailRegex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]{3,}+.+[a-zA-Z0-9]{2,}+$";
         return mail.matches(emailRegex);
     }
 
 
+
+
+    //Comprueba el formato de la contrasenya
     public String checkPasswordFormat(User user) {
         char c;
         boolean capitalFlag = false;
@@ -125,8 +133,6 @@ public class UserManager {
         }
         return false;
     }
-
-    //Funcio comproba user
 
 
 }

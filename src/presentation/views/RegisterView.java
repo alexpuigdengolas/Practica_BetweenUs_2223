@@ -1,8 +1,12 @@
 package presentation.views;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Objects;
 
 public class RegisterView extends JPanel {
 
@@ -25,7 +29,24 @@ public class RegisterView extends JPanel {
     }
 
     private void configureView(){
+
+        //TODO:Hablar con el profe para ver porque no pinta bien y como arreglarlo.
+        /*
+        try {
+            BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/background.jpg")));
+            Image scaled = image.getScaledInstance(1080, 800, Image.SCALE_DEFAULT);
+            ImageIcon backgroundImage = new ImageIcon(scaled);
+            JLabel background = new JLabel("", backgroundImage, JLabel.CENTER);
+            background.setBounds(0,0,1080,800);
+            this.add(background);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
         this.setLayout(new BorderLayout());
+
+
 
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Register");
@@ -95,6 +116,8 @@ public class RegisterView extends JPanel {
         buttonPanel.add(registerButton);
 
         infoBox.add(buttonPanel, BorderLayout.SOUTH);
+
+
     }
 
 
@@ -220,4 +243,11 @@ public class RegisterView extends JPanel {
         this.confirmationPasswordField.setText("");
         this.passwordField.setText("");
     }
+
+
+    public void printRegisterErrors(String Error) {
+        JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);
+
+    }
 }
+
