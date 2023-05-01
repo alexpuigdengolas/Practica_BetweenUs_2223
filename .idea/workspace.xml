@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="New Game view i anar desde start a new game.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2023_15_43__Changes_.xml" afterDir="false" />
+    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Funcionalitat Delete Game funciona.">
+      <change afterPath="$PROJECT_DIR$/src/business/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistance/Conn/UserSQLDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/ChargeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/ChargeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/DeleteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/DeleteManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/ConfiguredView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/ConfiguredView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,29 +38,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Tecnico/Desktop/Develope/B10",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tecnico/Desktop/Develope/B10&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -82,6 +85,7 @@
       <workItem from="1681228316306" duration="1665000" />
       <workItem from="1681567392525" duration="8316000" />
       <workItem from="1681972015581" duration="5414000" />
+      <workItem from="1682930665200" duration="4164000" />
     </task>
     <task id="LOCAL-00001" summary="Lectura del configjson">
       <created>1680629420025</created>
@@ -104,7 +108,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681575716761</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Funcionalitat charge Game funciona.">
+      <created>1682631750452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682631750452</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Funcionalitat Delete Game funciona.">
+      <created>1682633214346</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682633214346</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +143,8 @@
     <MESSAGE value="Lectura del configjson" />
     <MESSAGE value=" mes log in register" />
     <MESSAGE value="New Game view i anar desde start a new game." />
-    <option name="LAST_COMMIT_MESSAGE" value="New Game view i anar desde start a new game." />
+    <MESSAGE value="Funcionalitat charge Game funciona." />
+    <MESSAGE value="Funcionalitat Delete Game funciona." />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcionalitat Delete Game funciona." />
   </component>
 </project>

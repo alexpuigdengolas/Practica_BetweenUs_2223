@@ -3,13 +3,18 @@ package business;
 import business.entities.Game;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
+import presentation.views.DeleteView;
 
 import java.util.ArrayList;
 
 public class DeleteManager {
 
     private UserDAO userDAO;
-    public DeleteManager() {
+
+    private DeleteView deleteView;
+
+    public DeleteManager(DeleteView deleteView) {
+        this.deleteView = deleteView;
         this.userDAO = new UserSQLDAO();
     }
 
@@ -21,5 +26,11 @@ public class DeleteManager {
 
     public void deleteGame(String game){
         userDAO.deleteGame(game);
+    }
+
+    public void updateDelete(){
+        ArrayList<String> games;
+        games = getGames();
+        deleteView.updateComboBoxList(games);
     }
 }

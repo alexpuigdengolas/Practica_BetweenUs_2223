@@ -29,15 +29,11 @@ public class ChargeController implements ActionListener{
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.chargeManager = chargeManager;
-        games = chargeManager.getGames();
-        chargeView.updateComboBoxList(games);
         this.gameView = gameView;
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
         switch(e.getActionCommand()){
             case ChargeView.BTN_BACK -> mainView.showStart();
             case ChargeView.BTN_STI -> mainView.showSettings();

@@ -28,8 +28,6 @@ public class DeleteController implements ActionListener {
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.deleteManager = deleteManager;
-        games = deleteManager.getGames();
-        deleteView.updateComboBoxList(games);
     }
 
     @Override
