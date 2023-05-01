@@ -3,6 +3,7 @@ package presentation.views;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ConfiguredView extends JPanel {
     public static final String BTN_CHA = "BTN_CON";
@@ -22,9 +23,13 @@ public class ConfiguredView extends JPanel {
 
     public ConfiguredView() {
         configureConfiguredView();
-        chargeExistingGames(new String[]{"A", "B", "C"});
     }
-
+    public void updateComboBoxList(ArrayList<String> games){
+        comboBox.removeAllItems();
+        for(String game: games){
+            comboBox.addItem(game);
+        }
+    }
     private void configureConfiguredView() {
         this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
@@ -89,11 +94,6 @@ public class ConfiguredView extends JPanel {
         for(String option: options){
             comboBox.addItem(option);
         }
-
-        //TODO: Acceso real a la base de datos
-        comboBox.addItem("Option 1");
-        comboBox.addItem("Option 2");
-        comboBox.addItem("Option 3");
     }
 
     public String optionSelected(){

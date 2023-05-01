@@ -76,7 +76,7 @@ public class NGController  implements ActionListener {
                     //Printar la vista del mapa
                     Map map = MapManager.llegeixMapa(mapName);
                     gameView.setMap(map);
-                    mainView.showGame();
+                    //mainView.showGame();
                 }catch (ErrorMessage ex){
                     NGView.printNewGameErrors(ex.getMessage());
                 }

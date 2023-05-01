@@ -1,7 +1,4 @@
-import business.ChargeManager;
-import business.DeleteManager;
-import business.NGManager;
-import business.UserManager;
+import business.*;
 import business.entities.map.Map;
 import persistance.Conn.*;
 import business.entities.User;
@@ -25,8 +22,9 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
         NGManager ngManager = new NGManager();
-        ChargeManager chargeManager = new ChargeManager();
-        DeleteManager deleteManager = new DeleteManager();
+        ChargeManager chargeManager = new ChargeManager(chargeView);
+        DeleteManager deleteManager = new DeleteManager(deleteView);
+        ConfigManager configManager = new ConfigManager(configuredView);
         MapView mapView  = new MapView();
         GameView gameView = new GameView();
 
@@ -36,9 +34,9 @@ public class Main {
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
-        StartController startController = new StartController(startView, mainView, cardLayout);
+        StartController startController = new StartController(startView, mainView, cardLayout, chargeManager, configManager, deleteManager);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
-        ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
+        ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout, configManager);
         ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout,  chargeManager, gameView);
         DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout, deleteManager);
         GameController gameController = new GameController(gameView, mainView, cardLayout);

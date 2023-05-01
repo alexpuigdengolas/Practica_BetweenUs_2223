@@ -3,13 +3,21 @@ package business;
 import business.entities.Game;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
+import presentation.views.ChargeView;
 
 import java.util.ArrayList;
 
 public class ChargeManager {
+
+    private ChargeView chargeView;
+
     private UserDAO userDAO;
-    public ChargeManager() {
+
+    ArrayList<String> games = new ArrayList<>();
+
+    public ChargeManager(ChargeView chargeView) {
         this.userDAO = new UserSQLDAO();
+        this.chargeView = chargeView;
     }
 
     public ArrayList<String> getGames(){
@@ -20,5 +28,9 @@ public class ChargeManager {
     public Game searchGame(String game){
         Game joc = userDAO.searchGame(game);
         return joc;
+    }
+    public void updateCharge(){
+        games = getGames();
+        chargeView.updateComboBoxList(games);
     }
 }

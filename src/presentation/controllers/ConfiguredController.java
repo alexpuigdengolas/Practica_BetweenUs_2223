@@ -1,11 +1,13 @@
 package presentation.controllers;
 
+import business.ConfigManager;
 import presentation.views.ConfiguredView;
 import presentation.views.MainView;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ConfiguredController implements ActionListener {
 
@@ -13,7 +15,9 @@ public class ConfiguredController implements ActionListener {
     private MainView mainView;
     private CardLayout cardLayout;
 
-    public ConfiguredController(ConfiguredView configuredView, MainView mainView, CardLayout cardLayout) {
+    ArrayList<String> games = new ArrayList<>();
+
+    public ConfiguredController(ConfiguredView configuredView, MainView mainView, CardLayout cardLayout, ConfigManager configManager) {
         this.configuredView = configuredView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
