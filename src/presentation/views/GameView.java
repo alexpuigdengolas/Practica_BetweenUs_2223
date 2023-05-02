@@ -84,7 +84,7 @@ public class GameView extends JPanel {
 
     }
 
-    public void setMap(Map map, Player  userplayer) {
+    public void setMap(Map map) {
         this.mapView.configureMapView(map);
         this.add(mapView, BorderLayout.CENTER);
     }

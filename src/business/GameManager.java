@@ -6,6 +6,7 @@ import business.entities.map.Cell;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class GameManager {
@@ -26,6 +27,35 @@ public class GameManager {
             throw new ErrorMessage("El nom del joc no pot estar buit");
         }
 
+    }
+
+    public ArrayList<String> getGames(){
+        ArrayList<String> games;
+        games = userDAO.getGames();
+        return games;
+    }
+
+    public Game searchGame(String game){
+        Game joc = userDAO.searchGame(game);
+        return joc;
+    }
+
+    public void deleteGame(String game){
+        userDAO.deleteGame(game);
+    }
+
+    public void updatecomboBox(){
+        getGames();
+
+        //Aqui hay que actualizar ambas combo box
+
+
+        //TODO:FAlta mirar como llenar las dos combo box
+        //chargeView.updateComboBoxList(games);
+        //chargeView.updateComboBoxList(games);
+
+
+        //Aqui pintamos todas las combobox
     }
 
     //Llama la base de datos para guardar los datos del juego

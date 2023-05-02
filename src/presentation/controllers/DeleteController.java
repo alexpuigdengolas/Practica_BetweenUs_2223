@@ -1,6 +1,6 @@
 package presentation.controllers;
 
-import business.DeleteManager;
+import business.GameManager;
 import presentation.views.DeleteView;
 import presentation.views.MainView;
 
@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class DeleteController implements ActionListener {
 
@@ -16,14 +15,13 @@ public class DeleteController implements ActionListener {
     private MainView mainView;
     private CardLayout cardLayout;
 
-    private DeleteManager deleteManager;
-    ArrayList<String> games = new ArrayList<>();
+    private GameManager gameManager;
 
-    public DeleteController(DeleteView deleteView, MainView mainView, CardLayout cardLayout, DeleteManager deleteManager) {
+    public DeleteController(DeleteView deleteView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.deleteView = deleteView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
-        this.deleteManager = deleteManager;
+        this.gameManager = gameManager;
     }
 
     @Override
@@ -34,9 +32,8 @@ public class DeleteController implements ActionListener {
             case DeleteView.BTN_CHA -> {
                 String nom = deleteView.optionSelected();
                 if(JOptionPane.OK_OPTION == deleteView.confirmPopUp("Estas segur que vols BORRAR el game "+nom+"?")){
-                    deleteManager.deleteGame(nom);
-                    games = deleteManager.getGames();
-                    deleteView.updateComboBoxList(games);
+                    gameManager.deleteGame(nom);
+                    deleteView.updateComboBoxList(gameManager.getGames());
                 }
 
             }

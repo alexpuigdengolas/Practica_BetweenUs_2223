@@ -96,7 +96,7 @@ public class NGController  implements ActionListener {
                     //mapManager.setPlayerManager(playerManager);
 
 
-                    gameView.setMap(map,userPlayer);
+                    gameView.setMap(map);
 
                     mainView.showGame();
                 }catch (ErrorMessage ex){

@@ -1,8 +1,7 @@
 package presentation.controllers;
 
-import business.ChargeManager;
+import business.GameManager;
 import business.MapManager;
-import business.entities.Game;
 import business.entities.map.Map;
 import presentation.views.ChargeView;
 import presentation.views.GameView;
@@ -11,23 +10,21 @@ import presentation.views.MainView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class ChargeController implements ActionListener{
     private ChargeView chargeView;
     private MainView mainView;
     private CardLayout cardLayout;
 
-    private ChargeManager chargeManager;
+    private GameManager gameManager;
     private GameView gameView;
 
-    ArrayList<String> games = new ArrayList<>();
 
-    public ChargeController(ChargeView chargeView, MainView mainView, CardLayout cardLayout, ChargeManager chargeManager, GameView gameView) {
+    public ChargeController(ChargeView chargeView, MainView mainView, CardLayout cardLayout, GameManager gameManager, GameView  gameView) {
         this.chargeView = chargeView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
-        this.chargeManager = chargeManager;
+        this.gameManager = gameManager;
         this.gameView = gameView;
     }
 
@@ -37,10 +34,8 @@ public class ChargeController implements ActionListener{
             case ChargeView.BTN_BACK -> mainView.showStart();
             case ChargeView.BTN_STI -> mainView.showSettings();
             case ChargeView.BTN_CHA -> {
-                String nom = chargeView.optionSelected();
-                Game Seleccionat = chargeManager.searchGame(nom);
-                Map map = MapManager.llegeixMapa(Seleccionat.getMap());
-                //gameView.setMap(map);
+                Map map = MapManager.llegeixMapa(gameManager.searchGame(chargeView.optionSelected()).getMap());
+                gameView.setMap(map);
                 mainView.showGame();
             }
         }

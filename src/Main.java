@@ -19,9 +19,8 @@ public class Main {
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
         GameManager gameManager = new GameManager();
-        ChargeManager chargeManager = new ChargeManager(chargeView);
-        DeleteManager deleteManager = new DeleteManager(deleteView);
-        ConfigManager configManager = new ConfigManager(configuredView);
+
+
         MapView mapView  = new MapView();
         GameView gameView = new GameView();
 
@@ -31,11 +30,11 @@ public class Main {
 
         RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
         LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
-        StartController startController = new StartController(startView, mainView, cardLayout, chargeManager, configManager, deleteManager);
+        StartController startController = new StartController(startView, mainView, cardLayout, gameManager);
         SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
-        ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout, configManager);
-        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout,  chargeManager, gameView);
-        DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout, deleteManager);
+        ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
+        ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout, gameManager,gameView);
+        DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
         GameController gameController = new GameController(gameView, mainView, cardLayout);
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView);
 
