@@ -159,4 +159,10 @@ public class UserSQLDAO implements UserDAO {
         conn.deleteQuery("DELETE FROM game AS g WHERE g.gameName LIKE '" + game + "'");
         conn.disconnect();
     }
+
+    public void deleteGames(String user){
+        conn.connect();
+        conn.deleteQuery("DELETE FROM game AS g WHERE g.creator LIKE '" + user + "'");
+        conn.disconnect();
+    }
 }

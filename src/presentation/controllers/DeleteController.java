@@ -9,6 +9,7 @@ import business.entities.map.Map;
 import presentation.views.DeleteView;
 import presentation.views.MainView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,9 +38,12 @@ public class DeleteController implements ActionListener {
             case DeleteView.BTN_STI -> mainView.showSettings();
             case DeleteView.BTN_CHA -> {
                 String nom = deleteView.optionSelected();
-                deleteManager.deleteGame(nom);
-                games = deleteManager.getGames();
-                deleteView.updateComboBoxList(games);
+                if(JOptionPane.OK_OPTION == deleteView.confirmPopUp("Estas segur que vols BORRAR el game "+nom+"?")){
+                    deleteManager.deleteGame(nom);
+                    games = deleteManager.getGames();
+                    deleteView.updateComboBoxList(games);
+                }
+
             }
         }
     }
