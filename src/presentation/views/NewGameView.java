@@ -28,7 +28,7 @@ public class NewGameView extends JPanel {
 
     JSpinner spinnerImp = new JSpinner(new SpinnerNumberModel(1,1,3,1));
 
-    private String colors []= {"Vermell","Blau","Verd","Rosa","Tronja", "Groc","Negre","Blanc","Lila","Marró","Cian","Lima"};
+    private String colors []= {"RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"};
     private JComboBox<String> jBCColors = new JComboBox<>(colors);
 
 

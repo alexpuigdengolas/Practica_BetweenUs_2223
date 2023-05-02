@@ -2,7 +2,6 @@ package presentation.controllers;
 
 import business.ChargeManager;
 import business.MapManager;
-import business.NGManager;
 import business.entities.Game;
 import business.entities.map.Map;
 import presentation.views.ChargeView;
@@ -41,7 +40,7 @@ public class ChargeController implements ActionListener{
                 String nom = chargeView.optionSelected();
                 Game Seleccionat = chargeManager.searchGame(nom);
                 Map map = MapManager.llegeixMapa(Seleccionat.getMap());
-                gameView.setMap(map);
+                //gameView.setMap(map);
                 mainView.showGame();
             }
         }

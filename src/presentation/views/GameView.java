@@ -1,5 +1,6 @@
 package presentation.views;
 
+import business.entities.character.Player;
 import business.entities.map.Map;
 
 import javax.swing.*;
@@ -83,7 +84,7 @@ public class GameView extends JPanel {
 
     }
 
-    public void setMap(Map map) {
+    public void setMap(Map map, Player  userplayer) {
         this.mapView.configureMapView(map);
         this.add(mapView, BorderLayout.CENTER);
     }

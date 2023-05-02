@@ -127,7 +127,8 @@ public class MainView extends JFrame {
     public void showCharge(){this.getViewComponent().show(this.getContentPane(), "chargeView");}
 
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
-    public void showGame(){this.getViewComponent().show(this.getContentPane(), "gameView");}
+    public void showGame(){
+        this.getViewComponent().show(this.getContentPane(), "gameView");}
 
 }
 

@@ -1,7 +1,4 @@
 import business.*;
-import business.entities.map.Map;
-import persistance.Conn.*;
-import business.entities.User;
 import presentation.controllers.*;
 import presentation.views.*;
 
@@ -21,7 +18,7 @@ public class Main {
         ChargeView chargeView = new ChargeView();
         SettingsView settingsView = new SettingsView();
         UserManager userManager = new UserManager();
-        NGManager ngManager = new NGManager();
+        GameManager gameManager = new GameManager();
         ChargeManager chargeManager = new ChargeManager(chargeView);
         DeleteManager deleteManager = new DeleteManager(deleteView);
         ConfigManager configManager = new ConfigManager(configuredView);
@@ -40,7 +37,7 @@ public class Main {
         ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout,  chargeManager, gameView);
         DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout, deleteManager);
         GameController gameController = new GameController(gameView, mainView, cardLayout);
-        NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, ngManager, gameView);
+        NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView);
 
         registerView.registerController(registerController);
         loginView.loginController(loginController);
@@ -54,11 +51,6 @@ public class Main {
 
         mainView.start();
 
-        /* Test correcte de lectura
-        ReaderMap readerMap = new ReaderMap("Station.json");
-        Map map = readerMap.getMap();
-        System.out.println(map.getMapName());
-        */
     }
 
 }

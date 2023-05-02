@@ -1,11 +1,6 @@
 package presentation.controllers;
 
-import business.ChargeManager;
 import business.DeleteManager;
-import business.MapManager;
-import business.NGManager;
-import business.entities.Game;
-import business.entities.map.Map;
 import presentation.views.DeleteView;
 import presentation.views.MainView;
 

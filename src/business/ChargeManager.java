@@ -7,6 +7,8 @@ import presentation.views.ChargeView;
 
 import java.util.ArrayList;
 
+
+//TODO: Borrar aquest manager y pasarlo al Game Manger
 public class ChargeManager {
 
     private ChargeView chargeView;

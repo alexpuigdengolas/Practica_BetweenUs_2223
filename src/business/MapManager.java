@@ -1,13 +1,7 @@
 package business;
 
-import business.entities.map.Cell;
-import com.google.gson.Gson;
 import business.entities.map.Map;
 import persistance.Conn.ReaderMap;
-
-
-import java.io.File;
-import java.io.FileReader;
 
 /**
  * La classe 'MapManager' serveix per gestionar i llegir el mapa de la partida
@@ -19,8 +13,12 @@ public class MapManager {
     // Attributes
     private static ReaderMap mapReader;
 
+    private PlayerManager playerManager;
+    private Map map;
+
     // Parametrized constructor
-    public MapManager() {
+    public MapManager(Map map) {
+        this.map = map;
 
     }
 
@@ -29,6 +27,10 @@ public class MapManager {
     public static Map llegeixMapa(String mapName) {
         mapReader = new ReaderMap(mapName);
         return mapReader.getMap();
+    }
+
+    public void setPlayerManager(PlayerManager playerManager) {
+        this.playerManager = playerManager;
     }
 
 }

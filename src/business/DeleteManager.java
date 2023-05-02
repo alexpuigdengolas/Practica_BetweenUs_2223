@@ -7,6 +7,7 @@ import presentation.views.DeleteView;
 
 import java.util.ArrayList;
 
+//TODO: Borrar aquest manager y pasarlo al Game Manger
 public class DeleteManager {
 
     private UserDAO userDAO;

@@ -2,12 +2,15 @@ package business;
 
 
 import business.entities.Game;
+import business.entities.map.Cell;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
 
-public class NGManager {
+import java.util.LinkedList;
+
+public class GameManager {
     private UserDAO userDAO;
-    public NGManager() {
+    public GameManager() {
         this.userDAO = new UserSQLDAO();
     }
 
@@ -42,4 +45,15 @@ public class NGManager {
         return "Correcte";
         }
     }
+    public Cell getCafeCell(LinkedList<Cell> cells) {
+        for (Cell cell: cells) {
+            if (cell.getRoomName().equals("cafeteria")) {
+                return cell;
+            }
+        }
+        return null;
+    }
+
+
+
 }
