@@ -32,14 +32,11 @@ public class SettingsController implements ActionListener {
 
             case SettingsView.BTN_DEL:
                 if(JOptionPane.OK_OPTION == settingsView.confirmPopUp("Estas segur que vols BORRAR el compte?")){
-                    if (!userManager.deleteUser()) {
-                        System.out.println("no se esta borrando");
-                        //Se muestra que no hay usuario que borrar
-                    }else{
-                        userManager.resetName();
-                        mainView.showLogin();
-                        //TODO: Se tendra que borrar los games de esta persona
-                    }
+                    userManager.deleteGames();
+                    userManager.deleteUser();
+                    userManager.resetName();
+                    mainView.showLogin();
+
                 }
 
                 break;

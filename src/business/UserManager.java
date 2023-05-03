@@ -125,6 +125,11 @@ public class UserManager {
 
     }
 
+    public void deleteGames(){
+     userDAO.deleteGames(user);
+
+    }
+
 
     public boolean deleteUser() {
         if (userDAO.userNameExists(user)) {

@@ -1,6 +1,5 @@
 package presentation.controllers;
 
-import business.ConfigManager;
 import presentation.views.ConfiguredView;
 import presentation.views.MainView;
 
@@ -17,7 +16,7 @@ public class ConfiguredController implements ActionListener {
 
     ArrayList<String> games = new ArrayList<>();
 
-    public ConfiguredController(ConfiguredView configuredView, MainView mainView, CardLayout cardLayout, ConfigManager configManager) {
+    public ConfiguredController(ConfiguredView configuredView, MainView mainView, CardLayout cardLayout) {
         this.configuredView = configuredView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;

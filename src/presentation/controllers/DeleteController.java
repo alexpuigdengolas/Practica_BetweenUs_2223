@@ -1,18 +1,13 @@
 package presentation.controllers;
 
-import business.ChargeManager;
-import business.DeleteManager;
-import business.MapManager;
-import business.NGManager;
-import business.entities.Game;
-import business.entities.map.Map;
+import business.GameManager;
 import presentation.views.DeleteView;
 import presentation.views.MainView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class DeleteController implements ActionListener {
 
@@ -20,14 +15,13 @@ public class DeleteController implements ActionListener {
     private MainView mainView;
     private CardLayout cardLayout;
 
-    private DeleteManager deleteManager;
-    ArrayList<String> games = new ArrayList<>();
+    private GameManager gameManager;
 
-    public DeleteController(DeleteView deleteView, MainView mainView, CardLayout cardLayout, DeleteManager deleteManager) {
+    public DeleteController(DeleteView deleteView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.deleteView = deleteView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
-        this.deleteManager = deleteManager;
+        this.gameManager = gameManager;
     }
 
     @Override
@@ -37,9 +31,11 @@ public class DeleteController implements ActionListener {
             case DeleteView.BTN_STI -> mainView.showSettings();
             case DeleteView.BTN_CHA -> {
                 String nom = deleteView.optionSelected();
-                deleteManager.deleteGame(nom);
-                games = deleteManager.getGames();
-                deleteView.updateComboBoxList(games);
+                if(JOptionPane.OK_OPTION == deleteView.confirmPopUp("Estas segur que vols BORRAR el game "+nom+"?")){
+                    gameManager.deleteGame(nom);
+                    deleteView.updateComboBoxList(gameManager.getGames());
+                }
+
             }
         }
     }

@@ -1,5 +1,6 @@
 package presentation.views;
 
+import business.entities.character.Player;
 import business.entities.map.Map;
 
 import javax.swing.*;
@@ -17,10 +18,10 @@ public class GameView extends JPanel {
 
     private MapView mapView = new MapView();
 
-    private JButton jbU;
-    private JButton jbL;
-    private JButton jbR;
-    private JButton jbD;
+    private JButton jbU = new JButton();
+    private JButton jbL = new JButton();
+    private JButton jbR = new JButton();
+    private JButton jbD = new JButton();
 
 
     private JButton jbBack = new JButton();
@@ -52,6 +53,23 @@ public class GameView extends JPanel {
         jpActions.add(jbSettings);
 
         this.add(jpActions, BorderLayout.NORTH);
+
+        JPanel jpAux = new JPanel();
+        JPanel jpButtons = new JPanel();
+        jpButtons.setLayout(new BorderLayout());
+        jbD.setActionCommand(BTN_D);
+        jbL.setActionCommand(BTN_L);
+        jbR.setActionCommand(BTN_R);
+        jbU.setActionCommand(BTN_U);
+        jpButtons.add(jbU, BorderLayout.NORTH);
+        jpButtons.add(jbL, BorderLayout.EAST);
+        jpButtons.add(jbR, BorderLayout.WEST);
+        jpButtons.add(jbD, BorderLayout.CENTER);
+
+        jpAux.setSize(new Dimension(500, 500));
+        jpAux.add(jpButtons);
+        this.add(jpAux, BorderLayout.WEST);
+
 
         //TODO: Hacer la botonera lateral para el movimiento del jugador
     }

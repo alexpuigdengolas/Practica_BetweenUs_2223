@@ -106,4 +106,7 @@ public class DeleteView extends JPanel {
         String selectedOption = comboBox.getSelectedItem().toString();
         return selectedOption;
     }
+    public int confirmPopUp(String action) {
+        return JOptionPane.showConfirmDialog(null,action);
+    }
 }

@@ -122,16 +122,16 @@ public class MainView extends JFrame {
 
     public void showDelete(){this.getViewComponent().show(this.getContentPane(), "deleteView");}
 
-    public void showConfigured(){this.getViewComponent().show(this.getContentPane(), "configuredView");}
+    public void showConfigured(){
+        this.getViewComponent().show(this.getContentPane(), "configuredView");
+    }
 
-    public void showCharge(){this.getViewComponent().show(this.getContentPane(), "chargeView");}
+    public void showCharge(){
+        this.getViewComponent().show(this.getContentPane(), "chargeView");}
 
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
-    public void showMap(Map map){
-        this.getViewComponent().show(this.getContentPane(), "mapView");
-        mapView.configureMapView(map);
-    }
-    public void showGame(){this.getViewComponent().show(this.getContentPane(), "gameView");}
+    public void showGame(){
+        this.getViewComponent().show(this.getContentPane(), "gameView");}
 
 }
 

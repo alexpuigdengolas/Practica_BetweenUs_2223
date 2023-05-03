@@ -1,9 +1,6 @@
 package presentation.controllers;
 
-import business.ChargeManager;
-import business.ConfigManager;
-import business.DeleteManager;
-import presentation.views.DeleteView;
+import business.GameManager;
 import presentation.views.MainView;
 import presentation.views.StartView;
 
@@ -19,11 +16,7 @@ public class StartController implements ActionListener {
 
     private CardLayout cardLayout;
 
-    private ChargeManager chargeManager;
-
-    private ConfigManager configManager;
-
-    private DeleteManager deleteManager;
+    private GameManager gameManager;
 
     /**
      * Constructor del controller
@@ -31,13 +24,11 @@ public class StartController implements ActionListener {
      * @param mainView
      * @param cardLayout
      */
-    public StartController(StartView startView, MainView mainView, CardLayout cardLayout, ChargeManager chargeManager, ConfigManager configManager, DeleteManager deleteManager) {
+    public StartController(StartView startView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.startView = startView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
-        this.chargeManager = chargeManager;
-        this.configManager = configManager;
-        this.deleteManager = deleteManager;
+        this.gameManager = gameManager;
     }
 
     @Override
@@ -56,17 +47,17 @@ public class StartController implements ActionListener {
                 break;
 
             case StartView.BTN_CON :
-                configManager.updateConfig();
+                gameManager.updatecomboBox();
                 mainView.showConfigured();
                 break;
 
             case StartView.BTN_CHAR :
-                chargeManager.updateCharge();
+                gameManager.updatecomboBox();
                 mainView.showCharge();
                 break;
 
             case StartView.BTN_DEL :
-                deleteManager.updateDelete();
+                gameManager.updatecomboBox();
                 mainView.showDelete();
                 break;
 

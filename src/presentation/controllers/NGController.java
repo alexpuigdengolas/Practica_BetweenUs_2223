@@ -2,18 +2,22 @@ package presentation.controllers;
 
 import business.MapManager;
 import business.entities.Game;
+import business.PlayerManager;
+import business.entities.character.Player;
+import business.entities.map.Cell;
 import business.entities.map.Map;
 import presentation.views.*;
 import business.ErrorMessage;
 import business.UserManager;
-import business.NGManager;
+import business.GameManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NGController  implements ActionListener {
 
@@ -23,9 +27,10 @@ public class NGController  implements ActionListener {
 
     private CardLayout cardLayout;
     private UserManager userManager;
-    private NGManager ngManager;
+    private GameManager gameManager;
     private GameView gameView;
 
+    private ArrayList<String> colors;
 
     /**
      * Constructor del controller
@@ -34,13 +39,15 @@ public class NGController  implements ActionListener {
      * @param cardLayout
      */
 
-    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout,UserManager userManager,NGManager ngManager, GameView gameView) {
+    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout, UserManager userManager, GameManager gameManager, GameView gameView) {
         this.NGView = NGView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.userManager = userManager;
-        this.ngManager = ngManager;
+        this.gameManager = gameManager;
         this.gameView = gameView;
+        colors = new ArrayList<>(List.of("RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"));
+
     }
 
     @Override
@@ -70,12 +77,27 @@ public class NGController  implements ActionListener {
                 Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
                 try{
                     //Comprueba que cumpla condiciones y lo guarda si asi lo hace
-                    ngManager.checkGame(game);
-                    ngManager.saveGame(game);
+                    gameManager.checkGame(game);
+                    gameManager.saveGame(game);
 
                     //Printar la vista del mapa
                     Map map = MapManager.llegeixMapa(mapName);
+                    //MapManager mapManager = new MapManager(map);
+                    //Aqui creariem tots els crewmembers i impostors necesaris per jugar
+
+                    //Creem el player
+                    Player userPlayer = new Player(NGView.getColor());
+                    //Coloquem els jugadors a la cella de la cafeteria
+                    //Cell initialCell = gameManager.getCafeCell(map.getCells());
+                    //userPlayer.setCell(initialCell);
+
+
+                    //PlayerManager playerManager = new PlayerManager(userPlayer);
+                    //mapManager.setPlayerManager(playerManager);
+
+
                     gameView.setMap(map);
+
                     mainView.showGame();
                 }catch (ErrorMessage ex){
                     NGView.printNewGameErrors(ex.getMessage());
