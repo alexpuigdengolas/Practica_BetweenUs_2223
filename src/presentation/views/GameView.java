@@ -27,7 +27,6 @@ public class GameView extends JPanel {
     private JButton jbBack = new JButton();
     private JButton jbSettings = new JButton();
 
-    private Map map;
 
 
     public GameView(){

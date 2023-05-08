@@ -6,8 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.LinkedList;
 
 public class Cell {
-    // Attributes
-    private int numCorpses = 0;
+
 
     @SerializedName("x")
     @Expose

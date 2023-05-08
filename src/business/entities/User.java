@@ -7,7 +7,7 @@ public class User {
     private final String password;
     private final String confirmedPassword;
 
-    // Parametrized constructor
+
     public User (String name, String mail, String password, String confirmedPassword) {
         this.name = name;
         this.mail = mail;

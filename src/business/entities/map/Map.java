@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.LinkedList;
 
 public class Map {
-    // Attributes
+
     @SerializedName("cellNumber")
     @Expose
     private int cellNumber;
