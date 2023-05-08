@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Mobility {
-    // Attributes
+
     @SerializedName("left")
     @Expose
     private Integer left;
