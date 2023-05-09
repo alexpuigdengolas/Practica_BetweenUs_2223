@@ -4,6 +4,7 @@ import business.entities.character.Player;
 import business.entities.map.Map;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -18,10 +19,10 @@ public class GameView extends JPanel {
 
     private MapView mapView = new MapView();
 
-    private JButton jbU = new JButton();
-    private JButton jbL = new JButton();
-    private JButton jbR = new JButton();
-    private JButton jbD = new JButton();
+    private JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
+    private JButton jbL = new BasicArrowButton(BasicArrowButton.EAST);
+    private JButton jbR = new BasicArrowButton(BasicArrowButton.WEST);
+    private JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
 
 
     private JButton jbBack = new JButton();
@@ -57,15 +58,19 @@ public class GameView extends JPanel {
         JPanel jpButtons = new JPanel();
         jpButtons.setLayout(new BorderLayout());
         jbD.setActionCommand(BTN_D);
+        //jbD.setPreferredSize(new Dimension(50, 75 ));
         jbL.setActionCommand(BTN_L);
+        //jbL.setPreferredSize(new Dimension(50, 75));
         jbR.setActionCommand(BTN_R);
+        //jbR.setPreferredSize(new Dimension(50, 75));
         jbU.setActionCommand(BTN_U);
+        jbU.setPreferredSize(new Dimension(150, 75));
         jpButtons.add(jbU, BorderLayout.NORTH);
         jpButtons.add(jbL, BorderLayout.EAST);
         jpButtons.add(jbR, BorderLayout.WEST);
         jpButtons.add(jbD, BorderLayout.CENTER);
+        jpButtons.setPreferredSize(new Dimension(150, 150));
 
-        jpAux.setSize(new Dimension(500, 500));
         jpAux.add(jpButtons);
         this.add(jpAux, BorderLayout.WEST);
 
@@ -85,6 +90,7 @@ public class GameView extends JPanel {
 
     public void setMap(Map map) {
         this.mapView.configureMapView(map);
+        this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }
 }
