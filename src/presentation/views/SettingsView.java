@@ -1,5 +1,7 @@
 package presentation.views;
 
+import presentation.views.custom.BackGroundPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,7 +14,7 @@ public class SettingsView extends JPanel {
 
     private JButton jbLogOut = new JButton("Log out");
     private JButton jbDelete = new JButton("Delete");
-    private JButton jbBack = new JButton("");
+    private JButton jbBack = new JButton("Back");
 
     private MainView mainView;
 
@@ -23,12 +25,19 @@ public class SettingsView extends JPanel {
     }
 
     private void configureView(){
+
+        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+        fondo.setLayout(new BorderLayout());
+
+
         this.setLayout(new BorderLayout());
+        this.add(fondo);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
-        this.add(voidPanel, BorderLayout.EAST);
-        this.add(voidPanel, BorderLayout.WEST);
+        voidPanel.setOpaque(false);
+        fondo.add(voidPanel, BorderLayout.EAST);
+        fondo.add(voidPanel, BorderLayout.WEST);
 
         JPanel actionPanel= new JPanel();
 
@@ -48,11 +57,14 @@ public class SettingsView extends JPanel {
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbLogOut);
 
-        this.add(actionPanel, BorderLayout.NORTH);
-        this.add(buttonPanel, BorderLayout.CENTER);
+        actionPanel.setOpaque(false);
+        fondo.add(actionPanel, BorderLayout.NORTH);
+
+        buttonPanel.setOpaque(false);
+        fondo.add(buttonPanel, BorderLayout.CENTER);
 
         int margin = 50;
-        this.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+        fondo.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
 
     public void settingsController(ActionListener controller){

@@ -1,5 +1,7 @@
 package presentation.views;
 
+import presentation.views.custom.BackGroundPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -14,7 +16,7 @@ public class StartView extends JPanel {
     public static final String BTN_DEL= "BTN_DEL";
 
 
-    private JButton jbSettings = new JButton();
+    private JButton jbSettings = new JButton("Settings");
     private JButton jbNewGame = new JButton("New Game");
     private JButton jbConfGame = new JButton("Configured Game");
     private JButton jbCharGame = new JButton("Charged Game");
@@ -38,12 +40,20 @@ public class StartView extends JPanel {
      * En esta funcion construimos la vista
      */
     private void configureView() {
+
+        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+        fondo.setLayout(new BorderLayout());
+
+
         this.setLayout(new BorderLayout());
+        this.add(fondo);
+
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
-        this.add(voidPanel, BorderLayout.EAST);
-        this.add(voidPanel, BorderLayout.WEST);
+        voidPanel.setOpaque(false);
+        fondo.add(voidPanel, BorderLayout.EAST);
+        fondo.add(voidPanel, BorderLayout.WEST);
 
         JPanel actionPanel= new JPanel();
         actionPanel.setLayout(new FlowLayout(FlowLayout.LEFT));  // set left alignment
@@ -71,11 +81,13 @@ public class StartView extends JPanel {
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbDellGame);
 
-        this.add(actionPanel, BorderLayout.NORTH);
-        this.add(buttonPanel, BorderLayout.CENTER);
+        actionPanel.setOpaque(false);
+        fondo.add(actionPanel, BorderLayout.NORTH);
+        buttonPanel.setOpaque(false);
+        fondo.add(buttonPanel, BorderLayout.CENTER);
 
         int margin = 50;
-        this.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
+        fondo.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
 
 
@@ -112,3 +124,5 @@ public class StartView extends JPanel {
         this.components = components;
     }
 }
+
+

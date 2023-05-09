@@ -1,5 +1,7 @@
 package presentation.views;
 
+import presentation.views.custom.BackGroundPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -20,32 +22,47 @@ public class LoginView extends JPanel {
     private CardLayout components;
     private MainView mainView;
 
+
     public LoginView() {
         configureLoginView();
     }
 
+
     private void configureLoginView() {
-        this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+        fondo.setLayout(new BorderLayout());
+
+        //this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
         this.setLayout(new BorderLayout());
+        this.add(fondo);
+
 
         JPanel titlePanel = new JPanel();
+        //titlePanel.setBackground(Color.WHITE);
+
         JLabel jlTitle = new JLabel("Login");
+        jlTitle.setForeground(Color.WHITE);
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        this.add(titlePanel, BorderLayout.NORTH);
+        titlePanel.setOpaque(false);
+        fondo.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
+        voidPanel.setOpaque(false);
         voidPanel.setPreferredSize(new Dimension(50, 50));
-        this.add(voidPanel, BorderLayout.EAST);
-        this.add(voidPanel, BorderLayout.WEST);
+        fondo.add(voidPanel, BorderLayout.EAST);
+        fondo.add(voidPanel, BorderLayout.WEST);
 
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+        infoPanel.setOpaque(false);
 
         //Label de Login
         JLabel jlLogin = new JLabel("Username or Email");
+        jlLogin.setForeground(Color.WHITE);
         jlLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(Box.createVerticalGlue());
@@ -60,6 +77,7 @@ public class LoginView extends JPanel {
 
         //Label de Contraseña
         JLabel jlPassword = new JLabel("Password");
+        jlPassword.setForeground(Color.WHITE);
         jlPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
         jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         infoPanel.add(Box.createVerticalGlue());
@@ -78,11 +96,12 @@ public class LoginView extends JPanel {
         registerButton.setActionCommand(BTN_REG);
         buttonPanel.add(loginButton);
         buttonPanel.add(registerButton);
+        buttonPanel.setOpaque(false);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         infoPanel.add(buttonPanel);
         infoPanel.add(Box.createVerticalGlue());
 
-        this.add(infoPanel);
+        fondo.add(infoPanel);
     }
 
 
@@ -146,4 +165,9 @@ public class LoginView extends JPanel {
         JOptionPane.showMessageDialog(null, Error, "Error Login", JOptionPane.ERROR_MESSAGE);
 
     }
+
+
+
+
+
 }

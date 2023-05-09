@@ -1,6 +1,7 @@
 package presentation.views;
 
 import business.entities.map.Map;
+import presentation.views.custom.BackGroundPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +30,9 @@ public class MainView extends JFrame {
 
 
 
+
     public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView, SettingsView settingsView, MapView mapView, GameView gameView) {
+
         this.viewComponents = viewComponents;
         this.setLayout(viewComponents);
         this.configureWindow();
@@ -64,9 +67,10 @@ public class MainView extends JFrame {
      * Este metodo generara la vista inicial con todos los parametros deseados
      */
     private void configureMainView() {
+
         jpView.setBackground(Color.BLACK);
-        this.add(jpView);
-        this.getContentPane().add(jpView, "main");
+
+        this.add(jpView, "main");
         this.getViewComponent().show(this.getContentPane(), "main");
     }
 
@@ -85,7 +89,6 @@ public class MainView extends JFrame {
     private void configureWindow() {
         setTitle("Between Us");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
         setLocationRelativeTo(null);
         setSize(width, height);
     }
@@ -132,6 +135,7 @@ public class MainView extends JFrame {
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
     public void showGame(){
         this.getViewComponent().show(this.getContentPane(), "gameView");}
+
 
 }
 

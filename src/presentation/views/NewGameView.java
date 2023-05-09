@@ -1,5 +1,7 @@
 package presentation.views;
 
+import presentation.views.custom.BackGroundPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -22,8 +24,8 @@ public class NewGameView extends JPanel {
 
 
     private JButton chargeButton = new JButton("Charge");
-    private JButton jbBack = new JButton();
-    private JButton jbSettings = new JButton();
+    private JButton jbBack = new JButton("Back");
+    private JButton jbSettings = new JButton("Settings");
     private JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(4,4,10,1));
 
     JSpinner spinnerImp = new JSpinner(new SpinnerNumberModel(1,1,3,1));
@@ -44,9 +46,11 @@ public class NewGameView extends JPanel {
 
     private void configureNGView(){
 
-        this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+        fondo.setLayout(new BorderLayout());
 
         this.setLayout(new BorderLayout());
+        this.add(fondo);
 
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
@@ -59,12 +63,13 @@ public class NewGameView extends JPanel {
 
         jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbSettings);
-
-        this.add(jpActions, BorderLayout.NORTH);
+        jpActions.setOpaque(false);
+        fondo.add(jpActions, BorderLayout.NORTH);
 
 
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Charge game");
+        jlTitle.setForeground(Color.WHITE);
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
@@ -73,13 +78,15 @@ public class NewGameView extends JPanel {
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
-        this.add(voidPanel, BorderLayout.EAST);
-        this.add(voidPanel, BorderLayout.WEST);
+        voidPanel.setOpaque(false);
+        fondo.add(voidPanel, BorderLayout.EAST);
+        fondo.add(voidPanel, BorderLayout.WEST);
 
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         //Label de cargar partida
         JLabel jlCharge = new JLabel("Game name");
+        jlCharge.setForeground(Color.WHITE);
         jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
@@ -92,56 +99,64 @@ public class NewGameView extends JPanel {
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
         infoPanel.add(nameField);
         infoPanel.add(Box.createVerticalStrut(10));
-        this.add(infoPanel);
+        infoPanel.setOpaque(false);
+        fondo.add(infoPanel);
         //Panel de Jlabels
         //jlabel 1
         JPanel labelPanel = new JPanel();
         JLabel label = new JLabel("Color");
+        label.setForeground(Color.WHITE);
         labelPanel.add(label);
         labelPanel.add(jBCColors);
         infoPanel.add(labelPanel);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+        labelPanel.setOpaque(false);
 
 
 
 //jlabel 2
         JPanel labelPanel2 = new JPanel();
         JLabel label2 = new JLabel("Impostors");
+        label2.setForeground(Color.WHITE);
         JSpinner.DefaultEditor editorImp = (JSpinner.DefaultEditor) spinnerImp.getEditor();
         editorImp.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel2.add(label2);
         labelPanel2.add(spinnerImp);
         infoPanel.add(labelPanel2);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+        labelPanel2.setOpaque(false);
 
 //jlabel 3
         JPanel labelPanel3 = new JPanel();
         JLabel label3 = new JLabel("Players");
+        label3.setForeground(Color.WHITE);
         JSpinner.DefaultEditor editorPly = (JSpinner.DefaultEditor) spinnerPly.getEditor();
         editorPly.getTextField().setColumns(20); // Establecer 20 caracteres de ancho
         labelPanel3.add(label3);
         labelPanel3.add(spinnerPly);
         infoPanel.add(labelPanel3);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+        labelPanel3.setOpaque(false);
 
 //jlabel 4
         JPanel labelPanel4 = new JPanel();
         JLabel label4 = new JLabel("Map");
+        label4.setForeground(Color.WHITE);
         jbmaps.setActionCommand(BTN_MAP);
         jbmaps.setBackground(Color.BLACK);
-        jbmaps.setForeground(Color.WHITE);
         jbmaps.setBounds(570,320,300,50);
         labelPanel4.add(label4);
         labelPanel4.add(jbmaps);
         infoPanel.add(labelPanel4);
         infoPanel.add(Box.createVerticalStrut(10)); // Agregar espacio en blanco vertical
+        labelPanel4.setOpaque(false);
 
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();
         chargeButton.setActionCommand(BTN_CHA);
         buttonPanel.add(chargeButton);
-
+        buttonPanel.setOpaque(false);
         infoPanel.add(buttonPanel, BorderLayout.SOUTH);
 
     }

@@ -1,5 +1,7 @@
 package presentation.views;
 
+import presentation.views.custom.BackGroundPanel;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -44,25 +46,34 @@ public class RegisterView extends JPanel {
             e.printStackTrace();
         }*/
 
-        this.setLayout(new BorderLayout());
+        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+        fondo.setLayout(new BorderLayout());
 
+
+        this.setLayout(new BorderLayout());
+        this.add(fondo);
 
 
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Register");
+        jlTitle.setForeground(Color.WHITE);
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        this.add(titlePanel, BorderLayout.NORTH);
+        titlePanel.setOpaque(false);
+        fondo.add(titlePanel, BorderLayout.NORTH);
 
         Box infoBox = Box.createVerticalBox();
 
         //JLabel para el nombre de usuario
         JLabel jlLogin = new JLabel("Username");
+        jlLogin.setForeground(Color.WHITE);
         jlLogin.setAlignmentX(CENTER_ALIGNMENT);
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
         infoBox.add(jlLogin);
+
+
 
         //JTextField para el nombre de usuario
         userNameSpace.setMaximumSize(new Dimension(500, userNameSpace.getPreferredSize().height));
@@ -71,6 +82,7 @@ public class RegisterView extends JPanel {
 
         //JLabel para el mail
         JLabel jlMail = new JLabel("Mali");
+        jlMail.setForeground(Color.WHITE);
         jlMail.setAlignmentX(CENTER_ALIGNMENT);
         jlMail.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
@@ -83,6 +95,7 @@ public class RegisterView extends JPanel {
 
         //JLabel para el mail
         JLabel jlPassword = new JLabel("Password");
+        jlPassword.setForeground(Color.WHITE);
         jlPassword.setAlignmentX(CENTER_ALIGNMENT);
         jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
@@ -97,6 +110,7 @@ public class RegisterView extends JPanel {
 
         //JLabel para el mail
         JLabel jlConPassword = new JLabel("Confirmation Password");
+        jlConPassword.setForeground(Color.WHITE);
         jlConPassword.setAlignmentX(CENTER_ALIGNMENT);
         jlConPassword.setFont(new Font("Arial", Font.PLAIN, 20));
         //TODO: Cambiar el color de la vista
@@ -107,15 +121,17 @@ public class RegisterView extends JPanel {
         confirmationPasswordField.setAlignmentX(CENTER_ALIGNMENT);
         infoBox.add(confirmationPasswordField);
 
-        this.add(infoBox, BorderLayout.CENTER);
+        fondo.add(infoBox, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         loginButton.setActionCommand(BTN_BACK);
         buttonPanel.add(loginButton);
         registerButton.setActionCommand(BTN_REGISTER);
         buttonPanel.add(registerButton);
-
+        buttonPanel.setOpaque(false);
         infoBox.add(buttonPanel, BorderLayout.SOUTH);
+
+
 
 
     }
