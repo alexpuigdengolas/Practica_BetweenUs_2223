@@ -52,6 +52,10 @@ public class NewGameView extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
+
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
 
@@ -68,12 +72,13 @@ public class NewGameView extends JPanel {
 
 
         JPanel titlePanel = new JPanel();
-        JLabel jlTitle = new JLabel("Charge game");
+        JLabel jlTitle = new JLabel("New Game");
         jlTitle.setForeground(Color.WHITE);
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        //this.add(titlePanel, BorderLayout.NORTH);
+        titlePanel.setOpaque(false);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
 
 
         JPanel voidPanel = new JPanel();
@@ -100,7 +105,8 @@ public class NewGameView extends JPanel {
         infoPanel.add(nameField);
         infoPanel.add(Box.createVerticalStrut(10));
         infoPanel.setOpaque(false);
-        fondo.add(infoPanel);
+        auxPanel.add(infoPanel);
+        fondo.add(auxPanel);
         //Panel de Jlabels
         //jlabel 1
         JPanel labelPanel = new JPanel();

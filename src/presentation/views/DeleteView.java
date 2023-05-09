@@ -42,6 +42,9 @@ public class DeleteView extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
 
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
@@ -64,7 +67,7 @@ public class DeleteView extends JPanel {
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.setOpaque(false);
         titlePanel.add(jlTitle);
-        //this.add(titlePanel, BorderLayout.NORTH);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
@@ -89,7 +92,8 @@ public class DeleteView extends JPanel {
         infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
         infoPanel.setOpaque(false);
-        fondo.add(infoPanel);
+        auxPanel.add(infoPanel);
+        fondo.add(auxPanel);
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();

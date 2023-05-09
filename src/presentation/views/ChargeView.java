@@ -46,6 +46,10 @@ public class ChargeView extends JPanel{
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
+
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
 
@@ -66,7 +70,8 @@ public class ChargeView extends JPanel{
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        //this.add(titlePanel, BorderLayout.NORTH);
+        titlePanel.setOpaque(false);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
@@ -92,7 +97,8 @@ public class ChargeView extends JPanel{
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
         infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
-        fondo.add(infoPanel);
+        auxPanel.add(infoPanel);
+        fondo.add(auxPanel);
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();

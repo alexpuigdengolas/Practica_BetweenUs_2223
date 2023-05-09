@@ -48,12 +48,24 @@ public class StartView extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
         voidPanel.setOpaque(false);
         fondo.add(voidPanel, BorderLayout.EAST);
         fondo.add(voidPanel, BorderLayout.WEST);
+
+        JPanel titlePanel = new JPanel();
+        JLabel jlTitle = new JLabel("Between Us");
+        jlTitle.setForeground(Color.WHITE);
+        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        titlePanel.add(jlTitle);
+        titlePanel.setOpaque(false);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
 
         JPanel actionPanel= new JPanel();
         actionPanel.setLayout(new FlowLayout(FlowLayout.LEFT));  // set left alignment
@@ -84,7 +96,8 @@ public class StartView extends JPanel {
         actionPanel.setOpaque(false);
         fondo.add(actionPanel, BorderLayout.NORTH);
         buttonPanel.setOpaque(false);
-        fondo.add(buttonPanel, BorderLayout.CENTER);
+        auxPanel.add(buttonPanel, BorderLayout.CENTER);
+        fondo.add(auxPanel);
 
         int margin = 50;
         fondo.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));

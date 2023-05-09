@@ -40,6 +40,9 @@ public class ConfiguredView extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
 
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
@@ -61,7 +64,8 @@ public class ConfiguredView extends JPanel {
         jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
-        //this.add(titlePanel, BorderLayout.NORTH);
+        titlePanel.setOpaque(false);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
 
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
@@ -85,7 +89,9 @@ public class ConfiguredView extends JPanel {
         infoPanel.add(comboBox);
         infoPanel.add(Box.createVerticalStrut(10));
         infoPanel.setOpaque(false);
-        fondo.add(infoPanel);
+        auxPanel.add(infoPanel, BorderLayout.CENTER);
+
+        fondo.add(auxPanel);
 
         //Panel de botones
         JPanel buttonPanel = new JPanel();

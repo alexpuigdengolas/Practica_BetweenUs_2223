@@ -40,7 +40,6 @@ public class LoginView extends JPanel {
 
 
         JPanel titlePanel = new JPanel();
-        //titlePanel.setBackground(Color.WHITE);
 
         JLabel jlTitle = new JLabel("Login");
         jlTitle.setForeground(Color.WHITE);
