@@ -1,4 +1,5 @@
 import business.*;
+import business.entities.character.Player;
 import presentation.controllers.*;
 import presentation.views.*;
 
@@ -21,6 +22,7 @@ public class Main {
         GameManager gameManager = new GameManager();
 
 
+
         MapView mapView  = new MapView();
         GameView gameView = new GameView();
 
@@ -35,7 +37,7 @@ public class Main {
         ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
         ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout, gameManager,gameView);
         DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
-        GameController gameController = new GameController(gameView, mainView, cardLayout);
+        GameController gameController = new GameController(gameView, mainView, cardLayout,gameManager);
         NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView);
 
         registerView.registerController(registerController);

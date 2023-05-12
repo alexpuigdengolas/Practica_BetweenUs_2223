@@ -38,4 +38,14 @@ public class Map {
     public LinkedList<Cell> getCells() {
         return cells;
     }
+    public Cell getCellByCoordinates(int[] coordinates) {
+        int x = coordinates[0];
+        int y = coordinates[1];
+        for (Cell cell: this.cells) {
+            if (cell.getX() == x && cell.getY() == y) {
+                return cell;
+            }
+        }
+        return null;
+    }
 }

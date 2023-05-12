@@ -5,16 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Funcionalitat Delete Game funciona.">
-      <change afterPath="$PROJECT_DIR$/src/business/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/ChargeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/ChargeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/DeleteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/DeleteManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/MapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Impostor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Impostor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Npc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/business/entities/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/map/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/StartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/ConfiguredView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/ConfiguredView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/MapView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaMapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaMapa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaPassadis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaPassadis.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +97,7 @@
       <workItem from="1681567392525" duration="8316000" />
       <workItem from="1681972015581" duration="5414000" />
       <workItem from="1682930665200" duration="4164000" />
+      <workItem from="1683877788458" duration="11371000" />
     </task>
     <task id="LOCAL-00001" summary="Lectura del configjson">
       <created>1680629420025</created>

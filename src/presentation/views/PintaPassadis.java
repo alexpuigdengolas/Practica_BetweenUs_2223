@@ -2,15 +2,10 @@ package presentation.views;
 
 
 import business.entities.map.Mobility;
-import presentation.controllers.NGController;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Objects;
 
 /**
  * La classe ens permet pintar els passadisos del mapa.
@@ -20,23 +15,25 @@ import java.util.Objects;
 
 public class PintaPassadis extends JPanel{
     private final Mobility mov;
+    private  String playerColor;
+    private final Boolean userIsHere;
+    private boolean revealMap;
+    private Color colori;
 
 
-    public PintaPassadis(Mobility mov){
+    public PintaPassadis(Mobility mov,String playerColor, Boolean userIsHere, Boolean revealMap){
         this.mov = mov;
+        this.playerColor = playerColor;
+        this.userIsHere = userIsHere;
+        this.revealMap = revealMap;
 
     }
 
-    /**
-     * Pintem les passadisos del mapa
-     * @param g grafics
-     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
-        //Pintamos los pasillos en funcion de la movilidad para ver hacia donde van
+        //hay que hacer un if para cuando el user no esta
         g.setColor(Color.BLACK);
         g.fillRect(0,0,400,400);
 
@@ -62,6 +59,25 @@ public class PintaPassadis extends JPanel{
             g.setColor(Color.WHITE);
             g.fillRect((getWidth()/2) - ampladaY/2,getHeight()/5,ampladaX + alturaX/2, alturaX);
         }
+
+        if(userIsHere){ //miramos si esta el user en es cuarto y lo pintamos
+            int separadorX = getWidth() / 4;
+            int separadorY = getHeight() / 3;
+
+            try {
+                colori = (Color) Color.class.getField(playerColor).get(null);
+            } catch (IllegalAccessException | NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+
+            g.setColor(colori);
+            g.fillOval(separadorX, separadorY, 15, 15);
+
+        }
+
+
+
+
 
     }
 }

@@ -82,21 +82,19 @@ public class NGController  implements ActionListener {
 
                     //Printar la vista del mapa
                     Map map = MapManager.llegeixMapa(mapName);
-                    //MapManager mapManager = new MapManager(map);
+                    MapManager mapManager = new MapManager(map);
                     //Aqui creariem tots els crewmembers i impostors necesaris per jugar
 
                     //Creem el player
                     Player userPlayer = new Player(NGView.getColor());
                     //Coloquem els jugadors a la cella de la cafeteria
-                    //Cell initialCell = gameManager.getCafeCell(map.getCells());
-                    //userPlayer.setCell(initialCell);
-
-
-                    //PlayerManager playerManager = new PlayerManager(userPlayer);
-                    //mapManager.setPlayerManager(playerManager);
-
-
-                    gameView.setMap(map);
+                    Cell initialCell = gameManager.getCafeCell(map.getCells());
+                    userPlayer.setCell(initialCell);
+                    PlayerManager playerManager = new PlayerManager(userPlayer);
+                    gameManager.setPlayerManager(playerManager);
+                    mapManager.setPlayerManager(playerManager);
+                    gameManager.setMapManager(mapManager);
+                    gameView.setMap(map,userPlayer);
 
                     mainView.showGame();
                 }catch (ErrorMessage ex){

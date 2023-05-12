@@ -1,5 +1,7 @@
 package presentation.views;
 
+import business.PlayerManager;
+import business.entities.character.Character;
 import business.entities.character.Player;
 import business.entities.map.Map;
 
@@ -20,8 +22,8 @@ public class GameView extends JPanel {
     private MapView mapView = new MapView();
 
     private JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
-    private JButton jbL = new BasicArrowButton(BasicArrowButton.EAST);
-    private JButton jbR = new BasicArrowButton(BasicArrowButton.WEST);
+    private JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
+    private JButton jbR = new BasicArrowButton(BasicArrowButton.EAST);
     private JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
 
 
@@ -66,8 +68,8 @@ public class GameView extends JPanel {
         jbU.setActionCommand(BTN_U);
         jbU.setPreferredSize(new Dimension(150, 75));
         jpButtons.add(jbU, BorderLayout.NORTH);
-        jpButtons.add(jbL, BorderLayout.EAST);
-        jpButtons.add(jbR, BorderLayout.WEST);
+        jpButtons.add(jbL, BorderLayout.WEST);
+        jpButtons.add(jbR, BorderLayout.EAST);
         jpButtons.add(jbD, BorderLayout.CENTER);
         jpButtons.setPreferredSize(new Dimension(150, 150));
 
@@ -81,15 +83,21 @@ public class GameView extends JPanel {
     public void gameController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
-        //jbU.addActionListener(actionListener);
-        //jbL.addActionListener(actionListener);
-        //jbD.addActionListener(actionListener);
-        //jbR.addActionListener(actionListener);
+        jbU.addActionListener(actionListener);
+        jbL.addActionListener(actionListener);
+        jbD.addActionListener(actionListener);
+        jbR.addActionListener(actionListener);
 
     }
 
-    public void setMap(Map map) {
-        this.mapView.configureMapView(map);
+    public void setMap(Map map, Character userPlayer) {
+        this.mapView.configureMapView(map, userPlayer);
+        this.mapView.setSize(new Dimension(1500, 1500));
+        this.add(mapView, BorderLayout.CENTER);
+    }
+
+    public void updateMapView(Map map, Character userPlayer){
+        this.mapView.updateMapView(map, userPlayer);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }

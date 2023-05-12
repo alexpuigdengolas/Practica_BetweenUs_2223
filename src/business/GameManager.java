@@ -11,10 +11,25 @@ import java.util.LinkedList;
 
 public class GameManager {
     private UserDAO userDAO;
+    private PlayerManager playerManager;
+    private MapManager mapManager;
     public GameManager() {
         this.userDAO = new UserSQLDAO();
     }
 
+    public void setPlayerManager(PlayerManager playerManager){
+        this.playerManager = playerManager;
+    }
+    public PlayerManager getPlayerManager(){
+        return playerManager;
+    }
+
+    public void setMapManager(MapManager mapManager){
+        this.mapManager = mapManager;
+    }
+    public MapManager getmapManager(){
+        return mapManager;
+    }
 
     //Comprueba que el juego tenga las cosas correctas y envia una excepcion si falla alguna cosa
     public void checkGame(Game game) throws ErrorMessage{
@@ -83,6 +98,8 @@ public class GameManager {
         }
         return null;
     }
+
+
 
 
 

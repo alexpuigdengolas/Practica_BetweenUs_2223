@@ -1,11 +1,13 @@
 package presentation.views;
 
 
+
+import business.entities.character.Character;
 import business.entities.map.Cell;
 import business.entities.map.Map;
 import java.awt.*;
 import java.util.LinkedList;
-import javax.sound.midi.Soundbank;
+
 import javax.swing.*;
 
 
@@ -15,11 +17,13 @@ public class PintaMapa extends JPanel {
     private final Map map;
     private JPanel room;
     private JPanel jpMapa;
+    private Character userPlayer;
 
 
-    public PintaMapa(LayoutManager layoutManager, Map map) {
+    public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer) {
         super(layoutManager);
         this.map = map;
+        this.userPlayer = userPlayer;
     }
 
 
@@ -42,6 +46,8 @@ public class PintaMapa extends JPanel {
                     empty.setBorder(BorderFactory.createLineBorder(Color.WHITE));
                     jpMapa.add(empty);
                 } else {
+                    //String playerColor = getCellColors(userPlayer, map.getCells().get(pos));
+                    String playerColor = userPlayer.getColor();
                         //Miramos si es un cuarto
                     if (map.getCells().get(pos).getType().equals("room")) {
                         try {
@@ -50,15 +56,16 @@ public class PintaMapa extends JPanel {
                         } catch (IllegalAccessException | NoSuchFieldException e) {
                             e.printStackTrace();
                         }
+                        String roomName = map.getCells().get(pos).getRoomName();
 
                         //Llamamos a la clase que se encarga de pintar los cuartos, con el color y el nombre del cuarto(Aqui se tendran que pasar mas cosas)
-                        room = new PintaHab(color);
+                        room = new PintaHab(color,roomName,playerColor,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), true);
                         room.setBorder(BorderFactory.createLineBorder(Color.WHITE));//pintem els borders
                         jpMapa.add(room);
                     }
                     //Repetimos el proceso con el pasillo, pero no hace falta saber que pasillo es, le pasamos la movilidad para saber hacia donde va el pasillo
                     if (map.getCells().get(pos).getType().equals("corridor")) {
-                        JPanel corridor = new PintaPassadis(map.getCells().get(pos).getMobility());
+                        JPanel corridor = new PintaPassadis(map.getCells().get(pos).getMobility(),playerColor,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), true);
 
                         corridor.setBorder(BorderFactory.createLineBorder(Color.WHITE));
                         jpMapa.add(corridor);
@@ -67,6 +74,17 @@ public class PintaMapa extends JPanel {
             }
         }
         return jpMapa;
+    }
+    public String getCellColors(Character userPlayer, Cell cell) {
+        String color = userPlayer.getColor();
+        if (userPlayer.getCell() == cell) {
+            color = ("WHITE");
+        }
+
+        return color;
+    }
+    public boolean whereUserPosition(Cell userCell, Cell cell) {
+        return userCell == cell;
     }
 
 
