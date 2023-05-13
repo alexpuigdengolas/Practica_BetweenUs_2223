@@ -8,6 +8,7 @@ import business.entities.character.Player;
 import business.entities.map.Cell;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
+import presentation.controllers.GameController;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -66,6 +67,7 @@ public class GameManager {
         Game joc = userDAO.searchGame(game);
         return joc;
     }
+
 
     public void deleteGame(String game){
         userDAO.deleteGame(game);
@@ -149,6 +151,8 @@ public class GameManager {
             character.setCell(initialCell);
         }
     }
+
+
 
     public void startPlayers(Npc character) {
         character.startThread();

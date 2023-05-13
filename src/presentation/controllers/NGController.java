@@ -32,6 +32,8 @@ public class NGController  implements ActionListener {
 
     private ArrayList<String> colors;
 
+    private GameController gameController;
+
     /**
      * Constructor del controller
      * @param NGView
@@ -39,13 +41,14 @@ public class NGController  implements ActionListener {
      * @param cardLayout
      */
 
-    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout, UserManager userManager, GameManager gameManager, GameView gameView) {
+    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout, UserManager userManager, GameManager gameManager, GameView gameView,GameController gameController) {
         this.NGView = NGView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.userManager = userManager;
         this.gameManager = gameManager;
         this.gameView = gameView;
+        this.gameController = gameController;
         colors = new ArrayList<>(List.of("RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"));
 
     }
@@ -122,6 +125,8 @@ public class NGController  implements ActionListener {
                     gameManager.setNpcManager(npcManager);
                     //Creidem la vista del mapa
                     gameView.setMap(map,userPlayer,npcs);
+                    gameController.startMapThread();
+
 
 
                     mainView.showGame();

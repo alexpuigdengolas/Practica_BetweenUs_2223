@@ -62,7 +62,7 @@ public class PintaPassadis extends JPanel{
             g.fillRect((getWidth()/2) - ampladaY/2,getHeight()/5,ampladaX + alturaX/2, alturaX);
         }
 
-        if(userIsHere){ //miramos si esta el user en es cuarto y lo pintamos
+         //miramos si esta el user en es cuarto y lo pintamos
             int separadorX = getWidth() / 4;
             int separadorY = getHeight() / 3;
 
@@ -97,11 +97,6 @@ public class PintaPassadis extends JPanel{
                     separadorX = getWidth() / 4;
                 }
             }
-
-        }
-
-
-
 
 
     }

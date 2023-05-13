@@ -36,13 +36,13 @@ public class Main {
 
             RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
             LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
+            GameController gameController = new GameController(gameView, mainView, cardLayout,gameManager);
             StartController startController = new StartController(startView, mainView, cardLayout, gameManager);
             SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
             ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout);
             ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout, gameManager,gameView);
             DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
-            GameController gameController = new GameController(gameView, mainView, cardLayout,gameManager);
-            NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView);
+            NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView,gameController);
 
             registerView.registerController(registerController);
             loginView.loginController(loginController);

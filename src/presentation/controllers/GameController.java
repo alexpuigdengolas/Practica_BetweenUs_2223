@@ -26,6 +26,7 @@ public class GameController extends Thread implements ActionListener {
         this.gameManager = gameManager;
 
     }
+    public GameController(){}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -83,7 +84,7 @@ public class GameController extends Thread implements ActionListener {
     public void run() {
         while(isRunning) {
             try {
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(800);
 
                 gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 

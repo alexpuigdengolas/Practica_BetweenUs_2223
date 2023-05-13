@@ -32,7 +32,7 @@ public class PintaHab extends JPanel {
         super.paintComponent(g);
         g.setColor(color);
         g.fillRect(0, 0, getWidth(), getHeight());
-        if (userIsHere) {
+
 
 
             int separadorX = getWidth() / 4;
@@ -68,6 +68,6 @@ public class PintaHab extends JPanel {
                     separadorX = getWidth() / 4;
                 }
             }
-            }
+
         }
     }
