@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Funcionalitat Delete Game funciona.">
+    <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Es carrega el user al mapa y ens podem moure pel mapa">
+      <change afterPath="$PROJECT_DIR$/src/business/NpcManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/business/entities/Time.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/MapManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/PlayerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Impostor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Impostor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/entities/character/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Npc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ConfiguredController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/RegisterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/views/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/GameView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/views/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/MapView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" afterDir="false" />
@@ -97,7 +91,8 @@
       <workItem from="1681567392525" duration="8316000" />
       <workItem from="1681972015581" duration="5414000" />
       <workItem from="1682930665200" duration="4164000" />
-      <workItem from="1683877788458" duration="11371000" />
+      <workItem from="1683877788458" duration="11678000" />
+      <workItem from="1683992961315" duration="9799000" />
     </task>
     <task id="LOCAL-00001" summary="Lectura del configjson">
       <created>1680629420025</created>
@@ -134,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682633214346</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Es carrega el user al mapa y ens podem moure pel mapa">
+      <created>1683890672521</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683890672521</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +159,33 @@
     <MESSAGE value="New Game view i anar desde start a new game." />
     <MESSAGE value="Funcionalitat charge Game funciona." />
     <MESSAGE value="Funcionalitat Delete Game funciona." />
-    <option name="LAST_COMMIT_MESSAGE" value="Funcionalitat Delete Game funciona." />
+    <MESSAGE value="Es carrega el user al mapa y ens podem moure pel mapa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Es carrega el user al mapa y ens podem moure pel mapa" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/controllers/GameController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/views/MapView.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/views/PintaMapa.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/presentation/views/PintaHab.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

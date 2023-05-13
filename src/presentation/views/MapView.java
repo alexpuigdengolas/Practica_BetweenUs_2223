@@ -2,9 +2,11 @@ package presentation.views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 
 import business.PlayerManager;
 import business.entities.character.Character;
+import business.entities.character.Npc;
 import business.entities.map.Map;
 
 
@@ -16,7 +18,7 @@ public class MapView extends JPanel {
 
     }
 
-    public void configureMapView(Map map, Character userPlayer){
+    public void configureMapView(Map map, Character userPlayer, LinkedList<Npc>npcs){
 
         //TODO:Esta es la vista de todo el juego, ahora solo esta el Mapa hay que poner el resto de cosas
         this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
@@ -24,7 +26,7 @@ public class MapView extends JPanel {
         this.setLayout(new BorderLayout());
 
         //Creamos el mapa pasando el tamaño del mapa y el mapa
-        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer);
+        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs);
         JPanel jpCenter;
         //Pintamos el mapa en el panel
         jpCenter = mp.creaMapa();
@@ -32,12 +34,12 @@ public class MapView extends JPanel {
 
     }
 
-    public void updateMapView(Map map, Character userPlayer) {
+    public void updateMapView(Map map, Character userPlayer,LinkedList<Npc>npcs) {
 
         this.removeAll();
 
 
-        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer);
+        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs);
         JPanel jpCenter;
         //Pintamos el mapa en el panel
         jpCenter = mp.creaMapa();

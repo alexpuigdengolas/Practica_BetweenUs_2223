@@ -9,11 +9,13 @@ import presentation.views.MainView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
-public class GameController implements ActionListener {
+public class GameController extends Thread implements ActionListener {
 
     private GameView gameView;
     private MainView mainView;
+    private boolean isRunning;
     private CardLayout cardLayout;
     private GameManager gameManager;
 
@@ -36,7 +38,7 @@ public class GameController implements ActionListener {
                     System.out.println("pasa check arriba");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(1);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
                 }
             }
@@ -46,7 +48,7 @@ public class GameController implements ActionListener {
                     System.out.println("pasa check down");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(3);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
                 }
             }
@@ -56,7 +58,7 @@ public class GameController implements ActionListener {
                     System.out.println("Pasa check right");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(2);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
                 }
             }
@@ -67,9 +69,27 @@ public class GameController implements ActionListener {
                     System.out.println("pasa check left");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(0);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
                 }
+            }
+        }
+    }
+    public void startMapThread() {
+        isRunning = true;
+        this.start();
+    }
+
+    public void run() {
+        while(isRunning) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+
+                gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }

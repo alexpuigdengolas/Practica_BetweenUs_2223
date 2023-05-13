@@ -41,19 +41,6 @@ public class MapManager {
         return getMap().getCellByCoordinates(nextCell);
     }
 
-    /**
-     * Mètode que retorna la cella on es troba el personatge de l'usuari
-     * @return Cell corresponent a la posició de l'usuari
-     */
-    public Cell userPlayerCell () {
-        for(int i = 0; i < map.getCells().size(); i++) {
-            if (map.getCells().get(i) == playerManager.getPlayer().getCell()) {
-                return map.getCells().get(i);
-            }
-        }
-        return null;
-    }
-
 }
 
 

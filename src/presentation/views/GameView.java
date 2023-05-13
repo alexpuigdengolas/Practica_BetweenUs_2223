@@ -2,6 +2,7 @@ package presentation.views;
 
 import business.PlayerManager;
 import business.entities.character.Character;
+import business.entities.character.Npc;
 import business.entities.character.Player;
 import business.entities.map.Map;
 
@@ -9,6 +10,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
 
 public class GameView extends JPanel {
 
@@ -90,14 +92,14 @@ public class GameView extends JPanel {
 
     }
 
-    public void setMap(Map map, Character userPlayer) {
-        this.mapView.configureMapView(map, userPlayer);
+    public void setMap(Map map, Character userPlayer, LinkedList<Npc> npcs) {
+        this.mapView.configureMapView(map, userPlayer,npcs);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }
 
-    public void updateMapView(Map map, Character userPlayer){
-        this.mapView.updateMapView(map, userPlayer);
+    public void updateMapView(Map map, Character userPlayer,LinkedList<Npc>npcs){
+        this.mapView.updateMapView(map, userPlayer,npcs);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }
