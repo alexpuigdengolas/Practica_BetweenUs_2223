@@ -59,13 +59,11 @@ public class Npc extends Character{
         return -1;
     }
 
-    /**
-     * Mètode que mou al crewmember si aquest decideix moure's
-     */
     public synchronized void npcMovement() {
         if (startInterval == getIntervalTime().getSeconds()) {
             if (movement()) {
-                int nextRoom = getNextCrewMemberRoom(this);
+                System.out.println("soy la ficha color "+getColor()+" y me muevo");
+                int nextRoom = getNextNpcRoom(this);
                 setPreviousRoom(selectPreviousRoom(nextRoom));
                 int[] nextCell = getNextCoordinates(nextRoom);
                 setCell(getCellByCoordinates(nextCell));
@@ -89,7 +87,7 @@ public class Npc extends Character{
     }
 
 
-    public synchronized int getCrewMemberRandomPosition(int counter, int previousRoom) {
+    public synchronized int getNpcRandomPosition(int counter, int previousRoom) {
         int position = (int) (Math.random() * (counter));
         if (Math.abs(position-previousRoom) == 2) {
             return (int) (Math.random() * (counter));
@@ -99,10 +97,10 @@ public class Npc extends Character{
 
 
 
-    public synchronized int getNextCrewMemberRoom(Npc npc) {
+    public synchronized int getNextNpcRoom(Npc npc) {
         Mobility mobility = npc.getCell().getMobility();
         int counter = setMoveOptions(mobility);
-        int randomPosition = getCrewMemberRandomPosition(counter, npc.getPreviousRoom());
+        int randomPosition = getNpcRandomPosition(counter, npc.getPreviousRoom());
         return chooseRoom(randomPosition);
     }
 

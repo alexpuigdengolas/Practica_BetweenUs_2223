@@ -21,12 +21,7 @@ public abstract class Character extends Thread {
     private boolean isDead;
     private boolean canLog;
 
-    public Character (String color, int xCoordinate, int yCoordinate) {
-        this.color = color;
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
-        isDead = false;
-    }
+
 
 
     // Parametrized constructor

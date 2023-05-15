@@ -112,14 +112,7 @@ public class GameManager {
         }
         return null;
     }
-    public Cell getCoffeShopCell(LinkedList<Cell> cells) {
-        for (Cell cell: cells) {
-            if (cell.getRoomName().equals("cafeteria")) {
-                return cell;
-            }
-        }
-        return null;
-    }
+
     public String getNextColor(String userColor, int starterColor, ArrayList<String> colors) {
         for (int i = starterColor; i < colors.size(); i++) {
             if (!colors.get(i).equals(userColor)) {
@@ -145,7 +138,7 @@ public class GameManager {
 
     //TODO:Esto huele que va a estar mal
     public void setInitialCell(Character player, LinkedList<Npc> players, LinkedList<Cell> cells) {
-        Cell initialCell = getCoffeShopCell(cells);
+        Cell initialCell = getCafeCell(cells);
         player.setCell(initialCell);
         for (Character character: players) {
             character.setCell(initialCell);
@@ -153,11 +146,8 @@ public class GameManager {
     }
 
 
-
     public void startPlayers(Npc character) {
         character.startThread();
     }
-
-
 
 }
