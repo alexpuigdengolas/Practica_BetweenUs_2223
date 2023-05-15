@@ -2,6 +2,7 @@ package presentation.controllers;
 
 import business.*;
 import business.entities.Game;
+import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
 import business.entities.character.Player;
@@ -97,25 +98,30 @@ public class NGController  implements ActionListener {
                         firstColor++;
                     }
                     //Creem els npcs
-                    LinkedList<Npc> npcs = gameManager.getNpcs(NGView.getPlayers() - NGView.getImp() - 1, NGView.getColor(), firstColor, colors, mapManager);
+                    LinkedList<Character> npcs = gameManager.getNpcs(NGView.getPlayers() - NGView.getImp() - 1, NGView.getColor(), firstColor, colors, mapManager);
+                    firstColor = getImpostorsStarterColor(gameManager.getUserColorPosition(NGView.getColor(), colors), npcs.size(), firstColor);
+                    LinkedList<Impostor> impostors = gameManager.getImpostors(NGView.getImp(), NGView.getColor(), firstColor + npcs.size(), colors, mapManager);
 
-
+                    LinkedList<Character> players = new LinkedList<>();
+                    players.addAll(npcs);
+                    players.addAll(impostors);
+                    Collections.shuffle(players);
 
                     //Coloquem els jugadors a la cella de la cafeteria
                     Cell initialCell = gameManager.getCafeCell(map.getCells());
                     userPlayer.setCell(initialCell);
-                    gameManager.setInitialCell(userPlayer,npcs,map.getCells());
+                    gameManager.setInitialCell(userPlayer,players,map.getCells());
 
-                    for (Npc npc: npcs) {
-                        gameManager.startPlayers(npc);
+                    for (Character character: players) {
+                        gameManager.startPlayers(character);
                     }
 
                     //Creem els manegers que el controlen
                     PlayerManager playerManager = new PlayerManager(userPlayer);
-                    NpcManager npcManager = new NpcManager(npcs);
-                    for (Npc npc: npcs) {
+                    NpcManager npcManager = new NpcManager(players);
+                    for (Character character: players) {
 
-                        npc.setNpcManager(npcManager);
+                        character.setNpcManager(npcManager);
                     }
 
                     gameManager.setPlayerManager(playerManager);
@@ -124,7 +130,7 @@ public class NGController  implements ActionListener {
 
                     gameManager.setNpcManager(npcManager);
                     //Creidem la vista del mapa
-                    gameView.setMap(map,userPlayer,npcs);
+                    gameView.setMap(map,userPlayer,players);
                     gameController.startMapThread();
 
 
@@ -172,6 +178,13 @@ public class NGController  implements ActionListener {
                 components[1] = 205;
                 components[2] = 50;
                 return components;
+        }
+    }
+    public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
+        if (userPosition <= npcs) {
+            return starterColor+1;
+        } else {
+            return starterColor;
         }
     }
 

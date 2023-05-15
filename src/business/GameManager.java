@@ -3,6 +3,7 @@ package business;
 
 import business.entities.Game;
 import business.entities.character.Character;
+import business.entities.character.Impostor;
 import business.entities.character.Npc;
 import business.entities.character.Player;
 import business.entities.map.Cell;
@@ -122,9 +123,9 @@ public class GameManager {
         return null;
     }
 
-    public LinkedList<Npc> getNpcs(int crewMembersNum, String userColor, int starterColor, ArrayList<String> colors, MapManager mapManager) {
-        LinkedList<Npc> npcs = new LinkedList<>();
-        for (int i = 0; i < crewMembersNum; i++) {
+    public LinkedList<Character> getNpcs(int NpcNum, String userColor, int starterColor, ArrayList<String> colors, MapManager mapManager) {
+        LinkedList<Character> npcs = new LinkedList<>();
+        for (int i = 0; i < NpcNum; i++) {
             Npc npc = new Npc(getNextColor(userColor, starterColor, colors), mapManager);
             starterColor++;
             if (colors.get(starterColor).equals(userColor)) {
@@ -134,10 +135,22 @@ public class GameManager {
         }
         return npcs;
     }
+    public LinkedList<Impostor> getImpostors(int impostorsNum, String userColor, int starterColor, ArrayList<String> colors, MapManager mapManager) {
+        LinkedList<Impostor> impostors = new LinkedList<>();
+        for (int i = 0; i < impostorsNum; i++) {
+            Impostor impostor = new Impostor(getNextColor(userColor, starterColor, colors), mapManager);
+            starterColor++;
+            if (colors.get(starterColor).equals(userColor)) {
+                starterColor++;
+            }
+            impostors.add(impostor);
+        }
+        return impostors;
+    }
 
 
     //TODO:Esto huele que va a estar mal
-    public void setInitialCell(Character player, LinkedList<Npc> players, LinkedList<Cell> cells) {
+    public void setInitialCell(Character player, LinkedList<Character> players, LinkedList<Cell> cells) {
         Cell initialCell = getCafeCell(cells);
         player.setCell(initialCell);
         for (Character character: players) {
@@ -146,8 +159,16 @@ public class GameManager {
     }
 
 
-    public void startPlayers(Npc character) {
+    public void startPlayers(Character character) {
         character.startThread();
+    }
+    public int getUserColorPosition(String userColor, ArrayList<String> colors) {
+        for (int i = 0; i < colors.size(); i++) {
+            if (colors.get(i).equals(userColor)) {
+                return i;
+            }
+        }
+        return 0;
     }
 
 }

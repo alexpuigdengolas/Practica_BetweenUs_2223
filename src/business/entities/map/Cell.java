@@ -29,6 +29,7 @@ public class Cell {
     @SerializedName("adjacencies")
     @Expose
     private final LinkedList<String> adjacencies = null;
+    private int numCorpses = 0;
 
     public int getX() {
         return x;
@@ -59,6 +60,12 @@ public class Cell {
     }
     public LinkedList<String> getAdjacencies() {
         return adjacencies;
+    }
+    public int getNumCorpses() {
+        return numCorpses;
+    }
+    public void setNumCorpses(int numCorpses) {
+        this.numCorpses = numCorpses;
     }
 
 }

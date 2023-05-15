@@ -48,4 +48,13 @@ public class Map {
         }
         return null;
     }
+    public Cell getCellByName(String roomName) {
+        for (Cell cell : cells) {
+            if (cell.getRoomName().equals(roomName)) {
+                return cell;
+            }
+        }
+        System.out.println("Cell null: "+ roomName);
+        return null;
+    }
 }

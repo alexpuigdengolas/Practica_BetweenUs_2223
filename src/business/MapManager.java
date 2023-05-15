@@ -41,6 +41,14 @@ public class MapManager {
         return getMap().getCellByCoordinates(nextCell);
     }
 
+    public Cell userPlayerCell () {
+        for(int i = 0; i < map.getCells().size(); i++) {
+            if (map.getCells().get(i) == playerManager.getPlayer().getCell()) {
+                return map.getCells().get(i);
+            }
+        }
+        return null;
+    }
 }
 
 

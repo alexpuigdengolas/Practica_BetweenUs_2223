@@ -19,10 +19,10 @@ public class PintaMapa extends JPanel {
     private JPanel room;
     private JPanel jpMapa;
     private Character userPlayer;
-    private LinkedList<Npc> npcs;
+    private LinkedList<Character> npcs;
 
 
-    public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer,LinkedList<Npc>npcs) {
+    public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer,LinkedList<Character>npcs) {
         super(layoutManager);
         this.map = map;
         this.userPlayer = userPlayer;
@@ -78,7 +78,7 @@ public class PintaMapa extends JPanel {
         }
         return jpMapa;
     }
-    public LinkedList<String> getCellColors(Character userPlayer, LinkedList<Npc> npcs, Cell cell) {
+    public LinkedList<String> getCellColors(Character userPlayer, LinkedList<Character> npcs, Cell cell) {
         LinkedList<String> colors = new LinkedList<>();
         if (userPlayer.getCell() == cell) {
             colors.add(userPlayer.getColor());

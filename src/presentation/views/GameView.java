@@ -92,13 +92,13 @@ public class GameView extends JPanel {
 
     }
 
-    public void setMap(Map map, Character userPlayer, LinkedList<Npc> npcs) {
+    public void setMap(Map map, Character userPlayer, LinkedList<Character> npcs) {
         this.mapView.configureMapView(map, userPlayer,npcs);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }
 
-    public void updateMapView(Map map, Character userPlayer,LinkedList<Npc>npcs){
+    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs){
         this.mapView.updateMapView(map, userPlayer,npcs);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);

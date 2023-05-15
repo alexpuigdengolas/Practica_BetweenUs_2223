@@ -19,8 +19,6 @@ public abstract class Character extends Thread {
     private int yCoordinate;
     private boolean isRunning;
     private boolean isDead;
-    private boolean canLog;
-
 
 
 
@@ -157,5 +155,15 @@ public abstract class Character extends Thread {
             }
         }
         return 0;
+    }
+    public int getRandomPosition(int counter) {
+        return (int) (Math.random() * (counter));
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 }
