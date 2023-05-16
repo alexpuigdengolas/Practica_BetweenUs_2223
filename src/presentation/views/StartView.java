@@ -14,6 +14,7 @@ public class StartView extends JPanel {
     public static final String BTN_CON= "BTN_CON";
     public static final String BTN_CHAR= "BTN_CHAR";
     public static final String BTN_DEL= "BTN_DEL";
+    public static final String BTN_STA = "BTN_STA";
 
 
     private JButton jbSettings = new JButton("Settings");
@@ -21,6 +22,7 @@ public class StartView extends JPanel {
     private JButton jbConfGame = new JButton("Configured Game");
     private JButton jbCharGame = new JButton("Charged Game");
     private JButton jbDellGame = new JButton("Delete Game");
+    private JButton jbStatistics = new JButton("Statistics");
 
 
     private MainView mainView;
@@ -79,11 +81,13 @@ public class StartView extends JPanel {
         jbConfGame.setAlignmentX(Component.CENTER_ALIGNMENT);
         jbCharGame.setAlignmentX(Component.CENTER_ALIGNMENT);
         jbDellGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        jbStatistics.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         jbNewGame.setActionCommand(BTN_CRE);
         jbConfGame.setActionCommand(BTN_CON);
         jbCharGame.setActionCommand(BTN_CHAR);
         jbDellGame.setActionCommand(BTN_DEL);
+        jbStatistics.setActionCommand(BTN_STA);
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbNewGame);
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
@@ -92,6 +96,8 @@ public class StartView extends JPanel {
         buttonPanel.add(jbCharGame);
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbDellGame);
+        buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        buttonPanel.add(jbStatistics);
 
         actionPanel.setOpaque(false);
         fondo.add(actionPanel, BorderLayout.NORTH);
@@ -117,7 +123,7 @@ public class StartView extends JPanel {
         jbConfGame.addActionListener(actionListener);
         jbCharGame.addActionListener(actionListener);
         jbDellGame.addActionListener(actionListener);
-
+        jbStatistics.addActionListener(actionListener);
     }
 
     /**

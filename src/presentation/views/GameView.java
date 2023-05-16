@@ -1,10 +1,8 @@
 package presentation.views;
 
-import business.PlayerManager;
 import business.entities.character.Character;
-import business.entities.character.Npc;
-import business.entities.character.Player;
 import business.entities.map.Map;
+import presentation.views.custom.MapView;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
@@ -73,7 +71,7 @@ public class GameView extends JPanel {
         jpButtons.add(jbL, BorderLayout.WEST);
         jpButtons.add(jbR, BorderLayout.EAST);
         jpButtons.add(jbD, BorderLayout.CENTER);
-        jpButtons.setPreferredSize(new Dimension(150, 150));
+        jpButtons.setSize(new Dimension(420, 320));
 
         jpAux.add(jpButtons);
         this.add(jpAux, BorderLayout.WEST);

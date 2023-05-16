@@ -18,4 +18,6 @@ public interface UserDAO {
     Game searchGame(String game);
     void deleteGame(String game);
     void deleteGames(String user);
+    ArrayList<Float> searchGameStatistics(String user);
+    void setGameStatistic(String user, int game, float percentage);
 }

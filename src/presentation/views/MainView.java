@@ -1,7 +1,6 @@
 package presentation.views;
 
-import business.entities.map.Map;
-import presentation.views.custom.BackGroundPanel;
+import presentation.views.custom.MapView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -133,8 +132,7 @@ public class MainView extends JFrame {
         this.getViewComponent().show(this.getContentPane(), "chargeView");}
 
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
-    public void showGame(){
-        this.getViewComponent().show(this.getContentPane(), "gameView");}
+    public void showGame(){this.getViewComponent().show(this.getContentPane(), "gameView");}
 
 
 }

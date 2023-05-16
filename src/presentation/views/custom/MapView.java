@@ -1,4 +1,4 @@
-package presentation.views;
+package presentation.views.custom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +8,7 @@ import business.PlayerManager;
 import business.entities.character.Character;
 import business.entities.character.Npc;
 import business.entities.map.Map;
+import presentation.views.PintaMapa;
 
 
 public class MapView extends JPanel {

@@ -165,4 +165,30 @@ public class UserSQLDAO implements UserDAO {
         conn.deleteQuery("DELETE FROM game AS g WHERE g.creator LIKE '" + user + "'");
         conn.disconnect();
     }
+
+    @Override
+    public ArrayList<Float> searchGameStatistics(String user) {
+        ArrayList<Float> statistics = new ArrayList<>();
+
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT p.percentage FROM PlayerStatistics AS p WHERE p.username LIKE '"+user+"'");
+        try{
+            while (rs.next()) {
+                Float statistic = rs.getFloat("percentage");
+                statistics.add(statistic);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        conn.disconnect();
+
+        return statistics;
+    }
+
+    @Override
+    public void setGameStatistic(String user, int game, float percentage) {
+        conn.connect();
+        conn.insertQuery("INSERT INTO PlayerStatistics(username, game, percentage) VALUES ('" + user + "','" + (game+1) + "','" + percentage +"')");
+        conn.disconnect();
+    }
 }
