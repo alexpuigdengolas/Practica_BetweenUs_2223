@@ -83,6 +83,7 @@ public class NpcManager{
                 mapManager.getMap().getCells().get(cellPosition).setNumCorpses(mapManager.getMap().getCells().get(cellPosition).getNumCorpses() + 1);
                 players.get(crewMemberPosition).setDead(true);
                 players.get(crewMemberPosition).stopThread();
+                System.out.println("El impostot a matat a "+players.get(crewMemberPosition).getColor());
 
                 impostor.getPeriodTime().resetCounter();
 
