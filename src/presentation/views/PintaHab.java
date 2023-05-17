@@ -31,11 +31,11 @@ public class PintaHab extends JPanel {
         this.userIsHere = userIsHere;
         this.revealMap = revealMap;
         this.corpses = corpses;
-        /*try {
+        try {
             image = ImageIO.read(Objects.requireNonNull(getClass().getResource("files/Images/XDead.png")));
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 
