@@ -87,7 +87,7 @@ public class GameController extends Thread implements ActionListener {
                 TimeUnit.MILLISECONDS.sleep(500);
 
                 gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
-                System.out.println("Actualizo mapa");
+
 
 
             } catch (InterruptedException e) {

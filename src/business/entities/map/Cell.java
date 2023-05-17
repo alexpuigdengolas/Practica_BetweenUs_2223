@@ -26,9 +26,9 @@ public class Cell {
     @SerializedName("color")
     @Expose
     private String color;
-    @SerializedName("adjacencies")
+    @SerializedName("alcantarilla")
     @Expose
-    private final LinkedList<String> adjacencies = null;
+    private final LinkedList<String> alcantarilla = null;
     private int numCorpses = 0;
 
     public int getX() {
@@ -58,8 +58,8 @@ public class Cell {
     public String getColor() {
         return color;
     }
-    public LinkedList<String> getAdjacencies() {
-        return adjacencies;
+    public LinkedList<String> getAlcantarilla() {
+        return alcantarilla;
     }
     public int getNumCorpses() {
         return numCorpses;

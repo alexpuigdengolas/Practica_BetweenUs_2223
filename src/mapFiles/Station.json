@@ -5,26 +5,26 @@
   "mapName": "Station",
   "cells": [
     { "x": 0, "y": 0, "type": "room", "roomName" : "cafeteria", "mobility": {
-      "left": 0, "up": 0, "right": 1, "down": 0 }, "color": "RED", "adjacencies": ["cafeteria"] },
+      "left": 0, "up": 0, "right": 1, "down": 0 }, "color": "RED", "alcantarilla": ["cafeteria"] },
     { "x": 1, "y": 0, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 1, "up": 0, "right": 1, "down": 1 }, "color": "black", "adjacencies": []  },
+      "left": 1, "up": 0, "right": 1, "down": 1 }, "color": "black", "alcantarilla": []  },
     { "x": 2, "y": 0, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 1, "up": 0, "right": 0, "down": 1 }, "color": "black", "adjacencies": []  },
+      "left": 1, "up": 0, "right": 0, "down": 1 }, "color": "black", "alcantarilla": []  },
     { "x": 1, "y": 1, "type": "room", "roomName" : "reactor", "mobility": {
-      "left": 0, "up": 1, "right": 1, "down": 1 }, "color": "YELLOW", "adjacencies": ["reactor", "shields"]  },
+      "left": 0, "up": 1, "right": 1, "down": 1 }, "color": "YELLOW", "alcantarilla": ["reactor", "shields"]  },
     { "x": 2, "y": 1, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 1, "up": 1, "right": 1, "down": 1 }, "color": "black", "adjacencies": []  },
+      "left": 1, "up": 1, "right": 1, "down": 1 }, "color": "black", "alcantarilla": []  },
     { "x": 3, "y": 1, "type": "room", "roomName" : "shields", "mobility": {
-      "left": 1, "up": 0, "right": 0, "down": 0 }, "color": "GREEN", "adjacencies": ["cafeteria", "admin"]  },
+      "left": 1, "up": 0, "right": 0, "down": 0 }, "color": "GREEN", "alcantarilla": ["cafeteria", "admin"]  },
     { "x": 0, "y": 2, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 0, "up": 0, "right": 1, "down": 1 }, "color": "black", "adjacencies": []  },
+      "left": 0, "up": 0, "right": 1, "down": 1 }, "color": "black", "alcantarilla": []  },
     { "x": 1, "y": 2, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 1, "up": 1, "right": 1, "down": 0 }, "color": "black", "adjacencies": []  },
+      "left": 1, "up": 1, "right": 1, "down": 0 }, "color": "black", "alcantarilla": []  },
     { "x": 2, "y": 2, "type": "corridor", "roomName" : "corridor", "mobility": {
-      "left": 1, "up": 1, "right": 0, "down": 1 }, "color": "black", "adjacencies": []  },
+      "left": 1, "up": 1, "right": 0, "down": 1 }, "color": "black", "alcantarilla": []  },
     { "x": 0, "y": 3, "type": "room", "roomName" : "admin", "mobility": {
-      "left": 0, "up": 1, "right": 0, "down": 0 }, "color": "ORANGE", "adjacencies": ["admin"]  },
+      "left": 0, "up": 1, "right": 0, "down": 0 }, "color": "ORANGE", "alcantarilla": ["admin"]  },
     { "x": 2, "y": 3, "type": "room", "roomName" : "security", "mobility": {
-      "left": 0, "up": 1, "right": 0, "down": 0 }, "color": "BLUE", "adjacencies": ["security", "shields"]  }
+      "left": 0, "up": 1, "right": 0, "down": 0 }, "color": "BLUE", "alcantarilla": ["security", "shields"]  }
   ]
 }

@@ -4,9 +4,13 @@ package presentation.views;
 import business.entities.map.Mobility;
 import presentation.controllers.NGController;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * La classe ens permet pintar els passadisos del mapa.
@@ -21,14 +25,21 @@ public class PintaPassadis extends JPanel{
     private NGController ngController = new NGController();
     private boolean revealMap;
     private Color colori;
+    private LinkedList<Boolean> corpses;
+    private BufferedImage image;
 
 
-    public PintaPassadis(Mobility mov,LinkedList<String> colors, Boolean userIsHere, Boolean revealMap){
+    public PintaPassadis(Mobility mov,LinkedList<String> colors, Boolean userIsHere, Boolean revealMap,LinkedList<Boolean> corpses){
         this.mov = mov;
         this.colors = colors;
         this.userIsHere = userIsHere;
         this.revealMap = revealMap;
-
+        this.corpses = corpses;
+        try {
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("files/Images/XDead.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -88,7 +99,10 @@ public class PintaPassadis extends JPanel{
                 g.setColor(colori);
                 g.fillOval(separadorX, separadorY, 15, 15);
 
-
+                if(corpses.get(i).booleanValue()) {
+                    Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
+                    g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
+                }
 
                 separadorX += 20;
 

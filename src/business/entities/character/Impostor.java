@@ -57,12 +57,12 @@ public class Impostor extends Character{
     }
 
     public synchronized boolean checkVentilation(Cell cell) {
-        return !cell.getAdjacencies().isEmpty();
+        return !cell.getAlcantarilla().isEmpty();
     }
 
 
     public synchronized int chooseVentilationRoom(Cell cell) {
-        return getRandomPosition(cell.getAdjacencies().size());
+        return getRandomPosition(cell.getAlcantarilla().size());
     }
 
     public synchronized boolean flipCoin() {
@@ -89,6 +89,7 @@ public class Impostor extends Character{
             if (impostor.movement()) {
                 if (!ventilationMovement(impostor)) {
                     int nextRoom = getNextImpostorRoom(impostor);
+                    System.out.println("El impostor se mueve");
                     int[] nextCell = impostor.getNextCoordinates(nextRoom);
                     impostor.setCell(getCellByCoordinates(nextCell));
                 }
@@ -104,7 +105,7 @@ public class Impostor extends Character{
         if (checkVentilation(impostor.getCell())) {
             if (npcManager.getNumCrewMembersCell(impostor.getCell()) == 0 && flipCoin()) {
                 int nextRoom = chooseVentilationRoom(impostor.getCell());
-                String roomName = impostor.getCell().getAdjacencies().get(nextRoom);
+                String roomName = impostor.getCell().getAlcantarilla().get(nextRoom);
                 int numCrewMembers = npcManager.getNumCrewMembersCell(mapManager.getMap().getCellByName(roomName));
                 if (numCrewMembers == 0 || (numCrewMembers == 1 && impostor.canKill)) {
                     impostor.setCell(mapManager.getMap().getCellByName(roomName));

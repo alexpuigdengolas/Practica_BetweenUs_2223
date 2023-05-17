@@ -19,6 +19,7 @@ public class Npc extends Character{
     // Parametrized constructor
     public synchronized boolean movement() {
         int probability = (int)(Math.random()*(getMaxProbability() + 1));
+        System.out.println("La probabilidad ha salido: "+probability);
         return probability <= 55;
     }
 
@@ -60,12 +61,17 @@ public class Npc extends Character{
     }
 
     public synchronized void npcMovement() {
+        //mira si el el interval e
+
         if (startInterval == getIntervalTime().getSeconds()) {
             if (movement()) {
+                System.out.println("la previus room es: "+getPreviousRoom());
                 System.out.println("soy la ficha color "+getColor()+" y me muevo");
                 int nextRoom = getNextNpcRoom(this);
+                System.out.println("La next room es: "+nextRoom);
                 setPreviousRoom(selectPreviousRoom(nextRoom));
                 int[] nextCell = getNextCoordinates(nextRoom);
+                System.out.println("se va a la celda:  "+getCellByCoordinates(nextCell).getRoomName());
                 setCell(getCellByCoordinates(nextCell));
 
             }
@@ -88,7 +94,10 @@ public class Npc extends Character{
 
 
     public synchronized int getNpcRandomPosition(int counter, int previousRoom) {
+        System.out.println("counter es: "+counter);
         int position = (int) (Math.random() * (counter));
+        System.out.println("position es: "+position);
+        System.out.println("La previus room es: "+previousRoom);
         if (Math.abs(position-previousRoom) == 2) {
             return (int) (Math.random() * (counter));
         }
@@ -107,6 +116,7 @@ public class Npc extends Character{
 
     @Override
     public void run() {
+
         getTotalTime().initCounter();
         getIntervalTime().initCounter();
         startInterval = getInterval();
