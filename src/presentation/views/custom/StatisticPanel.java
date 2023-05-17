@@ -72,4 +72,9 @@ public class StatisticPanel extends JPanel {
         }
     }
 
+    public void updateData(float[] newData) {
+        data = newData;
+        repaint();
+    }
+
 }

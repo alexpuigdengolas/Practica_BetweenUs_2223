@@ -23,6 +23,8 @@ public class StatisticsView extends JPanel {
     private MainView mainView;
     private StatisticsManager statisticsManager;
     private float[] data = {};
+    private StatisticPanel chartPanel = new StatisticPanel(new float[]{});
+    BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
 
     public StatisticsView() {
         this.statisticsManager = new StatisticsManager();
@@ -32,7 +34,7 @@ public class StatisticsView extends JPanel {
 
     private void configureChargeView() {
 
-        BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
+
         fondo.setLayout(new BorderLayout());
 
         //this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
@@ -123,5 +125,13 @@ public class StatisticsView extends JPanel {
         for (int i = 0; i < dirtyData.size(); i++){
             data[i] = dirtyData.get(i);
         }
+
+        chartPanel.updateData(data);
+        chartPanel.revalidate();
+        chartPanel.repaint();
+        chartPanel.setPreferredSize(new Dimension(220, 120));
+        fondo.add(chartPanel, BorderLayout.CENTER);
     }
+
+
 }
