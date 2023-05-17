@@ -128,6 +128,7 @@ public class Npc extends Character{
                 e.printStackTrace();
             }
         }
+        this.interrupt();
 
     }
 }

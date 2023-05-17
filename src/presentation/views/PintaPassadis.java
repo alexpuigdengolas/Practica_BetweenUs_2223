@@ -29,17 +29,19 @@ public class PintaPassadis extends JPanel{
     private BufferedImage image;
 
 
+
     public PintaPassadis(Mobility mov,LinkedList<String> colors, Boolean userIsHere, Boolean revealMap,LinkedList<Boolean> corpses){
         this.mov = mov;
         this.colors = colors;
         this.userIsHere = userIsHere;
         this.revealMap = revealMap;
         this.corpses = corpses;
-        try {
+
+       /* try {
             image = ImageIO.read(Objects.requireNonNull(getClass().getResource("files/Images/XDead.png")));
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override
@@ -98,10 +100,14 @@ public class PintaPassadis extends JPanel{
 
                 g.setColor(colori);
                 g.fillOval(separadorX, separadorY, 15, 15);
+                //TODO:Falta mirar que cuando se mueran en vez de negro se ponga la foto
+                if(corpses.get(i)) {
 
-                if(corpses.get(i).booleanValue()) {
-                    Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
-                    g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
+                    g.setColor(Color.BLACK);
+                    g.fillOval(separadorX, separadorY, 15, 15);
+                    //Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
+                    //g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
+
                 }
 
                 separadorX += 20;

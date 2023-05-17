@@ -25,16 +25,16 @@ public class NpcManager{
         }
     }
 
-    public int getNumCrewMembersCell(Cell cell) {
-        int crewMembers = 0;
+    public int getNumNpcCell(Cell cell) {
+        int npcs = 0;
         for (Character character: players) {
             if (character.getCell() == cell && character instanceof Npc) {
                 if (!character.isDead()) {
-                    crewMembers++;
+                    npcs++;
                 }
             }
         }
-        return crewMembers;
+        return npcs;
     }
 
     public boolean eliminateUserPlayer(Character userPlayer) {
@@ -61,29 +61,35 @@ public class NpcManager{
     }
     public int getNpcPosition(Cell cell) {
         for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getCell() == cell) {
+            if (players.get(i).getCell() == cell && players.get(i) instanceof Npc) {
                 return i;
             }
         }
         return 0;
     }
-    public synchronized boolean eliminateCrewMember(MapManager mapManager, Impostor impostor) {
-        if (crewMemberKilled(mapManager,impostor)) {
+    public synchronized boolean eliminateNpc(MapManager mapManager, Impostor impostor) {
+        if (npcKilled(mapManager,impostor)) {
             return true;
         }
         return false;
     }
 
-    public boolean crewMemberKilled(MapManager mapManager, Impostor impostor) {
-        if (getNpcNumCell(impostor.getCell()) == 2 && getNumCrewMembersCell(impostor.getCell()) == 1
+    public boolean npcKilled(MapManager mapManager, Impostor impostor) {
+        if (getNpcNumCell(impostor.getCell()) == 2 && getNumNpcCell(impostor.getCell()) == 1
                 && mapManager.userPlayerCell() != impostor.getCell()) {
-            int crewMemberPosition = getNpcPosition(impostor.getCell());
-            if (!players.get(crewMemberPosition).isDead() && crewMemberPosition != -1) {
+            int npcPosition = getNpcPosition(impostor.getCell());
+            System.out.println("Quiero matar a alguien");
+            for(int i = 0 ; i < players.size(); i++){
+                System.out.println(players.get(i).getColor());
+            }
+            System.out.println("Quiero matar a :"+players.get(npcPosition).getColor());
+            //SE mata a si mismo
+            if (!players.get(npcPosition).isDead() && npcPosition != -1 && players.get(npcPosition) instanceof Npc) {
                 int cellPosition = getCellPosition(mapManager, impostor.getCell());
                 mapManager.getMap().getCells().get(cellPosition).setNumCorpses(mapManager.getMap().getCells().get(cellPosition).getNumCorpses() + 1);
-                players.get(crewMemberPosition).setDead(true);
-                players.get(crewMemberPosition).stopThread();
-                System.out.println("El impostot a matat a "+players.get(crewMemberPosition).getColor());
+                players.get(npcPosition).setDead(true);
+                players.get(npcPosition).stopThread();
+                System.out.println("El impostot a matat a "+players.get(npcPosition).getColor());
 
                 impostor.getPeriodTime().resetCounter();
 

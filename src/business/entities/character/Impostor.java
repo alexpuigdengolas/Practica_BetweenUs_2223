@@ -6,6 +6,7 @@ import business.entities.Time;
 import business.entities.map.Cell;
 import business.entities.map.Mobility;
 
+import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 public class Impostor extends Character{
@@ -92,9 +93,8 @@ public class Impostor extends Character{
                     System.out.println("El impostor se mueve");
                     int[] nextCell = impostor.getNextCoordinates(nextRoom);
                     impostor.setCell(getCellByCoordinates(nextCell));
+
                 }
-            } else {
-                System.out.println("");
             }
             startInterval = getInterval();
             getIntervalTime().resetCounter();
@@ -103,11 +103,11 @@ public class Impostor extends Character{
 
     public synchronized boolean ventilationMovement(Impostor impostor) {
         if (checkVentilation(impostor.getCell())) {
-            if (npcManager.getNumCrewMembersCell(impostor.getCell()) == 0 && flipCoin()) {
+            if (npcManager.getNumNpcCell(impostor.getCell()) == 0 && flipCoin()) {
                 int nextRoom = chooseVentilationRoom(impostor.getCell());
                 String roomName = impostor.getCell().getAlcantarilla().get(nextRoom);
-                int numCrewMembers = npcManager.getNumCrewMembersCell(mapManager.getMap().getCellByName(roomName));
-                if (numCrewMembers == 0 || (numCrewMembers == 1 && impostor.canKill)) {
+                int numNpcs = npcManager.getNumNpcCell(mapManager.getMap().getCellByName(roomName));
+                if (numNpcs == 0 || (numNpcs == 1 && impostor.canKill)) {
                     impostor.setCell(mapManager.getMap().getCellByName(roomName));
                     return true;
                 }
@@ -141,6 +141,7 @@ public class Impostor extends Character{
 
     @Override
     public void run() {
+
         getTotalTime().initCounter();
         getIntervalTime().initCounter();
         startInterval = getInterval();
@@ -150,7 +151,7 @@ public class Impostor extends Character{
             try {
                 impostorMovement(this);
                 if (checkKillingPeriod(this) || canKill == null) {
-                    if (npcManager.eliminateCrewMember(mapManager, this)) {
+                    if (npcManager.eliminateNpc(mapManager, this)) {
                         canKill = false;
                         afterKillMovement(this);
                     }

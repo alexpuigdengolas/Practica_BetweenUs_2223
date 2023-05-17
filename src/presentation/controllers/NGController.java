@@ -90,7 +90,6 @@ public class NGController  implements ActionListener {
                     //Printar la vista del mapa
                     Map map = MapManager.llegeixMapa(mapName);
                     MapManager mapManager = new MapManager(map);
-                    //Aqui creariem tots els crewmembers i impostors necesaris per jugar
 
                     //Creem el player
                     Player userPlayer = new Player(NGView.getColor());

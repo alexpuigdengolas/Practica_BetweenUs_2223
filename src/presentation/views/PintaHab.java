@@ -1,5 +1,6 @@
 package presentation.views;
 
+import com.google.gson.stream.JsonToken;
 import presentation.controllers.NGController;
 
 import javax.imageio.ImageIO;
@@ -24,6 +25,7 @@ public class PintaHab extends JPanel {
 
 
 
+
     public PintaHab(Color color, String roomName, LinkedList<String> colors, Boolean userIsHere, Boolean revealMap, LinkedList<Boolean> corpses){
         this.color = color;
         this.roomName = roomName;
@@ -31,11 +33,12 @@ public class PintaHab extends JPanel {
         this.userIsHere = userIsHere;
         this.revealMap = revealMap;
         this.corpses = corpses;
-        try {
+
+      /*  try {
             image = ImageIO.read(Objects.requireNonNull(getClass().getResource("files/Images/XDead.png")));
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
@@ -68,14 +71,19 @@ public class PintaHab extends JPanel {
                     g.setColor(Color.BLACK);
                     g.fillOval(separadorX - 1, separadorY - 1, 17, 17);
                 }
-
-                if(corpses.get(i).booleanValue()) {
-                    Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
-                    g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
-                }
-
                 g.setColor(colori);
                 g.fillOval(separadorX, separadorY, 15, 15);
+                //TODO:Falta mirar que cuando mueran se les despinte la pantalla
+                if(corpses.get(i)) {
+
+                    g.setColor(Color.BLACK);
+                    g.fillOval(separadorX, separadorY, 15, 15);
+                    //Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
+                    //g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
+
+                }
+
+
 
 
                 separadorX += 20;

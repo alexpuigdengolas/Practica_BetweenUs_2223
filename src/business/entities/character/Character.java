@@ -77,8 +77,10 @@ public abstract class Character extends Thread {
     }
 
     public synchronized void stopThread() {
+
         isRunning = false;
-        this.interrupt();
+
+
     }
     public int getMaxProbability() {
         return 100;
