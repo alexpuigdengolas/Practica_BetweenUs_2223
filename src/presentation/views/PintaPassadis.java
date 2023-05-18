@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -36,12 +37,14 @@ public class PintaPassadis extends JPanel{
         this.userIsHere = userIsHere;
         this.revealMap = revealMap;
         this.corpses = corpses;
-
-       /* try {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getResource("files/Images/XDead.png")));
+        try{
+            File imageFile = new File("files/Images/XDead.png");
+            image = ImageIO.read(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+
+
     }
 
     @Override
@@ -90,24 +93,28 @@ public class PintaPassadis extends JPanel{
                         e.printStackTrace();
                     }
                 }
-                if (colors.get(i).equals("BLACK")) {
-                    g.setColor(Color.WHITE);
-                    g.fillOval(separadorX - 1, separadorY - 1, 17, 17);
-                } else {
-                    g.setColor(Color.BLACK);
-                    g.fillOval(separadorX - 1, separadorY - 1, 17, 17);
-                }
 
-                g.setColor(colori);
-                g.fillOval(separadorX, separadorY, 15, 15);
+
+
                 //TODO:Falta mirar que cuando se mueran en vez de negro se ponga la foto
                 if(corpses.get(i)) {
 
-                    g.setColor(Color.BLACK);
-                    g.fillOval(separadorX, separadorY, 15, 15);
-                    //Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
-                    //g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
 
+                    Image imageScaled = image.getScaledInstance(21, 21, Image.SCALE_DEFAULT);
+                    g.drawImage(imageScaled, separadorX - 3, separadorY - 3, this);
+
+                }else{
+
+
+                    if (colors.get(i).equals("BLACK")) {
+                        g.setColor(Color.WHITE);
+                        g.fillOval(separadorX - 1, separadorY - 1, 17, 17);
+                    } else {
+                        g.setColor(Color.BLACK);
+                        g.fillOval(separadorX - 1, separadorY - 1, 17, 17);
+                    }
+                    g.setColor(colori);
+                    g.fillOval(separadorX, separadorY, 15, 15);
                 }
 
                 separadorX += 20;
