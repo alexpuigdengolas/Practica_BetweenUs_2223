@@ -2,12 +2,15 @@ package presentation.views;
 
 import business.entities.character.Character;
 import business.entities.map.Map;
+import presentation.views.custom.DeductionPanel;
+import presentation.views.custom.DefaultTaskPanel;
 import presentation.views.custom.MapView;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class GameView extends JPanel {
@@ -20,6 +23,11 @@ public class GameView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
 
     private MapView mapView = new MapView();
+    private JPanel jpTask = new JPanel();
+    private DefaultTaskPanel defaultTaskPanel;
+    private DeductionPanel deductionPanel;
+    private CardLayout viewComponents;
+
 
     private JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
     private JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
@@ -32,8 +40,33 @@ public class GameView extends JPanel {
 
 
 
-    public GameView(){
+    public GameView() {
+        defaultTaskPanel = new DefaultTaskPanel();
+        deductionPanel = new DeductionPanel(new ArrayList<String>());
+
+        // Create a new JPanel with CardLayout
+        JPanel cardPanel = new JPanel(new CardLayout());
+
+        // Add jpTask to the cardPanel
+        cardPanel.add(jpTask, "jpTask");
+
+        // Add panels to jpTask
+        jpTask.setLayout(new BorderLayout());
+        jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
+        jpTask.add(deductionPanel, BorderLayout.SOUTH);
+
+        // Add cardPanel to the GameView
+        this.setLayout(new BorderLayout());
+        this.add(cardPanel, BorderLayout.CENTER);
+
         configureView();
+
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardLayout.show(cardPanel, "jpTask");
+    }
+
+    private CardLayout getViewComponent() {
+        return viewComponents;
     }
 
     private void configureView(){
@@ -76,8 +109,9 @@ public class GameView extends JPanel {
         jpAux.add(jpButtons);
         this.add(jpAux, BorderLayout.WEST);
 
-
-        //TODO: Hacer la botonera lateral para el movimiento del jugador
+        jpTask = new DefaultTaskPanel();
+        jpTask.setPreferredSize(new Dimension(420, 100));
+        this.add(jpTask, BorderLayout.SOUTH);
     }
 
     public void gameController(ActionListener actionListener){
@@ -100,5 +134,28 @@ public class GameView extends JPanel {
         this.mapView.updateMapView(map, userPlayer,npcs);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
+    }
+
+    public void showDefaultTask(){
+        CardLayout cardLayout = (CardLayout) jpTask.getLayout();
+        cardLayout.show(jpTask, "defaultTask");
+    }
+
+    public void showDeductions(ArrayList<String> colors){
+        deductionPanel = new DeductionPanel(colors);
+
+        // Set CardLayout as the layout manager for jpTask
+        jpTask.setLayout(new CardLayout());
+
+        // Add deductionPanel to jpTask
+        jpTask.add(deductionPanel, "deduction");
+
+        // Show the deductionPanel using CardLayout
+        CardLayout cardLayout = (CardLayout) jpTask.getLayout();
+        cardLayout.show(jpTask, "deduction");
+
+        jpTask.setPreferredSize(new Dimension(420, 100));
+        this.add(jpTask, BorderLayout.SOUTH);
+        this.repaint();
     }
 }

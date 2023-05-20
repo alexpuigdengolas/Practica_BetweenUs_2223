@@ -40,4 +40,5 @@ public class PlayerManager {
     public boolean checkDown() {
         return getPlayer().getCell().getMobility().getDown() != 0;
     }
+
 }

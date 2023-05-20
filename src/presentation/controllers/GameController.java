@@ -1,7 +1,7 @@
 package presentation.controllers;
 
 import business.GameManager;
-import business.PlayerManager;
+import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
 import presentation.views.MainView;
@@ -9,6 +9,8 @@ import presentation.views.MainView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 public class GameController extends Thread implements ActionListener {
@@ -41,8 +43,10 @@ public class GameController extends Thread implements ActionListener {
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
             }
+
             case GameView.BTN_D -> {
                 System.out.println("Clicko abajo");
                 if (gameManager.getPlayerManager().checkDown()) {
@@ -51,7 +55,10 @@ public class GameController extends Thread implements ActionListener {
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
+
                 }
+
             }
             case GameView.BTN_R -> {
                 System.out.println("Clicko right");
@@ -61,7 +68,9 @@ public class GameController extends Thread implements ActionListener {
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
+
             }
             case GameView.BTN_L -> {
                 System.out.println("Clicko left");
@@ -72,10 +81,38 @@ public class GameController extends Thread implements ActionListener {
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
             }
         }
     }
+
+    private void checkRoom(Player player, LinkedList<Character> players) {
+        switch (player.getCell().getRoomName()){
+            case "admin":
+                ArrayList<String> colors = new ArrayList<>();
+                for (Character character : players) {
+                    colors.add(character.getColor());
+                }
+                gameView.showDeductions(colors);
+                break;
+            case "cafeteria":
+                gameView.showDefaultTask();
+                //TODO: Check DEDUCTIONS
+                break;
+            case "security":
+                gameView.showDefaultTask();
+                //TODO: Show LOG
+                break;
+            case "corridor":
+                gameView.showDefaultTask();
+                break;
+            default:
+                gameView.showDefaultTask();
+                break;
+        }
+    }
+
     public void startMapThread() {
         isRunning = true;
         this.start();
