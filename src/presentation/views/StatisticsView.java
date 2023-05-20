@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StatisticsView extends JPanel {
     public static final String BTN_BACK = "BTN_BACK";
@@ -37,7 +38,7 @@ public class StatisticsView extends JPanel {
 
         fondo.setLayout(new BorderLayout());
 
-        //this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+        this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
         this.setLayout(new BorderLayout());
         this.add(fondo);
@@ -91,7 +92,7 @@ public class StatisticsView extends JPanel {
         //float[] data = {100, 50, 33, 50, 60, 66, 71};
 
 
-        StatisticPanel chartPanel = new StatisticPanel(data);
+        chartPanel = new StatisticPanel(data);
         chartPanel.setPreferredSize(new Dimension(220, 120));
         fondo.add(chartPanel, BorderLayout.CENTER);
 
@@ -122,15 +123,16 @@ public class StatisticsView extends JPanel {
     public void updateData(String username){
         ArrayList<Float> dirtyData = statisticsManager.searchGameStatistics(username);
         float[] data = new float[dirtyData.size()];
-        for (int i = 0; i < dirtyData.size(); i++){
+        for (int i = 0; i < dirtyData.size(); i++) {
             data[i] = dirtyData.get(i);
         }
 
-        chartPanel.updateData(data);
+        float[] dataCopy = Arrays.copyOf(data, data.length);
+
+        chartPanel.updateData(dataCopy);
         chartPanel.revalidate();
         chartPanel.repaint();
         chartPanel.setPreferredSize(new Dimension(220, 120));
-        fondo.add(chartPanel, BorderLayout.CENTER);
     }
 
 
