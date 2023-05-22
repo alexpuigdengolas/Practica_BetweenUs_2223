@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * sera la clase para construir la vista de la configuracion de nuestro programa
+ */
 public class ConfiguredView extends JPanel {
     public static final String BTN_CHA = "BTN_CON";
     public static final String BTN_BACK = "BTN_BACK";
@@ -23,6 +26,9 @@ public class ConfiguredView extends JPanel {
     private CardLayout components;
     private MainView mainView;
 
+    /**
+     * es el constructor de configure
+     */
     public ConfiguredView() {
         configureConfiguredView();
     }
@@ -32,6 +38,10 @@ public class ConfiguredView extends JPanel {
             comboBox.addItem(game);
         }
     }
+
+    /**
+     * este es el metodo que genera la vista entera de configureView
+     */
     private void configureConfiguredView() {
 
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
@@ -108,18 +118,30 @@ public class ConfiguredView extends JPanel {
 
     }
 
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param actionListener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void configuredController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
         configuredButton.addActionListener(actionListener);
     }
 
+    /**
+     *
+     * @param options
+     */
     public void chargeExistingGames(String[] options){
         for(String option: options){
             comboBox.addItem(option);
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String optionSelected(){
         return (String) comboBox.getSelectedItem();
     }
