@@ -24,11 +24,9 @@ public class SettingsView extends JPanel {
         configureView();
     }
 
-    private void configureView(){
-
+    private void configureView() {
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
         fondo.setLayout(new BorderLayout());
-
 
         this.setLayout(new BorderLayout());
         this.add(fondo);
@@ -39,13 +37,13 @@ public class SettingsView extends JPanel {
         fondo.add(voidPanel, BorderLayout.EAST);
         fondo.add(voidPanel, BorderLayout.WEST);
 
-        JPanel actionPanel= new JPanel();
+        JPanel actionPanel = new JPanel();
+        actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.Y_AXIS));
 
         jbBack.setActionCommand(BTN_BACK);
         actionPanel.add(jbBack);
 
         JPanel buttonPanel = new JPanel();
-
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
         jbDelete.setActionCommand(BTN_DEL);
@@ -67,7 +65,7 @@ public class SettingsView extends JPanel {
         fondo.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
 
-    public void settingsController(ActionListener controller){
+    public void settingsController(ActionListener controller) {
         jbLogOut.addActionListener(controller);
         jbDelete.addActionListener(controller);
         jbBack.addActionListener(controller);
@@ -85,12 +83,11 @@ public class SettingsView extends JPanel {
      * Setter de los componentes de las vistas
      * @param components componentes de las vistas
      */
-
     public void setComponents(CardLayout components) {
         this.components = components;
     }
 
     public int confirmPopUp(String action) {
-        return JOptionPane.showConfirmDialog(null,action);
+        return JOptionPane.showConfirmDialog(null, action);
     }
 }

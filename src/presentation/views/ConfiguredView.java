@@ -73,6 +73,7 @@ public class ConfiguredView extends JPanel {
         fondo.add(voidPanel, BorderLayout.EAST);
         fondo.add(voidPanel, BorderLayout.WEST);
 
+        //ara esta be
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         //Label de cargar partida
@@ -81,6 +82,10 @@ public class ConfiguredView extends JPanel {
         jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.add(jlCharge);
+
+
+
+
 
 
         //TextField de cargar partida
