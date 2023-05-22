@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * sera la clase para construir la vista del principio de nuestro programa, la vista StartView
+ */
 public class StartView extends JPanel {
 
 
@@ -30,8 +33,9 @@ public class StartView extends JPanel {
     private CardLayout components;
 
 
-
-
+    /**
+     * Este es nuestro constructor de Start
+     */
     public StartView(){
 
         configureView();
@@ -39,7 +43,7 @@ public class StartView extends JPanel {
     }
 
     /**
-     * En esta funcion construimos la vista
+     * En esta funcion construimos la vista de startView
      */
     private void configureView() {
 

@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * sera la clase para construir la vista del registro de usuarios de nuestro programa
+ */
 public class RegisterView extends JPanel {
 
     public static final String BTN_REGISTER = "BTN_REGISTER";
@@ -26,10 +29,16 @@ public class RegisterView extends JPanel {
     private CardLayout components;
     private MainView mainView;
 
+    /**
+     * es el constructor de nuestro registro de usuarios del programa
+     */
     public RegisterView(){
         configureView();
     }
 
+    /**
+     * en este metodo creamos la vista de registro de usuarios
+     */
     private void configureView(){
 
         //TODO:Hablar con el profe para ver porque no pinta bien y como arreglarlo.

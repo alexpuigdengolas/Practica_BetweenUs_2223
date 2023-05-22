@@ -11,11 +11,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ * sera la clase para construir la vista de las estadisticas de nuestro programa
+ */
 public class StatisticsView extends JPanel {
-
     public static final String BTN_BACK = "BTN_BACK";
     public static final String BTN_STI = "BTN_STI";
+
 
     private JButton jbBack = new JButton("Back");
     private JButton jbSettings = new JButton("Settings");
@@ -28,13 +30,18 @@ public class StatisticsView extends JPanel {
     private StatisticPanel chartPanel = new StatisticPanel(new float[]{});
     BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
 
-
+    /**
+     * Este es el constructor de StatisticsManager
+     */
     public StatisticsView() {
         this.statisticsManager = new StatisticsManager();
         configureChargeView();
         //chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
+    /**
+     * Este metodo sirve para generar la vista de StatisticsView
+     */
     private void configureChargeView() {
 
 
@@ -100,6 +107,10 @@ public class StatisticsView extends JPanel {
 
     }
 
+    /**
+     * sirve para asociar los botones con sus action listeners
+     * @param listener accion listener para asociar los botones
+     */
     public void statisticsController(ActionListener listener) {
         jbBack.addActionListener(listener);
         jbSettings.addActionListener(listener);
@@ -122,6 +133,10 @@ public class StatisticsView extends JPanel {
         this.components = viewComponents;
     }
 
+    /**
+     * Sirve para actualizar los datos de las estadisticas
+     * @param username nombre del usuario cuyo datos queremos actualizar
+     */
     public void updateData(String username){
         ArrayList<Float> dirtyData = statisticsManager.searchGameStatistics(username);
         float[] data = new float[dirtyData.size()];

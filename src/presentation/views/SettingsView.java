@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * sera la clase para construir la vista de settings de nuestro programa
+ */
 public class SettingsView extends JPanel {
 
     public static final String BTN_LOG= "BTN_LOG";
@@ -20,10 +23,16 @@ public class SettingsView extends JPanel {
 
     private CardLayout components;
 
+    /**
+     * este es el constructor de settings
+     */
     public SettingsView() {
         configureView();
     }
 
+    /**
+     * En este metodo creamos la vista de settings
+     */
     private void configureView() {
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
         fondo.setLayout(new BorderLayout());
@@ -65,6 +74,10 @@ public class SettingsView extends JPanel {
         fondo.setBorder(BorderFactory.createEmptyBorder(margin, margin, margin, margin));
     }
 
+    /**
+     * Esta funcion se encarga de vincular el listener con los botones de la vista
+     * @param controller sirve para conectar la respuesta de pulsar un boton para asociarlos
+     */
     public void settingsController(ActionListener controller) {
         jbLogOut.addActionListener(controller);
         jbDelete.addActionListener(controller);
@@ -86,6 +99,7 @@ public class SettingsView extends JPanel {
     public void setComponents(CardLayout components) {
         this.components = components;
     }
+
 
     public int confirmPopUp(String action) {
         return JOptionPane.showConfirmDialog(null, action);
