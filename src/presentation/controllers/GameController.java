@@ -175,18 +175,18 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 gameView.showDeductions(colors);
                 break;
             case "cafeteria":
-               // gameView.showDefaultTask();
+                gameView.showDefaultTask();
                 //TODO: Check DEDUCTIONS
                 break;
             case "security":
-               // gameView.showDefaultTask();
+                gameView.showDefaultTask();
                 //TODO: Show LOG
                 break;
             case "corridor":
-               // gameView.showDefaultTask();
+                gameView.showDefaultTask();
                 break;
             default:
-               // gameView.showDefaultTask();
+                gameView.showDefaultTask();
                 break;
         }
     }
