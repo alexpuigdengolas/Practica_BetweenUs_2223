@@ -166,32 +166,28 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
 
     private void checkRoom(Player player, LinkedList<Character> players) {
+        ArrayList<String> colors = new ArrayList<>();
+        for (Character character : players) {
+            colors.add(character.getColor());
+        }
+
         switch (player.getCell().getRoomName()){
             case "admin":
-                ArrayList<String> colors = new ArrayList<>();
-                for (Character character : players) {
-                    colors.add(character.getColor());
-                }
                 gameView.showDeductions(colors);
                 break;
             case "cafeteria":
-                ArrayList<String> colorsa = new ArrayList<>();
-                for (Character character : players) {
-                    colorsa.add(character.getColor());
-                }
-                gameView.comprovaBoto(colorsa);
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 //TODO: Check DEDUCTIONS
                 break;
             case "security":
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 //TODO: Show LOG
                 break;
             case "corridor":
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 break;
             default:
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 break;
         }
     }

@@ -11,10 +11,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class StatisticsView extends JPanel {
+
     public static final String BTN_BACK = "BTN_BACK";
     public static final String BTN_STI = "BTN_STI";
-
 
     private JButton jbBack = new JButton("Back");
     private JButton jbSettings = new JButton("Settings");
