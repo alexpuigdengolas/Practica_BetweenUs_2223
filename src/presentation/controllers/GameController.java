@@ -1,6 +1,8 @@
 package presentation.controllers;
 
 import business.GameManager;
+import business.NpcManager;
+import business.PlayerManager;
 import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
@@ -22,6 +24,8 @@ public class GameController extends Thread implements ActionListener, KeyListene
     private boolean isRunning;
     private CardLayout cardLayout;
     private GameManager gameManager;
+    private NpcManager npcManager;
+
 
 
     private Boolean revealMap = false;
@@ -201,6 +205,13 @@ public class GameController extends Thread implements ActionListener, KeyListene
         this.start();
     }
 
+    //#nuevo
+    public void stopMapThread() {
+        isRunning = false;
+        this.interrupt();
+    }
+
+
     public void run() {
         while(isRunning) {
             try {
@@ -208,6 +219,19 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 TimeUnit.MILLISECONDS.sleep(500);
 
                 gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+
+
+
+                if (gameManager.checkImpostorsWin()) {
+                    gameManager.interruptThreads();
+                    stopMapThread();
+
+                    System.out.println("Ganan los impostores");
+                    //TODO:Aqui las cosas de poner la partida como perdida
+                    //Mensaje de impostores ganan
+                    mainView.showStart();
+
+                }
 
 
 

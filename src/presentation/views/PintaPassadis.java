@@ -98,7 +98,7 @@ public class PintaPassadis extends JPanel{
                     }
                 }
 
-                //TODO:Falta mirar que cuando se mueran en vez de negro se ponga la foto
+
                 if(corpses.get(i)) {
 
 
