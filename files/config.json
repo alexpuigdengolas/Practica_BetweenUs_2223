@@ -1,7 +1,7 @@
 {
   "port": 3306,
   "user": "root",
-  "password": "Mario1441997",
+  "password": "12345",
   "db": "Betweenus",
   "serverIP": "127.0.0.1",
   "listeningPort": 12345

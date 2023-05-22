@@ -144,8 +144,6 @@ public class NGController  implements ActionListener {
                 mainView.showStart();
                 break;
 
-
-
         }
     }
 

@@ -27,6 +27,7 @@ public class StatisticsView extends JPanel {
     private StatisticPanel chartPanel = new StatisticPanel(new float[]{});
     BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
 
+
     public StatisticsView() {
         this.statisticsManager = new StatisticsManager();
         configureChargeView();

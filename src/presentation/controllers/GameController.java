@@ -9,17 +9,20 @@ import presentation.views.MainView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-public class GameController extends Thread implements ActionListener {
+public class GameController extends Thread implements ActionListener, KeyListener {
 
     private GameView gameView;
     private MainView mainView;
     private boolean isRunning;
     private CardLayout cardLayout;
     private GameManager gameManager;
+
 
     public GameController(GameView gameView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.gameView = gameView;
@@ -29,7 +32,67 @@ public class GameController extends Thread implements ActionListener {
 
     }
     public GameController(){}
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        switch (keyCode) {
+            case KeyEvent.VK_UP: // Flecha hacia arriba
+                System.out.println("click arriba");
+                if (gameManager.getPlayerManager().checkUp()) {
+                    System.out.println("pasa check arriba");
+                    int[] nextCell = gameManager.getPlayerManager().nextCell(1);
+                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
 
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
+                }
+                break;
+            case KeyEvent.VK_DOWN: // Flecha hacia abajo
+                System.out.println("Clicko abajo");
+                if (gameManager.getPlayerManager().checkDown()) {
+                    System.out.println("pasa check down");
+                    int[] nextCell = gameManager.getPlayerManager().nextCell(3);
+                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
+
+                }
+                break;
+            case KeyEvent.VK_RIGHT: // Flecha hacia la derecha
+                System.out.println("Clicko right");
+                if (gameManager.getPlayerManager().checkRight()) {
+                    System.out.println("Pasa check right");
+                    int[] nextCell = gameManager.getPlayerManager().nextCell(2);
+                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
+                }
+                break;
+            case KeyEvent.VK_LEFT: // Flecha hacia la izquierda
+                System.out.println("Clicko left");
+                //necesito traer aqui un player manager para controlar el movimiento del usuario
+                if (gameManager.getPlayerManager().checkLeft()) {
+                    System.out.println("pasa check left");
+                    int[] nextCell = gameManager.getPlayerManager().nextCell(0);
+                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+
+                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
+                }
+                break;
+        }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -87,6 +150,7 @@ public class GameController extends Thread implements ActionListener {
         }
     }
 
+
     private void checkRoom(Player player, LinkedList<Character> players) {
         switch (player.getCell().getRoomName()){
             case "admin":
@@ -133,4 +197,5 @@ public class GameController extends Thread implements ActionListener {
             }
         }
     }
+
 }

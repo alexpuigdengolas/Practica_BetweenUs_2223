@@ -10,6 +10,9 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -63,7 +66,10 @@ public class GameView extends JPanel {
 
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "jpTask");
+
+
     }
+
 
     private CardLayout getViewComponent() {
         return viewComponents;
@@ -121,7 +127,8 @@ public class GameView extends JPanel {
         jbL.addActionListener(actionListener);
         jbD.addActionListener(actionListener);
         jbR.addActionListener(actionListener);
-
+        this.setFocusable(true);
+        this.addKeyListener((KeyListener) actionListener);
     }
 
     public void setMap(Map map, Character userPlayer, LinkedList<Character> npcs) {

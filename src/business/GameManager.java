@@ -58,6 +58,11 @@ public class GameManager {
 
     }
 
+    /*public void updateCharge(){
+        games = getGames();
+        chargeView.updateComboBoxList(games);
+    }*/
+
     public ArrayList<String> getGames(){
         ArrayList<String> games;
         games = userDAO.getGames();
@@ -170,5 +175,6 @@ public class GameManager {
         }
         return 0;
     }
+
 
 }

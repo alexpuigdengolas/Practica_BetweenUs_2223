@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1c7c4bc-3114-4eb3-aae2-fbc106bd9f6a" name="Changes" comment="Es carrega el user al mapa y ens podem moure pel mapa">
-      <change afterPath="$PROJECT_DIR$/src/business/NpcManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/business/entities/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/business/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/MapManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/business/entities/character/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/entities/character/Npc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/ChargeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/controllers/NGController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/presentation/views/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/MapView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/MapView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaHab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaMapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaMapa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/views/PintaPassadis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/PintaPassadis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentation/views/StatisticsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/views/StatisticsView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +44,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tecnico/Desktop/Develope/B10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/guimo/DPO/copia Among&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -93,6 +87,7 @@
       <workItem from="1682930665200" duration="4164000" />
       <workItem from="1683877788458" duration="11678000" />
       <workItem from="1683992961315" duration="9799000" />
+      <workItem from="1684575688087" duration="9665000" />
     </task>
     <task id="LOCAL-00001" summary="Lectura del configjson">
       <created>1680629420025</created>
@@ -165,11 +160,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/presentation/controllers/GameController.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/views/MapView.java</url>
           <line>41</line>
