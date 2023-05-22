@@ -175,6 +175,11 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 gameView.showDeductions(colors);
                 break;
             case "cafeteria":
+                ArrayList<String> colorsa = new ArrayList<>();
+                for (Character character : players) {
+                    colorsa.add(character.getColor());
+                }
+                gameView.comprovaBoto(colorsa);
                 gameView.showDefaultTask();
                 //TODO: Check DEDUCTIONS
                 break;

@@ -12,27 +12,44 @@ public class DeductionPanel extends JPanel {
     private JPanel notSusColumn;
 
     public DeductionPanel(ArrayList<String> colorNames) {
+
         unknownColumn = new JPanel(new GridLayout(colorNames.size(), 1));
         susColumn = new JPanel(new GridLayout(colorNames.size(), 1));
         notSusColumn = new JPanel(new GridLayout(colorNames.size(), 1));
+
 
         for (String colorName : colorNames) {
             CardPanel cardPanel = new CardPanel(colorName);
             unknownColumn.add(cardPanel);
         }
 
-        setLayout(new GridLayout(1, 3));
-        addColumn("Unknown", unknownColumn);
-        addColumn("Sus", susColumn);
-        addColumn("Not Sus", notSusColumn);
+        //addColumn("Unknown", unknownColumn);
+        //addColumn("Sus", susColumn);
+        //addColumn("Not Sus", notSusColumn);
+
+        JPanel columnsPanel = new JPanel(new GridLayout(1, 3));
+        columnsPanel.add(addColumn("Unknown", unknownColumn));
+        columnsPanel.add(addColumn("Sus", susColumn));
+        columnsPanel.add(addColumn("Not Sus", notSusColumn));
+
+        // Crear el botón
+        JButton button = new JButton("Check");
+
+        // Crear el panel para el botón y las columnas
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(columnsPanel, BorderLayout.CENTER);
+        mainPanel.add(button, BorderLayout.EAST);
+
+        add(mainPanel);
     }
 
-    private void addColumn(String columnName, JPanel columnPanel) {
+    private JPanel addColumn(String columnName, JPanel columnPanel) {
         JPanel columnWrapper = new JPanel(new BorderLayout());
         columnWrapper.setBorder(BorderFactory.createTitledBorder(columnName));
 
         columnWrapper.add(columnPanel, BorderLayout.CENTER);
         add(columnWrapper);
+        return columnWrapper;
     }
 
     private class CardPanel extends JPanel {

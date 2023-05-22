@@ -9,10 +9,7 @@ import presentation.views.custom.MapView;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -31,7 +28,8 @@ public class GameView extends JPanel {
     private DefaultTaskPanel defaultTaskPanel;
     private DeductionPanel deductionPanel;
     private CardLayout viewComponents;
-
+    private JButton showDeductionsButton;
+    private JButton comprovar;
 
     private JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
     private JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
@@ -69,7 +67,6 @@ public class GameView extends JPanel {
 
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "jpTask");
-
 
     }
 
@@ -158,7 +155,18 @@ public class GameView extends JPanel {
         cardLayout.show(jpTask, "defaultTask");
     }
 
+    public void comprovaBoto(ArrayList<String> colors){
+        showDeductionsButton = new JButton("Show Deductions");
+        showDeductionsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                showDeductions(colors);
+            }
+        });
+        jpTask.add(showDeductionsButton, BorderLayout.CENTER);
+
+    }
     public void showDeductions(ArrayList<String> colors){
+        showDeductionsButton.setVisible(false);
         deductionPanel = new DeductionPanel(colors);
 
         // Set CardLayout as the layout manager for jpTask
