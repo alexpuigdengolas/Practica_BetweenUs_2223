@@ -20,4 +20,12 @@ public interface UserDAO {
     void deleteGames(String user);
     ArrayList<Float> searchGameStatistics(String user);
     void setGameStatistic(String user, int game, float percentage);
+    //#nuevo
+    int getNumGames(String user);
+    //#nuevo
+    int getNumVictories(String user);
+
+    //#nuevo
+    void setNumGames(String user);
+
 }

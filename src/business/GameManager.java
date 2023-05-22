@@ -2,6 +2,7 @@ package business;
 
 
 import business.entities.Game;
+import business.entities.User;
 import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
@@ -21,10 +22,13 @@ public class GameManager {
 
     private NpcManager npcManager;
 
+
+
     private LinkedList<Character> players;
 
     public GameManager() {
         this.userDAO = new UserSQLDAO();
+
     }
 
     public void setPlayerManager(PlayerManager playerManager){
@@ -190,6 +194,13 @@ public class GameManager {
     //#nuevo
     public void interruptThreads(){
         npcManager.interruptThreads();
+    }
+
+    //#nuevo
+    //Aqui funcion que mira el numero de partidas ganadas el numero de victorias
+    public void knowVictoryRate(){
+
+
     }
 
 

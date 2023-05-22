@@ -191,4 +191,42 @@ public class UserSQLDAO implements UserDAO {
         conn.insertQuery("INSERT INTO PlayerStatistics(username, game, percentage) VALUES ('" + user + "','" + (game+1) + "','" + percentage +"')");
         conn.disconnect();
     }
+
+
+    //TODO:ACABAR LA PARTE DE GUARDAR LOS DATOS DE LA PARTIDA
+    //#nuevo
+    @Override
+    public int getNumGames(String user){
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT partides_jugades as num FROM User AS p WHERE username LIKE '"+user+"'");
+        conn.disconnect();
+        try{
+            return rs.getInt("num");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
+
+    }
+
+    //#nuevo
+    @Override
+    public int getNumVictories(String user){
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT partides_guanyades as num FROM User AS p WHERE username LIKE '"+user+"'");
+        conn.disconnect();
+        try{
+            return rs.getInt("num");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return -1;
+
+    }
+    @Override
+    public void setNumGames(String user){
+        conn.connect();
+        ResultSet rs = conn.selectQuery("");
+        conn.disconnect();
+    }
 }
