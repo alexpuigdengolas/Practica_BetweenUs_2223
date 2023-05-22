@@ -24,6 +24,7 @@ public class GameView extends JPanel {
     public static final String BTN_D = "BTN_D";
     public static final String BTN_BACK = "BTN_BACK";
     public static final String BTN_STI = "BTN_STI";
+    public static final String BTN_RVL = "BTN_RVL";
 
     private MapView mapView = new MapView();
     private JPanel jpTask = new JPanel();
@@ -36,6 +37,8 @@ public class GameView extends JPanel {
     private JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
     private JButton jbR = new BasicArrowButton(BasicArrowButton.EAST);
     private JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
+
+    private JButton jbReveal = new JButton("Reveal Map");
 
 
     private JButton jbBack = new JButton();
@@ -90,8 +93,14 @@ public class GameView extends JPanel {
         // Espai buit per emputjar el segon botó a la dreta
         jpActions.add(Box.createHorizontalGlue());
 
+
+
         jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbSettings);
+
+        //TODO:ARREGLAR ESTE BOTON
+        jbReveal.setActionCommand(BTN_RVL);
+        jpActions.add(jbReveal);
 
         this.add(jpActions, BorderLayout.NORTH);
 
@@ -127,6 +136,7 @@ public class GameView extends JPanel {
         jbL.addActionListener(actionListener);
         jbD.addActionListener(actionListener);
         jbR.addActionListener(actionListener);
+        jbReveal.addActionListener(actionListener);
         this.setFocusable(true);
         this.addKeyListener((KeyListener) actionListener);
     }
@@ -137,8 +147,8 @@ public class GameView extends JPanel {
         this.add(mapView, BorderLayout.CENTER);
     }
 
-    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs){
-        this.mapView.updateMapView(map, userPlayer,npcs);
+    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs, Boolean revealMap){
+        this.mapView.updateMapView(map, userPlayer,npcs,revealMap);
         this.mapView.setSize(new Dimension(1500, 1500));
         this.add(mapView, BorderLayout.CENTER);
     }

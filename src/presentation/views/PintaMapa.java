@@ -20,13 +20,15 @@ public class PintaMapa extends JPanel {
     private JPanel jpMapa;
     private Character userPlayer;
     private LinkedList<Character> npcs;
+    private Boolean revealMap;
 
 
-    public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer,LinkedList<Character>npcs) {
+    public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer,LinkedList<Character>npcs,Boolean revealMap) {
         super(layoutManager);
         this.map = map;
         this.userPlayer = userPlayer;
         this.npcs = npcs;
+        this.revealMap = revealMap;
     }
 
 
@@ -63,13 +65,13 @@ public class PintaMapa extends JPanel {
                         String roomName = map.getCells().get(pos).getRoomName();
 
                         //Llamamos a la clase que se encarga de pintar los cuartos, con el color y el nombre del cuarto(Aqui se tendran que pasar mas cosas)
-                        room = new PintaHab(color,roomName,colors,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), true,corpses);
+                        room = new PintaHab(color,roomName,colors,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), revealMap,corpses);
                         room.setBorder(BorderFactory.createLineBorder(Color.WHITE));//pintem els borders
                         jpMapa.add(room);
                     }
                     //Repetimos el proceso con el pasillo, pero no hace falta saber que pasillo es, le pasamos la movilidad para saber hacia donde va el pasillo
                     if (map.getCells().get(pos).getType().equals("corridor")) {
-                        JPanel corridor = new PintaPassadis(map.getCells().get(pos).getMobility(),colors,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), true,corpses);
+                        JPanel corridor = new PintaPassadis(map.getCells().get(pos).getMobility(),colors,whereUserPosition(userPlayer.getCell(), map.getCells().get(pos)), revealMap,corpses);
 
                         corridor.setBorder(BorderFactory.createLineBorder(Color.WHITE));
                         jpMapa.add(corridor);

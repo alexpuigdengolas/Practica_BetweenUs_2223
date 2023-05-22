@@ -141,7 +141,7 @@ public class Impostor extends Character{
 
     @Override
     public void run() {
-
+        //TODO:que no cuente los muuertos a la hora de mata, que mate al usuario
         getTotalTime().initCounter();
         getIntervalTime().initCounter();
         startInterval = getInterval();

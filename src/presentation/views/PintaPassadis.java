@@ -51,6 +51,10 @@ public class PintaPassadis extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        if (userIsHere || revealMap) {
+
+
+
         //hay que hacer un if para cuando el user no esta
         g.setColor(Color.BLACK);
         g.fillRect(0,0,400,400);
@@ -94,8 +98,6 @@ public class PintaPassadis extends JPanel{
                     }
                 }
 
-
-
                 //TODO:Falta mirar que cuando se mueran en vez de negro se ponga la foto
                 if(corpses.get(i)) {
 
@@ -125,6 +127,9 @@ public class PintaPassadis extends JPanel{
                 }
             }
 
-
+        } else {
+            g.setColor(Color.darkGray);
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
     }
 }

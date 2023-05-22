@@ -27,7 +27,7 @@ public class MapView extends JPanel {
         this.setLayout(new BorderLayout());
 
         //Creamos el mapa pasando el tamaño del mapa y el mapa
-        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs);
+        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs,false);
         JPanel jpCenter;
         //Pintamos el mapa en el panel
         jpCenter = mp.creaMapa();
@@ -35,12 +35,12 @@ public class MapView extends JPanel {
 
     }
 
-    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs) {
+    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs, Boolean revealMap) {
 
         this.removeAll();
 
 
-        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs);
+        PintaMapa mp = new PintaMapa(new GridLayout(map.getWidth(), map.getHeight()), map,userPlayer,npcs,revealMap);
         JPanel jpCenter;
         //Pintamos el mapa en el panel
         jpCenter = mp.creaMapa();

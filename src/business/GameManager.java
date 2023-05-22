@@ -74,7 +74,6 @@ public class GameManager {
         return joc;
     }
 
-
     public void deleteGame(String game){
         userDAO.deleteGame(game);
     }

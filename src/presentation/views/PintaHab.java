@@ -28,6 +28,8 @@ public class PintaHab extends JPanel {
 
 
 
+
+
     public PintaHab(Color color, String roomName, LinkedList<String> colors, Boolean userIsHere, Boolean revealMap, LinkedList<Boolean> corpses){
         this.color = color;
         this.roomName = roomName;
@@ -48,10 +50,11 @@ public class PintaHab extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if(revealMap || userIsHere){
+
+
         g.setColor(color);
         g.fillRect(0, 0, getWidth(), getHeight());
-
-
 
             int separadorX = getWidth() / 4;
             int separadorY = getHeight() / 3;
@@ -94,6 +97,10 @@ public class PintaHab extends JPanel {
                     separadorX = getWidth() / 4;
                 }
             }
+        } else {
+            g.setColor(Color.darkGray);
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
 
         }
     }

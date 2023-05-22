@@ -24,6 +24,8 @@ public class GameController extends Thread implements ActionListener, KeyListene
     private GameManager gameManager;
 
 
+    private Boolean revealMap = false;
+
     public GameController(GameView gameView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.gameView = gameView;
         this.mainView = mainView;
@@ -42,7 +44,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("pasa check arriba");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(1);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -53,7 +55,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("pasa check down");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(3);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
 
@@ -65,7 +67,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("Pasa check right");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(2);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -77,7 +79,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("pasa check left");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(0);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -98,13 +100,25 @@ public class GameController extends Thread implements ActionListener, KeyListene
         switch (e.getActionCommand()){
             case GameView.BTN_BACK -> mainView.showStart();
             case GameView.BTN_STI -> mainView.showSettings();
+            case GameView.BTN_RVL -> {
+                if(revealMap){
+
+                    revealMap = false;
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+                    System.out.println("He apretat reveal map"+ revealMap);
+                }else{
+                    revealMap = true;
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+                    System.out.println("He apretat reveal map"+ revealMap);
+                }
+            }
             case GameView.BTN_U -> {
                 System.out.println("click arriba");
                 if (gameManager.getPlayerManager().checkUp()) {
                     System.out.println("pasa check arriba");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(1);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -116,7 +130,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("pasa check down");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(3);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
 
@@ -129,7 +143,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("Pasa check right");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(2);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -142,7 +156,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
                     System.out.println("pasa check left");
                     int[] nextCell = gameManager.getPlayerManager().nextCell(0);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
@@ -161,18 +175,18 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 gameView.showDeductions(colors);
                 break;
             case "cafeteria":
-                gameView.showDefaultTask();
+               // gameView.showDefaultTask();
                 //TODO: Check DEDUCTIONS
                 break;
             case "security":
-                gameView.showDefaultTask();
+               // gameView.showDefaultTask();
                 //TODO: Show LOG
                 break;
             case "corridor":
-                gameView.showDefaultTask();
+               // gameView.showDefaultTask();
                 break;
             default:
-                gameView.showDefaultTask();
+               // gameView.showDefaultTask();
                 break;
         }
     }
@@ -188,7 +202,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
                 TimeUnit.MILLISECONDS.sleep(500);
 
-                gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers());
+                gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
 
 
