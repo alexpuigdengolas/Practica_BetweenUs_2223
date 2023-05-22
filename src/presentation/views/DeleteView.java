@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * sera la clase para construir la vista de deleteView de nuestro programa
+ */
 public class DeleteView extends JPanel {
     public static final String BTN_CHA = "BTN_DEL";
     public static final String BTN_BACK = "BTN_BACK";
@@ -21,6 +24,9 @@ public class DeleteView extends JPanel {
     private CardLayout components;
     private MainView mainView;
 
+    /**
+     * este es nuestro constructor de delete
+     */
     public DeleteView() {
         configureDeleteView();
         //chargeExistingGames(new String[]{"A", "B", "C"});
@@ -33,6 +39,9 @@ public class DeleteView extends JPanel {
         }
     }
 
+    /**
+     * este es el metodo que genera la vista entera de deleteView
+     */
     private void configureDeleteView() {
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
         fondo.setLayout(new BorderLayout());
@@ -103,6 +112,10 @@ public class DeleteView extends JPanel {
         infoPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param actionListener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void deleteController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
