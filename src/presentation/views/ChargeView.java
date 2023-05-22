@@ -120,10 +120,7 @@ public class ChargeView extends JPanel{
             comboBox.addItem(option);
         }
 
-        //TODO: Acceso real a la base de datos
-        /*comboBox.addItem("Option 1");
-        comboBox.addItem("Option 2");
-        comboBox.addItem("Option 3");*/
+
     }
 
     public String optionSelected(){

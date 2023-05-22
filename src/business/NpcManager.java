@@ -37,19 +37,7 @@ public class NpcManager{
         return npcs;
     }
 
-    public boolean eliminateUserPlayer(Character userPlayer) {
-        if (getNpcNumCell(userPlayer.getCell()) == 1) {
-            int npcListPosition = getNpcPosition(userPlayer.getCell());
-            if (players.get(npcListPosition) instanceof Impostor) {
-                Impostor impostor = (Impostor) players.get(npcListPosition);
-                if (impostor.checkKillingPeriod(impostor)) {
-                    return true;
-                }
-                return impostor.isCanKill();
-            }
-        }
-        return false;
-    }
+
     public int getNpcNumCell(Cell cell) {
         int numNpc = 0;
         for (Character character: players) {
@@ -98,6 +86,7 @@ public class NpcManager{
         }
         return false;
     }
+
     public int getCellPosition (MapManager mapManager, Cell cell) {
         for (int i = 0; i < mapManager.getMap().getCells().size(); i++) {
             if (mapManager.getMap().getCells().get(i) == cell) {
@@ -105,6 +94,28 @@ public class NpcManager{
             }
         }
         return -1;
+    }
+
+    //#nuevo
+    public int getNumNpc() {
+        int numNpcs = 0;
+        for (Character character: players) {
+            if (character instanceof Npc && !character.isDead()) {
+                numNpcs++;
+            }
+        }
+        return numNpcs;
+    }
+
+    //#nuevo
+    public int getNumImpostors() {
+        int numImpostors = 0;
+        for (Character character: players) {
+            if (character instanceof Impostor) {
+                numImpostors++;
+            }
+        }
+        return numImpostors;
     }
 
 

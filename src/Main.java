@@ -23,6 +23,7 @@ public class Main {
             ChargeView chargeView = new ChargeView();
             SettingsView settingsView = new SettingsView();
             UserManager userManager = new UserManager();
+            //mriar si esta bien
             GameManager gameManager = new GameManager();
 
 

@@ -2,6 +2,7 @@ package business;
 
 
 import business.entities.Game;
+import business.entities.User;
 import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
@@ -20,8 +21,14 @@ public class GameManager {
     private MapManager mapManager;
 
     private NpcManager npcManager;
+
+
+
+    private LinkedList<Character> players;
+
     public GameManager() {
         this.userDAO = new UserSQLDAO();
+
     }
 
     public void setPlayerManager(PlayerManager playerManager){
@@ -153,7 +160,7 @@ public class GameManager {
     }
 
 
-    //TODO:Esto huele que va a estar mal
+
     public void setInitialCell(Character player, LinkedList<Character> players, LinkedList<Cell> cells) {
         Cell initialCell = getCafeCell(cells);
         player.setCell(initialCell);
@@ -174,6 +181,28 @@ public class GameManager {
         }
         return 0;
     }
+
+
+    //#nuevo
+    public boolean checkImpostorsWin() {
+        int crewMembersAlive = npcManager.getNumNpc();
+        int numImpostors = npcManager.getNumImpostors();
+
+        return crewMembersAlive + 1 <= numImpostors;
+    }
+
+    //#nuevo
+    public void interruptThreads(){
+        npcManager.interruptThreads();
+    }
+
+    //#nuevo
+    //Aqui funcion que mira el numero de partidas ganadas el numero de victorias
+    public void knowVictoryRate(){
+
+
+    }
+
 
 
 }

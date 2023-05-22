@@ -1,6 +1,8 @@
 package presentation.controllers;
 
 import business.GameManager;
+import business.NpcManager;
+import business.PlayerManager;
 import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
@@ -22,6 +24,8 @@ public class GameController extends Thread implements ActionListener, KeyListene
     private boolean isRunning;
     private CardLayout cardLayout;
     private GameManager gameManager;
+    private NpcManager npcManager;
+
 
 
     private Boolean revealMap = false;
@@ -166,32 +170,28 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
 
     private void checkRoom(Player player, LinkedList<Character> players) {
+        ArrayList<String> colors = new ArrayList<>();
+        for (Character character : players) {
+            colors.add(character.getColor());
+        }
+
         switch (player.getCell().getRoomName()){
             case "admin":
-                ArrayList<String> colors = new ArrayList<>();
-                for (Character character : players) {
-                    colors.add(character.getColor());
-                }
                 gameView.showDeductions(colors);
                 break;
             case "cafeteria":
-                ArrayList<String> colorsa = new ArrayList<>();
-                for (Character character : players) {
-                    colorsa.add(character.getColor());
-                }
-                gameView.comprovaBoto(colorsa);
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 //TODO: Check DEDUCTIONS
                 break;
             case "security":
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 //TODO: Show LOG
                 break;
             case "corridor":
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 break;
             default:
-                gameView.showDefaultTask();
+                gameView.showDeductions(colors);
                 break;
         }
     }
@@ -201,6 +201,13 @@ public class GameController extends Thread implements ActionListener, KeyListene
         this.start();
     }
 
+    //#nuevo
+    public void stopMapThread() {
+        isRunning = false;
+        this.interrupt();
+    }
+
+
     public void run() {
         while(isRunning) {
             try {
@@ -208,6 +215,19 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 TimeUnit.MILLISECONDS.sleep(500);
 
                 gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+
+
+
+                if (gameManager.checkImpostorsWin()) {
+                    gameManager.interruptThreads();
+                    stopMapThread();
+
+                    System.out.println("Ganan los impostores");
+                    //TODO:Aqui las cosas de poner la partida como perdida
+                    //Mensaje de impostores ganan
+                    mainView.showStart();
+
+                }
 
 
 

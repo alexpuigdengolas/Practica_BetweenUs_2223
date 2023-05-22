@@ -139,5 +139,11 @@ public class UserManager {
         return false;
     }
 
+    public void gameFinish(){
+        if(userDAO.userNameExists(user)){
+            userDAO.getNumGames(user);
+
+        }
+    }
 
 }
