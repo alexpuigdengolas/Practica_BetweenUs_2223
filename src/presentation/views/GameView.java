@@ -56,8 +56,8 @@ public class GameView extends JPanel {
 
         // Add panels to jpTask
         jpTask.setLayout(new BorderLayout());
-        jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
-        jpTask.add(deductionPanel, BorderLayout.SOUTH);
+        //jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
+        jpTask.add(deductionPanel);
 
         // Add cardPanel to the GameView
         this.setLayout(new BorderLayout());
@@ -166,7 +166,7 @@ public class GameView extends JPanel {
 
     }
     public void showDeductions(ArrayList<String> colors){
-        showDeductionsButton.setVisible(false);
+        //showDeductionsButton.setVisible(false);
         deductionPanel = new DeductionPanel(colors);
 
         // Set CardLayout as the layout manager for jpTask

@@ -11,6 +11,5 @@ public class DefaultTaskPanel extends JPanel {
 
     private void configureView(){
         this.setLayout(new BorderLayout());
-        this.add(new JLabel("No task in this room"), BorderLayout.CENTER);
     }
 }
