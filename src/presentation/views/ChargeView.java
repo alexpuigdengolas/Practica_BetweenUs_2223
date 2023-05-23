@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * sera la clase para construir la vista de carga de nuestro programa
+ */
 public class ChargeView extends JPanel{
     public static final String BTN_CHA = "BTN_CHA";
     public static final String BTN_BACK = "BTN_BACK";
@@ -24,11 +27,18 @@ public class ChargeView extends JPanel{
     private CardLayout components;
     private MainView mainView;
 
+    /**
+     *
+     */
     public ChargeView() {
         configureChargeView();
         //chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
+    /**
+     *
+     * @param games
+     */
     public void updateComboBoxList(ArrayList<String> games){
         comboBox.removeAllItems();
         for(String game: games){

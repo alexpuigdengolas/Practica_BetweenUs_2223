@@ -185,33 +185,61 @@ public class NewGameView extends JPanel {
         jbmaps.addActionListener(actionListener);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getColor(){
         return jBCColors.getSelectedItem().toString();
     }
+
+    /**
+     *
+     * @return
+     */
     public int getPlayers(){
         return (int) spinnerPly.getValue();
     }
 
+    /**
+     *
+     * @return
+     */
     public  int getImp(){
         return (int) spinnerImp.getValue();
     }
 
-
+    /**
+     *
+     * @return
+     */
     public String getNameMap(){
         return nameField.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMap(){
         System.out.println(jbmaps.getText());
         return jbmaps.getText();
     }
 
+    /**
+     *
+     * @param mapName
+     */
     public void setMapName(String mapName){
         this.fileName = mapName;
 
         jbmaps.setText(fileName);
     }
 
+    /**
+     *
+     * @param Error
+     */
     public void printNewGameErrors(String Error) {
         JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);
 

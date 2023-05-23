@@ -269,7 +269,10 @@ public class RegisterView extends JPanel {
         this.passwordField.setText("");
     }
 
-
+    /**
+     *
+     * @param Error
+     */
     public void printRegisterErrors(String Error) {
         JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);
 

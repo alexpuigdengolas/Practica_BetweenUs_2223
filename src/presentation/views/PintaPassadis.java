@@ -30,7 +30,14 @@ public class PintaPassadis extends JPanel{
     private BufferedImage image;
 
 
-
+    /**
+     *
+     * @param mov
+     * @param colors
+     * @param userIsHere
+     * @param revealMap
+     * @param corpses
+     */
     public PintaPassadis(Mobility mov,LinkedList<String> colors, Boolean userIsHere, Boolean revealMap,LinkedList<Boolean> corpses){
         this.mov = mov;
         this.colors = colors;
@@ -47,6 +54,10 @@ public class PintaPassadis extends JPanel{
 
     }
 
+    /**
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -54,6 +54,10 @@ public class PintaHab extends JPanel {
 
     }
 
+    /**
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -122,6 +122,10 @@ public class DeleteView extends JPanel {
         deleteButton.addActionListener(actionListener);
     }
 
+    /**
+     *
+     * @param options
+     */
     public void chargeExistingGames(String[] options){
         for(String option: options){
             comboBox.addItem(option);
@@ -129,10 +133,20 @@ public class DeleteView extends JPanel {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String optionSelected(){
         String selectedOption = comboBox.getSelectedItem().toString();
         return selectedOption;
     }
+
+    /**
+     *
+     * @param action
+     * @return
+     */
     public int confirmPopUp(String action) {
         return JOptionPane.showConfirmDialog(null,action);
     }

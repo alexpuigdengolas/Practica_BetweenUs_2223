@@ -13,6 +13,10 @@ import javax.swing.*;
 
 
 //Esta clase pinta el mapa general cada vez que la llamemos, en un futuro le pasaremos todos los personajes y el resto de cosas para jugar
+
+/**
+ *
+ */
 public class PintaMapa extends JPanel {
     private Color color;
     private final Map map;
@@ -23,6 +27,14 @@ public class PintaMapa extends JPanel {
     private Boolean revealMap;
 
 
+    /**
+     *
+     * @param layoutManager
+     * @param map
+     * @param userPlayer
+     * @param npcs
+     * @param revealMap
+     */
     public PintaMapa(LayoutManager layoutManager, Map map, Character userPlayer,LinkedList<Character>npcs,Boolean revealMap) {
         super(layoutManager);
         this.map = map;
@@ -31,7 +43,10 @@ public class PintaMapa extends JPanel {
         this.revealMap = revealMap;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public JPanel creaMapa() {
         jpMapa = new JPanel(new GridLayout(map.getWidth(),map.getHeight()));
 
@@ -81,6 +96,14 @@ public class PintaMapa extends JPanel {
         }
         return jpMapa;
     }
+
+    /**
+     *
+     * @param userPlayer
+     * @param npcs
+     * @param cell
+     * @return
+     */
     public LinkedList<String> getCellColors(Character userPlayer, LinkedList<Character> npcs, Cell cell) {
         LinkedList<String> colors = new LinkedList<>();
         if (userPlayer.getCell() == cell) {
@@ -94,6 +117,13 @@ public class PintaMapa extends JPanel {
         return colors;
     }
 
+    /**
+     *
+     * @param userPlayer
+     * @param characters
+     * @param cell
+     * @return
+     */
     public LinkedList<Boolean> getCellCorpses(Character userPlayer, LinkedList<Character> characters, Cell cell) {
         LinkedList<Boolean> corpses = new LinkedList<>();
         if (userPlayer.getCell() == cell) {
@@ -110,6 +140,13 @@ public class PintaMapa extends JPanel {
         }
         return corpses;
     }
+
+    /**
+     *
+     * @param userCell
+     * @param cell
+     * @return
+     */
     public boolean whereUserPosition(Cell userCell, Cell cell) {
         return userCell == cell;
     }
