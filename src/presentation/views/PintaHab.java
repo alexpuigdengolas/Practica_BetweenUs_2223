@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Objects;
 
-
+/**
+ * sera la clase para construir la vista de pintar habitaciones de nuestro programa
+ */
 public class PintaHab extends JPanel {
     private final Color color;
     private String roomName;
@@ -26,10 +28,15 @@ public class PintaHab extends JPanel {
     private BufferedImage image;
 
 
-
-
-
-
+    /**
+     *
+     * @param color
+     * @param roomName
+     * @param colors
+     * @param userIsHere
+     * @param revealMap
+     * @param corpses
+     */
     public PintaHab(Color color, String roomName, LinkedList<String> colors, Boolean userIsHere, Boolean revealMap, LinkedList<Boolean> corpses){
         this.color = color;
         this.roomName = roomName;

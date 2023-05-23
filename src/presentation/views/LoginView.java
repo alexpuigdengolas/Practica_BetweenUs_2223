@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * sera la clase para construir la vista de login de un usuario de nuestro programa
+ */
 public class LoginView extends JPanel {
 
     public static final String BTN_LOG = "BTN_LOG";
@@ -23,11 +26,17 @@ public class LoginView extends JPanel {
     private MainView mainView;
 
 
+    /**
+     * constructor de login de usuarios
+     */
     public LoginView() {
         configureLoginView();
     }
 
 
+    /**
+     * este es el metodo que genera la vista entera de loginView
+     */
     private void configureLoginView() {
 
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
@@ -104,7 +113,10 @@ public class LoginView extends JPanel {
     }
 
 
-
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param listener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void loginController(ActionListener listener) {
         loginButton.addActionListener(listener);
         registerButton.addActionListener(listener);
@@ -160,6 +172,10 @@ public class LoginView extends JPanel {
         this.nameSpace.setText("");
     }
 
+    /**
+     * funcio per pritar els errors a la pagina de login
+     * @param Error missatge d'error
+     */
     public void printLoginErrors(String Error) {
         JOptionPane.showMessageDialog(null, Error, "Error Login", JOptionPane.ERROR_MESSAGE);
 

@@ -7,8 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
-
-
+/**
+ * sera la clase para construir la vista de new game de nuestro programa
+ */
 public class NewGameView extends JPanel {
 
 
@@ -40,10 +41,16 @@ public class NewGameView extends JPanel {
     private CardLayout components;
     private MainView mainView;
 
+    /**
+     * constructor de newgame
+     */
     public NewGameView(){
         configureNGView();
     }
 
+    /**
+     * este es el metodo que genera la vista entera de newGame
+     */
     private void configureNGView(){
 
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
@@ -167,6 +174,10 @@ public class NewGameView extends JPanel {
 
     }
 
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param actionListener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void NGController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
         chargeButton.addActionListener(actionListener);

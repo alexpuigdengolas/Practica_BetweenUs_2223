@@ -13,6 +13,9 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * sera la clase para construir la vista de game de nuestro programa
+ */
 public class GameView extends JPanel {
 
     public static final String BTN_L = "BTN_L";
@@ -79,6 +82,9 @@ public class GameView extends JPanel {
         return viewComponents;
     }
 
+    /**
+     * este es el metodo que genera la vista entera de gameView
+     */
     private void configureView(){
         this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
@@ -130,6 +136,10 @@ public class GameView extends JPanel {
         this.add(jpTask, BorderLayout.SOUTH);
     }
 
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param actionListener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void gameController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
         jbSettings.addActionListener(actionListener);
@@ -142,21 +152,41 @@ public class GameView extends JPanel {
         this.addKeyListener((KeyListener) actionListener);
     }
 
+    /**
+     *
+     * @param map
+     * @param userPlayer
+     * @param npcs
+     */
     public void setMap(Map map, Character userPlayer, LinkedList<Character> npcs) {
         mapView.configureMapView(map, userPlayer, npcs);
         mapView.setSize(new Dimension(1500, 1500));
     }
 
+    /**
+     *
+     * @param map
+     * @param userPlayer
+     * @param npcs
+     * @param revealMap
+     */
     public void updateMapView(Map map, Character userPlayer, LinkedList<Character> npcs, Boolean revealMap) {
         mapView.updateMapView(map, userPlayer, npcs, revealMap);
         mapView.setSize(new Dimension(1500, 1500));
     }
 
+    /**
+     *
+     */
     public void showDefaultTask(){
         CardLayout cardLayout = (CardLayout) jpTask.getLayout();
         cardLayout.show(jpTask, "defaultTask");
     }
 
+    /**
+     *
+     * @param colors
+     */
     public void comprovaBoto(ArrayList<String> colors){
         showDeductionsButton = new JButton("Show Deductions");
         showDeductionsButton.addActionListener(new ActionListener() {
@@ -167,6 +197,11 @@ public class GameView extends JPanel {
         jpTask.add(showDeductionsButton, BorderLayout.CENTER);
 
     }
+
+    /**
+     *
+     * @param colors
+     */
     public void showDeductions(ArrayList<String> colors){
         //showDeductionsButton.setVisible(false);
         deductionPanel.setCardColors(colors);
@@ -188,18 +223,34 @@ public class GameView extends JPanel {
         deductionShowing = true;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean getDeductionShowing() {
         return deductionShowing;
     }
 
+    /**
+     *
+     * @param deductionShowing
+     */
     public void setDeductionShowing(Boolean deductionShowing) {
         this.deductionShowing = deductionShowing;
     }
 
+    /**
+     *
+     */
     public void impostorsWinMsg() {
         JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     *
+     *
+     * @return
+     */
     public ArrayList<String> getCardPosition() {
         return deductionPanel.getCardPositions();
     }

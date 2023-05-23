@@ -5,6 +5,9 @@ import presentation.views.custom.MapView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * sera la clase para construir la vista main de nuestro programa
+ */
 public class MainView extends JFrame {
 
     static final int width = 1000;
@@ -28,8 +31,21 @@ public class MainView extends JFrame {
     private GameView gameView;
 
 
-
-
+    /**
+     *
+     * @param viewComponents
+     * @param registerView
+     * @param loginView
+     * @param startView
+     * @param nGView
+     * @param statisticsView
+     * @param deleteView
+     * @param configuredView
+     * @param chargeView
+     * @param settingsView
+     * @param mapView
+     * @param gameView
+     */
     public MainView(CardLayout viewComponents, RegisterView registerView, LoginView loginView, StartView startView, NewGameView nGView, StatisticsView statisticsView, DeleteView deleteView, ConfiguredView configuredView, ChargeView chargeView, SettingsView settingsView, MapView mapView, GameView gameView) {
 
         this.viewComponents = viewComponents;
