@@ -2,7 +2,7 @@ package presentation.controllers;
 
 import business.GameManager;
 import business.NpcManager;
-import business.PlayerManager;
+
 import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
@@ -17,16 +17,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-public class GameController extends Thread implements ActionListener, KeyListener {
+public class GameController extends Thread implements Runnable,ActionListener, KeyListener {
 
     private GameView gameView;
     private MainView mainView;
     private boolean isRunning;
     private CardLayout cardLayout;
     private GameManager gameManager;
-    private NpcManager npcManager;
-
-
 
     private Boolean revealMap = false;
 
@@ -37,7 +34,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
         this.gameManager = gameManager;
 
     }
-    public GameController(){}
+
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
@@ -109,17 +106,17 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
                     revealMap = false;
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-                    System.out.println("He apretat reveal map"+ revealMap);
+
                 }else{
                     revealMap = true;
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-                    System.out.println("He apretat reveal map"+ revealMap);
+
                 }
             }
             case GameView.BTN_U -> {
-                System.out.println("click arriba");
+
                 if (gameManager.getPlayerManager().checkUp()) {
-                    System.out.println("pasa check arriba");
+
                     int[] nextCell = gameManager.getPlayerManager().nextCell(1);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
@@ -129,9 +126,9 @@ public class GameController extends Thread implements ActionListener, KeyListene
             }
 
             case GameView.BTN_D -> {
-                System.out.println("Clicko abajo");
+
                 if (gameManager.getPlayerManager().checkDown()) {
-                    System.out.println("pasa check down");
+
                     int[] nextCell = gameManager.getPlayerManager().nextCell(3);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
@@ -142,9 +139,9 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
             }
             case GameView.BTN_R -> {
-                System.out.println("Clicko right");
+
                 if (gameManager.getPlayerManager().checkRight()) {
-                    System.out.println("Pasa check right");
+
                     int[] nextCell = gameManager.getPlayerManager().nextCell(2);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
@@ -154,10 +151,8 @@ public class GameController extends Thread implements ActionListener, KeyListene
 
             }
             case GameView.BTN_L -> {
-                System.out.println("Clicko left");
-                //necesito traer aqui un player manager para controlar el movimiento del usuario
                 if (gameManager.getPlayerManager().checkLeft()) {
-                    System.out.println("pasa check left");
+
                     int[] nextCell = gameManager.getPlayerManager().nextCell(0);
                     gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
                     gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
@@ -212,6 +207,7 @@ public class GameController extends Thread implements ActionListener, KeyListene
         while(isRunning) {
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
+                System.out.println("Estoy dentro del thread del mapa");
                 if (gameManager.checkImpostorsWin()) {
                     gameManager.interruptThreads();
                     this.stopMapThread();
@@ -223,7 +219,6 @@ public class GameController extends Thread implements ActionListener, KeyListene
                 }
 
             } catch (InterruptedException e) {
-                System.out.println("He  entrado en el catch del mapa");
                 e.printStackTrace();
             }
             gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
