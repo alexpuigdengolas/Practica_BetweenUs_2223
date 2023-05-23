@@ -211,29 +211,23 @@ public class GameController extends Thread implements ActionListener, KeyListene
     public void run() {
         while(isRunning) {
             try {
-
                 TimeUnit.MILLISECONDS.sleep(500);
-
-                gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-
-
-
                 if (gameManager.checkImpostorsWin()) {
                     gameManager.interruptThreads();
-                    stopMapThread();
-
-                    System.out.println("Ganan los impostores");
+                    this.stopMapThread();
+                    gameManager.finishGame(false);
+                    gameView.impostorsWinMsg();
                     //TODO:Aqui las cosas de poner la partida como perdida
                     //Mensaje de impostores ganan
                     mainView.showStart();
-
                 }
 
-
-
             } catch (InterruptedException e) {
+                System.out.println("He  entrado en el catch del mapa");
                 e.printStackTrace();
             }
+            gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+
         }
     }
 

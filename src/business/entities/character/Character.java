@@ -40,13 +40,7 @@ public abstract class Character extends Thread {
     }
     public void setCell(Cell cell) {this.cell = cell;}
 
-    public int getxCoordinate() {
-        return xCoordinate;
-    }
 
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
 
     public synchronized int[] getNextCoordinates(int nextRoom) {
         int[] actualRoom = new int[2];

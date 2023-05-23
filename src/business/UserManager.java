@@ -1,17 +1,21 @@
 package business;
 
 import business.entities.User;
+import persistance.Conn.GameDAO;
+import persistance.Conn.GameSQLDAO;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
 
 public class UserManager {
 
     private final UserDAO userDAO;
+    private final GameDAO gameDAO;
 
     private String user;
 
     public UserManager(){
         userDAO = new UserSQLDAO();
+        this.gameDAO = new GameSQLDAO();
     }
 
     //Registra el usuario en la BBDD
@@ -110,12 +114,10 @@ public class UserManager {
         return userDAO.checkLoginUser(userNameMail,password);
     }
 
-
     public String getUsername(String loginName) {
         user = userDAO.getUsername(loginName);
         return userDAO.getUsername(loginName);
     }
-
     public String getUser(){
         return user;
     }
@@ -124,12 +126,10 @@ public class UserManager {
         user = null;
 
     }
-
     public void deleteGames(){
-     userDAO.deleteGames(user);
+     gameDAO.deleteGames(user);
 
     }
-
 
     public boolean deleteUser() {
         if (userDAO.userNameExists(user)) {
@@ -139,11 +139,15 @@ public class UserManager {
         return false;
     }
 
-    public void gameFinish(){
+    //#nuevo
+    public void gameFinish(Boolean win){
         if(userDAO.userNameExists(user)){
-            userDAO.getNumGames(user);
-
+            int games = userDAO.getNumGames(user);
+            userDAO.setNumGames(user,games+1);
+            if(win){
+               int wins =  userDAO.getNumVictories(user);
+               userDAO.setNumWins(user,wins);
+            }
         }
     }
-
 }

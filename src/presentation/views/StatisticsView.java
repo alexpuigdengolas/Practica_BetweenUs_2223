@@ -25,7 +25,6 @@ public class StatisticsView extends JPanel {
 
     private CardLayout components;
     private MainView mainView;
-    private StatisticsManager statisticsManager;
     private float[] data = {};
     private StatisticPanel chartPanel = new StatisticPanel(new float[]{});
     BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
@@ -33,8 +32,9 @@ public class StatisticsView extends JPanel {
     /**
      * Este es el constructor de StatisticsManager
      */
+    //La vista no puede hablar con el manager nunca
     public StatisticsView() {
-        this.statisticsManager = new StatisticsManager();
+
         configureChargeView();
         //chargeExistingGames(new String[]{"A", "B", "C"});
     }
@@ -133,12 +133,13 @@ public class StatisticsView extends JPanel {
         this.components = viewComponents;
     }
 
+
+
     /**
      * Sirve para actualizar los datos de las estadisticas
-     * @param username nombre del usuario cuyo datos queremos actualizar
+     * @param dirtyData
      */
-    public void updateData(String username){
-        ArrayList<Float> dirtyData = statisticsManager.searchGameStatistics(username);
+    public void updateData(ArrayList<Float> dirtyData){
         float[] data = new float[dirtyData.size()];
         for (int i = 0; i < dirtyData.size(); i++) {
             data[i] = dirtyData.get(i);

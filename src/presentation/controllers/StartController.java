@@ -4,13 +4,12 @@ import business.GameManager;
 import business.StatisticsManager;
 import business.UserManager;
 import business.entities.User;
-import presentation.views.MainView;
-import presentation.views.StartView;
-import presentation.views.StatisticsView;
+import presentation.views.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class StartController implements ActionListener {
 
@@ -25,19 +24,28 @@ public class StartController implements ActionListener {
     private UserManager userManager;
     private StatisticsView statisticsView;
 
+    private StatisticsManager statisticsManager;
+    private ChargeView chargeView;
+    private ConfiguredView configuredView;
+    private DeleteView deleteView;
+
     /**
      * Constructor del controller
      * @param startView
      * @param mainView
      * @param cardLayout
      */
-    public StartController(StartView startView, MainView mainView, CardLayout cardLayout, GameManager gameManager, UserManager userManager, StatisticsView statisticsView) {
+    public StartController(StartView startView, MainView mainView, CardLayout cardLayout, GameManager gameManager, UserManager userManager, StatisticsView statisticsView,StatisticsManager statisticsManager,ChargeView chargeView, ConfiguredView configuredView, DeleteView deleteView) {
         this.startView = startView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.gameManager = gameManager;
         this.userManager = userManager;
+        this.statisticsManager = statisticsManager;
         this.statisticsView = statisticsView;
+        this.chargeView = chargeView;
+        this.configuredView = configuredView;
+        this.deleteView = deleteView;
     }
 
     @Override
@@ -56,28 +64,37 @@ public class StartController implements ActionListener {
                 break;
 
             case StartView.BTN_CON :
-                gameManager.updatecomboBox();
+                updatecomboBox();
+
                 mainView.showConfigured();
                 break;
 
             case StartView.BTN_CHAR :
-                gameManager.updatecomboBox();
+                updatecomboBox();
                 mainView.showCharge();
                 break;
 
             case StartView.BTN_DEL :
-                gameManager.updatecomboBox();
+                updatecomboBox();
                 mainView.showDelete();
                 break;
 
             case StartView.BTN_STA:
                 //TODO: Mostrar los valores de las estadísticas
-                statisticsView.updateData(userManager.getUser());
+                statisticsView.updateData(statisticsManager.searchGameStatistics(userManager.getUser()));
                 mainView.showStatistics();
                 break;
         }
 
+    }
+    public void updatecomboBox(){
+        ArrayList<String> games = gameManager.getGames();
+        //Aqui hay que actualizar ambas combo box
+        chargeView.updateComboBoxList(games);
+        configuredView.updateComboBoxList(games);
+        deleteView.updateComboBoxList(games);
 
 
+        //Aqui pintamos todas las combobox
     }
 }

@@ -36,8 +36,7 @@ public class ChargeController implements ActionListener{
             case ChargeView.BTN_STI -> mainView.showSettings();
             case ChargeView.BTN_CHA -> {
                 String nom = chargeView.optionSelected();
-                Game Seleccionat = gameManager.searchGame(nom);
-                Map map = MapManager.llegeixMapa(Seleccionat.getMap());
+
                 //gameView.setMap(map);
                 //mainView.showGame();
             }

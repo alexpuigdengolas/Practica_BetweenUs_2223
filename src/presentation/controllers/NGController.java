@@ -99,7 +99,7 @@ public class NGController  implements ActionListener {
                     //Creem els npcs
                     LinkedList<Character> npcs = gameManager.getNpcs(NGView.getPlayers() - NGView.getImp() - 1, NGView.getColor(), firstColor, colors, mapManager);
                     firstColor = getImpostorsStarterColor(gameManager.getUserColorPosition(NGView.getColor(), colors), npcs.size(), firstColor);
-                    LinkedList<Impostor> impostors = gameManager.getImpostors(NGView.getImp(), NGView.getColor(), firstColor + npcs.size(), colors, mapManager);
+                    LinkedList<Character> impostors = gameManager.getImpostors(NGView.getImp(), NGView.getColor(), firstColor + npcs.size(), colors, mapManager);
 
                     LinkedList<Character> players = new LinkedList<>();
                     players.addAll(npcs);

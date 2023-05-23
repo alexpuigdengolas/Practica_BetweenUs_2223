@@ -13,19 +13,15 @@ public interface UserDAO {
     boolean userMailExists(String userMail);
     String getUsername(String loginName);
     boolean gameNameExists(String gameName);
-    void saveGame(Game game);
-    ArrayList<String> getGames();
-    Game searchGame(String game);
-    void deleteGame(String game);
-    void deleteGames(String user);
-    ArrayList<Float> searchGameStatistics(String user);
-    void setGameStatistic(String user, int game, float percentage);
+    //#nuevo
+    int getNumVictories(String user);
+    //#nuevo
+    void setNumGames(String user,int num);
     //#nuevo
     int getNumGames(String user);
     //#nuevo
-    int getNumVictories(String user);
+    void setNumWins(String user, int num);
 
-    //#nuevo
-    void setNumGames(String user);
+
 
 }

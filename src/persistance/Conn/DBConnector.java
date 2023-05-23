@@ -71,4 +71,12 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
+    public void UpdateQuery(String query) {
+        try {
+            s = conn.createStatement();
+            s.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

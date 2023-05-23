@@ -8,6 +8,8 @@ import business.entities.character.Impostor;
 import business.entities.character.Npc;
 import business.entities.character.Player;
 import business.entities.map.Cell;
+import persistance.Conn.GameDAO;
+import persistance.Conn.GameSQLDAO;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
 import presentation.controllers.GameController;
@@ -17,18 +19,20 @@ import java.util.LinkedList;
 
 public class GameManager {
     private UserDAO userDAO;
+    private GameDAO gameDAO;
     private PlayerManager playerManager;
     private MapManager mapManager;
 
     private NpcManager npcManager;
 
-
+    private UserManager userManager;
 
     private LinkedList<Character> players;
 
-    public GameManager() {
+    public GameManager(UserManager userManager) {
         this.userDAO = new UserSQLDAO();
-
+        this.gameDAO = new GameSQLDAO();
+        this.userManager = userManager;
     }
 
     public void setPlayerManager(PlayerManager playerManager){
@@ -72,36 +76,23 @@ public class GameManager {
 
     public ArrayList<String> getGames(){
         ArrayList<String> games;
-        games = userDAO.getGames();
+        games = gameDAO.getGames();
         return games;
     }
 
     public Game searchGame(String game){
-        Game joc = userDAO.searchGame(game);
+        Game joc = gameDAO.searchGame(game);
         return joc;
     }
 
     public void deleteGame(String game){
-        userDAO.deleteGame(game);
+        gameDAO.deleteGame(game);
     }
 
-    public void updatecomboBox(){
-        getGames();
-
-        //Aqui hay que actualizar ambas combo box
-
-
-        //TODO:FAlta mirar como llenar las dos combo box
-        //chargeView.updateComboBoxList(games);
-        //chargeView.updateComboBoxList(games);
-
-
-        //Aqui pintamos todas las combobox
-    }
 
     //Llama la base de datos para guardar los datos del juego
     public void saveGame(Game game){
-        userDAO.saveGame(game);
+        gameDAO.saveGame(game);
     }
 
 
@@ -146,8 +137,8 @@ public class GameManager {
         }
         return npcs;
     }
-    public LinkedList<Impostor> getImpostors(int impostorsNum, String userColor, int starterColor, ArrayList<String> colors, MapManager mapManager) {
-        LinkedList<Impostor> impostors = new LinkedList<>();
+    public LinkedList<Character> getImpostors(int impostorsNum, String userColor, int starterColor, ArrayList<String> colors, MapManager mapManager) {
+        LinkedList<Character> impostors = new LinkedList<>();
         for (int i = 0; i < impostorsNum; i++) {
             Impostor impostor = new Impostor(getNextColor(userColor, starterColor, colors), mapManager);
             starterColor++;
@@ -200,6 +191,12 @@ public class GameManager {
     //Aqui funcion que mira el numero de partidas ganadas el numero de victorias
     public void knowVictoryRate(){
 
+
+    }
+
+    //#nuevo
+    public void finishGame(Boolean win){
+        userManager.gameFinish(win);
 
     }
 

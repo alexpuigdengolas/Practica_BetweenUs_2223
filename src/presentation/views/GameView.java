@@ -183,4 +183,8 @@ public class GameView extends JPanel {
         this.add(jpTask, BorderLayout.SOUTH);
         this.repaint();
     }
+
+    public void impostorsWinMsg() {
+        JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

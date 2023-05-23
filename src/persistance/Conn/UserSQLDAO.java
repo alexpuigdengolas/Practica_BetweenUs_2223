@@ -83,8 +83,10 @@ public class UserSQLDAO implements UserDAO {
             ResultSet rs = conn.selectQuery("SELECT u.username FROM User AS u WHERE u.email LIKE '" + loginName + "'");
             try {
                 if(rs.next()) {
+
                     return rs.getString("username");
                 }
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -108,103 +110,22 @@ public class UserSQLDAO implements UserDAO {
         return false;
     }
 
-    public void saveGame(Game game){
-        conn.connect();
-        conn.insertQuery("INSERT INTO Game(gameName, players, impostors, playerColor, map, creator) VALUES ('" + game.getGameName() + "','" + game.getPlayers() + "','" + game.getImpostors() + "','" + game.getColor() + "','"+ game.getMap() + "' ,'"+ game.getCreator() + "')");
-        conn.disconnect();
-    }
-
-    public ArrayList<String> getGames(){
-
-        ArrayList<String> games = new ArrayList<>();
-
-        conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM game AS g");
-        try{
-            while (rs.next()) {
-                String gameName = rs.getString("gameName");
-                games.add(gameName);
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        conn.disconnect();
-
-        return games;
-    }
-
-    public Game searchGame(String game) {
-        conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT * FROM game AS g WHERE g.gameName LIKE '" + game + "'");
-        Game games = null;
-        try {
-            if (rs != null && rs.next()) {
-                String nom = (rs.getString("gameName"));
-                int players = (rs.getInt("players"));
-                int impostors = (rs.getInt("impostors"));
-                String color = (rs.getString("playerColor"));
-                String map = (rs.getString("map"));
-                String cretor = (rs.getString("creator"));
-                games = new Game(nom, players, impostors, color, map, cretor);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        conn.disconnect();
-        return games;
-    }
-
-    public void deleteGame(String game){
-        conn.connect();
-        conn.deleteQuery("DELETE FROM game AS g WHERE g.gameName LIKE '" + game + "'");
-        conn.disconnect();
-    }
-
-    public void deleteGames(String user){
-        conn.connect();
-        conn.deleteQuery("DELETE FROM game AS g WHERE g.creator LIKE '" + user + "'");
-        conn.disconnect();
-    }
-
-    @Override
-    public ArrayList<Float> searchGameStatistics(String user) {
-        ArrayList<Float> statistics = new ArrayList<>();
-
-        conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT p.percentage FROM PlayerStatistics AS p WHERE p.username LIKE '"+user+"'");
-        try{
-            while (rs.next()) {
-                Float statistic = rs.getFloat("percentage");
-                statistics.add(statistic);
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        conn.disconnect();
-
-        return statistics;
-    }
-
-    @Override
-    public void setGameStatistic(String user, int game, float percentage) {
-        conn.connect();
-        conn.insertQuery("INSERT INTO PlayerStatistics(username, game, percentage) VALUES ('" + user + "','" + (game+1) + "','" + percentage +"')");
-        conn.disconnect();
-    }
-
-
-    //TODO:ACABAR LA PARTE DE GUARDAR LOS DATOS DE LA PARTIDA
     //#nuevo
     @Override
     public int getNumGames(String user){
         conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT partides_jugades as num FROM User AS p WHERE username LIKE '"+user+"'");
-        conn.disconnect();
-        try{
-            return rs.getInt("num");
-        }catch (SQLException e){
-            e.printStackTrace();
+        ResultSet rs = conn.selectQuery("SELECT partides_jugades FROM User AS p WHERE username LIKE '"+user+"'");
+
+        try {
+            if(rs.next()) {
+                return rs.getInt("partides_jugades");
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
+        conn.disconnect();
         return -1;
 
     }
@@ -213,20 +134,34 @@ public class UserSQLDAO implements UserDAO {
     @Override
     public int getNumVictories(String user){
         conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT partides_guanyades as num FROM User AS p WHERE username LIKE '"+user+"'");
-        conn.disconnect();
+        ResultSet rs = conn.selectQuery("SELECT partides_guanyades FROM User AS p WHERE username LIKE '"+user+"'");
+
         try{
-            return rs.getInt("num");
+            if(rs.next()) {
+                return rs.getInt("partides_guanyades");
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
+        conn.disconnect();
         return -1;
 
     }
+    //#nuevo
     @Override
-    public void setNumGames(String user){
+    public void setNumGames(String user, int num){
         conn.connect();
-        ResultSet rs = conn.selectQuery("");
+        String query = "UPDATE User SET partides_jugades = '" + num + "' WHERE USERNAME like '"+user+"'";
+        conn.UpdateQuery(query);
+        conn.disconnect();
+    }
+
+    //#nuevo
+    @Override
+    public void setNumWins(String user, int num){
+        conn.connect();
+        String query = "UPDATE User SET partides_guanyades = '" + num + "' WHERE USERNAME like '"+user+"'";
+        conn.UpdateQuery(query);
         conn.disconnect();
     }
 }
