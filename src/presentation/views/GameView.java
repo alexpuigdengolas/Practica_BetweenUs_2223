@@ -42,6 +42,8 @@ public class GameView extends JPanel {
     private JButton jbBack = new JButton();
     private JButton jbSettings = new JButton();
 
+    private Boolean deductionShowing = false;
+
 
 
     public GameView() {
@@ -56,8 +58,7 @@ public class GameView extends JPanel {
 
         // Add panels to jpTask
         jpTask.setLayout(new BorderLayout());
-        //jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
-        jpTask.add(deductionPanel);
+        jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
 
         // Add cardPanel to the GameView
         this.setLayout(new BorderLayout());
@@ -68,6 +69,9 @@ public class GameView extends JPanel {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "jpTask");
 
+        // Create and add the MapView
+        mapView = new MapView();
+        this.add(mapView, BorderLayout.CENTER);
     }
 
 
@@ -139,15 +143,13 @@ public class GameView extends JPanel {
     }
 
     public void setMap(Map map, Character userPlayer, LinkedList<Character> npcs) {
-        this.mapView.configureMapView(map, userPlayer,npcs);
-        this.mapView.setSize(new Dimension(1500, 1500));
-        this.add(mapView, BorderLayout.CENTER);
+        mapView.configureMapView(map, userPlayer, npcs);
+        mapView.setSize(new Dimension(1500, 1500));
     }
 
-    public void updateMapView(Map map, Character userPlayer,LinkedList<Character>npcs, Boolean revealMap){
-        this.mapView.updateMapView(map, userPlayer,npcs,revealMap);
-        this.mapView.setSize(new Dimension(1500, 1500));
-        this.add(mapView, BorderLayout.CENTER);
+    public void updateMapView(Map map, Character userPlayer, LinkedList<Character> npcs, Boolean revealMap) {
+        mapView.updateMapView(map, userPlayer, npcs, revealMap);
+        mapView.setSize(new Dimension(1500, 1500));
     }
 
     public void showDefaultTask(){
@@ -167,7 +169,7 @@ public class GameView extends JPanel {
     }
     public void showDeductions(ArrayList<String> colors){
         //showDeductionsButton.setVisible(false);
-        deductionPanel = new DeductionPanel(colors);
+        deductionPanel.setCardColors(colors);
 
         // Set CardLayout as the layout manager for jpTask
         jpTask.setLayout(new CardLayout());
@@ -182,9 +184,23 @@ public class GameView extends JPanel {
         jpTask.setPreferredSize(new Dimension(420, 100));
         this.add(jpTask, BorderLayout.SOUTH);
         this.repaint();
+
+        deductionShowing = true;
+    }
+
+    public Boolean getDeductionShowing() {
+        return deductionShowing;
+    }
+
+    public void setDeductionShowing(Boolean deductionShowing) {
+        this.deductionShowing = deductionShowing;
     }
 
     public void impostorsWinMsg() {
         JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public ArrayList<String> getCardPosition() {
+        return deductionPanel.getCardPositions();
     }
 }

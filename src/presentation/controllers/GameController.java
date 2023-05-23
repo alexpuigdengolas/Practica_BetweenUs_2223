@@ -172,21 +172,24 @@ public class GameController extends Thread implements Runnable,ActionListener, K
 
         switch (player.getCell().getRoomName()){
             case "admin":
-                gameView.showDeductions(colors);
+                System.out.println(gameView.getCardPosition());
+                gameView.setDeductionShowing(false);
                 break;
             case "cafeteria":
-                gameView.showDeductions(colors);
+                //gameView.showDeductions(colors);
                 //TODO: Check DEDUCTIONS
                 break;
             case "security":
-                gameView.showDeductions(colors);
+                //gameView.showDeductions(colors);
                 //TODO: Show LOG
                 break;
             case "corridor":
-                gameView.showDeductions(colors);
+                //gameView.showDeductions(colors);
                 break;
             default:
-                gameView.showDeductions(colors);
+                if(!gameView.getDeductionShowing()) {
+                    gameView.showDeductions(colors);
+                }
                 break;
         }
     }

@@ -12,34 +12,29 @@ public class DeductionPanel extends JPanel {
     private JPanel notSusColumn;
 
     public DeductionPanel(ArrayList<String> colorNames) {
-
+        // Initialize the columns
         unknownColumn = new JPanel(new GridLayout(colorNames.size(), 1));
         susColumn = new JPanel(new GridLayout(colorNames.size(), 1));
         notSusColumn = new JPanel(new GridLayout(colorNames.size(), 1));
 
+        // Set the colors for the cards
+        setCardColors(colorNames);
 
-        for (String colorName : colorNames) {
-            CardPanel cardPanel = new CardPanel(colorName);
-            unknownColumn.add(cardPanel);
-        }
-
-        //addColumn("Unknown", unknownColumn);
-        //addColumn("Sus", susColumn);
-        //addColumn("Not Sus", notSusColumn);
-
+        // Create the columns panel
         JPanel columnsPanel = new JPanel(new GridLayout(1, 3));
         columnsPanel.add(addColumn("Unknown", unknownColumn));
         columnsPanel.add(addColumn("Sus", susColumn));
         columnsPanel.add(addColumn("Not Sus", notSusColumn));
 
-        // Crear el botón
+        // Create the button
         JButton button = new JButton("Check");
 
-        // Crear el panel para el botón y las columnas
+        // Create the main panel with columns and button
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(columnsPanel, BorderLayout.CENTER);
         mainPanel.add(button, BorderLayout.EAST);
 
+        // Add the main panel to the DeductionPanel
         add(mainPanel);
     }
 
@@ -50,6 +45,56 @@ public class DeductionPanel extends JPanel {
         columnWrapper.add(columnPanel, BorderLayout.CENTER);
         add(columnWrapper);
         return columnWrapper;
+    }
+
+    public void setCardColors(ArrayList<String> colorNames) {
+        int size = colorNames.size();
+
+        // Clear existing cards from the columns
+        unknownColumn.removeAll();
+        susColumn.removeAll();
+        notSusColumn.removeAll();
+
+        // Add cards with updated colors to the unknown column
+        for (String colorName : colorNames) {
+            CardPanel cardPanel = new CardPanel(colorName);
+            unknownColumn.add(cardPanel);
+        }
+
+        // Repaint the columns
+        unknownColumn.revalidate();
+        unknownColumn.repaint();
+        susColumn.revalidate();
+        susColumn.repaint();
+        notSusColumn.revalidate();
+        notSusColumn.repaint();
+    }
+
+    public ArrayList<String> getCardPositions() {
+        ArrayList<String> positions = new ArrayList<>();
+
+        // Iterate over cards in the unknown column
+        int unknownColumnCount = unknownColumn.getComponentCount();
+        for (int i = 0; i < unknownColumnCount; i++) {
+            CardPanel card = (CardPanel) unknownColumn.getComponent(i);
+            positions.add(card.getColorName() + " - Unknown");
+        }
+
+        // Iterate over cards in the sus column
+        int susColumnCount = susColumn.getComponentCount();
+        for (int i = 0; i < susColumnCount; i++) {
+            CardPanel card = (CardPanel) susColumn.getComponent(i);
+            positions.add(card.getColorName() + " - Sus");
+        }
+
+        // Iterate over cards in the notSus column
+        int notSusColumnCount = notSusColumn.getComponentCount();
+        for (int i = 0; i < notSusColumnCount; i++) {
+            CardPanel card = (CardPanel) notSusColumn.getComponent(i);
+            positions.add(card.getColorName() + " - Not Sus");
+        }
+
+        return positions;
     }
 
     private class CardPanel extends JPanel {
@@ -113,16 +158,20 @@ public class DeductionPanel extends JPanel {
         }
 
         private Color getColor(String colorName) {
-            //TODO: Añadir todos los colores
+            // TODO: Add all the colors
             return switch (colorName) {
                 case "RED" -> Color.RED;
                 case "GREEN" -> Color.GREEN;
-                case "BLUE" -> Color.blue;
-                case "YELLOW" -> Color.yellow;
+                case "BLUE" -> Color.BLUE;
+                case "YELLOW" -> Color.YELLOW;
                 case "MAGENTA" -> Color.MAGENTA;
                 case "ORANGE" -> Color.ORANGE;
                 default -> Color.BLACK;
             };
+        }
+
+        public String getColorName() {
+            return colorName;
         }
     }
 }
