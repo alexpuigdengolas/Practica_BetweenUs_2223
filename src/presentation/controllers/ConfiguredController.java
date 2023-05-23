@@ -22,6 +22,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Esta clase nos se usara como controlador de configuración
+ */
 public class ConfiguredController implements ActionListener {
 
     private ConfiguredView configuredView;

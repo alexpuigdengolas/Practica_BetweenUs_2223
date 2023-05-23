@@ -41,7 +41,7 @@ public class Main {
             StartController startController = new StartController(startView, mainView, cardLayout, gameManager, userManager, statisticsView,statisticsManager,chargeView,configuredView,deleteView);
             SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
             ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout,gameManager,gameView,gameController);
-            ChargeController chargeController = new ChargeController(chargeView, mainView, cardLayout, gameManager,gameView);
+            ChargeController chargeController = new ChargeController(chargeView, mainView, gameManager,gameView);
             DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
             NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView,gameController);
             StatisticsController statisticsController = new StatisticsController(statisticsView, mainView, cardLayout,statisticsManager);

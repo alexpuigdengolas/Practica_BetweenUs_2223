@@ -242,8 +242,5 @@ public class NewGameView extends JPanel {
      */
     public void printNewGameErrors(String Error) {
         JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);
-
     }
-
-
 }

@@ -13,9 +13,9 @@ public class DeductionPanel extends JPanel {
 
     public DeductionPanel(ArrayList<String> colorNames) {
         // Initialize the columns
-        unknownColumn = new JPanel(new GridLayout(colorNames.size(), 1));
-        susColumn = new JPanel(new GridLayout(colorNames.size(), 1));
-        notSusColumn = new JPanel(new GridLayout(colorNames.size(), 1));
+        unknownColumn = new JPanel(new GridLayout(3, 3));
+        susColumn = new JPanel(new GridLayout(3, 3));
+        notSusColumn = new JPanel(new GridLayout(3, 3));
 
         // Set the colors for the cards
         setCardColors(colorNames);
@@ -35,7 +35,11 @@ public class DeductionPanel extends JPanel {
         mainPanel.add(button, BorderLayout.EAST);
 
         // Add the main panel to the DeductionPanel
+        setLayout(new BorderLayout());
         add(mainPanel);
+
+        // Set the maximum size of the DeductionPanel
+        setMaximumSize(getPreferredSize());
     }
 
     private JPanel addColumn(String columnName, JPanel columnPanel) {
@@ -55,10 +59,23 @@ public class DeductionPanel extends JPanel {
         susColumn.removeAll();
         notSusColumn.removeAll();
 
+        // Calculate the number of cards to add to each column
+        int maxCardsPerColumn = 9;
+        int cardsPerColumn = Math.min(size, maxCardsPerColumn);
+        int remainingCards = size - cardsPerColumn;
+
         // Add cards with updated colors to the unknown column
-        for (String colorName : colorNames) {
+        for (int i = 0; i < cardsPerColumn; i++) {
+            String colorName = colorNames.get(i);
             CardPanel cardPanel = new CardPanel(colorName);
             unknownColumn.add(cardPanel);
+        }
+
+        // Add remaining cards to the sus column
+        for (int i = cardsPerColumn; i < cardsPerColumn + remainingCards; i++) {
+            String colorName = colorNames.get(i);
+            CardPanel cardPanel = new CardPanel(colorName);
+            susColumn.add(cardPanel);
         }
 
         // Repaint the columns
@@ -159,6 +176,7 @@ public class DeductionPanel extends JPanel {
 
         private Color getColor(String colorName) {
             // TODO: Add all the colors
+            int[] components = new int[3];
             return switch (colorName) {
                 case "RED" -> Color.RED;
                 case "GREEN" -> Color.GREEN;
@@ -166,7 +184,28 @@ public class DeductionPanel extends JPanel {
                 case "YELLOW" -> Color.YELLOW;
                 case "MAGENTA" -> Color.MAGENTA;
                 case "ORANGE" -> Color.ORANGE;
-                default -> Color.BLACK;
+                case "PINK" -> Color.PINK;
+                case "BLACK" -> Color.BLACK;
+                case "PURPLE" -> {
+                    components[0] = 102;
+                    components[1] = 0;
+                    components[2] = 153;
+                    yield new Color(components[0], components[1], components[2]);
+                }
+                case "BROWN" -> {
+                    components[0] = 102;
+                    components[1] = 51;
+                    components[2] = 0;
+                    yield new Color(components[0], components[1], components[2]);
+                }
+                case "CYAN" -> Color.CYAN;
+                case "LIME" -> {
+                    components[0] = 50;
+                    components[1] = 205;
+                    components[2] = 50;
+                    yield new Color(components[0], components[1], components[2]);
+                }
+                default -> Color.WHITE;
             };
         }
 

@@ -64,8 +64,6 @@ public class PintaPassadis extends JPanel{
 
         if (userIsHere || revealMap) {
 
-
-
         //hay que hacer un if para cuando el user no esta
         g.setColor(Color.BLACK);
         g.fillRect(0,0,400,400);
