@@ -4,6 +4,7 @@ import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
 import business.entities.map.Cell;
+import presentation.views.custom.Log;
 
 import java.util.LinkedList;
 
@@ -118,5 +119,25 @@ public class NpcManager{
         return numImpostors;
     }
 
+    //#nuevo
+    //mriar de borrar este metodo
+    public boolean checkLogPosition (Character character) {
+        if (checkLog(character)) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean checkLog(Character character) {
+        if (!character.getCell().getRoomName().equals("corridor") &&
+                !character.getCell().getRoomName().equals("security") &&
+                !character.isDead() && character.isCanLog()) {
+            System.out.println(" el color "+ character.getColor()+ " deberia meterse en el log");
+            character.setCanLog(false);
+            return true;
+        }
+        return false;
+    }
 
 }

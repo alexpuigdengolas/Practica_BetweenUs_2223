@@ -3,11 +3,14 @@ package presentation.controllers;
 import business.GameManager;
 import business.NpcManager;
 
+import business.entities.Time;
 import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
+import presentation.views.LogsView;
 import presentation.views.MainView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +20,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-public class GameController extends Thread implements Runnable,ActionListener, KeyListener {
+public class GameController implements Runnable,ActionListener, KeyListener {
 
+    private Time totalTime =  new Time();
     private GameView gameView;
     private MainView mainView;
     private boolean isRunning;
@@ -26,12 +30,16 @@ public class GameController extends Thread implements Runnable,ActionListener, K
     private GameManager gameManager;
 
     private Boolean revealMap = false;
+    private LogController logController;
+    private LogsView logsView;
+    private Thread T;
 
     public GameController(GameView gameView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
         this.gameView = gameView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.gameManager = gameManager;
+
 
     }
 
@@ -176,6 +184,9 @@ public class GameController extends Thread implements Runnable,ActionListener, K
                 gameView.setDeductionShowing(false);
                 //gameView.showDeductions(colors);
                 //TODO: Show LOG
+
+                logsView = new LogsView(logController.getLogs());
+
                 break;
             default:
                 if(!gameView.getDeductionShowing()) {
@@ -187,27 +198,32 @@ public class GameController extends Thread implements Runnable,ActionListener, K
 
     public void startMapThread() {
         isRunning = true;
-        this.start();
+        T = new Thread(this);
+        T.start();
     }
 
     //#nuevo
     public void stopMapThread() {
         isRunning = false;
-        this.interrupt();
+        T.interrupt();
+
+    }
+    public Time getTotalTime() {
+        return totalTime;
     }
 
 
     public void run() {
+        logController = new LogController(gameManager.getNpcManager(),logsView,gameView.getName());
+        getTotalTime().initCounter();
         while(isRunning) {
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
-                System.out.println("Estoy dentro del thread del mapa");
                 if (gameManager.checkImpostorsWin()) {
                     gameManager.interruptThreads();
                     this.stopMapThread();
                     gameManager.finishGame(false);
                     gameView.impostorsWinMsg();
-                    //TODO:Aqui las cosas de poner la partida como perdida
                     //Mensaje de impostores ganan
                     mainView.showStart();
                 }
@@ -215,7 +231,12 @@ public class GameController extends Thread implements Runnable,ActionListener, K
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers(), revealMap);
+                    logController.updateLogs();
+                }
+            });
 
         }
     }

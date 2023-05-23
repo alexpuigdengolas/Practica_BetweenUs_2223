@@ -73,6 +73,7 @@ public class Npc extends Character{
                 int[] nextCell = getNextCoordinates(nextRoom);
                 System.out.println("se va a la celda:  "+getCellByCoordinates(nextCell).getRoomName());
                 setCell(getCellByCoordinates(nextCell));
+                setCanLog(true);
 
             }
             startInterval = getInterval();
@@ -123,9 +124,11 @@ public class Npc extends Character{
         while (isRunning()) {
             try {
                 npcMovement();
+
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //TODO:mirar esto que esta feo
+                System.out.println("el color a muerto");
             }
         }
         this.interrupt();

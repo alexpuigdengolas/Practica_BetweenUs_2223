@@ -93,6 +93,7 @@ public class Impostor extends Character{
                     System.out.println("El impostor se mueve");
                     int[] nextCell = impostor.getNextCoordinates(nextRoom);
                     impostor.setCell(getCellByCoordinates(nextCell));
+                    impostor.setCanLog(true);
 
                 }
             }
@@ -109,6 +110,7 @@ public class Impostor extends Character{
                 int numNpcs = npcManager.getNumNpcCell(mapManager.getMap().getCellByName(roomName));
                 if (numNpcs == 0 || (numNpcs == 1 && impostor.canKill)) {
                     impostor.setCell(mapManager.getMap().getCellByName(roomName));
+                    impostor.setCanLog(true);
                     return true;
                 }
             }
@@ -121,6 +123,7 @@ public class Impostor extends Character{
         int nextRoom = getNextImpostorRoom(impostor);
         int[] nextCell = impostor.getNextCoordinates(nextRoom);
         impostor.setCell(getCellByCoordinates(nextCell));
+        impostor.setCanLog(true);
 
     }
 
@@ -141,13 +144,14 @@ public class Impostor extends Character{
 
     @Override
     public void run() {
-        //TODO:que no cuente los muuertos a la hora de mata, que mate al usuario
+
         getTotalTime().initCounter();
         getIntervalTime().initCounter();
         startInterval = getInterval();
         killingPeriod.initCounter();
         killingPeriod.setSeconds(26);
         while (isRunning()) {
+
             try {
                 impostorMovement(this);
                 if (checkKillingPeriod(this) || canKill == null) {
@@ -156,9 +160,11 @@ public class Impostor extends Character{
                         afterKillMovement(this);
                     }
                 }
+
                 Thread.sleep(500);
+
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("el color a muerto");
             }
         }
     }

@@ -15,10 +15,9 @@ public abstract class Character extends Thread {
     private final int[] moveOptions = new int[4];
     private String color;
     private Cell cell;
-    private int xCoordinate;
-    private int yCoordinate;
     private boolean isRunning;
     private boolean isDead;
+    private boolean canLog;
 
 
 
@@ -26,6 +25,7 @@ public abstract class Character extends Thread {
     public Character(String color) {
         this.color = color;
         isDead = false;
+        canLog = false;
     }
     public Cell getCell() {
         return cell;
@@ -40,7 +40,13 @@ public abstract class Character extends Thread {
     }
     public void setCell(Cell cell) {this.cell = cell;}
 
+    public boolean isCanLog() {
+        return canLog;
+    }
 
+    public void setCanLog(boolean canLog) {
+        this.canLog = canLog;
+    }
 
     public synchronized int[] getNextCoordinates(int nextRoom) {
         int[] actualRoom = new int[2];
@@ -71,10 +77,8 @@ public abstract class Character extends Thread {
     }
 
     public synchronized void stopThread() {
-
         isRunning = false;
-
-
+        this.interrupt();
     }
     public int getMaxProbability() {
         return 100;
