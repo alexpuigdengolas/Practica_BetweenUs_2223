@@ -27,12 +27,15 @@ public class GameManager {
 
     private UserManager userManager;
 
-    private LinkedList<Character> players;
+    private String gameName;
+    private StatisticsManager statisticsManager;
 
-    public GameManager(UserManager userManager) {
+
+    public GameManager(UserManager userManager,StatisticsManager statisticsManager) {
         this.userDAO = new UserSQLDAO();
         this.gameDAO = new GameSQLDAO();
         this.userManager = userManager;
+        this.statisticsManager = statisticsManager;
     }
 
     public void setPlayerManager(PlayerManager playerManager){
@@ -59,7 +62,7 @@ public class GameManager {
     //Comprueba que el juego tenga las cosas correctas y envia una excepcion si falla alguna cosa
     public void checkGame(Game game) throws ErrorMessage{
 
-        if(userDAO.gameNameExists(game.getGameName())){
+        if(gameDAO.gameNameExists(game.getGameName())){
             throw new ErrorMessage("El nom del game ya existeix.");
         } else if (!chechImp(game).equals("Correcte")) {
             throw  new ErrorMessage(chechImp(game));
@@ -69,10 +72,13 @@ public class GameManager {
 
     }
 
-    /*public void updateCharge(){
-        games = getGames();
-        chargeView.updateComboBoxList(games);
-    }*/
+
+
+
+
+    public void setGameName(String gameName) {
+        this.gameName = gameName;
+    }
 
     public ArrayList<String> getGames(){
         ArrayList<String> games;
@@ -174,6 +180,7 @@ public class GameManager {
     }
 
 
+
     //#nuevo
     public boolean checkImpostorsWin() {
         int crewMembersAlive = npcManager.getNumNpc();
@@ -189,16 +196,25 @@ public class GameManager {
 
     //#nuevo
     //Aqui funcion que mira el numero de partidas ganadas el numero de victorias
-    public void knowVictoryRate(){
-
-
+    public void setStatistics(){
+        float ratio = ((float) (userManager.getnumWins(userManager.getUser())) /(userManager.getNumGames(userManager.getUser())))*100;
+        statisticsManager.setGameStatistic(userManager.getUser(),gameName,ratio);
     }
+
+
 
     //#nuevo
     public void finishGame(Boolean win){
         userManager.gameFinish(win);
 
     }
+
+    //#nuevo
+    public Game newGame(String name,int players, int imp,String color,String mapName,String user){
+        Game game  = new Game(name, players, imp, color, mapName,user);
+        return game;
+    }
+
 
 
 

@@ -12,7 +12,6 @@ public interface UserDAO {
     boolean userNameExists(String userName);
     boolean userMailExists(String userMail);
     String getUsername(String loginName);
-    boolean gameNameExists(String gameName);
     //#nuevo
     int getNumVictories(String user);
     //#nuevo

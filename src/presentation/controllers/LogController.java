@@ -12,10 +12,10 @@ public class LogController {
     private LogsView logv;
     private LogManager logm;
 
-    public LogController(NpcManager npcManager, LogsView logv, String gameName) {
+    public LogController(NpcManager npcManager, LogsView logv) {
         this.npcManager = npcManager;
         this.logv = logv;
-        this.logm = new LogManager(gameName);
+        this.logm = new LogManager();
     }
 
     public void updateLogs() {

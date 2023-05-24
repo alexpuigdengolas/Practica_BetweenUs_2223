@@ -12,8 +12,7 @@ public class LogManager {
     private LinkedList<Log> logs;
 
     // Parametrized constructor
-    public LogManager(String gameName) {
-        this.gameName = gameName;
+    public LogManager() {
         logs = new LinkedList<>();
     }
 
@@ -23,7 +22,6 @@ public class LogManager {
      */
     public void addLog(Character character) {
         Log log = new Log(character.getColor(), character.getCell().getRoomName(), character.getTotalTime().getSeconds());
-        //logDAO.saveLog(log, gameName);
         logs.add(log);
     }
 

@@ -96,19 +96,7 @@ public class UserSQLDAO implements UserDAO {
         }
     }
 
-    @Override
-    public boolean gameNameExists(String gameName){
-        conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM Game AS g WHERE g.gameName LIKE '" + gameName + "'");
-        try {
-            if (rs.isBeforeFirst()) {
-                return true;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
 
     //#nuevo
     @Override

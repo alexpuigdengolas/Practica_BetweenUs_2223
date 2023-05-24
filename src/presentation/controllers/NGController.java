@@ -35,6 +35,9 @@ public class NGController  implements ActionListener {
 
     private GameController gameController;
 
+    private Game game;
+
+
     /**
      * Constructor del controller
      * @param NGView
@@ -79,12 +82,14 @@ public class NGController  implements ActionListener {
                 }else{
                     mapName = NGView.getMap();
                 }
-                //TODO: Mirar si esto lo tiene que hacer el manager de gamemanager
-                Game game  = new Game(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
+
+                game  = gameManager.newGame(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
+                gameManager.setGameName(NGView.getNameMap());
                 try{
                     //Comprueba que cumpla condiciones y lo guarda si asi lo hace
                     gameManager.checkGame(game);
                     gameManager.saveGame(game);
+
                     int firstColor = 0;
 
                     //Printar la vista del mapa

@@ -214,7 +214,7 @@ public class GameController implements Runnable,ActionListener, KeyListener {
 
 
     public void run() {
-        logController = new LogController(gameManager.getNpcManager(),logsView,gameView.getName());
+        logController = new LogController(gameManager.getNpcManager(),logsView);
         getTotalTime().initCounter();
         while(isRunning) {
             try {
@@ -223,6 +223,7 @@ public class GameController implements Runnable,ActionListener, KeyListener {
                     gameManager.interruptThreads();
                     this.stopMapThread();
                     gameManager.finishGame(false);
+                    gameManager.setStatistics();
                     gameView.impostorsWinMsg();
                     //Mensaje de impostores ganan
                     mainView.showStart();

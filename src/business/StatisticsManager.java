@@ -21,11 +21,8 @@ public class StatisticsManager {
         return gameDAO.searchGameStatistics(user);
     }
 
-    public void setGameStatistic(String user, int game, float percentage){
+    public void setGameStatistic(String user, String game, float percentage){
         gameDAO.setGameStatistic(user, game, percentage);
     }
-
-
-
 
 }

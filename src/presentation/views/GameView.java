@@ -26,7 +26,7 @@ public class GameView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
     public static final String BTN_RVL = "BTN_RVL";
 
-    private MapView mapView = new MapView();
+    private MapView mapView;
     private JPanel jpTask = new JPanel();
     private DefaultTaskPanel defaultTaskPanel;
     private DeductionPanel deductionPanel;

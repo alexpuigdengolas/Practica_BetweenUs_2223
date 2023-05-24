@@ -94,10 +94,23 @@ public class GameSQLDAO implements GameDAO{
     }
 
     @Override
-    public void setGameStatistic(String user, int game, float percentage) {
+    public void setGameStatistic(String user, String game, float percentage) {
         conn.connect();
-        conn.insertQuery("INSERT INTO PlayerStatistics(username, game, percentage) VALUES ('" + user + "','" + (game+1) + "','" + percentage +"')");
+        conn.insertQuery("INSERT INTO PlayerStatistics(username, game, percentage) VALUES ('" + user + "','" + game + "','" + percentage +"')");
         conn.disconnect();
+    }
+    @Override
+    public boolean gameNameExists(String gameName){
+        conn.connect();
+        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM Game AS g WHERE g.gameName LIKE '" + gameName + "'");
+        try {
+            if (rs.isBeforeFirst()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 

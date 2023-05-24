@@ -23,8 +23,9 @@ public class Main {
             ChargeView chargeView = new ChargeView();
             SettingsView settingsView = new SettingsView();
             UserManager userManager = new UserManager();
-            GameManager gameManager = new GameManager(userManager);
-            StatisticsManager statisticsManager = new StatisticsManager();
+                StatisticsManager statisticsManager = new StatisticsManager();
+            GameManager gameManager = new GameManager(userManager,statisticsManager);
+
 
 
 

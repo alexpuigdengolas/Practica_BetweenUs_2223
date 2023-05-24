@@ -12,6 +12,7 @@ public interface GameDAO {
     void deleteGame(String game);
     void deleteGames(String user);
     ArrayList<Float> searchGameStatistics(String user);
-    void setGameStatistic(String user, int game, float percentage);
+    void setGameStatistic(String user, String game, float percentage);
+    boolean gameNameExists(String gameName);
 
 }

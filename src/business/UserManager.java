@@ -139,13 +139,22 @@ public class UserManager {
         return false;
     }
 
+    public int getNumGames(String user){
+        return  userDAO.getNumGames(user);
+
+    }
+
+    public int getnumWins(String user){
+        return userDAO.getNumVictories(user);
+    }
+
     //#nuevo
     public void gameFinish(Boolean win){
         if(userDAO.userNameExists(user)){
-            int games = userDAO.getNumGames(user);
+            int games = getNumGames(user);
             userDAO.setNumGames(user,games+1);
             if(win){
-               int wins =  userDAO.getNumVictories(user);
+               int wins = getnumWins(user);
                userDAO.setNumWins(user,wins);
             }
         }
