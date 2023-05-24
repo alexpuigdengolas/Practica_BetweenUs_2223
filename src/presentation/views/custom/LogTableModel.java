@@ -1,5 +1,7 @@
 package presentation.views.custom;
 
+import business.Log;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.LinkedList;
 

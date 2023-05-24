@@ -6,6 +6,9 @@ import persistance.Conn.GameSQLDAO;
 import persistance.Conn.UserDAO;
 import persistance.Conn.UserSQLDAO;
 
+/**
+ * Clase que ejerce como gestor de usuarios
+ */
 public class UserManager {
 
     private final UserDAO userDAO;
@@ -13,17 +16,28 @@ public class UserManager {
 
     private String user;
 
+    /**
+     * El constructor de la clase
+     */
     public UserManager(){
         userDAO = new UserSQLDAO();
         this.gameDAO = new GameSQLDAO();
     }
 
+    /**
+     * Metodo para registrar al usuario
+     * @param user el usuario a registrar
+     */
     //Registra el usuario en la BBDD
     public void registerUser(User user) {
         userDAO.registerUser(user);
     }
 
-
+    /**
+     * Metodo para comprobar si se puede registrar
+     * @param user el usuario
+     * @throws ErrorMessage el menaje de error
+     */
     //Comprueba las diferentes condiciones de registro y envia una excepcion en caso de no complir las que toquen
     public void checkRegister(User user) throws ErrorMessage{
         if (userDAO.userNameExists(user.getName())) {
@@ -40,16 +54,22 @@ public class UserManager {
         }
     }
 
-
+    /**
+     * Metodo para comprobar el mail
+     * @param mail el mail
+     * @return un booleano que indica si es correcto
+     */
     //Comprueba el formato del mail
     public boolean checkMailFormat(String mail) {
         String emailRegex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]{3,}+.+[a-zA-Z0-9]{2,}+$";
         return mail.matches(emailRegex);
     }
 
-
-
-
+    /**
+     * Metodo para comprobar el formato de la contraseña
+     * @param user el usuario
+     * @return El error que debe mostrarse
+     */
     //Comprueba el formato de la contrasenya
     public String checkPasswordFormat(User user) {
         char c;
@@ -105,32 +125,64 @@ public class UserManager {
         return finalError;
     }
 
+    /**
+     * Metodo para comprobar que las contraseñas sean identicas
+     * @param user usuario
+     * @return booleano para indicar si esto es asi
+     */
     public boolean unequalPasswords(User user){
         return !user.getConfirmedPassword().equals(user.getPassword());
     }
 
+    /**
+     * Metodo para logear al usuario
+     * @param userNameMail el nombre o correo del usuario
+     * @param password la contraseña del usuario
+     * @return boolean que indica si la informacion es correcta
+     */
     public boolean loginUser(String userNameMail, String password) {
 
         return userDAO.checkLoginUser(userNameMail,password);
     }
 
+    /**
+     * Getter del nombre de usuario logeado
+     * @param loginName el nombre o correo
+     * @return el nombre del usuario
+     */
     public String getUsername(String loginName) {
         user = userDAO.getUsername(loginName);
         return userDAO.getUsername(loginName);
     }
+
+    /**
+     * Getter del usuario logeado
+     * @return nombre del usuario
+     */
     public String getUser(){
         return user;
     }
 
+    /**
+     * Metodo para resetear el nombre
+     */
     public void resetName(){
         user = null;
 
     }
+
+    /**
+     * Metodo para eliminar las partidas del usuario
+     */
     public void deleteGames(){
      gameDAO.deleteGames(user);
 
     }
 
+    /**
+     * metodo para eliminar el usuario
+     * @return booleano por si se pudo eliminar
+     */
     public boolean deleteUser() {
         if (userDAO.userNameExists(user)) {
             userDAO.deleteUser(user);
@@ -139,16 +191,30 @@ public class UserManager {
         return false;
     }
 
+    /**
+     * Getter el numero de partidas de un usuario especifico
+     * @param user
+     * @return
+     */
     public int getNumGames(String user){
         return  userDAO.getNumGames(user);
 
     }
 
+    /**
+     * Getter de el numero de partidas ganadas del usuario
+     * @param user el usuario
+     * @return el numero de partidas ganadas
+     */
     public int getnumWins(String user){
         return userDAO.getNumVictories(user);
     }
 
     //#nuevo
+    /**
+     * Metodo para añadir una partida finalizada a la base de datos
+     * @param win boolean que indica si se vencio o no
+     */
     public void gameFinish(Boolean win){
         if(userDAO.userNameExists(user)){
             int games = getNumGames(user);

@@ -1,6 +1,6 @@
 package presentation.views;
 
-import presentation.views.custom.Log;
+import business.Log;
 import presentation.views.custom.LogTableModel;
 
 import javax.swing.*;

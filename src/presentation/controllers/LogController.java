@@ -3,7 +3,7 @@ package presentation.controllers;
 import business.LogManager;
 import business.NpcManager;
 import presentation.views.LogsView;
-import presentation.views.custom.Log;
+import business.Log;
 
 import java.util.LinkedList;
 

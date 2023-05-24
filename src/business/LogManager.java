@@ -1,10 +1,12 @@
 package business;
 
 import business.entities.character.Character;
-import presentation.views.custom.Log;
 
 import java.util.LinkedList;
 
+/**
+ * Este metodo servira para poder gestionar los logs
+ */
 public class LogManager {
     // Attributes
     //private LogDAO logDAO;
@@ -12,6 +14,10 @@ public class LogManager {
     private LinkedList<Log> logs;
 
     // Parametrized constructor
+
+    /**
+     * Constructor de la clase
+     */
     public LogManager() {
         logs = new LinkedList<>();
     }
@@ -25,6 +31,10 @@ public class LogManager {
         logs.add(log);
     }
 
+    /**
+     * Getter de los logs
+     * @return el listado de Log's que se generan en la partida
+     */
     public LinkedList<Log> getLogs() {
         return logs;
     }

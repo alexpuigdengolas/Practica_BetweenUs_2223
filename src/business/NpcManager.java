@@ -4,7 +4,6 @@ import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
 import business.entities.map.Cell;
-import presentation.views.custom.Log;
 
 import java.util.LinkedList;
 
