@@ -12,6 +12,10 @@ public class StatisticPanel extends JPanel {
     private static final int TICK_DISTANCE = 10;
     private float[] data;
 
+    private int xUnit;
+
+    private int xTickSpacing;
+
     public StatisticPanel(float[] data) {
         this.data = data;
         setPreferredSize(new Dimension(CHART_WIDTH, CHART_HEIGHT));
@@ -37,7 +41,12 @@ public class StatisticPanel extends JPanel {
         minValue = Math.min(minValue, 0);
         maxValue = Math.max(maxValue, 100);
 
-        int xUnit = (CHART_WIDTH - 2 * MARGIN) / (data.length - 1);
+        if(data.length <= 1 ){
+            xUnit = (CHART_WIDTH - 2 * MARGIN);
+        }else{
+            xUnit = (CHART_WIDTH - 2 * MARGIN) / (data.length-1);
+        }
+
         int yUnit = (CHART_HEIGHT - 2 * MARGIN) / (int) (maxValue - minValue);
 
         g2d.setColor(Color.BLACK);
@@ -61,7 +70,13 @@ public class StatisticPanel extends JPanel {
 
         g2d.drawLine(chartStartX, chartCenterY, chartStartX, chartStartY);
 
-        int xTickSpacing = (CHART_WIDTH - 2 * MARGIN) / (data.length - 1);
+
+        if(data.length <= 1){
+            xTickSpacing = (CHART_WIDTH - 2 * MARGIN);
+        }else{
+            xTickSpacing = (CHART_WIDTH - 2 * MARGIN) / (data.length - 1);
+        }
+
         for (int i = 0; i < data.length; i++) {
             int x = chartStartX + i * xTickSpacing;
             int y = chartCenterY;

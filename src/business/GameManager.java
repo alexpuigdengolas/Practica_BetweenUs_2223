@@ -38,6 +38,10 @@ public class GameManager {
         this.statisticsManager = statisticsManager;
     }
 
+    public UserManager getUserManager(){
+        return userManager;
+    }
+
     public void setPlayerManager(PlayerManager playerManager){
         this.playerManager = playerManager;
     }
@@ -80,9 +84,9 @@ public class GameManager {
         this.gameName = gameName;
     }
 
-    public ArrayList<String> getGames(){
+    public ArrayList<String> getGames(String user){
         ArrayList<String> games;
-        games = gameDAO.getGames();
+        games = gameDAO.getGames(user);
         return games;
     }
 
@@ -92,6 +96,7 @@ public class GameManager {
     }
 
     public void deleteGame(String game){
+
         gameDAO.deleteGame(game);
     }
 

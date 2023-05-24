@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface GameDAO {
 
     void saveGame(Game game);
-    ArrayList<String> getGames();
+    ArrayList<String> getGames(String user);
     Game searchGame(String game);
     void deleteGame(String game);
     void deleteGames(String user);

@@ -66,28 +66,5 @@ public class RegisterController implements ActionListener {
             System.out.println(e.getMessage());
         }
 
-/*
-        if (checked == 0) {
-            userManager.registerUser(user);
-            mainView.showStart();
-            //Ir al caso de que se ha registrado bien
-
-        } else {
-            //No se ha podido hacer cada uno marca el error
-            switch (checked) {
-                case 1 -> // nombre repetido
-                        System.out.println("El nom del usuari ja existeix.");
-                case 2 -> // Las contras no son iguales
-                        System.out.println("Les contrasenyes no son iguals");
-                case 3 -> { // error en el formato de la contra
-                    String finalError = userManager.checkPasswordFormat(user);
-                    System.out.println("El final error es:" + finalError);
-                }
-                case 4 -> // error mail format
-                        System.out.println("El mail no te el format correcte");
-                case 5 -> //Correo ya existe
-                        System.out.println("El mail ya exiteix");
-            }
-        }*/
     }
 }

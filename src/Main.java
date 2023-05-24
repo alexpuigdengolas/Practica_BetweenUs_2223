@@ -45,7 +45,7 @@ public class Main {
             ChargeController chargeController = new ChargeController(chargeView, mainView, gameManager,gameView);
             DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
             NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView,gameController);
-            StatisticsController statisticsController = new StatisticsController(statisticsView, mainView, cardLayout,statisticsManager);
+            StatisticsController statisticsController = new StatisticsController(statisticsView, mainView, cardLayout);
 
             registerView.registerController(registerController);
             loginView.loginController(loginController);
