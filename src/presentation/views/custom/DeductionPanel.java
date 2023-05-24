@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class DeductionPanel extends JPanel {
     private JPanel unknownColumn;
@@ -85,8 +86,8 @@ public class DeductionPanel extends JPanel {
         notSusColumn.repaint();
     }
 
-    public ArrayList<String> getCardPositions() {
-        ArrayList<String> positions = new ArrayList<>();
+    public LinkedList<String> getCardPositions() {
+        LinkedList<String> positions = new LinkedList<>();
 
         // Iterate over cards in the unknown column
         for (Component component : unknownColumn.getComponents()) {

@@ -257,7 +257,7 @@ public class GameView extends JPanel {
      *
      * @return
      */
-    public ArrayList<String> getCardPosition() {
+    public LinkedList<String> getCardPosition() {
         return deductionPanel.getCardPositions();
     }
 }

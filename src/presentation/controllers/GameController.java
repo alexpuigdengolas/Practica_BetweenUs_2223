@@ -3,6 +3,8 @@ package presentation.controllers;
 import business.GameManager;
 import business.entities.Time;
 import business.entities.character.Character;
+import business.entities.character.Impostor;
+import business.entities.character.Npc;
 import business.entities.character.Player;
 import presentation.views.GameView;
 import presentation.views.LogsView;
@@ -176,10 +178,80 @@ public class GameController implements Runnable,ActionListener, KeyListener {
             case GameView.CHECK -> {
                 String roomName = gameManager.getPlayerManager().getPlayer().getCell().getRoomName();
                 if(roomName.equals("admin")){
-                    System.out.println(gameView.getCardPosition());
+                    boolean rightAnswer = false;
+                    boolean gotAnswer = false;
+
+                    LinkedList<String> colors = gameView.getCardPosition();
+
+                    LinkedList<String> susColors = new LinkedList<>();
+                    LinkedList<String> notSusColors = new LinkedList<>();
+                    LinkedList<String> unknownColors = new LinkedList<>();
+
+                    separateColors(colors, susColors, notSusColors, unknownColors);
+                    if(unknownColors.size() > 0){
+                        gotAnswer = true;
+                    }else {
+                        LinkedList<Character> players = gameManager.getNpcManager().getPlayers();
+                        LinkedList<Npc> npcs = new LinkedList<>();
+                        LinkedList<Impostor> impostors = new LinkedList<>();
+
+                        for (Character character : players) {
+                            if (character.getClass().getSimpleName().equals("Npc")) {
+                                npcs.add((Npc) character);
+                            } else if (character.getClass().getSimpleName().equals("Impostor")) {
+                                impostors.add((Impostor) character);
+                            }
+                        }
+
+
+                        for(int j = 0; j < impostors.size(); j++) {
+                            if (!susColors.contains(impostors.get(j).getColor())){
+                                gotAnswer = true;
+                                break;
+                            }
+                        }
+
+
+                        for(int j = 0; j < npcs.size(); j++) {
+                            if (!notSusColors.contains(npcs.get(j).getColor())){
+                                gotAnswer = true;
+                                break;
+                            }
+                        }
+
+                    }
+
+                    if(!gotAnswer){
+                        rightAnswer = true;
+                    }
+
+                    if(rightAnswer){
+                        System.out.println("Ganas la partida");
+                    }else{
+                        System.out.println("Cagaste");
+                    }
+
+
                 }else{
                     System.out.println("Not on the wright room!");
                 }
+            }
+        }
+    }
+
+    public static void separateColors(LinkedList<String> colorsList, LinkedList<String> susColors, LinkedList<String> notSusColors, LinkedList<String> unknownColors) {
+        for (String color : colorsList) {
+            String[] parts = color.split(" - ");
+            String colorName = parts[0].trim();
+            String tag = parts[1].replaceAll(" -.*", "").trim();
+
+            // Add the color to the corresponding LinkedList based on the tag
+            if (tag.equals("Sus")) {
+                susColors.add(colorName);
+            } else if (tag.equals("Not Sus")) {
+                notSusColors.add(colorName);
+            } else {
+                unknownColors.add(colorName);
             }
         }
     }
@@ -193,6 +265,7 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         if(!gameView.getDeductionShowing()) {
             //gameView.showDeductions(colors);
             gameView.updateDeductionPanel(colors);
+
         }
 
         switch (player.getCell().getRoomName()){
