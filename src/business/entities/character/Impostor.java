@@ -9,6 +9,10 @@ import business.entities.map.Mobility;
 import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Esta clase representara a los personajes que sean impostores durante la partida.
+ * Como podemos ver extiende de la clase de personajes, ya que un impostor no deja de ser un personaje
+ */
 public class Impostor extends Character{
     private static final int minInterval = 6;
     private static final int maxInterval = 8;
@@ -19,6 +23,11 @@ public class Impostor extends Character{
     private Time killingPeriod;
 
 
+    /**
+     * Este sera el constructor de los impostores
+     * @param color el color del impostor
+     * @param mapManager el map manager que asociaremos al impostor
+     */
     // Parametrized constructor
     public Impostor(String color, MapManager mapManager) {
         super(color);
@@ -26,15 +35,22 @@ public class Impostor extends Character{
         killingPeriod = new Time();
     }
 
+    /**
+     * Setter de la capacidad de asesinar del personaje
+     * @param canKill un booleano que indica si este personaje puede matar a otros personajes
+     */
     public void setCanKill(Boolean canKill) {
         this.canKill = canKill;
     }
 
+    /**
+     * Setter de el manager de todos los NPC's
+     * @param npcManager el NPC Manager que queremos asociar
+     */
     @Override
     public void setNpcManager(NpcManager npcManager) {
         this.npcManager = npcManager;
     }
-
 
     /**
      * Método que nos dice si el impostor se va a mover o no
@@ -45,6 +61,10 @@ public class Impostor extends Character{
         return probability <= 45;
     }
 
+    /**
+     * Este metodo retorna el intervalo de tiempo entre acciones
+     * @return El timer que tenemos entre acciones
+     */
     public int getInterval() {
         return randomInterval(maxInterval, minInterval);
     }
@@ -166,6 +186,10 @@ public class Impostor extends Character{
 
     }
 
+    /**
+     * Este metodo nos permite recibir cuanto tiempo queda hasta que el impostor pueda volver a matar
+     * @return el timer de la cuenta atras de la cantidad de asesinato
+     */
     public Time getPeriodTime() {
         return killingPeriod;
     }
@@ -214,7 +238,4 @@ public class Impostor extends Character{
             }
         }
     }
-
-    // Parametrized constructor
-
 }

@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.LinkedList;
 
+/**
+ * Esta clase servira para representar el mapa
+ */
 public class Map {
 
     @SerializedName("cellNumber")
@@ -23,18 +26,42 @@ public class Map {
     @Expose
     private final LinkedList<Cell> cells = null;
 
+    /**
+     * Getter del numero de casillas que componen el mapa
+     * @return el numero de casillas
+     */
     public int getCellNumber() {
         return cellNumber;
     }
+
+    /**
+     * Este metodo nos retorna el ancho del mapa
+     * @return el valor del ancho del mapa
+     */
     public int getWidth() {
         return width;
     }
+
+    /**
+     * Este metodo nos retorna el alto del mapa
+     * @return el valor del alto del mapa
+     */
     public int getHeight() {
         return height;
     }
+
+    /**
+     * Getter del nombre del mapa
+     * @return el nombre del mapa
+     */
     public String getMapName() {
         return mapName;
     }
+
+    /**
+     * Getter de las casillas que componen el mapa
+     * @return las casillas
+     */
     public LinkedList<Cell> getCells() {
         return cells;
     }
@@ -48,6 +75,12 @@ public class Map {
         }
         return null;
     }
+
+    /**
+     * Getter de una casilla por su nombre especifico
+     * @param roomName el nombre de la casilla que buscamos
+     * @return la casilla en si
+     */
     public Cell getCellByName(String roomName) {
         for (Cell cell : cells) {
             if (cell.getRoomName().equals(roomName)) {

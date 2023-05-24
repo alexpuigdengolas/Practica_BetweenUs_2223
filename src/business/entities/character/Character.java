@@ -24,45 +24,97 @@ public abstract class Character extends Thread {
     private boolean isDead;
     private boolean canLog;
 
-
-
+    /**
+     * Este sera el constructor de nuestros personajes donde setearemos el color y su estado (Muerto o vivo)
+     * @param color el color que queremos que tenga el personaje
+     */
     // Parametrized constructor
     public Character(String color) {
         this.color = color;
         isDead = false;
         canLog = false;
     }
+
+    /**
+     * Getter de la casilla en la que se encuentra el personaje
+     * @return la casilla y toda su información
+     */
     public Cell getCell() {
         return cell;
     }
 
+    /**
+     * Getter del color del personaje
+     * @return el nombre del color
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Setter del color del personaje
+     * @param color el nombre del color asociado al personaje
+     */
     public void setColor(String color) {
         this.color = color;
     }
+
+    /**
+     * Setter de la casilla en la que se encuentra el ususario
+     * @param cell la casilla en la que se encuentra
+     */
     public void setCell(Cell cell) {this.cell = cell;}
 
+    /**
+     * Getter del estado de log del personaje
+     * @return un booleano que indica si el personaje puede hacer log
+     */
     public boolean isCanLog() {
         return canLog;
     }
 
+    /**
+     * Setter del estado de log del personaje
+     * @param canLog un booleano que indica si el personaje puede hacer log
+     */
     public void setCanLog(boolean canLog) {
         this.canLog = canLog;
     }
+
+    /**
+     * Getter de la probabilidad maxima de movimiento
+     * @return un entero que represente la probabilidad maxima
+     */
     public int getMaxProbability() {
         return 100;
     }
+
+    /**
+     * Setter del NPC Manager asociado al personaje
+     * @param npcManager el NPC Manager que queremos asociar
+     */
     public void setNpcManager(NpcManager npcManager){}
+
+    /**
+     * Este metodo nos servira para poder comprobar si el thread del personaje esta activo
+     * @return booleano que indica esta información
+     */
     public synchronized boolean isRunning() {
         return isRunning;
     }
+
+    /**
+     * Este metodo retorna el intervalo de tiempo entre acciones
+     * @return El timer que tenemos entre acciones
+     */
     public Time getIntervalTime() {
         return intervalTime;
     }
 
+    /**
+     * Este metodo retorna el temporizador de existencia del personaje
+     * @return cuanto tiempo lleva existiendo el personaje
+     */
     public Time getTotalTime() {
         return totalTime;
     }
@@ -165,7 +217,6 @@ public abstract class Character extends Thread {
      * @param mobility La mobilidad del jugador
      * @return integer del número de salas a las que se va a poder mover
      */
-
     public synchronized int setMoveOptions(Mobility mobility) {
         int counter = 0;
         if (checkLeft(mobility)) {
@@ -222,11 +273,18 @@ public abstract class Character extends Thread {
         return (int) (Math.random() * (counter));
     }
 
+    /**
+     * Este metodo nos retorna si el personaje esta muerto
+     * @return un booleano que indica si esta muerto
+     */
     public boolean isDead() {
         return isDead;
     }
 
-
+    /**
+     * Este metodo seteara que el personaje este muerto o no
+     * @param dead booleano del estado queremos que tenga el personaje
+     */
     public void setDead(boolean dead) {
         isDead = dead;
     }
