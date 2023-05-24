@@ -46,7 +46,7 @@ CREATE TABLE NpcPlayer (
 DROP TABLE IF EXISTS PlayerStatistics CASCADE;
 CREATE TABLE PlayerStatistics (
     username VARCHAR(255),
-    game INT,
+    game VARCHAR(255),
     percentage FLOAT,
     foreign key (username) REFERENCES User(username)
 );

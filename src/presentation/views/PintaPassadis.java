@@ -45,7 +45,7 @@ public class PintaPassadis extends JPanel{
         this.revealMap = revealMap;
         this.corpses = corpses;
         try{
-            File imageFile = new File("files/Images/XDead.png");
+            File imageFile = new File("files/Images/XDeadBlack.png");
             image = ImageIO.read(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
