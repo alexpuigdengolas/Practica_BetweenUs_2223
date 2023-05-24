@@ -47,8 +47,8 @@ public class GameView extends JPanel {
     private JButton jbStop = new JButton("Stop Game");
 
 
-    private JButton jbBack = new JButton();
-    private JButton jbSettings = new JButton();
+    private JButton jbBack = new JButton("Back");
+    private JButton jbSettings = new JButton("Settings");
     private JButton jbCheck = new JButton("Check");
 
     private Boolean deductionShowing = false;

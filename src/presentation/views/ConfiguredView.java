@@ -59,7 +59,6 @@ public class ConfiguredView extends JPanel {
 
         jbBack.setActionCommand(BTN_BACK);
         jpActions.add(jbBack);
-
         // Espai buit per emputjar el segon botó a la dreta
         jpActions.add(Box.createHorizontalGlue());
 

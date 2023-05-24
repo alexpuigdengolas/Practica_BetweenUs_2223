@@ -15,7 +15,6 @@ public class NewGameView extends JPanel {
 
     public static final String BTN_CHA = "BTN_CHA";
     public static final String BTN_BACK = "BTN_BACK";
-    public static final String SPN_PLY = "SPN_PLY";
     public static final String BTN_STI = "BTN_STI";
 
     public static final String BTN_MAP= "BTN_MAP";
@@ -37,9 +36,6 @@ public class NewGameView extends JPanel {
 
 
    private JButton  jbmaps = new JButton(fileName);
-
-    private CardLayout components;
-    private MainView mainView;
 
     /**
      * constructor de newgame

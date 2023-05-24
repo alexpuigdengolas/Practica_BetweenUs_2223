@@ -15,6 +15,7 @@ import java.util.Arrays;
  * sera la clase para construir la vista de las estadisticas de nuestro programa
  */
 public class StatisticsView extends JPanel {
+
     public static final String BTN_BACK = "BTN_BACK";
     public static final String BTN_STI = "BTN_STI";
 

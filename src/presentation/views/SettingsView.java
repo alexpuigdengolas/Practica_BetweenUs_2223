@@ -40,6 +40,29 @@ public class SettingsView extends JPanel {
         this.setLayout(new BorderLayout());
         this.add(fondo);
 
+        JPanel auxPanel = new JPanel();
+        auxPanel.setLayout(new BorderLayout());
+        auxPanel.setOpaque(false);
+
+        JPanel jpActions = new JPanel();
+        jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
+
+        jbBack.setActionCommand(BTN_BACK);
+        jpActions.add(jbBack);
+        // Espai buit per emputjar el segon botó a la dreta
+        jpActions.add(Box.createHorizontalGlue());
+        jpActions.setOpaque(false);
+        fondo.add(jpActions, BorderLayout.NORTH);
+
+        JPanel titlePanel = new JPanel();
+        JLabel jlTitle = new JLabel("Settings");
+        jlTitle.setForeground(Color.WHITE);
+        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
+        titlePanel.add(jlTitle);
+        titlePanel.setOpaque(false);
+        auxPanel.add(titlePanel, BorderLayout.NORTH);
+
         JPanel voidPanel = new JPanel();
         voidPanel.setPreferredSize(new Dimension(50, 50));
         voidPanel.setOpaque(false);
@@ -63,9 +86,6 @@ public class SettingsView extends JPanel {
         buttonPanel.add(jbDelete);
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         buttonPanel.add(jbLogOut);
-
-        actionPanel.setOpaque(false);
-        fondo.add(actionPanel, BorderLayout.NORTH);
 
         buttonPanel.setOpaque(false);
         fondo.add(buttonPanel, BorderLayout.CENTER);

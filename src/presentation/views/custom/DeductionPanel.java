@@ -137,9 +137,5 @@ public class DeductionPanel extends JPanel {
         }
     }
 
-    public void deductionPanelController(){
-
-    }
-
 
 }

@@ -125,13 +125,6 @@ public class ChargeView extends JPanel{
         comboBox.addActionListener(listener);
     }
 
-    public void chargeExistingGames(String[] options){
-        for(String option: options){
-            comboBox.addItem(option);
-        }
-
-
-    }
 
     public String optionSelected(){
         String selectedOption = comboBox.getSelectedItem().toString();
