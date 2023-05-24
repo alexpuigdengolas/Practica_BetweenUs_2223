@@ -6,7 +6,12 @@ import business.entities.map.Cell;
 import business.entities.map.Mobility;
 import business.entities.Time;
 
-
+/**
+ * Es una Clase abstracta donde guardamos los datos generales de los distintos personajes del juego
+ *
+ * En esta clase podemos obtener un codigo mucho mas limpio y ordenado gracias a el concepto de herencia.
+ *
+ */
 
 public abstract class Character extends Thread {
 
@@ -47,7 +52,26 @@ public abstract class Character extends Thread {
     public void setCanLog(boolean canLog) {
         this.canLog = canLog;
     }
+    public int getMaxProbability() {
+        return 100;
+    }
+    public void setNpcManager(NpcManager npcManager){}
+    public synchronized boolean isRunning() {
+        return isRunning;
+    }
+    public Time getIntervalTime() {
+        return intervalTime;
+    }
 
+    public Time getTotalTime() {
+        return totalTime;
+    }
+
+    /**
+     *Metodo que calcula las cordenadas de la sala donde se dirige el jugador
+     * @param nextRoom sala donde va el jugador
+     * @return Cordenadas de la sala donde va
+     */
     public synchronized int[] getNextCoordinates(int nextRoom) {
         int[] actualRoom = new int[2];
         actualRoom[0] = getCell().getX();
@@ -71,51 +95,77 @@ public abstract class Character extends Thread {
                 return actualRoom;
         }
     }
+
+    /**
+     *Metodo que inicia el thread de los diferentes personajes
+     */
     public synchronized void startThread() {
         isRunning = true;
         this.start();
     }
 
+    /**
+     * Metodo que para el thread de los diferentes personajes
+     */
     public synchronized void stopThread() {
         isRunning = false;
         this.interrupt();
     }
-    public int getMaxProbability() {
-        return 100;
-    }
+
+
+    /**
+     *Metodo que nos devuelve el intervalo que tardara el jugador en intentar moverse
+     * @param maxInterval número máximo de tiempo de espera
+     * @param minInterval número mínimo de tiempo de espera
+     * @return numero final que va a esperar
+     */
     public synchronized int randomInterval(int maxInterval, int minInterval) {
         return (int)(Math.random()*(maxInterval - minInterval + 1) + minInterval);
     }
 
-    public void setNpcManager(NpcManager npcManager){}
-    public synchronized boolean isRunning() {
-        return isRunning;
-    }
 
-    public Time getIntervalTime() {
-        return intervalTime;
-    }
-    public Time getTotalTime() {
-        return totalTime;
-    }
+    /**
+     * Metodo que comprueba si el usuario puede moverse hacia la izquierda
+     * @param mobility la movilidad del jugador en una posicion específica
+     * @return booleano que nos dice si puede moverse o no
+     */
     public synchronized boolean checkLeft(Mobility mobility) {
         return mobility.getLeft() != 0;
     }
 
-
+    /**
+     * Metodo que comprueba si el usuario puede moverse hacia la derecha
+     * @param mobility la movilidad del jugador en una posicion específica
+     * @return booleano que nos dice si puede moverse o no
+     */
     public synchronized boolean checkRight(Mobility mobility) {
         return mobility.getRight() != 0;
     }
 
-
+    /**
+     * Metodo que comprueba si el usuario puede moverse hacia arriba
+     * @param mobility la movilidad del jugador en una posicion específica
+     * @return booleano que nos dice si puede moverse o no
+     */
     public synchronized boolean checkUp(Mobility mobility) {
         return mobility.getUp() != 0;
     }
 
-
+    /**
+     * Metodo que comprueba si el usuario puede moverse hacia abajo
+     * @param mobility la movilidad del jugador en una posicion específica
+     * @return booleano que nos dice si puede moverse o no
+     */
     public synchronized boolean checkDown(Mobility mobility) {
         return mobility.getDown() != 0;
     }
+
+    /**
+     * Método que calcula hacia cuantas salas se puede mover el jugador
+     * @param mobility La mobilidad del jugador
+     * @return integer del número de salas a las que se va a poder mover
+     */
+
     public synchronized int setMoveOptions(Mobility mobility) {
         int counter = 0;
         if (checkLeft(mobility)) {
@@ -144,6 +194,12 @@ public abstract class Character extends Thread {
         }
         return counter;
     }
+
+    /**
+     * Metodo que elije la habitación donde ira el jugador
+     * @param randomPosition sala donde va a ir el jugador de forma aletoria
+     * @return devuelve un entero indicando la dirreción del movimiento
+     */
     public synchronized int chooseRoom(int randomPosition) {
         int optionsCounter = -1;
         for (int i = 0; i < 4; i++) {
@@ -156,6 +212,12 @@ public abstract class Character extends Thread {
         }
         return 0;
     }
+
+    /**
+     * Metodo que nos da un numero aleatorio entre los posibles movimientos del jugador
+     * @param counter Numero de sala a las que puede acceder el jugador (1-4)
+     * @return nos devuelve un int con la dirección del jugador
+     */
     public int getRandomPosition(int counter) {
         return (int) (Math.random() * (counter));
     }
@@ -163,6 +225,8 @@ public abstract class Character extends Thread {
     public boolean isDead() {
         return isDead;
     }
+
+
     public void setDead(boolean dead) {
         isDead = dead;
     }

@@ -33,7 +33,7 @@ public class DeleteController implements ActionListener {
                 String nom = deleteView.optionSelected();
                 if(JOptionPane.OK_OPTION == deleteView.confirmPopUp("Estas segur que vols BORRAR el game "+nom+"?")){
                     gameManager.deleteGame(nom);
-                    deleteView.updateComboBoxList(gameManager.getGames());
+                    deleteView.updateComboBoxList(gameManager.getGames(gameManager.getUserManager().getUser()));
                 }
 
             }

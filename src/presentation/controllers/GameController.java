@@ -107,6 +107,12 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         switch (e.getActionCommand()){
             case GameView.BTN_BACK -> mainView.showStart();
             case GameView.BTN_STI -> mainView.showSettings();
+            case GameView.BTN_STP -> {
+                //TODO:Aqui se haria la parte de guardar la partida
+                gameManager.interruptThreads();
+                this.stopMapThread();
+                mainView.showStart();
+            }
             case GameView.BTN_RVL -> {
                 if(revealMap){
 

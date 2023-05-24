@@ -22,12 +22,13 @@ public class GameSQLDAO implements GameDAO{
         conn.disconnect();
     }
 
-    public ArrayList<String> getGames(){
+    public ArrayList<String> getGames(String user){
 
         ArrayList<String> games = new ArrayList<>();
 
         conn.connect();
-        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM game AS g");
+        ResultSet rs = conn.selectQuery("SELECT g.gameName FROM game AS g WHERE g.creator LIKE '" + user + "'");
+
         try{
             while (rs.next()) {
                 String gameName = rs.getString("gameName");

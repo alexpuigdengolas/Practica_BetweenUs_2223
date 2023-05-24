@@ -16,7 +16,10 @@ public class Npc extends Character{
         this.mapManager = mapManager;
     }
 
-    // Parametrized constructor
+    /**
+     *
+     * @return
+     */
     public synchronized boolean movement() {
         int probability = (int)(Math.random()*(getMaxProbability() + 1));
         System.out.println("La probabilidad ha salido: "+probability);
@@ -46,6 +49,11 @@ public class Npc extends Character{
     }
 
 
+    /**
+     *
+     * @param nextRoom
+     * @return
+     */
     public synchronized int selectPreviousRoom(int nextRoom) {
         switch (nextRoom) {
             case 0:
@@ -60,8 +68,12 @@ public class Npc extends Character{
         return -1;
     }
 
+
+    /**
+     *
+     */
     public synchronized void npcMovement() {
-        //mira si el el interval e
+
 
         if (startInterval == getIntervalTime().getSeconds()) {
             if (movement()) {
@@ -82,6 +94,11 @@ public class Npc extends Character{
     }
 
 
+    /**
+     *
+     * @param coordinates
+     * @return
+     */
     public synchronized Cell getCellByCoordinates(int[] coordinates) {
         int x = coordinates[0];
         int y = coordinates[1];
@@ -94,6 +111,12 @@ public class Npc extends Character{
     }
 
 
+    /**
+     *
+     * @param counter
+     * @param previousRoom
+     * @return
+     */
     public synchronized int getNpcRandomPosition(int counter, int previousRoom) {
         System.out.println("counter es: "+counter);
         int position = (int) (Math.random() * (counter));
@@ -106,7 +129,11 @@ public class Npc extends Character{
     }
 
 
-
+    /**
+     *
+     * @param npc
+     * @return
+     */
     public synchronized int getNextNpcRoom(Npc npc) {
         Mobility mobility = npc.getCell().getMobility();
         int counter = setMoveOptions(mobility);
@@ -115,6 +142,9 @@ public class Npc extends Character{
     }
 
 
+    /**
+     *
+     */
     @Override
     public void run() {
 
@@ -128,7 +158,7 @@ public class Npc extends Character{
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 //TODO:mirar esto que esta feo
-                System.out.println("el color a muerto");
+                System.out.println(e.getMessage());
             }
         }
         this.interrupt();

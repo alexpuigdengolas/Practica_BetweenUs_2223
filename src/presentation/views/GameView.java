@@ -26,6 +26,8 @@ public class GameView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
     public static final String BTN_RVL = "BTN_RVL";
 
+    public static final String BTN_STP = "BTN_STP";
+
     public static final String CHECK = "CHECK";
 
     private MapView mapView;
@@ -41,6 +43,8 @@ public class GameView extends JPanel {
     private JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
 
     private JButton jbReveal = new JButton("Reveal Map");
+
+    private JButton jbStop = new JButton("Stop Game");
 
 
     private JButton jbBack = new JButton();
@@ -98,6 +102,9 @@ public class GameView extends JPanel {
         jbReveal.setActionCommand(BTN_RVL);
         jpActions.add(jbReveal);
 
+        jbStop.setActionCommand(BTN_STP);
+        jpActions.add(jbStop);
+
         this.add(jpActions, BorderLayout.NORTH);
 
         JPanel jpAux = new JPanel();
@@ -141,6 +148,7 @@ public class GameView extends JPanel {
         jbR.addActionListener(actionListener);
         jbReveal.addActionListener(actionListener);
         jbCheck.addActionListener(actionListener);
+        jbStop.addActionListener(actionListener);
         this.setFocusable(true);
         this.addKeyListener((KeyListener) actionListener);
     }

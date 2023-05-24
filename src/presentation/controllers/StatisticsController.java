@@ -15,13 +15,13 @@ public class StatisticsController implements ActionListener {
     private MainView mainView;
     private CardLayout cardLayout;
 
-    private StatisticsManager statisticsManager;
 
-    public StatisticsController(StatisticsView statisticsView, MainView mainView, CardLayout cardLayout,StatisticsManager statisticsManager) {
+
+    public StatisticsController(StatisticsView statisticsView, MainView mainView, CardLayout cardLayout) {
         this.statisticsView = statisticsView;
         this.mainView = mainView;
         this.cardLayout = cardLayout;
-        this.statisticsManager = statisticsManager;
+
     }
 
     @Override

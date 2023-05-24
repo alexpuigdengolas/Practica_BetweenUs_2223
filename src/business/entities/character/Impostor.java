@@ -26,10 +26,6 @@ public class Impostor extends Character{
         killingPeriod = new Time();
     }
 
-    public Boolean isCanKill() {
-        return canKill;
-    }
-
     public void setCanKill(Boolean canKill) {
         this.canKill = canKill;
     }
@@ -40,6 +36,10 @@ public class Impostor extends Character{
     }
 
 
+    /**
+     * Método que nos dice si el impostor se va a mover o no
+     * @return un boolea que nos dice si se mueve o no
+     */
     public synchronized boolean movement() {
         int probability = (int)(Math.random()*(getMaxProbability() + 1));
         return probability <= 45;
@@ -50,6 +50,11 @@ public class Impostor extends Character{
     }
 
 
+    /**
+     * Método que indica cual sera la parcela a la que se movera el impostor
+     * @param impostor El impostor
+     * @return La parcela a la que se movera el impostor
+     */
     public synchronized int getNextImpostorRoom(Impostor impostor) {
         Mobility mobility = impostor.getCell().getMobility();
         int counter = setMoveOptions(mobility);
@@ -57,20 +62,39 @@ public class Impostor extends Character{
         return chooseRoom(randomPosition);
     }
 
+    /**
+     * Método que comprueba si en esta parcela hay ventilación disponible
+     * @param cell parcela donde se encuentra el impostor
+     * @return booleano que indica si hay ventilación o no
+     */
     public synchronized boolean checkVentilation(Cell cell) {
         return !cell.getAlcantarilla().isEmpty();
     }
 
 
+    /**
+     *Método que nos indica que ventilación cojerá para moverse
+     * @param cell La parcela donde se encuentra el impostor
+     * @return posicion de la parcela donde se movera
+     */
     public synchronized int chooseVentilationRoom(Cell cell) {
         return getRandomPosition(cell.getAlcantarilla().size());
     }
 
+    /**
+     *Método que hace el 50% de una probabilidad
+     * @return booleano que nos dice si o no
+     */
     public synchronized boolean flipCoin() {
         return (int) (Math.random() * (2) + 1) == 1;
     }
 
 
+    /**
+     * Método que nos indica que parcela es en función de unas cordenadas
+     * @param coordinates Las cordenadas de la parcela que queremos conocer
+     * @return la parcela que queremos saber, o null en caso de que no exista
+     */
     public synchronized Cell getCellByCoordinates(int[] coordinates) {
         int x = coordinates[0];
         int y = coordinates[1];
@@ -82,6 +106,12 @@ public class Impostor extends Character{
         return null;
     }
 
+
+    /**
+     * Método que actualiza la posicion del impostor
+     * @param impostor El impostor
+     * @throws InterruptedException excepción que indica si el sleep deja de funcionar
+     */
 
     public synchronized void impostorMovement(Impostor impostor) throws InterruptedException {
         TimeUnit.MILLISECONDS.sleep(500);
@@ -102,6 +132,11 @@ public class Impostor extends Character{
         }
     }
 
+    /**
+     * Método que comprubea si el impostor puede moverse a traves de la ventilación
+     * @param impostor El impostor
+     * @return Booleano que indica si se puede mover el impostor a traves de la ventilación
+     */
     public synchronized boolean ventilationMovement(Impostor impostor) {
         if (checkVentilation(impostor.getCell())) {
             if (npcManager.getNumNpcCell(impostor.getCell()) == 0 && flipCoin()) {
@@ -119,6 +154,10 @@ public class Impostor extends Character{
     }
 
 
+    /**
+     * Método que mueve al impostor automáticamente después de matar a un jugador
+     * @param impostor El impostor
+     */
     public void afterKillMovement(Impostor impostor) {
         int nextRoom = getNextImpostorRoom(impostor);
         int[] nextCell = impostor.getNextCoordinates(nextRoom);
@@ -132,7 +171,11 @@ public class Impostor extends Character{
     }
 
 
-
+    /**
+     *Método que comprueba si el impostor puede matar a otro usuario o esta en tiempo de espera
+     * @param impostor el impostor
+     * @return Booleano que nos indica si puedo o no matar
+     */
     public synchronized boolean checkKillingPeriod(Impostor impostor) {
         if (impostor.getPeriodTime().getSeconds() > 25) {
             impostor.setCanKill(true);
@@ -142,6 +185,9 @@ public class Impostor extends Character{
     }
 
 
+    /**
+     *Thread que hace continuamente todas las acciones del impstor
+     */
     @Override
     public void run() {
 
