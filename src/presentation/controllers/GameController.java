@@ -1,14 +1,13 @@
 package presentation.controllers;
 
 import business.GameManager;
-import business.NpcManager;
-
 import business.entities.Time;
 import business.entities.character.Character;
 import business.entities.character.Player;
 import presentation.views.GameView;
 import presentation.views.LogsView;
 import presentation.views.MainView;
+import presentation.views.custom.DeductionPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,8 +38,6 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         this.mainView = mainView;
         this.cardLayout = cardLayout;
         this.gameManager = gameManager;
-
-
     }
 
     @Override
@@ -95,6 +92,7 @@ public class GameController implements Runnable,ActionListener, KeyListener {
                 break;
         }
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -168,6 +166,15 @@ public class GameController implements Runnable,ActionListener, KeyListener {
                     checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
                 }
             }
+
+            case GameView.CHECK -> {
+                String roomName = gameManager.getPlayerManager().getPlayer().getCell().getRoomName();
+                if(roomName.equals("admin")){
+                    System.out.println(gameView.getCardPosition());
+                }else{
+                    System.out.println("Not on the wright room!");
+                }
+            }
         }
     }
 
@@ -177,21 +184,14 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         for (Character character : players) {
             colors.add(character.getColor());
         }
+        if(!gameView.getDeductionShowing()) {
+            //gameView.showDeductions(colors);
+            gameView.updateDeductionPanel(colors);
+        }
 
         switch (player.getCell().getRoomName()){
             case "security":
-                System.out.println(gameView.getCardPosition());
-                gameView.setDeductionShowing(false);
-                //gameView.showDeductions(colors);
-                //TODO: Show LOG
-
                 logsView = new LogsView(logController.getLogs());
-
-                break;
-            default:
-                if(!gameView.getDeductionShowing()) {
-                    gameView.showDeductions(colors);
-                }
                 break;
         }
     }

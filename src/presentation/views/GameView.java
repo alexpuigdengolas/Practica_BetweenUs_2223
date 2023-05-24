@@ -26,10 +26,11 @@ public class GameView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
     public static final String BTN_RVL = "BTN_RVL";
 
+    public static final String CHECK = "CHECK";
+
     private MapView mapView;
     private JPanel jpTask = new JPanel();
-    private DefaultTaskPanel defaultTaskPanel;
-    private DeductionPanel deductionPanel;
+    private DeductionPanel deductionPanel = new DeductionPanel(new ArrayList<String>());
     private CardLayout viewComponents;
     private JButton showDeductionsButton;
     private JButton comprovar;
@@ -44,33 +45,21 @@ public class GameView extends JPanel {
 
     private JButton jbBack = new JButton();
     private JButton jbSettings = new JButton();
+    private JButton jbCheck = new JButton("Check");
 
     private Boolean deductionShowing = false;
 
 
 
     public GameView() {
-        defaultTaskPanel = new DefaultTaskPanel();
-        deductionPanel = new DeductionPanel(new ArrayList<String>());
-
-        // Create a new JPanel with CardLayout
-        JPanel cardPanel = new JPanel(new CardLayout());
-
-        // Add jpTask to the cardPanel
-        cardPanel.add(jpTask, "jpTask");
 
         // Add panels to jpTask
         jpTask.setLayout(new BorderLayout());
-        jpTask.add(defaultTaskPanel, BorderLayout.CENTER);
 
         // Add cardPanel to the GameView
         this.setLayout(new BorderLayout());
-        this.add(cardPanel, BorderLayout.CENTER);
 
         configureView();
-
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "jpTask");
 
         // Create and add the MapView
         mapView = new MapView();
@@ -133,6 +122,9 @@ public class GameView extends JPanel {
 
         jpTask = new DefaultTaskPanel();
         jpTask.setPreferredSize(new Dimension(420, 100));
+        jpTask.add(deductionPanel, BorderLayout.CENTER);
+        jpTask.add(jbCheck, BorderLayout.EAST);
+        jbCheck.setActionCommand(CHECK);
         this.add(jpTask, BorderLayout.SOUTH);
     }
 
@@ -148,6 +140,7 @@ public class GameView extends JPanel {
         jbD.addActionListener(actionListener);
         jbR.addActionListener(actionListener);
         jbReveal.addActionListener(actionListener);
+        jbCheck.addActionListener(actionListener);
         this.setFocusable(true);
         this.addKeyListener((KeyListener) actionListener);
     }
@@ -229,6 +222,11 @@ public class GameView extends JPanel {
      */
     public Boolean getDeductionShowing() {
         return deductionShowing;
+    }
+
+    public void updateDeductionPanel(ArrayList<String> colors){
+        deductionPanel.setCardColors(colors);
+        deductionShowing = true;
     }
 
     /**

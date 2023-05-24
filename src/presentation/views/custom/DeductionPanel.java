@@ -11,6 +11,8 @@ public class DeductionPanel extends JPanel {
     private JPanel susColumn;
     private JPanel notSusColumn;
 
+
+
     public DeductionPanel(ArrayList<String> colorNames) {
         // Initialize the columns
         unknownColumn = new JPanel(new GridLayout(3, 3));
@@ -26,13 +28,9 @@ public class DeductionPanel extends JPanel {
         columnsPanel.add(addColumn("Sus", susColumn));
         columnsPanel.add(addColumn("Not Sus", notSusColumn));
 
-        // Create the button
-        JButton button = new JButton("Check");
-
         // Create the main panel with columns and button
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(columnsPanel, BorderLayout.CENTER);
-        mainPanel.add(button, BorderLayout.EAST);
 
         // Add the main panel to the DeductionPanel
         setLayout(new BorderLayout());
@@ -67,14 +65,14 @@ public class DeductionPanel extends JPanel {
         // Add cards with updated colors to the unknown column
         for (int i = 0; i < cardsPerColumn; i++) {
             String colorName = colorNames.get(i);
-            CardPanel cardPanel = new CardPanel(colorName);
+            CardPanel cardPanel = new CardPanel(colorName, unknownColumn, susColumn, notSusColumn);
             unknownColumn.add(cardPanel);
         }
 
         // Add remaining cards to the sus column
         for (int i = cardsPerColumn; i < cardsPerColumn + remainingCards; i++) {
             String colorName = colorNames.get(i);
-            CardPanel cardPanel = new CardPanel(colorName);
+            CardPanel cardPanel = new CardPanel(colorName, unknownColumn, susColumn, notSusColumn);
             susColumn.add(cardPanel);
         }
 
@@ -91,126 +89,56 @@ public class DeductionPanel extends JPanel {
         ArrayList<String> positions = new ArrayList<>();
 
         // Iterate over cards in the unknown column
-        int unknownColumnCount = unknownColumn.getComponentCount();
-        for (int i = 0; i < unknownColumnCount; i++) {
-            CardPanel card = (CardPanel) unknownColumn.getComponent(i);
-            positions.add(card.getColorName() + " - Unknown");
+        for (Component component : unknownColumn.getComponents()) {
+            if (component instanceof CardPanel) {
+                CardPanel card = (CardPanel) component;
+                String position = getCardPosition(card);
+                positions.add(position);
+            }
         }
 
         // Iterate over cards in the sus column
-        int susColumnCount = susColumn.getComponentCount();
-        for (int i = 0; i < susColumnCount; i++) {
-            CardPanel card = (CardPanel) susColumn.getComponent(i);
-            positions.add(card.getColorName() + " - Sus");
+        for (Component component : susColumn.getComponents()) {
+            if (component instanceof CardPanel) {
+                CardPanel card = (CardPanel) component;
+                String position = getCardPosition(card);
+                positions.add(position);
+            }
         }
 
         // Iterate over cards in the notSus column
-        int notSusColumnCount = notSusColumn.getComponentCount();
-        for (int i = 0; i < notSusColumnCount; i++) {
-            CardPanel card = (CardPanel) notSusColumn.getComponent(i);
-            positions.add(card.getColorName() + " - Not Sus");
+        for (Component component : notSusColumn.getComponents()) {
+            if (component instanceof CardPanel) {
+                CardPanel card = (CardPanel) component;
+                String position = getCardPosition(card);
+                positions.add(position);
+            }
         }
 
         return positions;
     }
 
-    private class CardPanel extends JPanel {
-        private String colorName;
-        private JPanel currentColumn;
+    private String getCardPosition(CardPanel card) {
+        String column = getColumnFromParent(card.getParent());
+        String position = card.getColorName() + " - " + column;
+        return position;
+    }
 
-        public CardPanel(String colorName) {
-            this.colorName = colorName;
-            this.currentColumn = unknownColumn;
-
-            setBackground(getColor(colorName));
-
-            JButton moveLeftButton = new JButton("<");
-            moveLeftButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    moveCardToLeft();
-                }
-            });
-
-            JButton moveRightButton = new JButton(">");
-            moveRightButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    moveCardToRight();
-                }
-            });
-
-            setLayout(new BorderLayout());
-            add(moveLeftButton, BorderLayout.WEST);
-            add(new JLabel(colorName, SwingConstants.CENTER), BorderLayout.CENTER);
-            add(moveRightButton, BorderLayout.EAST);
-        }
-
-        private void moveCardToLeft() {
-            if (currentColumn == susColumn) {
-                susColumn.remove(this);
-                unknownColumn.add(this);
-                currentColumn = unknownColumn;
-            } else if (currentColumn == notSusColumn) {
-                notSusColumn.remove(this);
-                susColumn.add(this);
-                currentColumn = susColumn;
-            }
-
-            revalidate();
-            repaint();
-        }
-
-        private void moveCardToRight() {
-            if (currentColumn == unknownColumn) {
-                unknownColumn.remove(this);
-                susColumn.add(this);
-                currentColumn = susColumn;
-            } else if (currentColumn == susColumn) {
-                susColumn.remove(this);
-                notSusColumn.add(this);
-                currentColumn = notSusColumn;
-            }
-
-            revalidate();
-            repaint();
-        }
-
-        private Color getColor(String colorName) {
-            // TODO: Add all the colors
-            int[] components = new int[3];
-            return switch (colorName) {
-                case "RED" -> Color.RED;
-                case "GREEN" -> Color.GREEN;
-                case "BLUE" -> Color.BLUE;
-                case "YELLOW" -> Color.YELLOW;
-                case "MAGENTA" -> Color.MAGENTA;
-                case "ORANGE" -> Color.ORANGE;
-                case "PINK" -> Color.PINK;
-                case "BLACK" -> Color.BLACK;
-                case "PURPLE" -> {
-                    components[0] = 102;
-                    components[1] = 0;
-                    components[2] = 153;
-                    yield new Color(components[0], components[1], components[2]);
-                }
-                case "BROWN" -> {
-                    components[0] = 102;
-                    components[1] = 51;
-                    components[2] = 0;
-                    yield new Color(components[0], components[1], components[2]);
-                }
-                case "CYAN" -> Color.CYAN;
-                case "LIME" -> {
-                    components[0] = 50;
-                    components[1] = 205;
-                    components[2] = 50;
-                    yield new Color(components[0], components[1], components[2]);
-                }
-                default -> Color.WHITE;
-            };
-        }
-
-        public String getColorName() {
-            return colorName;
+    private String getColumnFromParent(Component parent) {
+        if (parent == unknownColumn) {
+            return "Unknown";
+        } else if (parent == susColumn) {
+            return "Sus";
+        } else if (parent == notSusColumn) {
+            return "Not Sus";
+        } else {
+            return "";
         }
     }
+
+    public void deductionPanelController(){
+
+    }
+
+
 }
