@@ -20,13 +20,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Esta clase se usara para controlar la vista de creación de partidas
+ */
 public class NGController  implements ActionListener {
 
     private NewGameView NGView;
 
     private MainView mainView;
 
-    private CardLayout cardLayout;
     private UserManager userManager;
     private GameManager gameManager;
     private GameView gameView;
@@ -40,15 +42,12 @@ public class NGController  implements ActionListener {
 
     /**
      * Constructor del controller
-     * @param NGView
-     * @param mainView
-     * @param cardLayout
+     * @param NGView la vista
+     * @param mainView la vista principal del programa
      */
-
-    public NGController(NewGameView NGView, MainView mainView, CardLayout cardLayout, UserManager userManager, GameManager gameManager, GameView gameView,GameController gameController) {
+    public NGController(NewGameView NGView, MainView mainView, UserManager userManager, GameManager gameManager, GameView gameView,GameController gameController) {
         this.NGView = NGView;
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.userManager = userManager;
         this.gameManager = gameManager;
         this.gameView = gameView;
@@ -56,8 +55,16 @@ public class NGController  implements ActionListener {
         colors = new ArrayList<>(List.of("RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"));
 
     }
+
+    /**
+     * Este es un constructor vacio de nuestra clase
+     */
     public NGController(){}
 
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -153,12 +160,21 @@ public class NGController  implements ActionListener {
         }
     }
 
-
+    /**
+     * Getter del path de nuestros mapas
+     * @return el path de la localización de estos mapas
+     */
     public String getMPath(){
         File f = new File("");
         String path = f.getAbsolutePath();
         return path + "/src/mapFiles";
     }
+
+    /**
+     * Este metodo nos permite conseguir algunos colores dependiendo del nombre de su color
+     * @param color el nombre del color que buscamos
+     * @return los componentes RGB que componen ese color
+     */
     public int[] getColorComponents(String color) {
         int[] components = new int[3];
         switch (color) {
@@ -183,6 +199,14 @@ public class NGController  implements ActionListener {
                 return components;
         }
     }
+
+    /**
+     *
+     * @param userPosition
+     * @param npcs
+     * @param starterColor
+     * @return
+     */
     public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
         if (userPosition <= npcs) {
             return starterColor+1;

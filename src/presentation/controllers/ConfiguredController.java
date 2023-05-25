@@ -29,7 +29,6 @@ public class ConfiguredController implements ActionListener {
 
     private ConfiguredView configuredView;
     private MainView mainView;
-    private CardLayout cardLayout;
     private GameManager gameManager;
 
     private ArrayList<String> colors;
@@ -37,16 +36,27 @@ public class ConfiguredController implements ActionListener {
     private GameController gameController;
 
 
-    public ConfiguredController(ConfiguredView configuredView, MainView mainView, CardLayout cardLayout, GameManager gameManager,GameView gameView,GameController gameController) {
+    /**
+     * Este es el controller de la vista de carga de una partida configurada
+     * @param configuredView la vista
+     * @param mainView la main view de nuestro programa
+     * @param gameManager el gestor de las partidas
+     * @param gameView la vista de las partidas
+     * @param gameController el gestor de las partidas
+     */
+    public ConfiguredController(ConfiguredView configuredView, MainView mainView, GameManager gameManager,GameView gameView,GameController gameController) {
         this.configuredView = configuredView;
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.gameManager = gameManager;
         this.gameView = gameView;
         this.gameController = gameController;
         colors = new ArrayList<>(List.of("RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"));
     }
 
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -107,6 +117,14 @@ public class ConfiguredController implements ActionListener {
             }
         }
     }
+
+    /**
+     *
+     * @param userPosition
+     * @param npcs
+     * @param starterColor
+     * @return
+     */
     public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
         if (userPosition <= npcs) {
             return starterColor+1;

@@ -38,14 +38,14 @@ public class Main {
 
             RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
             LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
-            GameController gameController = new GameController(gameView, mainView, cardLayout,gameManager);
-            StartController startController = new StartController(startView, mainView, cardLayout, gameManager, userManager, statisticsView,statisticsManager,chargeView,configuredView,deleteView);
-            SettingsController settingsController = new SettingsController(settingsView, mainView, cardLayout,userManager);
-            ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, cardLayout,gameManager,gameView,gameController);
+            GameController gameController = new GameController(gameView, mainView, gameManager);
+            StartController startController = new StartController(mainView, gameManager, userManager, statisticsView,statisticsManager,chargeView,configuredView,deleteView);
+            SettingsController settingsController = new SettingsController(settingsView, mainView, userManager);
+            ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, gameManager,gameView,gameController);
             ChargeController chargeController = new ChargeController(chargeView, mainView, gameManager,gameView);
-            DeleteController deleteController = new DeleteController(deleteView, mainView, cardLayout,gameManager);
-            NGController NGcontroller = new NGController(nGView, mainView, cardLayout,userManager, gameManager, gameView,gameController);
-            StatisticsController statisticsController = new StatisticsController(statisticsView, mainView, cardLayout);
+            DeleteController deleteController = new DeleteController(deleteView, mainView, gameManager);
+            NGController NGcontroller = new NGController(nGView, mainView, userManager, gameManager, gameView,gameController);
+            StatisticsController statisticsController = new StatisticsController(mainView);
 
             registerView.registerController(registerController);
             loginView.loginController(loginController);

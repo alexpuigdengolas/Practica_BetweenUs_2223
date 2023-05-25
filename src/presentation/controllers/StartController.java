@@ -11,13 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Esta clase servira para representar el controlador del menu principal de nuestra clase
+ */
 public class StartController implements ActionListener {
 
-    private StartView startView;
-
     private MainView mainView;
-
-    private CardLayout cardLayout;
 
     private GameManager gameManager;
 
@@ -30,15 +29,18 @@ public class StartController implements ActionListener {
     private DeleteView deleteView;
 
     /**
-     * Constructor del controller
-     * @param startView
-     * @param mainView
-     * @param cardLayout
+     * Este es el constructor de nuestra vista
+     * @param mainView esta es la vista principal de nuestro programa
+     * @param gameManager el gestor de partidas de nuestro programa
+     * @param userManager el gestor de usuarios de nuestro programa
+     * @param statisticsView la vista de estadisticas
+     * @param statisticsManager el gestor de estadisticas
+     * @param chargeView la vista de carga de partidas
+     * @param configuredView la vista de carga de partida configurada
+     * @param deleteView al vista de eliminación de una vista
      */
-    public StartController(StartView startView, MainView mainView, CardLayout cardLayout, GameManager gameManager, UserManager userManager, StatisticsView statisticsView,StatisticsManager statisticsManager,ChargeView chargeView, ConfiguredView configuredView, DeleteView deleteView) {
-        this.startView = startView;
+    public StartController(MainView mainView, GameManager gameManager, UserManager userManager, StatisticsView statisticsView,StatisticsManager statisticsManager,ChargeView chargeView, ConfiguredView configuredView, DeleteView deleteView) {
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.gameManager = gameManager;
         this.userManager = userManager;
         this.statisticsManager = statisticsManager;
@@ -48,6 +50,10 @@ public class StartController implements ActionListener {
         this.deleteView = deleteView;
     }
 
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -87,6 +93,10 @@ public class StartController implements ActionListener {
         }
 
     }
+
+    /**
+     * Metodo para actualizar el combo box de nuestra vista
+     */
     public void updatecomboBox(){
         ArrayList<String> games = gameManager.getGames(userManager.getUser());
         //Aqui hay que actualizar ambas combo box

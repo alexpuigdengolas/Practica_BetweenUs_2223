@@ -9,20 +9,31 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Esta clase se usara como controlador de la vista de ajustes
+ */
 public class SettingsController implements ActionListener {
 
     private SettingsView settingsView;
     private MainView mainView;
-    private CardLayout cardLayout;
     private UserManager userManager;
 
-    public SettingsController(SettingsView settingsView, MainView mainView, CardLayout cardLayout, UserManager userManager) {
+    /**
+     * Este es el constructor de nuestra clase
+     * @param settingsView la vista de ajustes
+     * @param mainView la vista principal del programa
+     * @param userManager el gestor de usuarios
+     */
+    public SettingsController(SettingsView settingsView, MainView mainView, UserManager userManager) {
         this.settingsView = settingsView;
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.userManager = userManager;
     }
 
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){

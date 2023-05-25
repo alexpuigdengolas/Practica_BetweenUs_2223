@@ -150,7 +150,7 @@ public class GameView extends JPanel {
         jbCheck.addActionListener(actionListener);
         jbStop.addActionListener(actionListener);
         this.setFocusable(true);
-        this.addKeyListener((KeyListener) actionListener);
+        //this.addKeyListener((KeyListener) actionListener);
     }
 
     /**

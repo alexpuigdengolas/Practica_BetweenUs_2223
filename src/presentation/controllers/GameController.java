@@ -21,13 +21,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-public class GameController implements Runnable,ActionListener, KeyListener {
+/**
+ * Esta clase servira para poder controlar la vista de la partida
+ */
+public class GameController implements Runnable,ActionListener{
 
     private Time totalTime =  new Time();
     private GameView gameView;
     private MainView mainView;
     private boolean isRunning;
-    private CardLayout cardLayout;
     private GameManager gameManager;
 
     private Boolean revealMap = false;
@@ -35,75 +37,23 @@ public class GameController implements Runnable,ActionListener, KeyListener {
     private LogsView logsView;
     private Thread T;
 
-    public GameController(GameView gameView, MainView mainView, CardLayout cardLayout, GameManager gameManager) {
+    /**
+     * Este metodo sera el constructor de la clase
+     * @param gameView la vita de la partida
+     * @param mainView al vista principal de nuestra partida
+     * @param gameManager el gestor de las partidas
+     */
+    public GameController(GameView gameView, MainView mainView, GameManager gameManager) {
         this.gameView = gameView;
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.gameManager = gameManager;
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        switch (keyCode) {
-            case KeyEvent.VK_UP: // Flecha hacia arriba
-                System.out.println("click arriba");
-                if (gameManager.getPlayerManager().checkUp()) {
-                    System.out.println("pasa check arriba");
-                    int[] nextCell = gameManager.getPlayerManager().nextCell(1);
-                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
 
-                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
-                }
-                break;
-            case KeyEvent.VK_DOWN: // Flecha hacia abajo
-                System.out.println("Clicko abajo");
-                if (gameManager.getPlayerManager().checkDown()) {
-                    System.out.println("pasa check down");
-                    int[] nextCell = gameManager.getPlayerManager().nextCell(3);
-                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-
-                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
-
-                }
-                break;
-            case KeyEvent.VK_RIGHT: // Flecha hacia la derecha
-                System.out.println("Clicko right");
-                if (gameManager.getPlayerManager().checkRight()) {
-                    System.out.println("Pasa check right");
-                    int[] nextCell = gameManager.getPlayerManager().nextCell(2);
-                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-
-                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
-                }
-                break;
-            case KeyEvent.VK_LEFT: // Flecha hacia la izquierda
-                System.out.println("Clicko left");
-                //necesito traer aqui un player manager para controlar el movimiento del usuario
-                if (gameManager.getPlayerManager().checkLeft()) {
-                    System.out.println("pasa check left");
-                    int[] nextCell = gameManager.getPlayerManager().nextCell(0);
-                    gameManager.getPlayerManager().moveUserPlayer(gameManager.getmapManager().nextPlayerCell(nextCell));
-                    gameView.updateMapView(gameManager.getmapManager().getMap(),gameManager.getPlayerManager().getPlayer(),gameManager.getNpcManager().getPlayers(),revealMap);
-
-                    checkRoom(gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers());
-                }
-                break;
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -239,6 +189,13 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         }
     }
 
+    /**
+     * Este metodo recibe una lista de strings con este formato ("COLOR - COLUMN")
+     * @param colorsList lita de strings a separar
+     * @param susColors lista de personajes sus
+     * @param notSusColors lista de personajes not sus
+     * @param unknownColors lista de personajes unknown
+     */
     public static void separateColors(LinkedList<String> colorsList, LinkedList<String> susColors, LinkedList<String> notSusColors, LinkedList<String> unknownColors) {
         for (String color : colorsList) {
             String[] parts = color.split(" - ");
@@ -256,7 +213,11 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         }
     }
 
-
+    /**
+     * Este metodo comprobara la habitación en la que se encuentra nuestro usuario
+     * @param player el personaje del usuario
+     * @param players el resto de presonajes
+     */
     private void checkRoom(Player player, LinkedList<Character> players) {
         ArrayList<String> colors = new ArrayList<>();
         for (Character character : players) {
@@ -268,10 +229,8 @@ public class GameController implements Runnable,ActionListener, KeyListener {
 
         }
 
-        switch (player.getCell().getRoomName()){
-            case "security":
-                logsView = new LogsView(logController.getLogs());
-                break;
+        if ("security".equals(player.getCell().getRoomName())) {
+            logsView = new LogsView(logController.getLogs());
         }
     }
 
@@ -281,6 +240,9 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         T.start();
     }
 
+    /**
+     * Este metodo sirve para poder parar el thread del mapa
+     */
     //#nuevo
     public void stopMapThread() {
         isRunning = false;
@@ -288,13 +250,20 @@ public class GameController implements Runnable,ActionListener, KeyListener {
         gameView.setDeductionShowing(false);
 
     }
+
+    /**
+     * Getter del tiempo desde el inicio de la partida
+     * @return el tiempo total
+     */
     public Time getTotalTime() {
         return totalTime;
     }
 
-
+    /**
+     * Este metodo nos servira para poder lanzar el thread asociado con el game controller
+     */
     public void run() {
-        logController = new LogController(gameManager.getNpcManager(),logsView);
+        logController = new LogController(gameManager.getNpcManager());
         getTotalTime().initCounter();
         while(isRunning) {
             try {

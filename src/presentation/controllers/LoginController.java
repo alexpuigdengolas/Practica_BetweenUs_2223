@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class will be used as the controller to de login View
+ */
 public class LoginController implements ActionListener {
 
     private LoginView loginView;
@@ -16,6 +19,7 @@ public class LoginController implements ActionListener {
     private CardLayout cardLayout;
 
     private UserManager userManager;
+
 
     public LoginController(LoginView loginView, MainView mainView, CardLayout cardLayout, UserManager userManager) {
         this.loginView = loginView;
