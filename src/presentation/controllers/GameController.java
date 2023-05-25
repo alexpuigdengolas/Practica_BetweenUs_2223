@@ -227,10 +227,10 @@ public class GameController implements Runnable,ActionListener, KeyListener {
 
                     if(rightAnswer){
                         System.out.println("Ganas la partida");
-                    }else{
+                        gameView.setDeductionShowing(false);
+                    }else {
                         System.out.println("Cagaste");
                     }
-
 
                 }else{
                     System.out.println("Not on the wright room!");
@@ -285,6 +285,7 @@ public class GameController implements Runnable,ActionListener, KeyListener {
     public void stopMapThread() {
         isRunning = false;
         T.interrupt();
+        gameView.setDeductionShowing(false);
 
     }
     public Time getTotalTime() {
