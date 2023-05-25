@@ -40,16 +40,6 @@ public class SettingsView extends JPanel {
         auxPanel.setLayout(new BorderLayout());
         auxPanel.setOpaque(false);
 
-        JPanel jpActions = new JPanel();
-        jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
-
-        jbBack.setActionCommand(BTN_BACK);
-        jpActions.add(jbBack);
-        // Espai buit per emputjar el segon botó a la dreta
-        jpActions.add(Box.createHorizontalGlue());
-        jpActions.setOpaque(false);
-        fondo.add(jpActions, BorderLayout.NORTH);
-
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Settings");
         jlTitle.setForeground(Color.WHITE);
@@ -70,6 +60,8 @@ public class SettingsView extends JPanel {
 
         jbBack.setActionCommand(BTN_BACK);
         actionPanel.add(jbBack);
+        actionPanel.setOpaque(false);
+        fondo.add(actionPanel, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));

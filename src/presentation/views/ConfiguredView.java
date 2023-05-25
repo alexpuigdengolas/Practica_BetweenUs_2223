@@ -90,10 +90,6 @@ public class ConfiguredView extends JPanel {
         infoPanel.add(jlCharge);
 
 
-
-
-
-
         //TextField de cargar partida
         comboBox.setMaximumSize(new Dimension(500, comboBox.getPreferredSize().height));
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
