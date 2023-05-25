@@ -46,8 +46,6 @@ public class LoginController implements ActionListener {
                 break;
             case LoginView.BTN_REG:
                 loginView.resetInputInfo();
-                loginView.setMainView(mainView);
-                loginView.setComponents(cardLayout);
                 mainView.showRegister();
                 break;
         }

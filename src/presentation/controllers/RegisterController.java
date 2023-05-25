@@ -58,8 +58,6 @@ public class RegisterController implements ActionListener {
             }
             case RegisterView.BTN_BACK -> {
                 registerView.resetInputInfo();
-                registerView.setmainView(mainView);
-                registerView.setComponents(viewComponents);
                 mainView.showLogin();
             }
         }
