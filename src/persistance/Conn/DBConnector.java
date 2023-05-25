@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+/**
+ * Esta clase nos sera util para poder conectar con la base de datos
+ */
 public class DBConnector {
     private static String userName;
     private static String password;
@@ -16,6 +18,13 @@ public class DBConnector {
     private static Connection conn = null;
     private static Statement s;
 
+    /**
+     * Este es el constructor de la clase
+     * @param usr el nombre de usuario de la base de datos
+     * @param pass la contraseña de acceso a la base de datos
+     * @param db el nombre de la base de datos
+     * @param port el puerto de acceso de la base de datos
+     */
     public DBConnector(String usr, String pass, String db, int port) {
         DBConnector.userName = usr;
         DBConnector.password = pass;
@@ -25,6 +34,10 @@ public class DBConnector {
         DBConnector.url += db;
         DBConnector.url += "?verifyServerCertificate=false&useSSL=false";
     }
+
+    /**
+     * Este metodo nos permite conectarnos a la base de datos
+     */
     public void connect() {
         try {
             Class.forName("com.mysql.jdbc.Connection");
@@ -38,6 +51,10 @@ public class DBConnector {
             System.out.println("Classe no trobada");
         }
     }
+
+    /**
+     * Este metodo nos permite deconectarnos de la base de datos
+     */
     public void disconnect() {
         try {
             conn.close();
@@ -45,6 +62,11 @@ public class DBConnector {
             System.out.println("Problema al tancar la connexió --> " + e.getSQLState());
         }
     }
+
+    /**
+     * Este metodo nos permte hacer queries (de tipo insert) con la base de datos
+     * @param query la query que queremos hacer
+     */
     public void insertQuery(String query) {
         try {
             s = conn.createStatement();
@@ -53,6 +75,12 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Este metodo nos permte hacer queries (de tipo select) con la base de datos
+     * @param query la query que queremos hacer
+     * @return el resultado de la query
+     */
     public ResultSet selectQuery(String query){
         ResultSet rs = null;
         try {
@@ -63,6 +91,11 @@ public class DBConnector {
         }
         return rs;
     }
+
+    /**
+     * Este metodo nos permte hacer queries (de tipo delete) con la base de datos
+     * @param query la query que queremos hacer
+     */
     public void deleteQuery(String query) {
         try {
             s = conn.createStatement();
@@ -71,6 +104,11 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Este metodo nos permte hacer queries (de tipo update) con la base de datos
+     * @param query la query que queremos hacer
+     */
     public void UpdateQuery(String query) {
         try {
             s = conn.createStatement();

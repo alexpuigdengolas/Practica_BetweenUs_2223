@@ -6,9 +6,16 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileReader;
 
+/**
+ * Esta clase nos permite leer los archivos JSON de los mapas
+ */
 public class ReaderMap {
     private Map map;
 
+    /**
+     * Este es el constructor de este mapa
+     * @param mapName el nombre del mapa
+     */
     public ReaderMap(String mapName) {
         try {
             Gson gson = new Gson();
@@ -25,6 +32,10 @@ public class ReaderMap {
         }
     }
 
+    /**
+     * Este metodo nos permite conseguir un mapa especifico
+     * @return el mapa que estamos buscando
+     */
     public Map getMap() {
         //System.out.println(map.getMapName() + "estoy en el map reader");
         return map;

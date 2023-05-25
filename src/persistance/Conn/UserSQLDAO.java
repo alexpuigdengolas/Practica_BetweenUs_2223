@@ -16,6 +16,11 @@ public class UserSQLDAO implements UserDAO {
         data = llegeixJSON();
         conn = new DBConnector(data.getUser(), data.getPassword(), data.getDb(), data.getPort());
     }
+
+    /**
+     * Este metodo nos permite registrar nuevos usuarios en la base de datos
+     * @param user el usuario a registrar
+     */
     @Override
     public void registerUser(User user) {
         conn.connect();
@@ -24,6 +29,12 @@ public class UserSQLDAO implements UserDAO {
 
     }
 
+    /**
+     * Este metodo nos permite comprobar que los datos de login de un usuario son correctos
+     * @param userNameMail el nombre o correo de login
+     * @param password la contraseña
+     * @return si se ha podido hacer login o no
+     */
     @Override
     public boolean checkLoginUser(String userNameMail, String password) {
         conn.connect();
@@ -39,7 +50,10 @@ public class UserSQLDAO implements UserDAO {
         return false;
     }
 
-
+    /**
+     * Metodo para poder eliminar un usuario
+     * @param nameLogin el nombre del usuario que queremos eliminar
+     */
     @Override
     public void deleteUser(String nameLogin) {
         conn.connect();
@@ -48,6 +62,11 @@ public class UserSQLDAO implements UserDAO {
         conn.disconnect();
     }
 
+    /**
+     * Metodo para comprobar si un nombre de usuario existe
+     * @param userName el nombre del usuario
+     * @return si el nombre existe o no
+     */
     @Override
     public boolean userNameExists(String userName) {
         conn.connect();
@@ -62,6 +81,11 @@ public class UserSQLDAO implements UserDAO {
         return false;
     }
 
+    /**
+     * Metodo para comprobar si el correo de usuario existe
+     * @param userMail el correo
+     * @return si el correo existe o no
+     */
     @Override
     public boolean userMailExists(String userMail) {
         conn.connect();
@@ -76,6 +100,11 @@ public class UserSQLDAO implements UserDAO {
         return false;
     }
 
+    /**
+     * Metodo para conseguir el nombre de usuario
+     * @param loginName nombre de usuario o correo del usuario
+     * @return el nombre del usuario
+     */
     @Override
     public String getUsername(String loginName) {
         if (userMailExists(loginName)) {
@@ -99,6 +128,11 @@ public class UserSQLDAO implements UserDAO {
 
 
     //#nuevo
+    /**
+     * Este metodo nos permitira conseguir el numero de partidas
+     * @param user nombre del usuario
+     * @return el numero de partidas
+     */
     @Override
     public int getNumGames(String user){
         conn.connect();
@@ -119,6 +153,11 @@ public class UserSQLDAO implements UserDAO {
     }
 
     //#nuevo
+    /**
+     * Metodo para conseguir el numero de victorias de un usuario
+     * @param user el nombre del usuario
+     * @return el numero de victorias del usuario
+     */
     @Override
     public int getNumVictories(String user){
         conn.connect();
@@ -135,7 +174,13 @@ public class UserSQLDAO implements UserDAO {
         return -1;
 
     }
+
     //#nuevo
+    /**
+     * Metodo para settear el numero de partidas
+     * @param user nombre del usuario
+     * @param num numero de victorias
+     */
     @Override
     public void setNumGames(String user, int num){
         conn.connect();
@@ -145,6 +190,11 @@ public class UserSQLDAO implements UserDAO {
     }
 
     //#nuevo
+    /**
+     * Metodo para settear el numero de partidas ganadas de un usuario
+     * @param user el nombre del usuario
+     * @param num el numero de partidas ganadas
+     */
     @Override
     public void setNumWins(String user, int num){
         conn.connect();
