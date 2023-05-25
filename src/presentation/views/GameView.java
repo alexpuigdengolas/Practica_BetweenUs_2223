@@ -30,26 +30,25 @@ public class GameView extends JPanel {
 
     public static final String CHECK = "CHECK";
 
-    private MapView mapView;
+    private final MapView mapView;
     private JPanel jpTask = new JPanel();
-    private DeductionPanel deductionPanel = new DeductionPanel(new ArrayList<String>());
+    private final DeductionPanel deductionPanel = new DeductionPanel(new ArrayList<String>());
     private CardLayout viewComponents;
     private JButton showDeductionsButton;
-    private JButton comprovar;
 
-    private JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
-    private JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
-    private JButton jbR = new BasicArrowButton(BasicArrowButton.EAST);
-    private JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
+    private final JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
+    private final JButton jbL = new BasicArrowButton(BasicArrowButton.WEST);
+    private final JButton jbR = new BasicArrowButton(BasicArrowButton.EAST);
+    private final JButton jbD = new BasicArrowButton(BasicArrowButton.SOUTH);
 
-    private JButton jbReveal = new JButton("Reveal Map");
+    private final JButton jbReveal = new JButton("Reveal Map");
 
-    private JButton jbStop = new JButton("Stop Game");
+    private final JButton jbStop = new JButton("Stop Game");
 
 
-    private JButton jbBack = new JButton("Back");
-    private JButton jbSettings = new JButton("Settings");
-    private JButton jbCheck = new JButton("Check");
+    private final JButton jbBack = new JButton("Back");
+    private final JButton jbSettings = new JButton("Settings");
+    private final JButton jbCheck = new JButton("Check");
 
     private Boolean deductionShowing = false;
 
@@ -98,7 +97,6 @@ public class GameView extends JPanel {
         jbSettings.setActionCommand(BTN_STI);
         jpActions.add(jbSettings);
 
-        //TODO:ARREGLAR ESTE BOTON
         jbReveal.setActionCommand(BTN_RVL);
         jpActions.add(jbReveal);
 

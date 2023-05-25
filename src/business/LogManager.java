@@ -8,12 +8,9 @@ import java.util.LinkedList;
  * Este metodo servira para poder gestionar los logs
  */
 public class LogManager {
-    // Attributes
-    //private LogDAO logDAO;
-    private String gameName;
-    private LinkedList<Log> logs;
 
-    // Parametrized constructor
+    private final LinkedList<Log> logs;
+
 
     /**
      * Constructor de la clase

@@ -15,13 +15,9 @@ public class SettingsView extends JPanel {
     public static final String BTN_DEL= "BTN_DEL";
     public static final String BTN_BACK= "BTN_BACK";
 
-    private JButton jbLogOut = new JButton("Log out");
-    private JButton jbDelete = new JButton("Delete");
-    private JButton jbBack = new JButton("Back");
-
-    private MainView mainView;
-
-    private CardLayout components;
+    private final JButton jbLogOut = new JButton("Log out");
+    private final JButton jbDelete = new JButton("Delete");
+    private final JButton jbBack = new JButton("Back");
 
     /**
      * este es el constructor de settings
@@ -103,23 +99,6 @@ public class SettingsView extends JPanel {
         jbDelete.addActionListener(controller);
         jbBack.addActionListener(controller);
     }
-
-    /**
-     * Setter de la vista principal
-     * @param mainView vista principal
-     */
-    public void setMainView(MainView mainView) {
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter de los componentes de las vistas
-     * @param components componentes de las vistas
-     */
-    public void setComponents(CardLayout components) {
-        this.components = components;
-    }
-
 
     public int confirmPopUp(String action) {
         return JOptionPane.showConfirmDialog(null, action);

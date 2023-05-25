@@ -22,9 +22,9 @@ public class PintaMapa extends JPanel {
     private final Map map;
     private JPanel room;
     private JPanel jpMapa;
-    private Character userPlayer;
-    private LinkedList<Character> npcs;
-    private Boolean revealMap;
+    private final Character userPlayer;
+    private final LinkedList<Character> npcs;
+    private final Boolean revealMap;
 
 
     /**

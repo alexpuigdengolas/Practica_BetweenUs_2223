@@ -6,7 +6,6 @@ import business.NpcManager;
 import business.PlayerManager;
 import business.entities.Game;
 import business.entities.character.Character;
-import business.entities.character.Impostor;
 import business.entities.character.Player;
 import business.entities.map.Cell;
 import business.entities.map.Map;
@@ -14,7 +13,6 @@ import presentation.views.ConfiguredView;
 import presentation.views.GameView;
 import presentation.views.MainView;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,13 +25,13 @@ import java.util.List;
  */
 public class ConfiguredController implements ActionListener {
 
-    private ConfiguredView configuredView;
-    private MainView mainView;
-    private GameManager gameManager;
+    private final ConfiguredView configuredView;
+    private final MainView mainView;
+    private final GameManager gameManager;
 
-    private ArrayList<String> colors;
-    private GameView gameView;
-    private GameController gameController;
+    private final ArrayList<String> colors;
+    private final GameView gameView;
+    private final GameController gameController;
 
 
     /**

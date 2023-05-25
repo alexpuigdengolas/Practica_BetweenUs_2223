@@ -16,15 +16,12 @@ public class ConfiguredView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
 
 
-    private JComboBox<String> comboBox = new JComboBox<String>();
+    private final JComboBox<String> comboBox = new JComboBox<String>();
 
 
-    private JButton configuredButton = new JButton("Create Game");
-    private JButton jbBack = new JButton("Back");
-    private JButton jbSettings = new JButton("Settings");
-
-    private CardLayout components;
-    private MainView mainView;
+    private final JButton configuredButton = new JButton("Create Game");
+    private final JButton jbBack = new JButton("Back");
+    private final JButton jbSettings = new JButton("Settings");
 
     /**
      * es el constructor de configure
@@ -70,7 +67,7 @@ public class ConfiguredView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Configured game");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -88,7 +85,7 @@ public class ConfiguredView extends JPanel {
         //Label de cargar partida
         JLabel jlCharge = new JLabel("Game name");
         jlCharge.setForeground(Color.WHITE);
-        jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlCharge.setHorizontalAlignment(0);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.add(jlCharge);
 

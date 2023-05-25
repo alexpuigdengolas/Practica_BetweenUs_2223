@@ -16,14 +16,11 @@ public class LoginView extends JPanel {
     public static final String BTN_LOG = "BTN_LOG";
     public static final String BTN_REG = "BTN_REG";
 
-    private JTextField nameSpace = new JTextField();
-    private JPasswordField passwordField = new JPasswordField();
+    private final JTextField nameSpace = new JTextField();
+    private final JPasswordField passwordField = new JPasswordField();
 
-    private JButton loginButton = new JButton("Login");
-    private JButton registerButton = new JButton("Register");
-
-    private CardLayout components;
-    private MainView mainView;
+    private final JButton loginButton = new JButton("Login");
+    private final JButton registerButton = new JButton("Register");
 
 
     /**
@@ -52,7 +49,7 @@ public class LoginView extends JPanel {
 
         JLabel jlTitle = new JLabel("Login");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -144,24 +141,6 @@ public class LoginView extends JPanel {
      */
     public char[] getInputPassword() {
         return passwordField.getPassword();
-    }
-
-    /**
-     * Setter para asignar la main view
-     *
-     * @param mainView vista principal
-     */
-    public void setMainView(MainView mainView){
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter para asignar los componentes del card layout
-     *
-     * @param viewComponents card layout
-     */
-    public void setComponents(CardLayout viewComponents) {
-        this.components = viewComponents;
     }
 
     /**

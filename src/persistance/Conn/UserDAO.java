@@ -1,9 +1,6 @@
 package persistance.Conn;
 
-import business.entities.Game;
 import business.entities.User;
-
-import java.util.ArrayList;
 
 /**
  * Esta interficie implementara todos los metodos que necesitamos para poder acceder a la base de datos del usuario

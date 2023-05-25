@@ -20,7 +20,7 @@ public class RegisterController implements ActionListener {
     private final MainView mainView;
     private final CardLayout viewComponents;
 
-    private  UserManager userManager;
+    private final UserManager userManager;
 
     /**
      * Este metodo es el constructor de nuestra clase
@@ -43,26 +43,25 @@ public class RegisterController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case RegisterView.BTN_REGISTER:
-                User user = new User(registerView.getInputUsername(),registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
+            case RegisterView.BTN_REGISTER -> {
+                User user = new User(registerView.getInputUsername(), registerView.getInputEmail(), String.valueOf(registerView.getInputPassword()), String.valueOf(registerView.getInputConfPassword()));
                 try {
                     //Comprueba que el registro cumpla condiciones y registra si asi es
                     userManager.checkRegister(user);
                     userManager.registerUser(user);
                     mainView.showLogin();
-                }catch (ErrorMessage ex){
+                } catch (ErrorMessage ex) {
                     registerView.printRegisterErrors(ex.getMessage());
                     mainView.showRegister();
 
                 }
-                break;
-
-            case RegisterView.BTN_BACK:
+            }
+            case RegisterView.BTN_BACK -> {
                 registerView.resetInputInfo();
                 registerView.setmainView(mainView);
                 registerView.setComponents(viewComponents);
                 mainView.showLogin();
-                break;
+            }
         }
     }
 

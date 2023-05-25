@@ -2,17 +2,12 @@ package business;
 
 
 import business.entities.Game;
-import business.entities.User;
 import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
-import business.entities.character.Player;
 import business.entities.map.Cell;
 import persistance.Conn.GameDAO;
 import persistance.Conn.GameSQLDAO;
-import persistance.Conn.UserDAO;
-import persistance.Conn.UserSQLDAO;
-import presentation.controllers.GameController;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,17 +16,16 @@ import java.util.LinkedList;
  * Esta clase representara el gestor de las partidas
  */
 public class GameManager {
-    private UserDAO userDAO;
-    private GameDAO gameDAO;
+    private final GameDAO gameDAO;
     private PlayerManager playerManager;
     private MapManager mapManager;
 
     private NpcManager npcManager;
 
-    private UserManager userManager;
+    private final UserManager userManager;
 
     private String gameName;
-    private StatisticsManager statisticsManager;
+    private final StatisticsManager statisticsManager;
 
     /**
      * Este es el constructor de la clase de gestor de partidas
@@ -39,7 +33,6 @@ public class GameManager {
      * @param statisticsManager el gestor de estadisticas
      */
     public GameManager(UserManager userManager,StatisticsManager statisticsManager) {
-        this.userDAO = new UserSQLDAO();
         this.gameDAO = new GameSQLDAO();
         this.userManager = userManager;
         this.statisticsManager = statisticsManager;
@@ -144,8 +137,7 @@ public class GameManager {
      * @return la partida en si
      */
     public Game searchGame(String game){
-        Game joc = gameDAO.searchGame(game);
-        return joc;
+        return gameDAO.searchGame(game);
     }
 
     /**
@@ -332,7 +324,7 @@ public class GameManager {
      * Juego si la partida ha finalizado
      * @param win booleano para ver si se ha ganado la partida
      */
-    public void finishGame(Boolean win){
+    public void finishGame(boolean win){
         userManager.gameFinish(win);
 
     }
@@ -350,8 +342,7 @@ public class GameManager {
      * @return La partida que acabamos de crear
      */
     public Game newGame(String name,int players, int imp,String color,String mapName,String user){
-        Game game  = new Game(name, players, imp, color, mapName,user);
-        return game;
+        return new Game(name, players, imp, color, mapName,user);
     }
 
 

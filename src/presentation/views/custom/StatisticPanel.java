@@ -2,7 +2,6 @@ package presentation.views.custom;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class StatisticPanel extends JPanel {
     private static final int CHART_WIDTH = 400;

@@ -2,13 +2,9 @@ package presentation.views;
 
 import presentation.views.custom.BackGroundPanel;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 /**
  * sera la clase para construir la vista del registro de usuarios de nuestro programa
@@ -18,16 +14,14 @@ public class RegisterView extends JPanel {
     public static final String BTN_REGISTER = "BTN_REGISTER";
     public static final String BTN_BACK = "BTN_BACK";
 
-    private JTextField userNameSpace = new JTextField();
-    private JTextField emailSpace = new JTextField();
-    private JPasswordField passwordField = new JPasswordField();
-    private JPasswordField confirmationPasswordField = new JPasswordField();
+    private final JTextField userNameSpace = new JTextField();
+    private final JTextField emailSpace = new JTextField();
+    private final JPasswordField passwordField = new JPasswordField();
+    private final JPasswordField confirmationPasswordField = new JPasswordField();
 
-    private JButton loginButton = new JButton("Login");
-    private JButton registerButton = new JButton("Register");
+    private final JButton loginButton = new JButton("Login");
+    private final JButton registerButton = new JButton("Register");
 
-    private CardLayout components;
-    private MainView mainView;
 
     /**
      * es el constructor de nuestro registro de usuarios del programa
@@ -41,20 +35,6 @@ public class RegisterView extends JPanel {
      */
     private void configureView(){
 
-        //TODO:Hablar con el profe para ver porque no pinta bien y como arreglarlo.
-        /*
-        try {
-            BufferedImage image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/images/background.jpg")));
-            Image scaled = image.getScaledInstance(1080, 800, Image.SCALE_DEFAULT);
-            ImageIcon backgroundImage = new ImageIcon(scaled);
-            JLabel background = new JLabel("", backgroundImage, JLabel.CENTER);
-            background.setBounds(0,0,1080,800);
-            this.add(background);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
         fondo.setLayout(new BorderLayout());
 
@@ -66,7 +46,7 @@ public class RegisterView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Register");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Arial", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -79,7 +59,6 @@ public class RegisterView extends JPanel {
         jlLogin.setForeground(Color.WHITE);
         jlLogin.setAlignmentX(CENTER_ALIGNMENT);
         jlLogin.setFont(new Font("Arial", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
         infoBox.add(jlLogin);
 
 
@@ -94,7 +73,6 @@ public class RegisterView extends JPanel {
         jlMail.setForeground(Color.WHITE);
         jlMail.setAlignmentX(CENTER_ALIGNMENT);
         jlMail.setFont(new Font("Arial", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
         infoBox.add(jlMail);
 
         //JTextField para el mail
@@ -107,7 +85,6 @@ public class RegisterView extends JPanel {
         jlPassword.setForeground(Color.WHITE);
         jlPassword.setAlignmentX(CENTER_ALIGNMENT);
         jlPassword.setFont(new Font("Arial", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
         infoBox.add(jlPassword);
 
         //JTextField para el mail
@@ -122,7 +99,6 @@ public class RegisterView extends JPanel {
         jlConPassword.setForeground(Color.WHITE);
         jlConPassword.setAlignmentX(CENTER_ALIGNMENT);
         jlConPassword.setFont(new Font("Arial", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
         infoBox.add(jlConPassword);
 
         //JTextField para el mail
@@ -239,24 +215,6 @@ public class RegisterView extends JPanel {
      */
     public char[] getInputConfPassword() {
         return confirmationPasswordField.getPassword();
-    }
-
-    /**
-     * Setter para asignar la main view
-     *
-     * @param mainView vista principal
-     */
-    public void setmainView(MainView mainView){
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter para asignar los componentes del card layout
-     *
-     * @param viewComponents card layout
-     */
-    public void setComponents(CardLayout viewComponents) {
-        this.components = viewComponents;
     }
 
     /**

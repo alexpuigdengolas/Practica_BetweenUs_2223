@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class BackGroundPanel extends JPanel {
 
-    private Image image;
+    private final Image image;
 
     public BackGroundPanel(String path) {
         image = new ImageIcon(path).getImage();

@@ -181,14 +181,11 @@ public class UserManager {
 
     /**
      * metodo para eliminar el usuario
-     * @return booleano por si se pudo eliminar
      */
-    public boolean deleteUser() {
+    public void deleteUser() {
         if (userDAO.userNameExists(user)) {
             userDAO.deleteUser(user);
-            return true;
         }
-        return false;
     }
 
     /**

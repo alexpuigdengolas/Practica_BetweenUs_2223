@@ -5,8 +5,6 @@ import business.NpcManager;
 import business.entities.Time;
 import business.entities.map.Cell;
 import business.entities.map.Mobility;
-
-import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,10 +15,10 @@ public class Impostor extends Character{
     private static final int minInterval = 6;
     private static final int maxInterval = 8;
     private int startInterval;
-    private MapManager mapManager;
+    private final MapManager mapManager;
     private NpcManager npcManager;
     private Boolean canKill;
-    private Time killingPeriod;
+    private final Time killingPeriod;
 
 
     /**

@@ -3,15 +3,12 @@ package presentation.controllers;
 import business.*;
 import business.entities.Game;
 import business.entities.character.Character;
-import business.entities.character.Impostor;
-import business.entities.character.Npc;
 import business.entities.character.Player;
 import business.entities.map.Cell;
 import business.entities.map.Map;
 import presentation.views.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -67,9 +64,8 @@ public class NGController  implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
-
-            case NewGameView.BTN_MAP:
+        switch (e.getActionCommand()) {
+            case NewGameView.BTN_MAP -> {
                 //El cargador de archivos, para seleccionar el mapa
                 String path = getMPath();
                 JFileChooser jfc = new JFileChooser(path);
@@ -80,19 +76,18 @@ public class NGController  implements ActionListener {
                     String name = selectedFile.getName();
                     NGView.setMapName(name);
                 }
-                break;
-            case NewGameView.BTN_CHA:
+            }
+            case NewGameView.BTN_CHA -> {
                 String mapName;
                 //Si no ha cogido mapa elije el de station
-                if(NGView.getMap().equals("Select File")){
+                if (NGView.getMap().equals("Select File")) {
                     mapName = "Station.json";
-                }else{
+                } else {
                     mapName = NGView.getMap();
                 }
-
-                game  = gameManager.newGame(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName,userManager.getUser());
+                game = gameManager.newGame(NGView.getNameMap(), NGView.getPlayers(), NGView.getImp(), NGView.getColor(), mapName, userManager.getUser());
                 gameManager.setGameName(NGView.getNameMap());
-                try{
+                try {
                     //Comprueba que cumpla condiciones y lo guarda si asi lo hace
                     gameManager.checkGame(game);
                     gameManager.saveGame(game);
@@ -122,16 +117,16 @@ public class NGController  implements ActionListener {
                     //Coloquem els jugadors a la cella de la cafeteria
                     Cell initialCell = gameManager.getCafeCell(map.getCells());
                     userPlayer.setCell(initialCell);
-                    gameManager.setInitialCell(userPlayer,players,map.getCells());
+                    gameManager.setInitialCell(userPlayer, players, map.getCells());
 
-                    for (Character character: players) {
+                    for (Character character : players) {
                         gameManager.startPlayers(character);
                     }
 
                     //Creem els manegers que el controlen
                     PlayerManager playerManager = new PlayerManager(userPlayer);
                     NpcManager npcManager = new NpcManager(players);
-                    for (Character character: players) {
+                    for (Character character : players) {
 
                         character.setNpcManager(npcManager);
                     }
@@ -142,21 +137,16 @@ public class NGController  implements ActionListener {
 
                     gameManager.setNpcManager(npcManager);
                     //Creidem la vista del mapa
-                    gameView.setMap(map,userPlayer,players);
+                    gameView.setMap(map, userPlayer, players);
                     gameController.startMapThread();
 
 
-
                     mainView.showGame();
-                }catch (ErrorMessage ex){
+                } catch (ErrorMessage ex) {
                     NGView.printNewGameErrors(ex.getMessage());
                 }
-
-                break;
-            case NewGameView.BTN_BACK:
-                mainView.showStart();
-                break;
-
+            }
+            case NewGameView.BTN_BACK -> mainView.showStart();
         }
     }
 
@@ -178,25 +168,27 @@ public class NGController  implements ActionListener {
     public int[] getColorComponents(String color) {
         int[] components = new int[3];
         switch (color) {
-            case "PURPLE":
+            case "PURPLE" -> {
                 components[0] = 102;
                 components[2] = 153;
                 return components;
-
-            case "BROWN":
+            }
+            case "BROWN" -> {
                 components[0] = 102;
                 components[1] = 51;
                 return components;
-
-            case "CYAN":
+            }
+            case "CYAN" -> {
                 components[1] = 255;
                 components[2] = 255;
                 return components;
-            default:
+            }
+            default -> {
                 components[0] = 50;
                 components[1] = 205;
                 components[2] = 50;
                 return components;
+            }
         }
     }
 

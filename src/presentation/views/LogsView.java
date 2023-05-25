@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.LinkedList;
 
 public class LogsView extends JFrame {
-    private LinkedList<Log> logs;
+    private final LinkedList<Log> logs;
 
 
     public LogsView(LinkedList<Log> logs) {

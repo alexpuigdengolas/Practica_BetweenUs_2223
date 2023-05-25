@@ -1,17 +1,14 @@
 package persistance.Conn;
 
-import business.entities.Game;
 import business.entities.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static persistance.Conn.JsonReader.llegeixJSON;
 
 public class UserSQLDAO implements UserDAO {
-    private Data data;
-    private DBConnector conn;
+    private final Data data;
+    private final DBConnector conn;
     public UserSQLDAO() {
         data = llegeixJSON();
         conn = new DBConnector(data.getUser(), data.getPassword(), data.getDb(), data.getPort());

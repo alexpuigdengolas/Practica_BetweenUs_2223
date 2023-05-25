@@ -1,7 +1,6 @@
 package presentation.controllers;
 
 import business.UserManager;
-import business.entities.User;
 import presentation.views.LoginView;
 import presentation.views.MainView;
 
@@ -14,11 +13,11 @@ import java.awt.event.ActionListener;
  */
 public class LoginController implements ActionListener {
 
-    private LoginView loginView;
-    private MainView mainView;
-    private CardLayout cardLayout;
+    private final LoginView loginView;
+    private final MainView mainView;
+    private final CardLayout cardLayout;
 
-    private UserManager userManager;
+    private final UserManager userManager;
 
 
     public LoginController(LoginView loginView, MainView mainView, CardLayout cardLayout, UserManager userManager) {

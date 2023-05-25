@@ -2,15 +2,13 @@ package presentation.views.custom;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class DeductionPanel extends JPanel {
-    private JPanel unknownColumn;
-    private JPanel susColumn;
-    private JPanel notSusColumn;
+    private final JPanel unknownColumn;
+    private final JPanel susColumn;
+    private final JPanel notSusColumn;
 
 
 

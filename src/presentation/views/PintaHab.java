@@ -1,9 +1,7 @@
 package presentation.views;
 
-import com.google.gson.stream.JsonToken;
 import presentation.controllers.NGController;
 
-import javax.crypto.spec.PSource;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,20 +9,19 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Objects;
 
 /**
  * sera la clase para construir la vista de pintar habitaciones de nuestro programa
  */
 public class PintaHab extends JPanel {
     private final Color color;
-    private String roomName;
+    private final String roomName;
     private Color colori;
-    private LinkedList<String> colors;
+    private final LinkedList<String> colors;
     private final NGController NgController = new NGController();
     private final Boolean userIsHere;
-    private boolean revealMap;
-    private LinkedList<Boolean> corpses;
+    private final boolean revealMap;
+    private final LinkedList<Boolean> corpses;
     private BufferedImage image;
 
 

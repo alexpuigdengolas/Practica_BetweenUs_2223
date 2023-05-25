@@ -12,14 +12,12 @@ import java.util.ArrayList;
  */
 public class StatisticsManager {
 
-    private UserDAO userDAO;
-    private GameDAO gameDAO;
+    private final GameDAO gameDAO;
 
     /**
      * Este es el constructor de la clase
      */
     public StatisticsManager(){
-        this.userDAO = new UserSQLDAO();
         this.gameDAO = new GameSQLDAO();
     }
 

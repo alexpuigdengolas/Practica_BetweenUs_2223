@@ -5,7 +5,6 @@ import presentation.views.DeleteView;
 import presentation.views.MainView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,10 +13,10 @@ import java.awt.event.ActionListener;
  */
 public class DeleteController implements ActionListener {
 
-    private DeleteView deleteView;
-    private MainView mainView;
+    private final DeleteView deleteView;
+    private final MainView mainView;
 
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     /**
      * Este sera el constructor de esta clase

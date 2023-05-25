@@ -1,14 +1,9 @@
 package presentation.controllers;
 
 import business.GameManager;
-import business.MapManager;
-import business.entities.Game;
-import business.entities.map.Map;
 import presentation.views.ChargeView;
 import presentation.views.GameView;
 import presentation.views.MainView;
-
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,21 +14,21 @@ public class ChargeController implements ActionListener{
     /**
      * La vista de carga de partidas
      */
-    private ChargeView chargeView;
+    private final ChargeView chargeView;
     /**
      * La main view del programa
      */
-    private MainView mainView;
+    private final MainView mainView;
 
     /**
      * La clase que nos permite controlar el contenido de las partidas de la base de datos
      */
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     /**
      * La vista del juego
      */
-    private GameView gameView;
+    private final GameView gameView;
 
     /**
      * Este metodo nos es el constructor de nuestra clase
@@ -59,12 +54,7 @@ public class ChargeController implements ActionListener{
         switch(e.getActionCommand()){
             case ChargeView.BTN_BACK -> mainView.showStart();
             case ChargeView.BTN_STI -> mainView.showSettings();
-            case ChargeView.BTN_CHA -> {
-                String nom = chargeView.optionSelected();
-
-                //gameView.setMap(map);
-                //mainView.showGame();
-            }
+            case ChargeView.BTN_CHA -> chargeView.optionSelected();
         }
     }
 }

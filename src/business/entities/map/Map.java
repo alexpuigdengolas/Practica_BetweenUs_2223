@@ -24,7 +24,7 @@ public class Map {
     private String mapName;
     @SerializedName("cells")
     @Expose
-    private final LinkedList<Cell> cells = null;
+    private final LinkedList<Cell> cells = new LinkedList<>();
 
     /**
      * Getter del numero de casillas que componen el mapa

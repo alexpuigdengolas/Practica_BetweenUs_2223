@@ -9,14 +9,10 @@ import business.entities.character.Player;
 import presentation.views.GameView;
 import presentation.views.LogsView;
 import presentation.views.MainView;
-import presentation.views.custom.DeductionPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
@@ -26,11 +22,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class GameController implements Runnable,ActionListener{
 
-    private Time totalTime =  new Time();
-    private GameView gameView;
-    private MainView mainView;
+    private final Time totalTime =  new Time();
+    private final GameView gameView;
+    private final MainView mainView;
     private boolean isRunning;
-    private GameManager gameManager;
+    private final GameManager gameManager;
 
     private Boolean revealMap = false;
     private LogController logController;
@@ -60,7 +56,7 @@ public class GameController implements Runnable,ActionListener{
             case GameView.BTN_BACK -> mainView.showStart();
             case GameView.BTN_STI -> mainView.showSettings();
             case GameView.BTN_STP -> {
-                //TODO:Aqui se haria la parte de guardar la partida
+                //TODO: Aqui se haria la parte de guardar la partida
                 gameManager.interruptThreads();
                 this.stopMapThread();
                 mainView.showStart();
@@ -154,16 +150,16 @@ public class GameController implements Runnable,ActionListener{
                         }
 
 
-                        for(int j = 0; j < impostors.size(); j++) {
-                            if (!susColors.contains(impostors.get(j).getColor())){
+                        for (Impostor impostor : impostors) {
+                            if (!susColors.contains(impostor.getColor())) {
                                 gotAnswer = true;
                                 break;
                             }
                         }
 
 
-                        for(int j = 0; j < npcs.size(); j++) {
-                            if (!notSusColors.contains(npcs.get(j).getColor())){
+                        for (Npc npc : npcs) {
+                            if (!notSusColors.contains(npc.getColor())) {
                                 gotAnswer = true;
                                 break;
                             }

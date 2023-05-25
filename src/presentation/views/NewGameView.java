@@ -20,22 +20,22 @@ public class NewGameView extends JPanel {
     public static final String BTN_MAP= "BTN_MAP";
     private String fileName = "Select File";
 
-    private JTextField nameField = new JTextField();
+    private final JTextField nameField = new JTextField();
 
 
-    private JButton chargeButton = new JButton("Charge");
-    private JButton jbBack = new JButton("Back");
-    private JButton jbSettings = new JButton("Settings");
-    private JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(4,4,10,1));
+    private final JButton chargeButton = new JButton("Charge");
+    private final JButton jbBack = new JButton("Back");
+    private final JButton jbSettings = new JButton("Settings");
+    private final JSpinner spinnerPly = new JSpinner(new SpinnerNumberModel(4,4,10,1));
 
     JSpinner spinnerImp = new JSpinner(new SpinnerNumberModel(1,1,3,1));
 
-    private String colors []= {"RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"};
-    private JComboBox<String> jBCColors = new JComboBox<>(colors);
+    private final String[] colors = {"RED","BLUE","GREEN","PINK","ORANGE","YELLOW","BLACK","WHITE","PURPLE","BROWN","CYAN","LIME"};
+    private final JComboBox<String> jBCColors = new JComboBox<>(colors);
 
 
 
-   private JButton  jbmaps = new JButton(fileName);
+   private final JButton  jbmaps = new JButton(fileName);
 
     /**
      * constructor de newgame
@@ -77,7 +77,7 @@ public class NewGameView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("New Game");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -95,9 +95,8 @@ public class NewGameView extends JPanel {
         //Label de cargar partida
         JLabel jlCharge = new JLabel("Game name");
         jlCharge.setForeground(Color.WHITE);
-        jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlCharge.setHorizontalAlignment(0);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
-        //TODO: Cambiar el color de la vista
         infoPanel.add(jlCharge);
 
 

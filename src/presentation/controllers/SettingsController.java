@@ -5,7 +5,6 @@ import presentation.views.MainView;
 import presentation.views.SettingsView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +13,9 @@ import java.awt.event.ActionListener;
  */
 public class SettingsController implements ActionListener {
 
-    private SettingsView settingsView;
-    private MainView mainView;
-    private UserManager userManager;
+    private final SettingsView settingsView;
+    private final MainView mainView;
+    private final UserManager userManager;
 
     /**
      * Este es el constructor de nuestra clase

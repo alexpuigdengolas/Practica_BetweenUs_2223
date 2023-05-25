@@ -56,10 +56,7 @@ public class NpcManager{
         return 0;
     }
     public synchronized boolean eliminateNpc(MapManager mapManager, Impostor impostor) {
-        if (npcKilled(mapManager,impostor)) {
-            return true;
-        }
-        return false;
+        return npcKilled(mapManager, impostor);
     }
 
     public boolean npcKilled(MapManager mapManager, Impostor impostor) {
@@ -67,8 +64,8 @@ public class NpcManager{
                 && mapManager.userPlayerCell() != impostor.getCell()) {
             int npcPosition = getNpcPosition(impostor.getCell());
             System.out.println("Quiero matar a alguien");
-            for(int i = 0 ; i < players.size(); i++){
-                System.out.println(players.get(i).getColor());
+            for (Character player : players) {
+                System.out.println(player.getColor());
             }
             System.out.println("Quiero matar a :"+players.get(npcPosition).getColor());
             //SE mata a si mismo
@@ -121,10 +118,7 @@ public class NpcManager{
     //#nuevo
     //mriar de borrar este metodo
     public boolean checkLogPosition (Character character) {
-        if (checkLog(character)) {
-            return true;
-        }
-        return false;
+        return checkLog(character);
     }
 
 

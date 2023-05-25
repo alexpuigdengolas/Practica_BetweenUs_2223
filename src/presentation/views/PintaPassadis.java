@@ -11,22 +11,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Objects;
 
 /**
  * La classe ens permet pintar els passadisos del mapa.
- *
  * interacciona directament amb la clase MapPaint.
  */
 
 public class PintaPassadis extends JPanel{
     private final Mobility mov;
     private final Boolean userIsHere;
-    private LinkedList<String> colors;
-    private NGController ngController = new NGController();
-    private boolean revealMap;
+    private final LinkedList<String> colors;
+    private final NGController ngController = new NGController();
+    private final boolean revealMap;
     private Color colori;
-    private LinkedList<Boolean> corpses;
+    private final LinkedList<Boolean> corpses;
     private BufferedImage image;
 
 

@@ -1,7 +1,5 @@
 package presentation.views;
 
-import business.StatisticsManager;
-import business.UserManager;
 import presentation.views.custom.BackGroundPanel;
 import presentation.views.custom.StatisticPanel;
 
@@ -20,13 +18,11 @@ public class StatisticsView extends JPanel {
     public static final String BTN_STI = "BTN_STI";
 
 
-    private JButton jbBack = new JButton("Back");
-    private JButton jbSettings = new JButton("Settings");
+    private final JButton jbBack = new JButton("Back");
+    private final JButton jbSettings = new JButton("Settings");
 
 
-    private CardLayout components;
-    private MainView mainView;
-    private float[] data = {};
+    private final float[] data = {};
     private StatisticPanel chartPanel = new StatisticPanel(new float[]{});
     BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
 
@@ -74,7 +70,7 @@ public class StatisticsView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Charge game");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -91,16 +87,10 @@ public class StatisticsView extends JPanel {
         //Label de cargar partida
         JLabel jlCharge = new JLabel("Game name");
         jlCharge.setForeground(Color.WHITE);
-        jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlCharge.setHorizontalAlignment(0);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.setOpaque(false);
-        //TODO: Cambiar el color de la vista
         infoPanel.add(jlCharge);
-
-        //TODO: Cargar datos de la base de datos
-
-        //float[] data = {100, 50, 33, 50, 60, 66, 71};
-
 
         chartPanel = new StatisticPanel(data);
         chartPanel.setPreferredSize(new Dimension(220, 120));
@@ -116,25 +106,6 @@ public class StatisticsView extends JPanel {
         jbBack.addActionListener(listener);
         jbSettings.addActionListener(listener);
     }
-    /**
-     * Setter para asignar la main view
-     *
-     * @param mainView vista principal
-     */
-    public void setMainView(MainView mainView){
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter para asignar los componentes del card layout
-     *
-     * @param viewComponents card layout
-     */
-    public void setComponents(CardLayout viewComponents) {
-        this.components = viewComponents;
-    }
-
-
 
     /**
      * Sirve para actualizar los datos de las estadisticas

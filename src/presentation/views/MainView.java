@@ -16,19 +16,19 @@ public class MainView extends JFrame {
 
     private final JPanel jpView = new JPanel();
 
-    private CardLayout viewComponents;
+    private final CardLayout viewComponents;
 
-    private RegisterView registerView;
-    private LoginView loginView;
-    private StartView startView;
-    private NewGameView nGView;
-    private StatisticsView statisticsView;
-    private DeleteView deleteView;
-    private ConfiguredView configuredView;
-    private ChargeView chargeView;
-    private SettingsView settingsView;
-    private MapView mapView;
-    private GameView gameView;
+    private final RegisterView registerView;
+    private final LoginView loginView;
+    private final StartView startView;
+    private final NewGameView nGView;
+    private final StatisticsView statisticsView;
+    private final DeleteView deleteView;
+    private final ConfiguredView configuredView;
+    private final ChargeView chargeView;
+    private final SettingsView settingsView;
+    private final MapView mapView;
+    private final GameView gameView;
 
 
     /**

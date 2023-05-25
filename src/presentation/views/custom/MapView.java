@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
-import business.PlayerManager;
 import business.entities.character.Character;
-import business.entities.character.Npc;
 import business.entities.map.Map;
 import presentation.views.PintaMapa;
 
@@ -21,7 +19,6 @@ public class MapView extends JPanel {
 
     public void configureMapView(Map map, Character userPlayer, LinkedList<Character>npcs){
 
-        //TODO:Esta es la vista de todo el juego, ahora solo esta el Mapa hay que poner el resto de cosas
         this.setPreferredSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 
         this.setLayout(new BorderLayout());

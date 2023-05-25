@@ -34,15 +34,11 @@ public class LogTableModel extends AbstractTableModel {
         if (log == null) {
             return null;
         }
-        switch (columnIndex) {
-            case 0:
-                return log.getName();
-            case 1:
-                return log.getRoom();
-            case 2:
-                return log.getInstant();
-            default:
-                return null;
-        }
+        return switch (columnIndex) {
+            case 0 -> log.getName();
+            case 1 -> log.getRoom();
+            case 2 -> log.getInstant();
+            default -> null;
+        };
     }
 }

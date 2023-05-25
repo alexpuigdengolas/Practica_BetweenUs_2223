@@ -6,12 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CardPanel extends JPanel {
-    private String colorName;
+    private final String colorName;
     private JPanel currentColumn;
 
-    private JPanel unknownColumn;
-    private JPanel susColumn;
-    private JPanel notSusColumn;
+    private final JPanel unknownColumn;
+    private final JPanel susColumn;
+    private final JPanel notSusColumn;
 
     public CardPanel(String colorName, JPanel unknownColumn, JPanel susColumn, JPanel notSusColumn) {
         this.unknownColumn = unknownColumn;
@@ -74,7 +74,6 @@ public class CardPanel extends JPanel {
     }
 
     private Color getColor(String colorName) {
-        // TODO: Add all the colors
         int[] components = new int[3];
         return switch (colorName) {
             case "RED" -> Color.RED;

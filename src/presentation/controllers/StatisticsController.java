@@ -1,12 +1,8 @@
 package presentation.controllers;
 
-import business.GameManager;
-import business.StatisticsManager;
 import presentation.views.MainView;
-import presentation.views.StartView;
 import presentation.views.StatisticsView;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,12 +29,8 @@ public class StatisticsController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case StatisticsView.BTN_STI:
-                mainView.showSettings();
-                break;
-            case StatisticsView.BTN_BACK:
-                mainView.showStart();
-                break;
+            case StatisticsView.BTN_STI -> mainView.showSettings();
+            case StatisticsView.BTN_BACK -> mainView.showStart();
         }
     }
 }

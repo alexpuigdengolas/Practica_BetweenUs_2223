@@ -20,17 +20,12 @@ public class StartView extends JPanel {
     public static final String BTN_STA = "BTN_STA";
 
 
-    private JButton jbSettings = new JButton("Settings");
-    private JButton jbNewGame = new JButton("New Game");
-    private JButton jbConfGame = new JButton("Configured Game");
-    private JButton jbCharGame = new JButton("Charged Game");
-    private JButton jbDellGame = new JButton("Delete Game");
-    private JButton jbStatistics = new JButton("Statistics");
-
-
-    private MainView mainView;
-
-    private CardLayout components;
+    private final JButton jbSettings = new JButton("Settings");
+    private final JButton jbNewGame = new JButton("New Game");
+    private final JButton jbConfGame = new JButton("Configured Game");
+    private final JButton jbCharGame = new JButton("Charged Game");
+    private final JButton jbDellGame = new JButton("Delete Game");
+    private final JButton jbStatistics = new JButton("Statistics");
 
 
     /**
@@ -67,7 +62,7 @@ public class StartView extends JPanel {
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Between Us");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -128,23 +123,6 @@ public class StartView extends JPanel {
         jbCharGame.addActionListener(actionListener);
         jbDellGame.addActionListener(actionListener);
         jbStatistics.addActionListener(actionListener);
-    }
-
-    /**
-     * Setter de la vista principal
-     * @param mainView vista principal
-     */
-    public void setMainView(MainView mainView) {
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter de los componentes de las vistas
-     * @param components componentes de las vistas
-     */
-
-    public void setComponents(CardLayout components) {
-        this.components = components;
     }
 }
 

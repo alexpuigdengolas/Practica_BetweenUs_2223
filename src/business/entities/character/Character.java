@@ -8,15 +8,14 @@ import business.entities.Time;
 
 /**
  * Es una Clase abstracta donde guardamos los datos generales de los distintos personajes del juego
- *
  * En esta clase podemos obtener un codigo mucho mas limpio y ordenado gracias a el concepto de herencia.
  *
  */
 
 public abstract class Character extends Thread {
 
-    private Time totalTime =  new Time();
-    private Time intervalTime = new Time();
+    private final Time totalTime =  new Time();
+    private final Time intervalTime = new Time();
     private final int[] moveOptions = new int[4];
     private String color;
     private Cell cell;
@@ -129,22 +128,27 @@ public abstract class Character extends Thread {
         actualRoom[0] = getCell().getX();
         actualRoom[1] = getCell().getY();
         switch (nextRoom) {
-            case 0:
+            case 0 -> {
                 actualRoom[0] -= 1;
                 return actualRoom;
-            case 1:
+            }
+            case 1 -> {
                 actualRoom[1] -= 1;
                 return actualRoom;
-            case 2:
+            }
+            case 2 -> {
                 actualRoom[0] += 1;
                 return actualRoom;
-            case 3:
+            }
+            case 3 -> {
                 actualRoom[1] += 1;
                 return actualRoom;
-            default:
+            }
+            default -> {
                 actualRoom[0] = -1;
                 actualRoom[1] = -1;
                 return actualRoom;
+            }
         }
     }
 

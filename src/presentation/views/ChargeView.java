@@ -16,16 +16,12 @@ public class ChargeView extends JPanel{
     public static final String BTN_STI = "BTN_STI";
     //prova
 
-    private JComboBox<String> comboBox = new JComboBox<String>();
+    private final JComboBox<String> comboBox = new JComboBox<String>();
 
 
-    private JButton chargeButton = new JButton("Charge");
-    private JButton jbBack = new JButton("Back");
-    private JButton jbSettings = new JButton("Settings");
-
-
-    private CardLayout components;
-    private MainView mainView;
+    private final JButton chargeButton = new JButton("Charge");
+    private final JButton jbBack = new JButton("Back");
+    private final JButton jbSettings = new JButton("Settings");
 
     /**
      *
@@ -77,7 +73,7 @@ public class ChargeView extends JPanel{
         JPanel titlePanel = new JPanel();
         JLabel jlTitle = new JLabel("Charge game");
         jlTitle.setForeground(Color.WHITE);
-        jlTitle.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlTitle.setHorizontalAlignment(0);
         jlTitle.setFont(new Font("Serif", Font.PLAIN, 40));
         titlePanel.add(jlTitle);
         titlePanel.setOpaque(false);
@@ -94,10 +90,9 @@ public class ChargeView extends JPanel{
         //Label de cargar partida
         JLabel jlCharge = new JLabel("Game name");
         jlCharge.setForeground(Color.WHITE);
-        jlCharge.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+        jlCharge.setHorizontalAlignment(0);
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.setOpaque(false);
-        //TODO: Cambiar el color de la vista
         infoPanel.add(jlCharge);
 
 
@@ -130,23 +125,4 @@ public class ChargeView extends JPanel{
         String selectedOption = comboBox.getSelectedItem().toString();
         return selectedOption;
     }
-
-    /**
-     * Setter para asignar la main view
-     *
-     * @param mainView vista principal
-     */
-    public void setMainView(MainView mainView){
-        this.mainView = mainView;
-    }
-
-    /**
-     * Setter para asignar los componentes del card layout
-     *
-     * @param viewComponents card layout
-     */
-    public void setComponents(CardLayout viewComponents) {
-        this.components = viewComponents;
-    }
-
 }

@@ -86,7 +86,6 @@ public class StartController implements ActionListener {
                 break;
 
             case StartView.BTN_STA:
-                //TODO: Mostrar los valores de las estadísticas
                 statisticsView.updateData(statisticsManager.searchGameStatistics(userManager.getUser()));
                 mainView.showStatistics();
                 break;

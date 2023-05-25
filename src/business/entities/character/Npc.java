@@ -1,7 +1,6 @@
 package business.entities.character;
 
 import business.MapManager;
-import business.entities.Time;
 import business.entities.map.Cell;
 import business.entities.map.Mobility;
 
@@ -13,7 +12,7 @@ public class Npc extends Character{
     private int previousRoom;
     private static final int minInterval = 5;
     private static final int maxInterval = 15;
-    private MapManager mapManager;
+    private final MapManager mapManager;
     private int startInterval;
 
     /**
@@ -84,17 +83,13 @@ public class Npc extends Character{
      * @return el entero de la habitacion anterior
      */
     public synchronized int selectPreviousRoom(int nextRoom) {
-        switch (nextRoom) {
-            case 0:
-                return 2;
-            case 1:
-                return 3;
-            case 2:
-                return 0;
-            case 3:
-                return 1;
-        }
-        return -1;
+        return switch (nextRoom) {
+            case 0 -> 2;
+            case 1 -> 3;
+            case 2 -> 0;
+            case 3 -> 1;
+            default -> -1;
+        };
     }
 
     /**

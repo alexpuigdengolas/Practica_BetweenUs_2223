@@ -2,7 +2,6 @@ package presentation.controllers;
 
 import business.LogManager;
 import business.NpcManager;
-import presentation.views.LogsView;
 import business.Log;
 
 import java.util.LinkedList;
@@ -11,8 +10,8 @@ import java.util.LinkedList;
  * Esta clase sera util para poder controlar la pantalla de Log's
  */
 public class LogController {
-    private NpcManager npcManager;
-    private LogManager logm;
+    private final NpcManager npcManager;
+    private final LogManager logm;
 
     /**
      * Este es el constructor de la clase

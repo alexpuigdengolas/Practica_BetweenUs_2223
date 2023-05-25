@@ -13,8 +13,8 @@ import static persistance.Conn.JsonReader.llegeixJSON;
  */
 public class GameSQLDAO implements GameDAO{
 
-    private Data data;
-    private DBConnector conn;
+    private final Data data;
+    private final DBConnector conn;
 
     /**
      * Este es el constructor de nuestra base de datos
