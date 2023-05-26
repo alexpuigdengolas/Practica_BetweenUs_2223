@@ -24,7 +24,7 @@ public class ChargeView extends JPanel{
     private final JButton jbSettings = new JButton("Settings");
 
     /**
-     *
+     * constructor de la clase ChargeView
      */
     public ChargeView() {
         configureChargeView();
@@ -32,8 +32,8 @@ public class ChargeView extends JPanel{
     }
 
     /**
-     *
-     * @param games
+     * funcion para actualizar los valores de la comboBox
+     * @param games es la lista de los juegos actualizados
      */
     public void updateComboBoxList(ArrayList<String> games){
         comboBox.removeAllItems();
@@ -42,6 +42,9 @@ public class ChargeView extends JPanel{
         }
     }
 
+    /**
+     * este es el metodo que genera la vista entera de chargeView
+     */
     private void configureChargeView() {
 
         BackGroundPanel fondo = new BackGroundPanel("files/images/background.jpg");
@@ -113,6 +116,10 @@ public class ChargeView extends JPanel{
         infoPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * funcion que sirve para asociar los botones con sus action listeners
+     * @param listener actionListener para asociar el resultado de los botones, para controlar si se pulsan
+     */
     public void chargeController(ActionListener listener) {
         chargeButton.addActionListener(listener);
         jbBack.addActionListener(listener);
@@ -121,6 +128,10 @@ public class ChargeView extends JPanel{
     }
 
 
+    /**
+     * funcion que extrae la seleccion del comboBox a una cadena de texto
+     * @return la cadena de texto perteneciente
+     */
     public String optionSelected(){
         String selectedOption = comboBox.getSelectedItem().toString();
         return selectedOption;

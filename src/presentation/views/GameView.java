@@ -53,7 +53,9 @@ public class GameView extends JPanel {
     private Boolean deductionShowing = false;
 
 
-
+    /**
+     * constructor de la clase GameView
+     */
     public GameView() {
 
         // Add panels to jpTask
@@ -152,10 +154,10 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
-     * @param map
-     * @param userPlayer
-     * @param npcs
+     * esta funcion configura el mapa y los jugadores y los npcs correspondientes
+     * @param map la funcion recibe el mapa
+     * @param userPlayer la funcion recibe los jugadores
+     * @param npcs recibe una lista de npcs
      */
     public void setMap(Map map, Character userPlayer, LinkedList<Character> npcs) {
         mapView.configureMapView(map, userPlayer, npcs);
@@ -163,11 +165,11 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
-     * @param map
-     * @param userPlayer
-     * @param npcs
-     * @param revealMap
+     * esta funcion actualiza la vista del mapa y los personajes del juego con los nuevos datos proporcionados
+     * @param map la funcion recibe el mapa
+     * @param userPlayer la funcion recibe los jugadores
+     * @param npcs recibe una lista de los npcs
+     * @param revealMap es un booleano para revelar el mapa o no
      */
     public void updateMapView(Map map, Character userPlayer, LinkedList<Character> npcs, Boolean revealMap) {
         mapView.updateMapView(map, userPlayer, npcs, revealMap);
@@ -175,7 +177,7 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
+     * esta funcion se utiliza para mostrar la tarea predeterminada en la vista del juego
      */
     public void showDefaultTask(){
         CardLayout cardLayout = (CardLayout) jpTask.getLayout();
@@ -183,8 +185,8 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
-     * @param colors
+     * es una funcion para crear y configurar un boton
+     * @param colors esta funcion recibe una lista con los colores
      */
     public void comprovaBoto(ArrayList<String> colors){
         showDeductionsButton = new JButton("Show Deductions");
@@ -198,8 +200,8 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
-     * @param colors
+     * la funcion muestra las deducciones relacionadas con los colores en la vista del juego.
+     * @param colors la funcion recibe una lista de colores
      */
     public void showDeductions(ArrayList<String> colors){
         //showDeductionsButton.setVisible(false);
@@ -223,37 +225,40 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
-     * @return
+     * funcion para saber si deductionShowing vale true or false.
+     * @return variable booleana para controlar si las deducciones se muestran por pantalla
      */
     public Boolean getDeductionShowing() {
         return deductionShowing;
     }
 
+    /**
+     * la funcion actualiza el panel de deducciones en la vista del juego con nuevos colores.
+     * @param colors la funcion recibe una lista de colores
+     */
     public void updateDeductionPanel(ArrayList<String> colors){
         deductionPanel.setCardColors(colors);
         deductionShowing = true;
     }
 
     /**
-     *
-     * @param deductionShowing
+     * esta funcion sirve para establecer el estado de visualización de las deducciones en la interfaz gráfica del juego.
+     * @param deductionShowing valdra true or false depeniendo de si las deducciones se muestran por pantalla
      */
     public void setDeductionShowing(Boolean deductionShowing) {
         this.deductionShowing = deductionShowing;
     }
 
     /**
-     *
+     * Funcion que muestra un mensaje por pantalla que los impostores han ganado el juego
      */
     public void impostorsWinMsg() {
         JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
-     *
-     *
-     * @return
+     * funcion que devuelve la posicion de la tarjeta
+     * @return las posiciones de la tarjeta
      */
     public LinkedList<String> getCardPosition() {
         return deductionPanel.getCardPositions();

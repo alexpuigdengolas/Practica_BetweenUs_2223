@@ -29,6 +29,10 @@ public class DeleteView extends JPanel {
         //chargeExistingGames(new String[]{"A", "B", "C"});
     }
 
+    /**
+     * funcion para actualitzar los valores de la comboBox
+     * @param games es la lista de los juegos actualitzados
+     */
     public void updateComboBoxList(ArrayList<String> games){
         comboBox.removeAllItems();
         for(String game: games){
@@ -120,8 +124,8 @@ public class DeleteView extends JPanel {
     }
 
     /**
-     *
-     * @param options
+     * esta función sirve para actualizar la comboBox con las opciones existentes
+     * @param options es una cadena de texto con las opciones de juegos existentes
      */
     public void chargeExistingGames(String[] options){
         for(String option: options){
@@ -131,8 +135,8 @@ public class DeleteView extends JPanel {
     }
 
     /**
-     *
-     * @return
+     * funcion para poder seleccionar y devolver un elemento de la comboBox
+     * @return devuelve el elemento seleccionado en la comboBox en forma de cadena de texto
      */
     public String optionSelected(){
         String selectedOption = comboBox.getSelectedItem().toString();
@@ -140,9 +144,9 @@ public class DeleteView extends JPanel {
     }
 
     /**
-     *
-     * @param action
-     * @return
+     * esta funcion muestra un cuadro de dialogo de confirmación con un texto
+     * @param action recibe una cadena de texto
+     * @return la opcion seleccionada por el usuario
      */
     public int confirmPopUp(String action) {
         return JOptionPane.showConfirmDialog(null,action);
