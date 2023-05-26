@@ -218,7 +218,7 @@ public class UserManager {
             userDAO.setNumGames(user,games+1);
             if(win){
                int wins = getnumWins(user);
-               userDAO.setNumWins(user,wins);
+               userDAO.setNumWins(user,wins+1);
             }
         }
     }

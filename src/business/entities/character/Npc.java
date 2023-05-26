@@ -179,11 +179,11 @@ public class Npc extends Character{
 
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                //TODO:mirar esto que esta feo
-                System.out.println(e.getMessage());
+                //Aqui salta la exception, pero no afecta al joc
+                System.out.println("Salta exception peo no afecta al joc");
             }
         }
-        this.interrupt();
+
 
     }
 }

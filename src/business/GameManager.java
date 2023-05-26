@@ -317,9 +317,7 @@ public class GameManager {
         float ratio = ((float) (userManager.getnumWins(userManager.getUser())) /(userManager.getNumGames(userManager.getUser())))*100;
         statisticsManager.setGameStatistic(userManager.getUser(),gameName,ratio);
     }
-
     //#nuevo
-
     /**
      * Juego si la partida ha finalizado
      * @param win booleano para ver si se ha ganado la partida

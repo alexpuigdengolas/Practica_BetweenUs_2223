@@ -244,11 +244,29 @@ public class GameView extends JPanel {
     }
 
     /**
-     *
+     *Mensaje pop up de que el impostor a ganado la partida
      */
     public void impostorsWinMsg() {
         JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /**
+     * Pop up de que el jugador ha ganado la partida
+     */
+    //#nuevo
+    public void playerWinMsg() {
+        JOptionPane.showMessageDialog(null, "Felicidades has adivinado los roles de todos.\nHas Ganado la partida!", "Game end", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     * Funcion que activa o desactiva el boton en función de lo que le pasemos
+     * @param state parametro que indica si activar o desactivar el botón
+     */
+    //#nuevo
+    public void stateCheck(boolean state){
+        jbCheck.setEnabled(state);
+    }
+
 
     /**
      *
