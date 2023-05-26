@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class GameController implements Runnable,ActionListener{
 
     private final Time totalTime =  new Time();
+    private final Time checkTime =  new Time();
     private final GameView gameView;
     private final MainView mainView;
     private boolean isRunning;
@@ -32,6 +33,9 @@ public class GameController implements Runnable,ActionListener{
     private LogController logController;
     private LogsView logsView;
     private Thread T;
+
+    //#nuevo
+    private boolean stateCheck;
 
     /**
      * Este metodo sera el constructor de la clase
@@ -57,6 +61,8 @@ public class GameController implements Runnable,ActionListener{
             case GameView.BTN_STI -> mainView.showSettings();
             case GameView.BTN_STP -> {
                 //TODO: Aqui se haria la parte de guardar la partida
+                getCheckTime().stopTimer();
+                gameView.stateCheck(true);
                 gameManager.interruptThreads();
                 this.stopMapThread();
                 mainView.showStart();
@@ -172,10 +178,14 @@ public class GameController implements Runnable,ActionListener{
                     }
 
                     if(rightAnswer){
-                        System.out.println("Ganas la partida");
+                        finishGame(true);
+
                         gameView.setDeductionShowing(false);
                     }else {
-                        System.out.println("Cagaste");
+                        //Bloquear el boton
+                        getCheckTime().initCounter();
+                        stateCheck = false;
+                        gameView.stateCheck(false);
                     }
 
                 }else{
@@ -220,7 +230,7 @@ public class GameController implements Runnable,ActionListener{
             colors.add(character.getColor());
         }
         if(!gameView.getDeductionShowing()) {
-            //gameView.showDeductions(colors);
+
             gameView.updateDeductionPanel(colors);
 
         }
@@ -255,27 +265,55 @@ public class GameController implements Runnable,ActionListener{
         return totalTime;
     }
 
+
+    //#nuevo
+    public Time getCheckTime(){
+        return checkTime;
+    }
+
+    /**
+     * Funcion que termina el juego en victoria o derrota en función del parametro que le pasemos
+     * @param win valor booleano que indica si ha ganado o perdido
+     */
+    //#nuevo
+    public void finishGame(Boolean win){
+        gameManager.interruptThreads();
+        this.stopMapThread();
+        gameView.stateCheck(true);
+        gameManager.finishGame(win);
+        gameManager.setStatistics();
+        if(win){
+            gameView.playerWinMsg();
+        }else{
+            gameView.impostorsWinMsg();
+        }
+        getTotalTime().stopTimer();
+        mainView.showStart();
+    }
     /**
      * Este metodo nos servira para poder lanzar el thread asociado con el game controller
      */
     public void run() {
+        stateCheck = false;
         logController = new LogController(gameManager.getNpcManager());
         getTotalTime().initCounter();
+        getCheckTime().setSeconds(0);
         while(isRunning) {
+            System.out.println("el check time es: "+getCheckTime().getSeconds());
+            if(getCheckTime().getSeconds() == 60 && !stateCheck){
+                getCheckTime().stopTimer();
+                stateCheck = true;
+                gameView.stateCheck(true);
+            }
             try {
                 TimeUnit.MILLISECONDS.sleep(500);
                 if (gameManager.checkImpostorsWin()) {
-                    gameManager.interruptThreads();
-                    this.stopMapThread();
-                    gameManager.finishGame(false);
-                    gameManager.setStatistics();
-                    gameView.impostorsWinMsg();
-                    //Mensaje de impostores ganan
-                    mainView.showStart();
+                    finishGame(false);
                 }
 
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.out.println("El mapa peta pero no nos afecta");
             }
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {

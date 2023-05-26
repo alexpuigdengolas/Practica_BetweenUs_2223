@@ -31,6 +31,8 @@ public class Game {
         this.creator = creator;
     }
 
+
+
     /**
      * getter del nombre de la partida
      * @return el nombre de la partida

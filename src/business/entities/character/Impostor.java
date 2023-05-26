@@ -232,7 +232,7 @@ public class Impostor extends Character{
                 Thread.sleep(500);
 
             } catch (InterruptedException e) {
-                System.out.println("el color a muerto");
+                System.out.println("La Exception salta pero no afecta al juego");
             }
         }
     }

@@ -51,4 +51,9 @@ public class Time {
     public void setSeconds(int seconds) {
         this.seconds = seconds;
     }
+
+    //#nuevo
+    public void stopTimer(){
+        this.timer.cancel();
+    }
 }
