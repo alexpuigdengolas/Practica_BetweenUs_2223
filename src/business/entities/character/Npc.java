@@ -173,17 +173,17 @@ public class Npc extends Character{
         getTotalTime().initCounter();
         getIntervalTime().initCounter();
         startInterval = getInterval();
-        while (isRunning()) {
-            try {
+        try {
+            while (isRunning()) {
+
                 npcMovement();
 
                 Thread.sleep(500);
-            } catch (InterruptedException e) {
-                //Aqui salta la exception, pero no afecta al joc
-                System.out.println("Salta exception peo no afecta al joc");
-            }
-        }
 
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

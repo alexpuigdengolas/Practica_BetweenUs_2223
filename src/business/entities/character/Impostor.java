@@ -218,7 +218,7 @@ public class Impostor extends Character{
         startInterval = getInterval();
         killingPeriod.initCounter();
         killingPeriod.setSeconds(26);
-        while (isRunning()) {
+        while (isRunning() && !this.isInterrupted()) {
 
             try {
                 impostorMovement(this);
@@ -232,7 +232,7 @@ public class Impostor extends Character{
                 Thread.sleep(500);
 
             } catch (InterruptedException e) {
-                System.out.println("La Exception salta pero no afecta al juego");
+                System.out.println(e.getMessage());
             }
         }
     }

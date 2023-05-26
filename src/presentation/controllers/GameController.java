@@ -62,6 +62,7 @@ public class GameController implements Runnable,ActionListener{
             case GameView.BTN_STP -> {
                 //TODO: Aqui se haria la parte de guardar la partida
                 getCheckTime().stopTimer();
+                getTotalTime().stopTimer();
                 gameView.stateCheck(true);
                 gameManager.interruptThreads();
                 this.stopMapThread();
@@ -288,17 +289,20 @@ public class GameController implements Runnable,ActionListener{
             gameView.impostorsWinMsg();
         }
         getTotalTime().stopTimer();
+        getCheckTime().stopTimer();
         mainView.showStart();
     }
     /**
      * Este metodo nos servira para poder lanzar el thread asociado con el game controller
      */
     public void run() {
+        revealMap = false;
+        gameView.updateMapView(gameManager.getmapManager().getMap(), gameManager.getPlayerManager().getPlayer(), gameManager.getNpcManager().getPlayers(), revealMap);
         stateCheck = false;
         logController = new LogController(gameManager.getNpcManager());
         getTotalTime().initCounter();
         getCheckTime().setSeconds(0);
-        while(isRunning) {
+        while(isRunning && !T.isInterrupted()) {
             System.out.println("el check time es: "+getCheckTime().getSeconds());
             if(getCheckTime().getSeconds() == 60 && !stateCheck){
                 getCheckTime().stopTimer();
@@ -312,8 +316,8 @@ public class GameController implements Runnable,ActionListener{
                 }
 
             } catch (InterruptedException e) {
-                //e.printStackTrace();
-                System.out.println("El mapa peta pero no nos afecta");
+                System.out.println(e.getMessage());
+
             }
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
