@@ -18,6 +18,8 @@ public class ConfiguredView extends JPanel {
 
     private final JComboBox<String> comboBox = new JComboBox<String>();
 
+    private final JTextField jtGameName = new JTextField();
+
 
     private final JButton configuredButton = new JButton("Create Game");
     private final JButton jbBack = new JButton("Back");
@@ -29,6 +31,7 @@ public class ConfiguredView extends JPanel {
     public ConfiguredView() {
         configureConfiguredView();
     }
+
     public void updateComboBoxList(ArrayList<String> games){
         comboBox.removeAllItems();
         for(String game: games){
@@ -89,7 +92,21 @@ public class ConfiguredView extends JPanel {
         jlCharge.setFont(new Font("Serif", Font.PLAIN, 20));
         infoPanel.add(jlCharge);
 
+        jtGameName.setMaximumSize(new Dimension(500, jtGameName.getPreferredSize().height));
+        infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
+        infoPanel.add(jtGameName);
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.setOpaque(false);
+        auxPanel.add(infoPanel);
+        fondo.add(auxPanel);
 
+
+
+        JLabel jlData = new JLabel("Que juego quieres copiar");
+        jlData.setForeground(Color.WHITE);
+        jlData.setHorizontalAlignment(0);
+        jlData.setFont(new Font("Serif", Font.PLAIN, 20));
+        infoPanel.add(jlData);
         //TextField de cargar partida
         comboBox.setMaximumSize(new Dimension(500, comboBox.getPreferredSize().height));
         infoPanel.add(Box.createHorizontalGlue()); // Add horizontal glue to align the text field to the center
@@ -128,6 +145,10 @@ public class ConfiguredView extends JPanel {
         for(String option: options){
             comboBox.addItem(option);
         }
+    }
+
+    public String getNameMap(){
+        return jtGameName.getText();
     }
 
     /**

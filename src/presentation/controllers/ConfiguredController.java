@@ -1,9 +1,6 @@
 package presentation.controllers;
 
-import business.GameManager;
-import business.MapManager;
-import business.NpcManager;
-import business.PlayerManager;
+import business.*;
 import business.entities.Game;
 import business.entities.character.Character;
 import business.entities.character.Player;
@@ -62,9 +59,19 @@ public class ConfiguredController implements ActionListener {
             case ConfiguredView.BTN_STI -> mainView.showSettings();
             case ConfiguredView.BTN_CHA -> {
 
-                String nom = configuredView.optionSelected();
+                String nomMap = configuredView.getNameMap();
                 int firstColor = 0;
-                Game game = gameManager.searchGame(nom);
+                String gameCopiedName = configuredView.optionSelected();
+                Game gameCopied = gameManager.searchGame(gameCopiedName);
+                Game game = gameManager.newGame(nomMap,gameCopied.getPlayers(),gameCopied.getImpostors(),gameCopied.getColor(),gameCopied.getMap(),gameCopied.getCreator());
+                try {
+                    gameManager.checkGame(game);
+                    gameManager.saveGame(game);
+                } catch (ErrorMessage ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
 
                 Map map = MapManager.llegeixMapa(game.getMap());
                 MapManager mapManager = new MapManager(map);

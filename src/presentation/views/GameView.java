@@ -247,7 +247,7 @@ public class GameView extends JPanel {
      *Mensaje pop up de que el impostor a ganado la partida
      */
     public void impostorsWinMsg() {
-        JOptionPane.showMessageDialog(null, "Els impostors han guanyat (han quedat el mateix número d'impostors que de tripulants).\nProva d'entrenar més!", "Game end", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Los impostores han ganado(hay el mismo numero de impostores que jugadores).\nHas de seguir practicando!", "Game end", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
