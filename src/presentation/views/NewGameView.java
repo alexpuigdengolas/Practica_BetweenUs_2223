@@ -181,40 +181,35 @@ public class NewGameView extends JPanel {
     }
 
     /**
-     *
-     * @return
+     * @return jBCColors Devuelve el color seleccionado como una cadena.
      */
     public String getColor(){
         return jBCColors.getSelectedItem().toString();
     }
 
     /**
-     *
-     * @return
+     * @return spinnerPly Devuelve el número de jugadores seleccionado como un entero.
      */
     public int getPlayers(){
         return (int) spinnerPly.getValue();
     }
 
     /**
-     *
-     * @return
+     * @return  spinnerImp Devuelve el número de impostores seleccionado como un entero.
      */
     public  int getImp(){
         return (int) spinnerImp.getValue();
     }
 
     /**
-     *
-     * @return
+     * @return nameField Devuelve el nombre del mapa ingresado como una cadena.
      */
     public String getNameMap(){
         return nameField.getText();
     }
 
     /**
-     *
-     * @return
+     * @return jbmaps Devuelve el contenido del campo de texto jbmaps como una cadena.
      */
     public String getMap(){
         System.out.println(jbmaps.getText());
@@ -222,7 +217,7 @@ public class NewGameView extends JPanel {
     }
 
     /**
-     *
+     * Establece el nombre del mapa y actualiza el texto del botón jbmaps.
      * @param mapName
      */
     public void setMapName(String mapName){
@@ -232,7 +227,7 @@ public class NewGameView extends JPanel {
     }
 
     /**
-     *
+     * Muestra un mensaje de error con el texto proporcionado.
      * @param Error
      */
     public void printNewGameErrors(String Error) {

@@ -29,7 +29,7 @@ public class PintaPassadis extends JPanel{
 
 
     /**
-     *
+     * Constructor de la classe PintaPassadis
      * @param mov
      * @param colors
      * @param userIsHere
@@ -53,7 +53,7 @@ public class PintaPassadis extends JPanel{
     }
 
     /**
-     *
+     * La funcio amaga el mapa pintant negre al damunt, a excepció de que l'usuari es mogui o s'apreti el boto revealMap
      * @param g the <code>Graphics</code> object to protect
      */
     @Override

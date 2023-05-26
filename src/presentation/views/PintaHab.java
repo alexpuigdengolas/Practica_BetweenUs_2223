@@ -26,7 +26,7 @@ public class PintaHab extends JPanel {
 
 
     /**
-     *
+     * Constructor de la classe PintaHab
      * @param color
      * @param roomName
      * @param colors
@@ -47,12 +47,10 @@ public class PintaHab extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     /**
-     *
+     * Amaga les habitacions del mapa ficant un color negre, però quan el jugador es mou o es revela el mapa es pinten del color indicat
      * @param g the <code>Graphics</code> object to protect
      */
     @Override

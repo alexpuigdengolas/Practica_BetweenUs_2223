@@ -15,7 +15,7 @@ import javax.swing.*;
 //Esta clase pinta el mapa general cada vez que la llamemos, en un futuro le pasaremos todos los personajes y el resto de cosas para jugar
 
 /**
- *
+ * sera la clase para pintar el mapa general.
  */
 public class PintaMapa extends JPanel {
     private Color color;
@@ -28,7 +28,7 @@ public class PintaMapa extends JPanel {
 
 
     /**
-     *
+     * Contructor de la classe PintaMapa
      * @param layoutManager
      * @param map
      * @param userPlayer
@@ -44,8 +44,8 @@ public class PintaMapa extends JPanel {
     }
 
     /**
-     *
-     * @return
+     * Recorre cada posició del mapa i, segons el tipus d'espai (passadís o habitació), crea un panell corresponent amb colors i característiques específiques.
+     * @return jpMapa es el panell del mapa.
      */
     public JPanel creaMapa() {
         jpMapa = new JPanel(new GridLayout(map.getWidth(),map.getHeight()));
@@ -98,11 +98,11 @@ public class PintaMapa extends JPanel {
     }
 
     /**
-     *
+     * Detecta quins jugadors (npc o no) es troben dins la sala i ho guarda en una llista.
      * @param userPlayer
      * @param npcs
      * @param cell
-     * @return
+     * @return colors llista de colors dels personatges que es troben a les sales.
      */
     public LinkedList<String> getCellColors(Character userPlayer, LinkedList<Character> npcs, Cell cell) {
         LinkedList<String> colors = new LinkedList<>();
@@ -118,11 +118,11 @@ public class PintaMapa extends JPanel {
     }
 
     /**
-     *
+     * Comprova si hi han cadavers dins les sales i retorna una llista de booleans.
      * @param userPlayer
      * @param characters
      * @param cell
-     * @return
+     * @return corpses Llista de booleans que indica si hi han cadavers o no a una sala
      */
     public LinkedList<Boolean> getCellCorpses(Character userPlayer, LinkedList<Character> characters, Cell cell) {
         LinkedList<Boolean> corpses = new LinkedList<>();
@@ -142,10 +142,10 @@ public class PintaMapa extends JPanel {
     }
 
     /**
-     *
+     * Comparem si la sala del usuari es la mateixa que una altra
      * @param userCell
      * @param cell
-     * @return
+     * @return userCell retorna verdader o fals depenent del que doni la comparació.
      */
     public boolean whereUserPosition(Cell userCell, Cell cell) {
         return userCell == cell;
