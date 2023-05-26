@@ -6,6 +6,9 @@ import presentation.views.custom.LogTableModel;
 import javax.swing.*;
 import java.util.LinkedList;
 
+/**
+ * sera la clase para construir la vista de logs nuestro programa
+ */
 public class LogsView extends JFrame {
     private final LinkedList<Log> logs;
 

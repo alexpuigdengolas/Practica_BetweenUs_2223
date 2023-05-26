@@ -228,8 +228,8 @@ public class RegisterView extends JPanel {
     }
 
     /**
-     *
-     * @param Error
+     * funcio que retorna un error si el registre ha fallat
+     * @param Error variable de l'error
      */
     public void printRegisterErrors(String Error) {
         JOptionPane.showMessageDialog(null, Error, "Error Registre", JOptionPane.ERROR_MESSAGE);

@@ -92,6 +92,11 @@ public class SettingsView extends JPanel {
         jbBack.addActionListener(controller);
     }
 
+    /**
+     * esta funcion muestra un cuadro de dialogo de confirmación con un texto
+     * @param action recibe una cadena de texto
+     * @return la opcion seleccionada por el usuario
+     */
     public int confirmPopUp(String action) {
         return JOptionPane.showConfirmDialog(null, action);
     }

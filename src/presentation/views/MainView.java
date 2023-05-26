@@ -130,24 +130,49 @@ public class MainView extends JFrame {
         this.getViewComponent().show(this.getContentPane(), "loginView");
     }
 
+    /**
+     * Este metodo nos mostrara la pantalla de start
+     */
     public void showStart() {
         this.getViewComponent().show(this.getContentPane(), "startView");
     }
 
+    /**
+     * Este metodo nos mostrara la pantalla de new game
+     */
     public void showNG() {this.getViewComponent().show(this.getContentPane(), "nGView");}
 
+    /**
+     * Este metodo nos mostrara la pantalla de las estadisticas
+     */
     public void showStatistics(){this.getViewComponent().show(this.getContentPane(), "statisticsView");}
 
+    /**
+     * Este metodo nos mostrara la pantalla de deleteView
+     */
     public void showDelete(){this.getViewComponent().show(this.getContentPane(), "deleteView");}
 
+    /**
+     * Este metodo nos mostrara la pantalla de configuredView
+     */
     public void showConfigured(){
         this.getViewComponent().show(this.getContentPane(), "configuredView");
     }
 
+    /**
+     * Este metodo nos mostrara la pantalla de chargeView
+     */
     public void showCharge(){
         this.getViewComponent().show(this.getContentPane(), "chargeView");}
 
+    /**
+     * Este metodo nos mostrara la pantalla de settingsView
+     */
     public void showSettings(){this.getViewComponent().show(this.getContentPane(), "settingsView");}
+
+    /**
+     * Este metodo nos mostrara la pantalla de gameView
+     */
     public void showGame(){this.getViewComponent().show(this.getContentPane(), "gameView");}
 
 

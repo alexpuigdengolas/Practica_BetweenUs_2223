@@ -109,7 +109,7 @@ public class StatisticsView extends JPanel {
 
     /**
      * Sirve para actualizar los datos de las estadisticas
-     * @param dirtyData
+     * @param dirtyData es una lista de float con la informacion a actualizar
      */
     public void updateData(ArrayList<Float> dirtyData){
         float[] data = new float[dirtyData.size()];
