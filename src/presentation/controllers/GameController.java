@@ -183,14 +183,14 @@ public class GameController implements Runnable,ActionListener{
 
                         gameView.setDeductionShowing(false);
                     }else {
-                        //Bloquear el boton
+                        gameView.playerNotGoodCheck();
                         getCheckTime().initCounter();
                         stateCheck = false;
                         gameView.stateCheck(false);
                     }
 
                 }else{
-                    System.out.println("Not on the wright room!");
+                    gameView.notRightRoom();
                 }
             }
         }

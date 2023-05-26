@@ -10,9 +10,9 @@ import java.awt.*;
  */
 public class MainView extends JFrame {
 
-    static final int width = 1000;
+    private static final int width = 1000;
 
-    static final int height = 700;
+    private static final int height = 700;
 
     private final JPanel jpView = new JPanel();
 

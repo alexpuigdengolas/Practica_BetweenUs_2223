@@ -264,6 +264,14 @@ public class GameView extends JPanel {
         JOptionPane.showMessageDialog(null, "Felicidades has adivinado los roles de todos.\nHas Ganado la partida!", "Game end", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    //#nuevo
+    /**
+     * Este metodo mostrara por pantalla un pop up con un mensaje de error cuando el usuario no haya hecho una deducción correcta
+     */
+    public void playerNotGoodCheck(){
+        JOptionPane.showMessageDialog(null, "La deducción no es correcta!\nComprueba que la información que has insertado sea correcta\nNo podrás hacer otra deducción hasta dentro de un minuto", "You made a mistake", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     /**
      * Funcion que activa o desactiva el boton en función de lo que le pasemos
      * @param state parametro que indica si activar o desactivar el botón
@@ -279,5 +287,13 @@ public class GameView extends JPanel {
      */
     public LinkedList<String> getCardPosition() {
         return deductionPanel.getCardPositions();
+    }
+
+    //#nuevo
+    /**
+     * Este metodo mostrara un pop up que indicara que el usuario no esta haciendo el check donde se debe hacer y que esta fuera de la sala de admin
+     */
+    public void notRightRoom() {
+        JOptionPane.showMessageDialog(null, "No puedes comprobar tu deducción en esta sala\nPara hacerlo debes estar en la sala de admin\n(La sala de color naranja)", "Not on the right room", JOptionPane.INFORMATION_MESSAGE);
     }
 }
