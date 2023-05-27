@@ -112,7 +112,6 @@ public class NGController  implements ActionListener {
                     players.addAll(impostors);
                     Collections.shuffle(players);
 
-
                     //Coloquem els jugadors a la cella de la cafeteria
                     Cell initialCell = gameManager.getCafeCell(map.getCells());
                     userPlayer.setCell(initialCell);

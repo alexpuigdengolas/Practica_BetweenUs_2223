@@ -45,8 +45,6 @@ public class GameView extends JPanel {
 
     private final JButton jbStop = new JButton("Stop Game");
 
-
-    private final JButton jbBack = new JButton("Back");
     private final JButton jbCheck = new JButton("Check");
 
     private Boolean deductionShowing = false;
@@ -83,8 +81,7 @@ public class GameView extends JPanel {
         JPanel jpActions = new JPanel();
         jpActions.setLayout(new BoxLayout(jpActions, BoxLayout.X_AXIS));
 
-        jbBack.setActionCommand(BTN_BACK);
-        jpActions.add(jbBack);
+
 
         // Espai buit per emputjar el segon botó a la dreta
         jpActions.add(Box.createHorizontalGlue());
@@ -131,7 +128,6 @@ public class GameView extends JPanel {
      * @param actionListener actionListener para asociar el resultado de los botones, para controlar si se pulsan
      */
     public void gameController(ActionListener actionListener){
-        jbBack.addActionListener(actionListener);
         jbU.addActionListener(actionListener);
         jbL.addActionListener(actionListener);
         jbD.addActionListener(actionListener);
