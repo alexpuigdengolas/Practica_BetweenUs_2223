@@ -276,7 +276,7 @@ public class GameController implements Runnable,ActionListener{
      * @param win valor booleano que indica si ha ganado o perdido
      */
     //#nuevo
-    public void finishGame(Boolean win){
+    public void finishGame(boolean win){
         gameManager.interruptThreads();
         this.stopMapThread();
         gameView.stateCheck(true);

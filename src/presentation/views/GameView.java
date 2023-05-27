@@ -231,7 +231,7 @@ public class GameView extends JPanel {
      * esta funcion sirve para establecer el estado de visualización de las deducciones en la interfaz gráfica del juego.
      * @param deductionShowing valdra true or false depeniendo de si las deducciones se muestran por pantalla
      */
-    public void setDeductionShowing(Boolean deductionShowing) {
+    public void setDeductionShowing(boolean deductionShowing) {
         this.deductionShowing = deductionShowing;
     }
 
