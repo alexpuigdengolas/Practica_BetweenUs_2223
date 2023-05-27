@@ -6,6 +6,9 @@ import presentation.views.custom.MapView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * La clase donde inicia el programa y inicia los primero pasos.
+ */
 public class Main {
 
 

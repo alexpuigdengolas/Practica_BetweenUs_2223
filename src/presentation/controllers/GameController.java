@@ -58,7 +58,6 @@ public class GameController implements Runnable,ActionListener{
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case GameView.BTN_BACK -> mainView.showStart();
-            case GameView.BTN_STI -> mainView.showSettings();
             case GameView.BTN_STP -> {
                 //TODO: Aqui se haria la parte de guardar la partida
                 getCheckTime().stopTimer();

@@ -23,7 +23,7 @@ public class GameView extends JPanel {
     public static final String BTN_U = "BTN_U";
     public static final String BTN_D = "BTN_D";
     public static final String BTN_BACK = "BTN_BACK";
-    public static final String BTN_STI = "BTN_STI";
+
     public static final String BTN_RVL = "BTN_RVL";
 
     public static final String BTN_STP = "BTN_STP";
@@ -33,7 +33,7 @@ public class GameView extends JPanel {
     private final MapView mapView;
     private JPanel jpTask = new JPanel();
     private final DeductionPanel deductionPanel = new DeductionPanel(new ArrayList<String>());
-    private CardLayout viewComponents;
+
     private JButton showDeductionsButton;
 
     private final JButton jbU = new BasicArrowButton(BasicArrowButton.NORTH);
@@ -47,7 +47,6 @@ public class GameView extends JPanel {
 
 
     private final JButton jbBack = new JButton("Back");
-    private final JButton jbSettings = new JButton("Settings");
     private final JButton jbCheck = new JButton("Check");
 
     private Boolean deductionShowing = false;
@@ -72,10 +71,6 @@ public class GameView extends JPanel {
     }
 
 
-    private CardLayout getViewComponent() {
-        return viewComponents;
-    }
-
     /**
      * este es el metodo que genera la vista entera de gameView
      */
@@ -94,10 +89,6 @@ public class GameView extends JPanel {
         // Espai buit per emputjar el segon botó a la dreta
         jpActions.add(Box.createHorizontalGlue());
 
-
-
-        jbSettings.setActionCommand(BTN_STI);
-        jpActions.add(jbSettings);
 
         jbReveal.setActionCommand(BTN_RVL);
         jpActions.add(jbReveal);
@@ -141,7 +132,6 @@ public class GameView extends JPanel {
      */
     public void gameController(ActionListener actionListener){
         jbBack.addActionListener(actionListener);
-        jbSettings.addActionListener(actionListener);
         jbU.addActionListener(actionListener);
         jbL.addActionListener(actionListener);
         jbD.addActionListener(actionListener);
