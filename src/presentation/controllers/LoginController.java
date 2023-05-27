@@ -9,24 +9,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class will be used as the controller to de login View
+ * Esta clase es con la que controlamos la vista del login
  */
 public class LoginController implements ActionListener {
 
     private final LoginView loginView;
     private final MainView mainView;
-    private final CardLayout cardLayout;
+
 
     private final UserManager userManager;
 
 
-    public LoginController(LoginView loginView, MainView mainView, CardLayout cardLayout, UserManager userManager) {
+    /**
+     * Constructor del controller
+     * @param loginView La vista que controlamos
+     * @param mainView La vista general
+     * @param userManager el Manager el usuario
+     */
+    public LoginController(LoginView loginView, MainView mainView, UserManager userManager) {
         this.loginView = loginView;
         this.mainView = mainView;
-        this.cardLayout = cardLayout;
         this.userManager = userManager;
     }
 
+    /**
+     * Este metodo sera util para programar el comportamiento del codigo cuando se interactua con los componentes de la vista [botones, paneles de texto, ...].
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -35,7 +44,6 @@ public class LoginController implements ActionListener {
                 if (userManager.loginUser(loginView.getInputUsernameEmail(),String.valueOf(loginView.getInputPassword()))){
                     //Guardem el nom del usuari
                     String userName = userManager.getUsername(loginView.getInputUsernameEmail());
-                    System.out.println("l'usuari "+userName+ " ha fet log in correcre");
                     //Anem a la vista que tocaria
                     mainView.showStart();
                 } else {

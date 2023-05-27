@@ -26,13 +26,7 @@ public class Map {
     @Expose
     private final LinkedList<Cell> cells = new LinkedList<>();
 
-    /**
-     * Getter del numero de casillas que componen el mapa
-     * @return el numero de casillas
-     */
-    public int getCellNumber() {
-        return cellNumber;
-    }
+
 
     /**
      * Este metodo nos retorna el ancho del mapa
@@ -50,13 +44,6 @@ public class Map {
         return height;
     }
 
-    /**
-     * Getter del nombre del mapa
-     * @return el nombre del mapa
-     */
-    public String getMapName() {
-        return mapName;
-    }
 
     /**
      * Getter de las casillas que componen el mapa
@@ -87,7 +74,6 @@ public class Map {
                 return cell;
             }
         }
-        System.out.println("Cell null: "+ roomName);
         return null;
     }
 }

@@ -212,7 +212,6 @@ public class NewGameView extends JPanel {
      * @return jbmaps Devuelve el contenido del campo de texto jbmaps como una cadena.
      */
     public String getMap(){
-        System.out.println(jbmaps.getText());
         return jbmaps.getText();
     }
 

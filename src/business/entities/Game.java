@@ -41,13 +41,6 @@ public class Game {
         return gameName;
     }
 
-    /**
-     * Setter del nombre de la partida
-     * @param gameName el nombre de la partida
-     */
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
-    }
 
     /**
      * Getter del numero de jugadores
@@ -58,14 +51,6 @@ public class Game {
     }
 
     /**
-     * Setter del numero de jugadores
-     * @param players el numero de jugadores
-     */
-    public void setPlayers(int players) {
-        this.players = players;
-    }
-
-    /**
      * Getter del numero de impostores
      * @return el numero de impostores
      */
@@ -73,13 +58,6 @@ public class Game {
         return impostors;
     }
 
-    /**
-     * Setter del numero de impostores
-     * @param impostors el numero de impostores
-     */
-    public void setImpostors(int impostors) {
-        this.impostors = impostors;
-    }
 
     /**
      * Getter del color del personaje del ususario
@@ -121,11 +99,4 @@ public class Game {
         return creator;
     }
 
-    /**
-     * Setter del nombre del creador de la partida
-     * @param creator el nombre del creador
-     */
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
 }

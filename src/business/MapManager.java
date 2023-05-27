@@ -16,7 +16,6 @@ public class MapManager {
     private PlayerManager playerManager;
     private final Map map;
 
-    // Parametrized constructor
     public MapManager(Map map) {
         this.map = map;
 
@@ -27,7 +26,6 @@ public class MapManager {
      * @param mapName nombre del mapa
      * @return El mapa al que queremos acceder
      */
-    //Funcion que llama al reader el json del mapa y nos devuelve el mapa qe queriamos
     public static Map llegeixMapa(String mapName) {
         mapReader = new ReaderMap(mapName);
         return mapReader.getMap();

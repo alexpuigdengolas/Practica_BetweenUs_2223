@@ -40,10 +40,11 @@ public class NpcManager{
     }
 
     /**
-     *
-     * @param cell
-     * @return
+     * Función que nos indica el numero de NPC en una parcela
+     * @param cell parcela que queremos comprobar
+     * @return nummero de npc encontrados
      */
+
     public int getNumNpcCell(Cell cell) {
         int npcs = 0;
         for (Character character: players) {
@@ -57,10 +58,11 @@ public class NpcManager{
     }
 
     /**
-     *
-     * @param cell
-     * @return
+     * Función que nos indica el numero de NPC en la parcela de usuario
+     * @param cell la parcel a comprobar
+     * @return número de NPC
      */
+
     public int getNpcNumCell(Cell cell) {
         int numNpc = 0;
         for (Character character: players) {
@@ -105,18 +107,13 @@ public class NpcManager{
         if (getNpcNumCell(impostor.getCell()) == 2 && getNumNpcCell(impostor.getCell()) == 1
                 && mapManager.userPlayerCell() != impostor.getCell()) {
             int npcPosition = getNpcPosition(impostor.getCell());
-            System.out.println("Quiero matar a alguien");
-            for (Character player : players) {
-                System.out.println(player.getColor());
-            }
-            System.out.println("Quiero matar a :"+players.get(npcPosition).getColor());
+
             //SE mata a si mismo
             if (!players.get(npcPosition).isDead() && npcPosition != -1 && players.get(npcPosition) instanceof Npc) {
                 int cellPosition = getCellPosition(mapManager, impostor.getCell());
                 mapManager.getMap().getCells().get(cellPosition).setNumCorpses(mapManager.getMap().getCells().get(cellPosition).getNumCorpses() + 1);
                 players.get(npcPosition).setDead(true);
                 players.get(npcPosition).stopThread();
-                System.out.println("El impostot a matat a "+players.get(npcPosition).getColor());
 
                 impostor.getPeriodTime().resetCounter();
 
@@ -127,11 +124,12 @@ public class NpcManager{
     }
 
     /**
-     *
-     * @param mapManager
-     * @param cell
-     * @return
+     * función que nos da la posición de la parcela en el mapa
+     * @param mapManager el manager del mapa
+     * @param cell la parcela que queremos mirar
+     * @return int con la posición en el mapa
      */
+
     public int getCellPosition (MapManager mapManager, Cell cell) {
         for (int i = 0; i < mapManager.getMap().getCells().size(); i++) {
             if (mapManager.getMap().getCells().get(i) == cell) {
@@ -190,7 +188,6 @@ public class NpcManager{
         if (!character.getCell().getRoomName().equals("corridor") &&
                 !character.getCell().getRoomName().equals("security") &&
                 !character.isDead() && character.isCanLog()) {
-            System.out.println(" el color "+ character.getColor()+ " deberia meterse en el log");
             character.setCanLog(false);
             return true;
         }

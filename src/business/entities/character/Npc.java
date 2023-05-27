@@ -31,7 +31,6 @@ public class Npc extends Character{
      */
     public synchronized boolean movement() {
         int probability = (int)(Math.random()*(getMaxProbability() + 1));
-        System.out.println("La probabilidad ha salido: "+probability);
         return probability <= 55;
     }
 
@@ -100,13 +99,11 @@ public class Npc extends Character{
 
         if (startInterval == getIntervalTime().getSeconds()) {
             if (movement()) {
-                System.out.println("la previus room es: "+getPreviousRoom());
-                System.out.println("soy la ficha color "+getColor()+" y me muevo");
+
                 int nextRoom = getNextNpcRoom(this);
-                System.out.println("La next room es: "+nextRoom);
+
                 setPreviousRoom(selectPreviousRoom(nextRoom));
                 int[] nextCell = getNextCoordinates(nextRoom);
-                System.out.println("se va a la celda:  "+getCellByCoordinates(nextCell).getRoomName());
                 setCell(getCellByCoordinates(nextCell));
                 setCanLog(true);
 
@@ -139,10 +136,7 @@ public class Npc extends Character{
      * @return el int de una posicion random para el jugador
      */
     public synchronized int getNpcRandomPosition(int counter, int previousRoom) {
-        System.out.println("counter es: "+counter);
         int position = (int) (Math.random() * (counter));
-        System.out.println("position es: "+position);
-        System.out.println("La previus room es: "+previousRoom);
         if (Math.abs(position-previousRoom) == 2) {
             return (int) (Math.random() * (counter));
         }

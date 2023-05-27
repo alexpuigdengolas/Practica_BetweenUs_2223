@@ -303,7 +303,6 @@ public class GameController implements Runnable,ActionListener{
         getTotalTime().initCounter();
         getCheckTime().setSeconds(0);
         while(isRunning && !T.isInterrupted()) {
-            System.out.println("el check time es: "+getCheckTime().getSeconds());
             if(getCheckTime().getSeconds() == 60 && !stateCheck){
                 getCheckTime().stopTimer();
                 stateCheck = true;

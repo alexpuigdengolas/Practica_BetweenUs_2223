@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class Main {
 
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -36,13 +37,13 @@ public class Main {
             CardLayout cardLayout = new CardLayout();
             MainView mainView = new MainView(cardLayout, registerView, loginView, startView, nGView, statisticsView, deleteView, configuredView, chargeView, settingsView,mapView, gameView);
 
-            RegisterController registerController = new RegisterController(registerView, mainView, cardLayout,userManager);
-            LoginController loginController = new LoginController(loginView, mainView, cardLayout,userManager);
+            RegisterController registerController = new RegisterController(registerView, mainView,userManager);
+            LoginController loginController = new LoginController(loginView, mainView,userManager);
             GameController gameController = new GameController(gameView, mainView, gameManager);
             StartController startController = new StartController(mainView, gameManager, userManager, statisticsView,statisticsManager,chargeView,configuredView,deleteView);
             SettingsController settingsController = new SettingsController(settingsView, mainView, userManager);
             ConfiguredController configuredController = new ConfiguredController(configuredView, mainView, gameManager,gameView,gameController);
-            ChargeController chargeController = new ChargeController(chargeView, mainView, gameManager,gameView);
+            ChargeController chargeController = new ChargeController(chargeView, mainView, gameManager,gameView,gameController);
             DeleteController deleteController = new DeleteController(deleteView, mainView, gameManager);
             NGController NGcontroller = new NGController(nGView, mainView, userManager, gameManager, gameView,gameController);
             StatisticsController statisticsController = new StatisticsController(mainView);

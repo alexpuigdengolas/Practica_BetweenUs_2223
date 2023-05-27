@@ -138,7 +138,6 @@ public class Impostor extends Character{
             if (impostor.movement()) {
                 if (!ventilationMovement(impostor)) {
                     int nextRoom = getNextImpostorRoom(impostor);
-                    System.out.println("El impostor se mueve");
                     int[] nextCell = impostor.getNextCoordinates(nextRoom);
                     impostor.setCell(getCellByCoordinates(nextCell));
                     impostor.setCanLog(true);

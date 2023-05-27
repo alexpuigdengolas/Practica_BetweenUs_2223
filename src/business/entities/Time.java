@@ -6,10 +6,10 @@ import java.util.TimerTask;
 /**
  * Esta clase representara los temporizadores de las partidas
  */
-public class Time {
+public class Time extends Thread {
     // Attributes
     private Timer timer = new Timer();
-    private int seconds = 0;
+    protected int seconds = 0;
 
     /**
      * Esta sera la clase que emplearemos como contador para poder tener nuestro timer

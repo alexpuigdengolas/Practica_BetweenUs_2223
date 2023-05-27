@@ -98,7 +98,6 @@ public class StartController implements ActionListener {
      */
     public void updatecomboBox(){
         ArrayList<String> games = gameManager.getGames(userManager.getUser());
-        //Aqui hay que actualizar ambas combo box
         chargeView.updateComboBoxList(games);
         configuredView.updateComboBoxList(games);
         deleteView.updateComboBoxList(games);

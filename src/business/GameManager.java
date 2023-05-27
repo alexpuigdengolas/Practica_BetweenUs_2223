@@ -5,11 +5,14 @@ import business.entities.Game;
 import business.entities.character.Character;
 import business.entities.character.Impostor;
 import business.entities.character.Npc;
+import business.entities.character.Player;
 import business.entities.map.Cell;
+import business.entities.map.Map;
 import persistance.Conn.GameDAO;
 import persistance.Conn.GameSQLDAO;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -342,6 +345,24 @@ public class GameManager {
     public Game newGame(String name,int players, int imp,String color,String mapName,String user){
         return new Game(name, players, imp, color, mapName,user);
     }
+
+
+    //#nuevo
+    /**
+     *
+     * @param userPosition
+     * @param npcs
+     * @param starterColor
+     * @return
+     */
+    public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
+        if (userPosition <= npcs) {
+            return starterColor+1;
+        } else {
+            return starterColor;
+        }
+    }
+
 
 
 

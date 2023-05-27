@@ -82,7 +82,7 @@ public class ConfiguredController implements ActionListener {
                 }
                 //Creem els npcs
                 LinkedList<Character> npcs = gameManager.getNpcs(game.getPlayers() - game.getImpostors() - 1, game.getColor(), firstColor, colors, mapManager);
-                firstColor = getImpostorsStarterColor(gameManager.getUserColorPosition(game.getColor(), colors), npcs.size(), firstColor);
+                firstColor = gameManager.getImpostorsStarterColor(gameManager.getUserColorPosition(game.getColor(), colors), npcs.size(), firstColor);
                 LinkedList<Character> impostors = gameManager.getImpostors(game.getImpostors(), game.getColor(), firstColor + npcs.size(), colors, mapManager);
 
                 LinkedList<Character> players = new LinkedList<>();
@@ -123,18 +123,5 @@ public class ConfiguredController implements ActionListener {
         }
     }
 
-    /**
-     *
-     * @param userPosition
-     * @param npcs
-     * @param starterColor
-     * @return
-     */
-    public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
-        if (userPosition <= npcs) {
-            return starterColor+1;
-        } else {
-            return starterColor;
-        }
-    }
+
 }

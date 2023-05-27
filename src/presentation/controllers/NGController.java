@@ -69,7 +69,6 @@ public class NGController  implements ActionListener {
                 //El cargador de archivos, para seleccionar el mapa
                 String path = getMPath();
                 JFileChooser jfc = new JFileChooser(path);
-                System.out.println(NGView.getMap());
                 int returnValue = jfc.showOpenDialog(null);
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = jfc.getSelectedFile();
@@ -105,7 +104,7 @@ public class NGController  implements ActionListener {
                     }
                     //Creem els npcs
                     LinkedList<Character> npcs = gameManager.getNpcs(NGView.getPlayers() - NGView.getImp() - 1, NGView.getColor(), firstColor, colors, mapManager);
-                    firstColor = getImpostorsStarterColor(gameManager.getUserColorPosition(NGView.getColor(), colors), npcs.size(), firstColor);
+                    firstColor = gameManager.getImpostorsStarterColor(gameManager.getUserColorPosition(NGView.getColor(), colors), npcs.size(), firstColor);
                     LinkedList<Character> impostors = gameManager.getImpostors(NGView.getImp(), NGView.getColor(), firstColor + npcs.size(), colors, mapManager);
 
                     LinkedList<Character> players = new LinkedList<>();
@@ -192,19 +191,5 @@ public class NGController  implements ActionListener {
         }
     }
 
-    /**
-     *
-     * @param userPosition
-     * @param npcs
-     * @param starterColor
-     * @return
-     */
-    public int getImpostorsStarterColor(int userPosition, int npcs, int starterColor) {
-        if (userPosition <= npcs) {
-            return starterColor+1;
-        } else {
-            return starterColor;
-        }
-    }
 
 }

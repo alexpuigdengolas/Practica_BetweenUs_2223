@@ -24,9 +24,6 @@ public class ReaderMap {
             String path = f.getAbsolutePath();
             reader = new com.google.gson.stream.JsonReader(new FileReader(path + "/src/mapFiles/" + mapName));
             map = gson.fromJson(reader, Map.class);
-
-            System.out.println("\nLectura del mapa finalitzada.\n");
-
         } catch (Exception e) {
             System.out.println("No s'ha pogut llegir el mapa: " + e.getMessage());
         }
@@ -37,7 +34,6 @@ public class ReaderMap {
      * @return el mapa que estamos buscando
      */
     public Map getMap() {
-        //System.out.println(map.getMapName() + "estoy en el map reader");
         return map;
     }
 
