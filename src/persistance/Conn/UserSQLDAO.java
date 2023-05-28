@@ -54,6 +54,8 @@ public class UserSQLDAO implements UserDAO {
     @Override
     public void deleteUser(String nameLogin) {
         conn.connect();
+        String statisticQuery = "DELETE FROM PlayerStatistics AS u WHERE (u.username LIKE '" + nameLogin + "')";
+        conn.deleteQuery(statisticQuery);
         String query = "DELETE FROM User AS u WHERE (u.username LIKE '" + nameLogin + "' OR u.email LIKE '" + nameLogin + "')";
         conn.deleteQuery(query);
         conn.disconnect();
